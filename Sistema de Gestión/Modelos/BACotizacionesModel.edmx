@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BACotizacionesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroCotizacion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_VerUltimoNumeroCotizacion">
+          <Key>
+            <PropertyRef Name="id_Cotizacion" />
+          </Key>
+          <Property Name="UltimoNumeroCotizacion" Type="numeric" Precision="38" Scale="0" />
+          <Property Name="id_Cotizacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Function Name="SP_InsertarCotizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCliente" Type="int" Mode="In" />
+          <Parameter Name="Descuento" Type="money" Mode="In" />
+          <Parameter Name="SubTotalCotizacion" Type="money" Mode="In" />
+          <Parameter Name="ITBIS" Type="money" Mode="In" />
+          <Parameter Name="TotalCotizacion" Type="money" Mode="In" />
+          <Parameter Name="FechaCotizacion" Type="date" Mode="In" />
+          <Parameter Name="HoraCotizacion" Type="datetime" Mode="In" />
+          <Parameter Name="IDUsuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertarDetallesCotizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cantidad" Type="int" Mode="In" />
+          <Parameter Name="idMedida" Type="int" Mode="In" />
+          <Parameter Name="idProducto" Type="int" Mode="In" />
+          <Parameter Name="DesProducto" Type="varchar" Mode="In" />
+          <Parameter Name="Costo" Type="money" Mode="In" />
+          <Parameter Name="SubTotalProducto" Type="money" Mode="In" />
+        </Function>
+        <EntityContainer Name="BACotizacionesModelStoreContainer">
+          <EntitySet Name="VW_VerUltimoNumeroCotizacion" EntityType="Self.VW_VerUltimoNumeroCotizacion" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_VerUltimoNumeroCotizacion].[UltimoNumeroCotizacion] AS [UltimoNumeroCotizacion], 
+    [VW_VerUltimoNumeroCotizacion].[id_Cotizacion] AS [id_Cotizacion]
+    FROM [dbo].[VW_VerUltimoNumeroCotizacion] AS [VW_VerUltimoNumeroCotizacion]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BACotizacionesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BACotizacionesEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="SP_InsertarCotizacion">
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+            <Parameter Name="Descuento" Mode="In" Type="Decimal" />
+            <Parameter Name="SubTotalCotizacion" Mode="In" Type="Decimal" />
+            <Parameter Name="ITBIS" Mode="In" Type="Decimal" />
+            <Parameter Name="TotalCotizacion" Mode="In" Type="Decimal" />
+            <Parameter Name="FechaCotizacion" Mode="In" Type="DateTime" />
+            <Parameter Name="HoraCotizacion" Mode="In" Type="DateTime" />
+            <Parameter Name="IDUsuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertarDetallesCotizacion">
+            <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="idMedida" Mode="In" Type="Int32" />
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
+            <Parameter Name="DesProducto" Mode="In" Type="String" />
+            <Parameter Name="Costo" Mode="In" Type="Decimal" />
+            <Parameter Name="SubTotalProducto" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <EntitySet Name="VW_VerUltimoNumeroCotizacion" EntityType="BACotizacionesModel.VW_VerUltimoNumeroCotizacion" />
+        </EntityContainer>
+        <EntityType Name="VW_VerUltimoNumeroCotizacion">
+          <Key>
+            <PropertyRef Name="id_Cotizacion" />
+          </Key>
+          <Property Name="UltimoNumeroCotizacion" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="id_Cotizacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BACotizacionesModelStoreContainer" CdmEntityContainer="BACotizacionesEntities" >
+          <FunctionImportMapping FunctionImportName="SP_InsertarCotizacion" FunctionName="BACotizacionesModel.Store.SP_InsertarCotizacion" />
+          <FunctionImportMapping FunctionImportName="SP_InsertarDetallesCotizacion" FunctionName="BACotizacionesModel.Store.SP_InsertarDetallesCotizacion" />
+          <EntitySetMapping Name="VW_VerUltimoNumeroCotizacion">
+            <EntityTypeMapping TypeName="BACotizacionesModel.VW_VerUltimoNumeroCotizacion">
+              <MappingFragment StoreEntitySet="VW_VerUltimoNumeroCotizacion">
+                <ScalarProperty Name="id_Cotizacion" ColumnName="id_Cotizacion" />
+                <ScalarProperty Name="UltimoNumeroCotizacion" ColumnName="UltimoNumeroCotizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BAPedidosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_EmpleadosFactura' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_EmpleadosFactura">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Chofer" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Chofer" Type="varchar" MaxLength="31" Nullable="false" />
+          <Property Name="Celular" Type="varchar" MaxLength="12" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListarMedidas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_ListarMedidas">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Medida" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Medida" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListarVehiculos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_ListarVehiculos">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Descripcion" />
+            <PropertyRef Name="Matricula" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Matricula" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="Capacidad" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ProductosFactura' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_ProductosFactura">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Producto" />
+            <PropertyRef Name="Descripcion" />
+            <PropertyRef Name="Precio" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Producto" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Precio" Type="money" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_VerUltimoNumeroPedido">
+          <Key>
+            <PropertyRef Name="id_Pedidos" />
+          </Key>
+          <Property Name="UltimoNumeroPedido" Type="numeric" Precision="38" Scale="0" />
+          <Property Name="id_Pedidos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Function Name="SP_BuscarClienteCodigo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Codigo_Cliente" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertarConduces" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Empleado" Type="int" Mode="In" />
+          <Parameter Name="num_Conduce" Type="int" Mode="In" />
+          <Parameter Name="id_producto" Type="int" Mode="In" />
+          <Parameter Name="id_vehiculo" Type="int" Mode="In" />
+          <Parameter Name="id_medida" Type="int" Mode="In" />
+          <Parameter Name="CantidadViajes" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertarConducesPedidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Empleado" Type="int" Mode="In" />
+          <Parameter Name="num_Conduce" Type="int" Mode="In" />
+          <Parameter Name="id_producto" Type="int" Mode="In" />
+          <Parameter Name="id_vehiculo" Type="int" Mode="In" />
+          <Parameter Name="id_medida" Type="int" Mode="In" />
+          <Parameter Name="CantidadViajes" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertarDetallesPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idProducto" Type="int" Mode="In" />
+          <Parameter Name="id_Medida" Type="int" Mode="In" />
+          <Parameter Name="cantidad" Type="int" Mode="In" />
+          <Parameter Name="precio" Type="money" Mode="In" />
+          <Parameter Name="subtotal" Type="money" Mode="In" />
+          <Parameter Name="descripcion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertarPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCliente" Type="int" Mode="In" />
+          <Parameter Name="idEstatusPedido" Type="int" Mode="In" />
+          <Parameter Name="SubtotalPedido" Type="money" Mode="In" />
+          <Parameter Name="totalPedido" Type="money" Mode="In" />
+          <Parameter Name="ITBISPedido" Type="money" Mode="In" />
+          <Parameter Name="DescuentoPedido" Type="money" Mode="In" />
+        </Function>
+        <EntityContainer Name="BAPedidosModelStoreContainer">
+          <EntitySet Name="VW_EmpleadosFactura" EntityType="Self.VW_EmpleadosFactura" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_EmpleadosFactura].[ID] AS [ID], 
+    [VW_EmpleadosFactura].[Chofer] AS [Chofer], 
+    [VW_EmpleadosFactura].[Celular] AS [Celular]
+    FROM [dbo].[VW_EmpleadosFactura] AS [VW_EmpleadosFactura]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_ListarMedidas" EntityType="Self.VW_ListarMedidas" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ListarMedidas].[ID] AS [ID], 
+    [VW_ListarMedidas].[Medida] AS [Medida]
+    FROM [dbo].[VW_ListarMedidas] AS [VW_ListarMedidas]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_ListarVehiculos" EntityType="Self.VW_ListarVehiculos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ListarVehiculos].[ID] AS [ID], 
+    [VW_ListarVehiculos].[Descripcion] AS [Descripcion], 
+    [VW_ListarVehiculos].[Matricula] AS [Matricula], 
+    [VW_ListarVehiculos].[Capacidad] AS [Capacidad]
+    FROM [dbo].[VW_ListarVehiculos] AS [VW_ListarVehiculos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_ProductosFactura" EntityType="Self.VW_ProductosFactura" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ProductosFactura].[ID] AS [ID], 
+    [VW_ProductosFactura].[Codigo] AS [Codigo], 
+    [VW_ProductosFactura].[Producto] AS [Producto], 
+    [VW_ProductosFactura].[Descripcion] AS [Descripcion], 
+    [VW_ProductosFactura].[Precio] AS [Precio]
+    FROM [dbo].[VW_ProductosFactura] AS [VW_ProductosFactura]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_VerUltimoNumeroPedido" EntityType="Self.VW_VerUltimoNumeroPedido" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_VerUltimoNumeroPedido].[UltimoNumeroPedido] AS [UltimoNumeroPedido], 
+    [VW_VerUltimoNumeroPedido].[id_Pedidos] AS [id_Pedidos]
+    FROM [dbo].[VW_VerUltimoNumeroPedido] AS [VW_VerUltimoNumeroPedido]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BAPedidosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BAPedidosEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="SP_InsertarDetallesPedido">
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
+            <Parameter Name="id_Medida" Mode="In" Type="Int32" />
+            <Parameter Name="cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="precio" Mode="In" Type="Decimal" />
+            <Parameter Name="subtotal" Mode="In" Type="Decimal" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertarPedido">
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+            <Parameter Name="idEstatusPedido" Mode="In" Type="Int32" />
+            <Parameter Name="SubtotalPedido" Mode="In" Type="Decimal" />
+            <Parameter Name="totalPedido" Mode="In" Type="Decimal" />
+            <Parameter Name="ITBISPedido" Mode="In" Type="Decimal" />
+            <Parameter Name="DescuentoPedido" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_BuscarClienteCodigo" ReturnType="Collection(BAPedidosModel.SP_BuscarClienteCodigo_Result)">
+          <Parameter Name="Codigo_Cliente" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="VW_VerUltimoNumeroPedido" EntityType="BAPedidosModel.VW_VerUltimoNumeroPedido" />
+          <EntitySet Name="VW_EmpleadosFactura" EntityType="BAPedidosModel.VW_EmpleadosFactura" />
+          <EntitySet Name="VW_ListarVehiculos" EntityType="BAPedidosModel.VW_ListarVehiculos" />
+          <EntitySet Name="VW_ListarMedidas" EntityType="BAPedidosModel.VW_ListarMedidas" />
+          <EntitySet Name="VW_ProductosFactura" EntityType="BAPedidosModel.VW_ProductosFactura" />
+          <FunctionImport Name="SP_InsertarConduces">
+            <Parameter Name="id_Empleado" Mode="In" Type="Int32" />
+            <Parameter Name="num_Conduce" Mode="In" Type="Int32" />
+            <Parameter Name="id_producto" Mode="In" Type="Int32" />
+            <Parameter Name="id_vehiculo" Mode="In" Type="Int32" />
+            <Parameter Name="id_medida" Mode="In" Type="Int32" />
+            <Parameter Name="CantidadViajes" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertarConducesPedidos">
+            <Parameter Name="id_Empleado" Mode="In" Type="Int32" />
+            <Parameter Name="num_Conduce" Mode="In" Type="Int32" />
+            <Parameter Name="id_producto" Mode="In" Type="Int32" />
+            <Parameter Name="id_vehiculo" Mode="In" Type="Int32" />
+            <Parameter Name="id_medida" Mode="In" Type="Int32" />
+            <Parameter Name="CantidadViajes" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SP_BuscarClienteCodigo_Result">
+          <Property Type="String" Name="Proyecto" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="RNC" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Cliente" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="Contactos" Nullable="true" MaxLength="31" />
+          <Property Type="String" Name="Telefonos" Nullable="true" MaxLength="26" />
+          <Property Type="String" Name="Correo" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="Dirección" Nullable="true" />
+          <Property Type="Int32" Name="TipoCliente" Nullable="false" />
+          <Property Type="Int32" Name="ID_Cliente" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="VW_VerUltimoNumeroPedido">
+          <Key>
+            <PropertyRef Name="id_Pedidos" />
+          </Key>
+          <Property Name="UltimoNumeroPedido" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="id_Pedidos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="VW_EmpleadosFactura">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Chofer" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Chofer" Type="String" Nullable="false" MaxLength="31" FixedLength="false" Unicode="false" />
+          <Property Name="Celular" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VW_ListarVehiculos">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Descripcion" />
+            <PropertyRef Name="Matricula" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Matricula" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="Capacidad" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VW_ListarMedidas">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Medida" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Medida" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VW_ProductosFactura">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Producto" />
+            <PropertyRef Name="Descripcion" />
+            <PropertyRef Name="Precio" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Producto" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BAPedidosModelStoreContainer" CdmEntityContainer="BAPedidosEntities" >
+          <FunctionImportMapping FunctionImportName="SP_InsertarDetallesPedido" FunctionName="BAPedidosModel.Store.SP_InsertarDetallesPedido" />
+          <FunctionImportMapping FunctionImportName="SP_InsertarPedido" FunctionName="BAPedidosModel.Store.SP_InsertarPedido" />
+          <FunctionImportMapping FunctionImportName="SP_BuscarClienteCodigo" FunctionName="BAPedidosModel.Store.SP_BuscarClienteCodigo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BAPedidosModel.SP_BuscarClienteCodigo_Result">
+                <ScalarProperty Name="Proyecto" ColumnName="Proyecto" />
+                <ScalarProperty Name="RNC" ColumnName="RNC" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Contactos" ColumnName="Contactos" />
+                <ScalarProperty Name="Telefonos" ColumnName="Telefonos" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Dirección" ColumnName="Dirección" />
+                <ScalarProperty Name="TipoCliente" ColumnName="TipoCliente" />
+                <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="VW_VerUltimoNumeroPedido">
+            <EntityTypeMapping TypeName="BAPedidosModel.VW_VerUltimoNumeroPedido">
+              <MappingFragment StoreEntitySet="VW_VerUltimoNumeroPedido">
+                <ScalarProperty Name="id_Pedidos" ColumnName="id_Pedidos" />
+                <ScalarProperty Name="UltimoNumeroPedido" ColumnName="UltimoNumeroPedido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_EmpleadosFactura">
+            <EntityTypeMapping TypeName="BAPedidosModel.VW_EmpleadosFactura">
+              <MappingFragment StoreEntitySet="VW_EmpleadosFactura">
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Chofer" ColumnName="Chofer" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_ListarVehiculos">
+            <EntityTypeMapping TypeName="BAPedidosModel.VW_ListarVehiculos">
+              <MappingFragment StoreEntitySet="VW_ListarVehiculos">
+                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_ListarMedidas">
+            <EntityTypeMapping TypeName="BAPedidosModel.VW_ListarMedidas">
+              <MappingFragment StoreEntitySet="VW_ListarMedidas">
+                <ScalarProperty Name="Medida" ColumnName="Medida" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_ProductosFactura">
+            <EntityTypeMapping TypeName="BAPedidosModel.VW_ProductosFactura">
+              <MappingFragment StoreEntitySet="VW_ProductosFactura">
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_InsertarConduces" FunctionName="BAPedidosModel.Store.SP_InsertarConduces" />
+          <FunctionImportMapping FunctionImportName="SP_InsertarConducesPedidos" FunctionName="BAPedidosModel.Store.SP_InsertarConducesPedidos" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

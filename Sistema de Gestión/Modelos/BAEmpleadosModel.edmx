@@ -1,0 +1,797 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BAEmpleadosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaCategoriaLicencia' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_ListaCategoriaLicencia">
+          <Key>
+            <PropertyRef Name="id_CategoriaLicencia" />
+          </Key>
+          <Property Name="id_CategoriaLicencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Categoria" Type="int" />
+          <Property Name="Des_CategoriaLicencia" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaDepartamentos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_ListaDepartamentos">
+          <Key>
+            <PropertyRef Name="id_Departamento" />
+            <PropertyRef Name="Nom_Departamento" />
+            <PropertyRef Name="Des_Departamento" />
+          </Key>
+          <Property Name="id_Departamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_Departamento" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Des_Departamento" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaEstatusEmpleados' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_ListaEstatusEmpleados">
+          <Key>
+            <PropertyRef Name="id_EstatusEmpleado" />
+            <PropertyRef Name="Estatus" />
+            <PropertyRef Name="Des_EStatus" />
+          </Key>
+          <Property Name="id_EstatusEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estatus" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="Des_EStatus" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaGeneros' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_ListaGeneros">
+          <Key>
+            <PropertyRef Name="id_Genero" />
+            <PropertyRef Name="Nom_Genero" />
+            <PropertyRef Name="Prefijo" />
+          </Key>
+          <Property Name="id_Genero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_Genero" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Prefijo" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaPuestos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_ListaPuestos">
+          <Key>
+            <PropertyRef Name="id_Puesto" />
+            <PropertyRef Name="Nom_Puesto" />
+            <PropertyRef Name="Des_Puesto" />
+          </Key>
+          <Property Name="id_Puesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_Puesto" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="Des_Puesto" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListarEmpleados' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_ListarEmpleados">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Primer_Nombre" />
+            <PropertyRef Name="Primer_Apellido" />
+            <PropertyRef Name="Cedula" />
+            <PropertyRef Name="Telefono_Residencial" />
+            <PropertyRef Name="Fecha_Nacimiento" />
+            <PropertyRef Name="Edad" />
+            <PropertyRef Name="Calle" />
+            <PropertyRef Name="Numero" />
+            <PropertyRef Name="Casa" />
+            <PropertyRef Name="Ciudad" />
+            <PropertyRef Name="Genero" />
+            <PropertyRef Name="Tipo_Sangre" />
+            <PropertyRef Name="Puesto" />
+            <PropertyRef Name="Departamento" />
+            <PropertyRef Name="Supervisor" />
+            <PropertyRef Name="Estatus" />
+            <PropertyRef Name="Seguro_Medico" />
+            <PropertyRef Name="Fecha_Emision_Licencia" />
+            <PropertyRef Name="Fecha_Expiracion_Licencia" />
+            <PropertyRef Name="Seguro_Vehicular" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Primer_Nombre" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Segundo_Nombre" Type="varchar" MaxLength="15" />
+          <Property Name="Primer_Apellido" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Segundo_Apellido" Type="varchar" MaxLength="15" />
+          <Property Name="Cedula" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Telefono_Residencial" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Telefono_Celular" Type="varchar" MaxLength="12" />
+          <Property Name="Fecha_Nacimiento" Type="datetime" Nullable="false" />
+          <Property Name="Edad" Type="int" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="60" />
+          <Property Name="Calle" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Numero" Type="int" Nullable="false" />
+          <Property Name="Casa" Type="int" Nullable="false" />
+          <Property Name="Sector" Type="varchar" MaxLength="25" />
+          <Property Name="Ciudad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre_Contacto_Emergencia" Type="varchar" MaxLength="65" />
+          <Property Name="Telefono_Contacto" Type="varchar" MaxLength="12" />
+          <Property Name="Genero" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Tipo_Sangre" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Puesto" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="Departamento" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Sueldo" Type="money" />
+          <Property Name="Supervisor" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="Estatus" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="Motivo_Estatus" Type="varchar" MaxLength="65" />
+          <Property Name="Condicion_Medica" Type="varchar" MaxLength="30" />
+          <Property Name="Seguro_Medico" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Categoria" Type="int" />
+          <Property Name="Fecha_Emision_Licencia" Type="datetime" Nullable="false" />
+          <Property Name="Fecha_Expiracion_Licencia" Type="datetime" Nullable="false" />
+          <Property Name="Seguro_Vehicular" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Fecha_Expiracion_Seguro" Type="datetime" />
+          <Property Name="Foto" Type="image" />
+          <Property Name="Observación" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaSeguroMedico' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_ListaSeguroMedico">
+          <Key>
+            <PropertyRef Name="id_SeguroMedico" />
+            <PropertyRef Name="Nom_SeguroMedico" />
+            <PropertyRef Name="Tarifa_SeguroMedico" />
+            <PropertyRef Name="Des_SeguroMedico" />
+          </Key>
+          <Property Name="id_SeguroMedico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_SeguroMedico" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Tarifa_SeguroMedico" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Des_SeguroMedico" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaSeguroVehicular' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_ListaSeguroVehicular">
+          <Key>
+            <PropertyRef Name="id_SeguroVehicular" />
+            <PropertyRef Name="Nom_SeguroVehicular" />
+            <PropertyRef Name="Tarifa_SeguroVehicular" />
+            <PropertyRef Name="Des_SeguroVehicular" />
+          </Key>
+          <Property Name="id_SeguroVehicular" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_SeguroVehicular" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Tarifa_SeguroVehicular" Type="money" Nullable="false" />
+          <Property Name="Des_SeguroVehicular" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaSueldos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_ListaSueldos">
+          <Key>
+            <PropertyRef Name="id_Sueldos" />
+            <PropertyRef Name="id_TipoSueldo" />
+          </Key>
+          <Property Name="id_Sueldos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_TipoSueldo" Type="int" Nullable="false" />
+          <Property Name="Can_Sueldo" Type="money" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaSupervisores' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_ListaSupervisores">
+          <Key>
+            <PropertyRef Name="id_Supervisor" />
+            <PropertyRef Name="Nom_Supervisor" />
+            <PropertyRef Name="Ape_Supervisor" />
+          </Key>
+          <Property Name="id_Supervisor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_Supervisor" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Ape_Supervisor" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaTipoSangre' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_ListaTipoSangre">
+          <Key>
+            <PropertyRef Name="id_TipoSangre" />
+            <PropertyRef Name="Des_Sangre" />
+          </Key>
+          <Property Name="id_TipoSangre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Des_Sangre" Type="varchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <Function Name="SP_ActualizarEmpleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idEmpleados" Type="int" Mode="In" />
+          <Parameter Name="idDetallesEmpleado" Type="int" Mode="In" />
+          <Parameter Name="PrimerNombre" Type="varchar" Mode="In" />
+          <Parameter Name="SegundoNombre" Type="varchar" Mode="In" />
+          <Parameter Name="PrimerApellido" Type="varchar" Mode="In" />
+          <Parameter Name="SegundoApellido" Type="varchar" Mode="In" />
+          <Parameter Name="Cedula" Type="varchar" Mode="In" />
+          <Parameter Name="TelefonoEmpleado" Type="varchar" Mode="In" />
+          <Parameter Name="TelefonoSecundarioEmpleado" Type="varchar" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="datetime" Mode="In" />
+          <Parameter Name="Correo" Type="varchar" Mode="In" />
+          <Parameter Name="Calle" Type="varchar" Mode="In" />
+          <Parameter Name="Numero" Type="int" Mode="In" />
+          <Parameter Name="Casa" Type="int" Mode="In" />
+          <Parameter Name="Sector" Type="varchar" Mode="In" />
+          <Parameter Name="idCiudad" Type="int" Mode="In" />
+          <Parameter Name="NombreContactoEmergencia" Type="varchar" Mode="In" />
+          <Parameter Name="TelefonoContactoEmergencia" Type="varchar" Mode="In" />
+          <Parameter Name="idGenero" Type="int" Mode="In" />
+          <Parameter Name="idTipoSangre" Type="int" Mode="In" />
+          <Parameter Name="idPuesto" Type="int" Mode="In" />
+          <Parameter Name="idDepartamento" Type="int" Mode="In" />
+          <Parameter Name="idSueldo" Type="int" Mode="In" />
+          <Parameter Name="idSupervisor" Type="int" Mode="In" />
+          <Parameter Name="idEstatusEmpleado" Type="int" Mode="In" />
+          <Parameter Name="MotivoEstatus" Type="varchar" Mode="In" />
+          <Parameter Name="idSeguroMedico" Type="int" Mode="In" />
+          <Parameter Name="CondicionMedica" Type="varchar" Mode="In" />
+          <Parameter Name="idCategoriaLicencia" Type="int" Mode="In" />
+          <Parameter Name="FechaEmisionLicencia" Type="datetime" Mode="In" />
+          <Parameter Name="FechaExpiracionLicencia" Type="datetime" Mode="In" />
+          <Parameter Name="idSeguroVehicular" Type="int" Mode="In" />
+          <Parameter Name="FechaExpiracionSeguroVehiculo" Type="datetime" Mode="In" />
+          <Parameter Name="ObservacionEmpleado" Type="varchar" Mode="In" />
+          <Parameter Name="FotoEmpleado" Type="image" Mode="In" />
+        </Function>
+        <Function Name="SP_EliminarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idEmpleados" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertarEmpleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PrimerNombre" Type="varchar" Mode="In" />
+          <Parameter Name="SegundoNombre" Type="varchar" Mode="In" />
+          <Parameter Name="PrimerApellido" Type="varchar" Mode="In" />
+          <Parameter Name="SegundoApellido" Type="varchar" Mode="In" />
+          <Parameter Name="Cedula" Type="varchar" Mode="In" />
+          <Parameter Name="TelefonoEmpleado" Type="varchar" Mode="In" />
+          <Parameter Name="TelefonoSecundarioEmpleado" Type="varchar" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="datetime" Mode="In" />
+          <Parameter Name="Correo" Type="varchar" Mode="In" />
+          <Parameter Name="Calle" Type="varchar" Mode="In" />
+          <Parameter Name="Numero" Type="int" Mode="In" />
+          <Parameter Name="Casa" Type="int" Mode="In" />
+          <Parameter Name="Sector" Type="varchar" Mode="In" />
+          <Parameter Name="idCiudad" Type="int" Mode="In" />
+          <Parameter Name="NombreContactoEmergencia" Type="varchar" Mode="In" />
+          <Parameter Name="TelefonoContactoEmergencia" Type="varchar" Mode="In" />
+          <Parameter Name="idGenero" Type="int" Mode="In" />
+          <Parameter Name="idTipoSangre" Type="int" Mode="In" />
+          <Parameter Name="idPuesto" Type="int" Mode="In" />
+          <Parameter Name="idDepartamento" Type="int" Mode="In" />
+          <Parameter Name="idSueldo" Type="int" Mode="In" />
+          <Parameter Name="idSupervisor" Type="int" Mode="In" />
+          <Parameter Name="idEstatusEmpleado" Type="int" Mode="In" />
+          <Parameter Name="MotivoEstatus" Type="varchar" Mode="In" />
+          <Parameter Name="idSeguroMedico" Type="int" Mode="In" />
+          <Parameter Name="CondicionMedica" Type="varchar" Mode="In" />
+          <Parameter Name="idCategoriaLicencia" Type="int" Mode="In" />
+          <Parameter Name="FechaEmisionLicencia" Type="datetime" Mode="In" />
+          <Parameter Name="FechaExpiracionLicencia" Type="datetime" Mode="In" />
+          <Parameter Name="idSeguroVehicular" Type="int" Mode="In" />
+          <Parameter Name="FechaExpiracionSeguroVehiculo" Type="datetime" Mode="In" />
+          <Parameter Name="ObservacionEmpleado" Type="varchar" Mode="In" />
+          <Parameter Name="FotoEmpleado" Type="image" Mode="In" />
+        </Function>
+        <EntityContainer Name="BAEmpleadosModelStoreContainer">
+          <EntitySet Name="VW_ListaCategoriaLicencia" EntityType="Self.VW_ListaCategoriaLicencia" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ListaCategoriaLicencia].[id_CategoriaLicencia] AS [id_CategoriaLicencia], 
+    [VW_ListaCategoriaLicencia].[Categoria] AS [Categoria], 
+    [VW_ListaCategoriaLicencia].[Des_CategoriaLicencia] AS [Des_CategoriaLicencia]
+    FROM [dbo].[VW_ListaCategoriaLicencia] AS [VW_ListaCategoriaLicencia]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_ListaDepartamentos" EntityType="Self.VW_ListaDepartamentos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ListaDepartamentos].[id_Departamento] AS [id_Departamento], 
+    [VW_ListaDepartamentos].[Nom_Departamento] AS [Nom_Departamento], 
+    [VW_ListaDepartamentos].[Des_Departamento] AS [Des_Departamento]
+    FROM [dbo].[VW_ListaDepartamentos] AS [VW_ListaDepartamentos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_ListaEstatusEmpleados" EntityType="Self.VW_ListaEstatusEmpleados" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ListaEstatusEmpleados].[id_EstatusEmpleado] AS [id_EstatusEmpleado], 
+    [VW_ListaEstatusEmpleados].[Estatus] AS [Estatus], 
+    [VW_ListaEstatusEmpleados].[Des_EStatus] AS [Des_EStatus]
+    FROM [dbo].[VW_ListaEstatusEmpleados] AS [VW_ListaEstatusEmpleados]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_ListaGeneros" EntityType="Self.VW_ListaGeneros" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ListaGeneros].[id_Genero] AS [id_Genero], 
+    [VW_ListaGeneros].[Nom_Genero] AS [Nom_Genero], 
+    [VW_ListaGeneros].[Prefijo] AS [Prefijo]
+    FROM [dbo].[VW_ListaGeneros] AS [VW_ListaGeneros]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_ListaPuestos" EntityType="Self.VW_ListaPuestos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ListaPuestos].[id_Puesto] AS [id_Puesto], 
+    [VW_ListaPuestos].[Nom_Puesto] AS [Nom_Puesto], 
+    [VW_ListaPuestos].[Des_Puesto] AS [Des_Puesto]
+    FROM [dbo].[VW_ListaPuestos] AS [VW_ListaPuestos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_ListarEmpleados" EntityType="Self.VW_ListarEmpleados" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ListarEmpleados].[ID] AS [ID], 
+    [VW_ListarEmpleados].[Codigo] AS [Codigo], 
+    [VW_ListarEmpleados].[Primer_Nombre] AS [Primer_Nombre], 
+    [VW_ListarEmpleados].[Segundo_Nombre] AS [Segundo_Nombre], 
+    [VW_ListarEmpleados].[Primer_Apellido] AS [Primer_Apellido], 
+    [VW_ListarEmpleados].[Segundo_Apellido] AS [Segundo_Apellido], 
+    [VW_ListarEmpleados].[Cedula] AS [Cedula], 
+    [VW_ListarEmpleados].[Telefono_Residencial] AS [Telefono_Residencial], 
+    [VW_ListarEmpleados].[Telefono_Celular] AS [Telefono_Celular], 
+    [VW_ListarEmpleados].[Fecha_Nacimiento] AS [Fecha_Nacimiento], 
+    [VW_ListarEmpleados].[Edad] AS [Edad], 
+    [VW_ListarEmpleados].[Correo] AS [Correo], 
+    [VW_ListarEmpleados].[Calle] AS [Calle], 
+    [VW_ListarEmpleados].[Numero] AS [Numero], 
+    [VW_ListarEmpleados].[Casa] AS [Casa], 
+    [VW_ListarEmpleados].[Sector] AS [Sector], 
+    [VW_ListarEmpleados].[Ciudad] AS [Ciudad], 
+    [VW_ListarEmpleados].[Nombre_Contacto_Emergencia] AS [Nombre_Contacto_Emergencia], 
+    [VW_ListarEmpleados].[Telefono_Contacto] AS [Telefono_Contacto], 
+    [VW_ListarEmpleados].[Genero] AS [Genero], 
+    [VW_ListarEmpleados].[Tipo_Sangre] AS [Tipo_Sangre], 
+    [VW_ListarEmpleados].[Puesto] AS [Puesto], 
+    [VW_ListarEmpleados].[Departamento] AS [Departamento], 
+    [VW_ListarEmpleados].[Sueldo] AS [Sueldo], 
+    [VW_ListarEmpleados].[Supervisor] AS [Supervisor], 
+    [VW_ListarEmpleados].[Estatus] AS [Estatus], 
+    [VW_ListarEmpleados].[Motivo_Estatus] AS [Motivo_Estatus], 
+    [VW_ListarEmpleados].[Condicion_Medica] AS [Condicion_Medica], 
+    [VW_ListarEmpleados].[Seguro_Medico] AS [Seguro_Medico], 
+    [VW_ListarEmpleados].[Categoria] AS [Categoria], 
+    [VW_ListarEmpleados].[Fecha_Emision_Licencia] AS [Fecha_Emision_Licencia], 
+    [VW_ListarEmpleados].[Fecha_Expiracion_Licencia] AS [Fecha_Expiracion_Licencia], 
+    [VW_ListarEmpleados].[Seguro_Vehicular] AS [Seguro_Vehicular], 
+    [VW_ListarEmpleados].[Fecha_Expiracion_Seguro] AS [Fecha_Expiracion_Seguro], 
+    [VW_ListarEmpleados].[Foto] AS [Foto], 
+    [VW_ListarEmpleados].[Observación] AS [Observación]
+    FROM [dbo].[VW_ListarEmpleados] AS [VW_ListarEmpleados]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_ListaSeguroMedico" EntityType="Self.VW_ListaSeguroMedico" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ListaSeguroMedico].[id_SeguroMedico] AS [id_SeguroMedico], 
+    [VW_ListaSeguroMedico].[Nom_SeguroMedico] AS [Nom_SeguroMedico], 
+    [VW_ListaSeguroMedico].[Tarifa_SeguroMedico] AS [Tarifa_SeguroMedico], 
+    [VW_ListaSeguroMedico].[Des_SeguroMedico] AS [Des_SeguroMedico]
+    FROM [dbo].[VW_ListaSeguroMedico] AS [VW_ListaSeguroMedico]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_ListaSeguroVehicular" EntityType="Self.VW_ListaSeguroVehicular" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ListaSeguroVehicular].[id_SeguroVehicular] AS [id_SeguroVehicular], 
+    [VW_ListaSeguroVehicular].[Nom_SeguroVehicular] AS [Nom_SeguroVehicular], 
+    [VW_ListaSeguroVehicular].[Tarifa_SeguroVehicular] AS [Tarifa_SeguroVehicular], 
+    [VW_ListaSeguroVehicular].[Des_SeguroVehicular] AS [Des_SeguroVehicular]
+    FROM [dbo].[VW_ListaSeguroVehicular] AS [VW_ListaSeguroVehicular]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_ListaSueldos" EntityType="Self.VW_ListaSueldos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ListaSueldos].[id_Sueldos] AS [id_Sueldos], 
+    [VW_ListaSueldos].[id_TipoSueldo] AS [id_TipoSueldo], 
+    [VW_ListaSueldos].[Can_Sueldo] AS [Can_Sueldo]
+    FROM [dbo].[VW_ListaSueldos] AS [VW_ListaSueldos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_ListaSupervisores" EntityType="Self.VW_ListaSupervisores" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ListaSupervisores].[id_Supervisor] AS [id_Supervisor], 
+    [VW_ListaSupervisores].[Nom_Supervisor] AS [Nom_Supervisor], 
+    [VW_ListaSupervisores].[Ape_Supervisor] AS [Ape_Supervisor]
+    FROM [dbo].[VW_ListaSupervisores] AS [VW_ListaSupervisores]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_ListaTipoSangre" EntityType="Self.VW_ListaTipoSangre" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ListaTipoSangre].[id_TipoSangre] AS [id_TipoSangre], 
+    [VW_ListaTipoSangre].[Des_Sangre] AS [Des_Sangre]
+    FROM [dbo].[VW_ListaTipoSangre] AS [VW_ListaTipoSangre]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BAEmpleadosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BAEmpleadosEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="SP_InsertarEmpleados">
+            <Parameter Name="PrimerNombre" Mode="In" Type="String" />
+            <Parameter Name="SegundoNombre" Mode="In" Type="String" />
+            <Parameter Name="PrimerApellido" Mode="In" Type="String" />
+            <Parameter Name="SegundoApellido" Mode="In" Type="String" />
+            <Parameter Name="Cedula" Mode="In" Type="String" />
+            <Parameter Name="TelefonoEmpleado" Mode="In" Type="String" />
+            <Parameter Name="TelefonoSecundarioEmpleado" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="Correo" Mode="In" Type="String" />
+            <Parameter Name="Calle" Mode="In" Type="String" />
+            <Parameter Name="Numero" Mode="In" Type="Int32" />
+            <Parameter Name="Casa" Mode="In" Type="Int32" />
+            <Parameter Name="Sector" Mode="In" Type="String" />
+            <Parameter Name="idCiudad" Mode="In" Type="Int32" />
+            <Parameter Name="NombreContactoEmergencia" Mode="In" Type="String" />
+            <Parameter Name="TelefonoContactoEmergencia" Mode="In" Type="String" />
+            <Parameter Name="idGenero" Mode="In" Type="Int32" />
+            <Parameter Name="idTipoSangre" Mode="In" Type="Int32" />
+            <Parameter Name="idPuesto" Mode="In" Type="Int32" />
+            <Parameter Name="idDepartamento" Mode="In" Type="Int32" />
+            <Parameter Name="idSueldo" Mode="In" Type="Int32" />
+            <Parameter Name="idSupervisor" Mode="In" Type="Int32" />
+            <Parameter Name="idEstatusEmpleado" Mode="In" Type="Int32" />
+            <Parameter Name="MotivoEstatus" Mode="In" Type="String" />
+            <Parameter Name="idSeguroMedico" Mode="In" Type="Int32" />
+            <Parameter Name="CondicionMedica" Mode="In" Type="String" />
+            <Parameter Name="idCategoriaLicencia" Mode="In" Type="Int32" />
+            <Parameter Name="FechaEmisionLicencia" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaExpiracionLicencia" Mode="In" Type="DateTime" />
+            <Parameter Name="idSeguroVehicular" Mode="In" Type="Int32" />
+            <Parameter Name="FechaExpiracionSeguroVehiculo" Mode="In" Type="DateTime" />
+            <Parameter Name="ObservacionEmpleado" Mode="In" Type="String" />
+            <Parameter Name="FotoEmpleado" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <EntitySet Name="VW_ListaCategoriaLicencia" EntityType="BAEmpleadosModel.VW_ListaCategoriaLicencia" />
+          <EntitySet Name="VW_ListaDepartamentos" EntityType="BAEmpleadosModel.VW_ListaDepartamentos" />
+          <EntitySet Name="VW_ListaEstatusEmpleados" EntityType="BAEmpleadosModel.VW_ListaEstatusEmpleados" />
+          <EntitySet Name="VW_ListaGeneros" EntityType="BAEmpleadosModel.VW_ListaGeneros" />
+          <EntitySet Name="VW_ListaPuestos" EntityType="BAEmpleadosModel.VW_ListaPuestos" />
+          <EntitySet Name="VW_ListaSeguroMedico" EntityType="BAEmpleadosModel.VW_ListaSeguroMedico" />
+          <EntitySet Name="VW_ListaSeguroVehicular" EntityType="BAEmpleadosModel.VW_ListaSeguroVehicular" />
+          <EntitySet Name="VW_ListaSueldos" EntityType="BAEmpleadosModel.VW_ListaSueldos" />
+          <EntitySet Name="VW_ListaSupervisores" EntityType="BAEmpleadosModel.VW_ListaSupervisores" />
+          <EntitySet Name="VW_ListaTipoSangre" EntityType="BAEmpleadosModel.VW_ListaTipoSangre" />
+          <EntitySet Name="VW_ListarEmpleados" EntityType="BAEmpleadosModel.VW_ListarEmpleados" />
+          <FunctionImport Name="SP_ActualizarEmpleados">
+            <Parameter Name="idEmpleados" Mode="In" Type="Int32" />
+            <Parameter Name="idDetallesEmpleado" Mode="In" Type="Int32" />
+            <Parameter Name="PrimerNombre" Mode="In" Type="String" />
+            <Parameter Name="SegundoNombre" Mode="In" Type="String" />
+            <Parameter Name="PrimerApellido" Mode="In" Type="String" />
+            <Parameter Name="SegundoApellido" Mode="In" Type="String" />
+            <Parameter Name="Cedula" Mode="In" Type="String" />
+            <Parameter Name="TelefonoEmpleado" Mode="In" Type="String" />
+            <Parameter Name="TelefonoSecundarioEmpleado" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="Correo" Mode="In" Type="String" />
+            <Parameter Name="Calle" Mode="In" Type="String" />
+            <Parameter Name="Numero" Mode="In" Type="Int32" />
+            <Parameter Name="Casa" Mode="In" Type="Int32" />
+            <Parameter Name="Sector" Mode="In" Type="String" />
+            <Parameter Name="idCiudad" Mode="In" Type="Int32" />
+            <Parameter Name="NombreContactoEmergencia" Mode="In" Type="String" />
+            <Parameter Name="TelefonoContactoEmergencia" Mode="In" Type="String" />
+            <Parameter Name="idGenero" Mode="In" Type="Int32" />
+            <Parameter Name="idTipoSangre" Mode="In" Type="Int32" />
+            <Parameter Name="idPuesto" Mode="In" Type="Int32" />
+            <Parameter Name="idDepartamento" Mode="In" Type="Int32" />
+            <Parameter Name="idSueldo" Mode="In" Type="Int32" />
+            <Parameter Name="idSupervisor" Mode="In" Type="Int32" />
+            <Parameter Name="idEstatusEmpleado" Mode="In" Type="Int32" />
+            <Parameter Name="MotivoEstatus" Mode="In" Type="String" />
+            <Parameter Name="idSeguroMedico" Mode="In" Type="Int32" />
+            <Parameter Name="CondicionMedica" Mode="In" Type="String" />
+            <Parameter Name="idCategoriaLicencia" Mode="In" Type="Int32" />
+            <Parameter Name="FechaEmisionLicencia" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaExpiracionLicencia" Mode="In" Type="DateTime" />
+            <Parameter Name="idSeguroVehicular" Mode="In" Type="Int32" />
+            <Parameter Name="FechaExpiracionSeguroVehiculo" Mode="In" Type="DateTime" />
+            <Parameter Name="ObservacionEmpleado" Mode="In" Type="String" />
+            <Parameter Name="FotoEmpleado" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="SP_EliminarEmpleado">
+            <Parameter Name="idEmpleados" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="VW_ListaCategoriaLicencia">
+          <Key>
+            <PropertyRef Name="id_CategoriaLicencia" />
+          </Key>
+          <Property Name="id_CategoriaLicencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Categoria" Type="Int32" />
+          <Property Name="Des_CategoriaLicencia" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VW_ListaDepartamentos">
+          <Key>
+            <PropertyRef Name="id_Departamento" />
+            <PropertyRef Name="Nom_Departamento" />
+            <PropertyRef Name="Des_Departamento" />
+          </Key>
+          <Property Name="id_Departamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_Departamento" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Des_Departamento" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VW_ListaEstatusEmpleados">
+          <Key>
+            <PropertyRef Name="id_EstatusEmpleado" />
+            <PropertyRef Name="Estatus" />
+            <PropertyRef Name="Des_EStatus" />
+          </Key>
+          <Property Name="id_EstatusEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estatus" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="Des_EStatus" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VW_ListaGeneros">
+          <Key>
+            <PropertyRef Name="id_Genero" />
+            <PropertyRef Name="Nom_Genero" />
+            <PropertyRef Name="Prefijo" />
+          </Key>
+          <Property Name="id_Genero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_Genero" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Prefijo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VW_ListaPuestos">
+          <Key>
+            <PropertyRef Name="id_Puesto" />
+            <PropertyRef Name="Nom_Puesto" />
+            <PropertyRef Name="Des_Puesto" />
+          </Key>
+          <Property Name="id_Puesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_Puesto" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="Des_Puesto" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VW_ListaSeguroMedico">
+          <Key>
+            <PropertyRef Name="id_SeguroMedico" />
+            <PropertyRef Name="Nom_SeguroMedico" />
+            <PropertyRef Name="Tarifa_SeguroMedico" />
+            <PropertyRef Name="Des_SeguroMedico" />
+          </Key>
+          <Property Name="id_SeguroMedico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_SeguroMedico" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Tarifa_SeguroMedico" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Des_SeguroMedico" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VW_ListaSeguroVehicular">
+          <Key>
+            <PropertyRef Name="id_SeguroVehicular" />
+            <PropertyRef Name="Nom_SeguroVehicular" />
+            <PropertyRef Name="Tarifa_SeguroVehicular" />
+            <PropertyRef Name="Des_SeguroVehicular" />
+          </Key>
+          <Property Name="id_SeguroVehicular" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_SeguroVehicular" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Tarifa_SeguroVehicular" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Des_SeguroVehicular" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VW_ListaSueldos">
+          <Key>
+            <PropertyRef Name="id_Sueldos" />
+            <PropertyRef Name="id_TipoSueldo" />
+          </Key>
+          <Property Name="id_Sueldos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_TipoSueldo" Type="Int32" Nullable="false" />
+          <Property Name="Can_Sueldo" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="VW_ListaSupervisores">
+          <Key>
+            <PropertyRef Name="id_Supervisor" />
+            <PropertyRef Name="Nom_Supervisor" />
+            <PropertyRef Name="Ape_Supervisor" />
+          </Key>
+          <Property Name="id_Supervisor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_Supervisor" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Ape_Supervisor" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VW_ListaTipoSangre">
+          <Key>
+            <PropertyRef Name="id_TipoSangre" />
+            <PropertyRef Name="Des_Sangre" />
+          </Key>
+          <Property Name="id_TipoSangre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Des_Sangre" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VW_ListarEmpleados">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Primer_Nombre" />
+            <PropertyRef Name="Primer_Apellido" />
+            <PropertyRef Name="Cedula" />
+            <PropertyRef Name="Telefono_Residencial" />
+            <PropertyRef Name="Fecha_Nacimiento" />
+            <PropertyRef Name="Edad" />
+            <PropertyRef Name="Calle" />
+            <PropertyRef Name="Numero" />
+            <PropertyRef Name="Casa" />
+            <PropertyRef Name="Ciudad" />
+            <PropertyRef Name="Genero" />
+            <PropertyRef Name="Tipo_Sangre" />
+            <PropertyRef Name="Puesto" />
+            <PropertyRef Name="Departamento" />
+            <PropertyRef Name="Supervisor" />
+            <PropertyRef Name="Estatus" />
+            <PropertyRef Name="Seguro_Medico" />
+            <PropertyRef Name="Fecha_Emision_Licencia" />
+            <PropertyRef Name="Fecha_Expiracion_Licencia" />
+            <PropertyRef Name="Seguro_Vehicular" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Primer_Nombre" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Segundo_Nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Primer_Apellido" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Segundo_Apellido" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono_Residencial" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono_Celular" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Nacimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Edad" Type="Int32" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Calle" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Numero" Type="Int32" Nullable="false" />
+          <Property Name="Casa" Type="Int32" Nullable="false" />
+          <Property Name="Sector" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Ciudad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre_Contacto_Emergencia" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono_Contacto" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Genero" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo_Sangre" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Puesto" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="Departamento" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Sueldo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Supervisor" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Estatus" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="Motivo_Estatus" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+          <Property Name="Condicion_Medica" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Seguro_Medico" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Categoria" Type="Int32" />
+          <Property Name="Fecha_Emision_Licencia" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fecha_Expiracion_Licencia" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Seguro_Vehicular" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Expiracion_Seguro" Type="DateTime" Precision="3" />
+          <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Observación" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BAEmpleadosModelStoreContainer" CdmEntityContainer="BAEmpleadosEntities" >
+          <FunctionImportMapping FunctionImportName="SP_InsertarEmpleados" FunctionName="BAEmpleadosModel.Store.SP_InsertarEmpleados" />
+          <EntitySetMapping Name="VW_ListaCategoriaLicencia">
+            <EntityTypeMapping TypeName="BAEmpleadosModel.VW_ListaCategoriaLicencia">
+              <MappingFragment StoreEntitySet="VW_ListaCategoriaLicencia">
+                <ScalarProperty Name="Des_CategoriaLicencia" ColumnName="Des_CategoriaLicencia" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="id_CategoriaLicencia" ColumnName="id_CategoriaLicencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_ListaDepartamentos">
+            <EntityTypeMapping TypeName="BAEmpleadosModel.VW_ListaDepartamentos">
+              <MappingFragment StoreEntitySet="VW_ListaDepartamentos">
+                <ScalarProperty Name="Des_Departamento" ColumnName="Des_Departamento" />
+                <ScalarProperty Name="Nom_Departamento" ColumnName="Nom_Departamento" />
+                <ScalarProperty Name="id_Departamento" ColumnName="id_Departamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_ListaEstatusEmpleados">
+            <EntityTypeMapping TypeName="BAEmpleadosModel.VW_ListaEstatusEmpleados">
+              <MappingFragment StoreEntitySet="VW_ListaEstatusEmpleados">
+                <ScalarProperty Name="Des_EStatus" ColumnName="Des_EStatus" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="id_EstatusEmpleado" ColumnName="id_EstatusEmpleado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_ListaGeneros">
+            <EntityTypeMapping TypeName="BAEmpleadosModel.VW_ListaGeneros">
+              <MappingFragment StoreEntitySet="VW_ListaGeneros">
+                <ScalarProperty Name="Prefijo" ColumnName="Prefijo" />
+                <ScalarProperty Name="Nom_Genero" ColumnName="Nom_Genero" />
+                <ScalarProperty Name="id_Genero" ColumnName="id_Genero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_ListaPuestos">
+            <EntityTypeMapping TypeName="BAEmpleadosModel.VW_ListaPuestos">
+              <MappingFragment StoreEntitySet="VW_ListaPuestos">
+                <ScalarProperty Name="Des_Puesto" ColumnName="Des_Puesto" />
+                <ScalarProperty Name="Nom_Puesto" ColumnName="Nom_Puesto" />
+                <ScalarProperty Name="id_Puesto" ColumnName="id_Puesto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_ListaSeguroMedico">
+            <EntityTypeMapping TypeName="BAEmpleadosModel.VW_ListaSeguroMedico">
+              <MappingFragment StoreEntitySet="VW_ListaSeguroMedico">
+                <ScalarProperty Name="Des_SeguroMedico" ColumnName="Des_SeguroMedico" />
+                <ScalarProperty Name="Tarifa_SeguroMedico" ColumnName="Tarifa_SeguroMedico" />
+                <ScalarProperty Name="Nom_SeguroMedico" ColumnName="Nom_SeguroMedico" />
+                <ScalarProperty Name="id_SeguroMedico" ColumnName="id_SeguroMedico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_ListaSeguroVehicular">
+            <EntityTypeMapping TypeName="BAEmpleadosModel.VW_ListaSeguroVehicular">
+              <MappingFragment StoreEntitySet="VW_ListaSeguroVehicular">
+                <ScalarProperty Name="Des_SeguroVehicular" ColumnName="Des_SeguroVehicular" />
+                <ScalarProperty Name="Tarifa_SeguroVehicular" ColumnName="Tarifa_SeguroVehicular" />
+                <ScalarProperty Name="Nom_SeguroVehicular" ColumnName="Nom_SeguroVehicular" />
+                <ScalarProperty Name="id_SeguroVehicular" ColumnName="id_SeguroVehicular" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_ListaSueldos">
+            <EntityTypeMapping TypeName="BAEmpleadosModel.VW_ListaSueldos">
+              <MappingFragment StoreEntitySet="VW_ListaSueldos">
+                <ScalarProperty Name="Can_Sueldo" ColumnName="Can_Sueldo" />
+                <ScalarProperty Name="id_TipoSueldo" ColumnName="id_TipoSueldo" />
+                <ScalarProperty Name="id_Sueldos" ColumnName="id_Sueldos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_ListaSupervisores">
+            <EntityTypeMapping TypeName="BAEmpleadosModel.VW_ListaSupervisores">
+              <MappingFragment StoreEntitySet="VW_ListaSupervisores">
+                <ScalarProperty Name="Ape_Supervisor" ColumnName="Ape_Supervisor" />
+                <ScalarProperty Name="Nom_Supervisor" ColumnName="Nom_Supervisor" />
+                <ScalarProperty Name="id_Supervisor" ColumnName="id_Supervisor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_ListaTipoSangre">
+            <EntityTypeMapping TypeName="BAEmpleadosModel.VW_ListaTipoSangre">
+              <MappingFragment StoreEntitySet="VW_ListaTipoSangre">
+                <ScalarProperty Name="Des_Sangre" ColumnName="Des_Sangre" />
+                <ScalarProperty Name="id_TipoSangre" ColumnName="id_TipoSangre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_ListarEmpleados">
+            <EntityTypeMapping TypeName="BAEmpleadosModel.VW_ListarEmpleados">
+              <MappingFragment StoreEntitySet="VW_ListarEmpleados">
+                <ScalarProperty Name="Observación" ColumnName="Observación" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Fecha_Expiracion_Seguro" ColumnName="Fecha_Expiracion_Seguro" />
+                <ScalarProperty Name="Seguro_Vehicular" ColumnName="Seguro_Vehicular" />
+                <ScalarProperty Name="Fecha_Expiracion_Licencia" ColumnName="Fecha_Expiracion_Licencia" />
+                <ScalarProperty Name="Fecha_Emision_Licencia" ColumnName="Fecha_Emision_Licencia" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Seguro_Medico" ColumnName="Seguro_Medico" />
+                <ScalarProperty Name="Condicion_Medica" ColumnName="Condicion_Medica" />
+                <ScalarProperty Name="Motivo_Estatus" ColumnName="Motivo_Estatus" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="Supervisor" ColumnName="Supervisor" />
+                <ScalarProperty Name="Sueldo" ColumnName="Sueldo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Puesto" ColumnName="Puesto" />
+                <ScalarProperty Name="Tipo_Sangre" ColumnName="Tipo_Sangre" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Telefono_Contacto" ColumnName="Telefono_Contacto" />
+                <ScalarProperty Name="Nombre_Contacto_Emergencia" ColumnName="Nombre_Contacto_Emergencia" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Sector" ColumnName="Sector" />
+                <ScalarProperty Name="Casa" ColumnName="Casa" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Calle" ColumnName="Calle" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+                <ScalarProperty Name="Telefono_Celular" ColumnName="Telefono_Celular" />
+                <ScalarProperty Name="Telefono_Residencial" ColumnName="Telefono_Residencial" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Segundo_Apellido" ColumnName="Segundo_Apellido" />
+                <ScalarProperty Name="Primer_Apellido" ColumnName="Primer_Apellido" />
+                <ScalarProperty Name="Segundo_Nombre" ColumnName="Segundo_Nombre" />
+                <ScalarProperty Name="Primer_Nombre" ColumnName="Primer_Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_ActualizarEmpleados" FunctionName="BAEmpleadosModel.Store.SP_ActualizarEmpleados" />
+          <FunctionImportMapping FunctionImportName="SP_EliminarEmpleado" FunctionName="BAEmpleadosModel.Store.SP_EliminarEmpleado" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

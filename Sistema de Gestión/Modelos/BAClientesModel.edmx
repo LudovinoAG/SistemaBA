@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BAClientesEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaCiudades' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_ListaCiudades">
+          <Key>
+            <PropertyRef Name="id_Ciudad" />
+            <PropertyRef Name="Nom_Ciudad" />
+          </Key>
+          <Property Name="id_Ciudad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_Ciudad" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaClientes' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_ListaClientes">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Tipo_Cliente" />
+            <PropertyRef Name="Tel_Principal" />
+            <PropertyRef Name="Calle" />
+            <PropertyRef Name="Ciudad" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="7" />
+          <Property Name="Empresa" Type="varchar" MaxLength="60" />
+          <Property Name="Proyecto" Type="varchar" MaxLength="60" />
+          <Property Name="RNC" Type="varchar" MaxLength="12" />
+          <Property Name="Cedula" Type="varchar" MaxLength="13" />
+          <Property Name="Primer_Nombre" Type="varchar" MaxLength="15" />
+          <Property Name="Segundo_Nombre" Type="varchar" MaxLength="15" />
+          <Property Name="Primer_Apellido" Type="varchar" MaxLength="15" />
+          <Property Name="Segundo_Apellido" Type="varchar" MaxLength="15" />
+          <Property Name="Tipo_Cliente" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Tel_Principal" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Extensión" Type="int" />
+          <Property Name="Tel_Secundario" Type="varchar" MaxLength="12" />
+          <Property Name="Calle" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Numero" Type="varchar" MaxLength="8" />
+          <Property Name="Punto_Referencia" Type="varchar" MaxLength="100" />
+          <Property Name="Ciudad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codigo_Postal" Type="varchar" MaxLength="12" />
+          <Property Name="Correo" Type="varchar" MaxLength="60" />
+          <Property Name="Web" Type="varchar" MaxLength="60" />
+          <Property Name="Fecha_Registro" Type="datetime" />
+          <Property Name="Codigo_Fecha" Type="datetime" />
+          <Property Name="Observación" Type="varchar" MaxLength="70" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaTipoClientes' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_ListaTipoClientes">
+          <Key>
+            <PropertyRef Name="id_TipoCliente" />
+            <PropertyRef Name="Tip_Cliente" />
+          </Key>
+          <Property Name="id_TipoCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tip_Cliente" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <Function Name="EliminarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Cliente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_ActualizarClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Cliente" Type="int" Mode="In" />
+          <Parameter Name="ID_ClienteDetalle" Type="int" Mode="In" />
+          <Parameter Name="Nom_Empresa" Type="varchar" Mode="In" />
+          <Parameter Name="Nom_Proyecto" Type="varchar" Mode="In" />
+          <Parameter Name="Rnc_Empresa" Type="varchar" Mode="In" />
+          <Parameter Name="Cedula_Cliente" Type="varchar" Mode="In" />
+          <Parameter Name="Pri_Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Seg_Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Pri_Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="Seg_Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="id_TipoCliente" Type="int" Mode="In" />
+          <Parameter Name="Tl1_Cliente" Type="varchar" Mode="In" />
+          <Parameter Name="Ext_Tl1_Cliente" Type="int" Mode="In" />
+          <Parameter Name="Tl2_Cliente" Type="varchar" Mode="In" />
+          <Parameter Name="Dir_Calle" Type="varchar" Mode="In" />
+          <Parameter Name="Dir_Numero" Type="int" Mode="In" />
+          <Parameter Name="Pun_Referencia" Type="varchar" Mode="In" />
+          <Parameter Name="id_Ciudad" Type="int" Mode="In" />
+          <Parameter Name="Cod_Postal" Type="int" Mode="In" />
+          <Parameter Name="Correo_Cliente" Type="varchar" Mode="In" />
+          <Parameter Name="pag_WebCliente" Type="varchar" Mode="In" />
+          <Parameter Name="Obs_Cliente" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertarClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nom_Empresa" Type="varchar" Mode="In" />
+          <Parameter Name="Nom_Proyecto" Type="varchar" Mode="In" />
+          <Parameter Name="Rnc_Empresa" Type="varchar" Mode="In" />
+          <Parameter Name="Cedula_Cliente" Type="varchar" Mode="In" />
+          <Parameter Name="Pri_Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Seg_Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Pri_Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="Seg_Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="id_TipoCliente" Type="int" Mode="In" />
+          <Parameter Name="Tl1_Cliente" Type="varchar" Mode="In" />
+          <Parameter Name="Ext_Tl1_Cliente" Type="int" Mode="In" />
+          <Parameter Name="Tl2_Cliente" Type="varchar" Mode="In" />
+          <Parameter Name="Dir_Calle" Type="varchar" Mode="In" />
+          <Parameter Name="Dir_Numero" Type="int" Mode="In" />
+          <Parameter Name="Pun_Referencia" Type="varchar" Mode="In" />
+          <Parameter Name="id_Ciudad" Type="int" Mode="In" />
+          <Parameter Name="Cod_Postal" Type="int" Mode="In" />
+          <Parameter Name="Correo_Cliente" Type="varchar" Mode="In" />
+          <Parameter Name="pag_WebCliente" Type="varchar" Mode="In" />
+          <Parameter Name="Obs_Cliente" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="BAClientesEntitiesStoreContainer">
+          <EntitySet Name="VW_ListaCiudades" EntityType="Self.VW_ListaCiudades" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ListaCiudades].[id_Ciudad] AS [id_Ciudad], 
+    [VW_ListaCiudades].[Nom_Ciudad] AS [Nom_Ciudad]
+    FROM [dbo].[VW_ListaCiudades] AS [VW_ListaCiudades]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_ListaClientes" EntityType="Self.VW_ListaClientes" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ListaClientes].[ID] AS [ID], 
+    [VW_ListaClientes].[Codigo] AS [Codigo], 
+    [VW_ListaClientes].[Empresa] AS [Empresa], 
+    [VW_ListaClientes].[Proyecto] AS [Proyecto], 
+    [VW_ListaClientes].[RNC] AS [RNC], 
+    [VW_ListaClientes].[Cedula] AS [Cedula], 
+    [VW_ListaClientes].[Primer_Nombre] AS [Primer_Nombre], 
+    [VW_ListaClientes].[Segundo_Nombre] AS [Segundo_Nombre], 
+    [VW_ListaClientes].[Primer_Apellido] AS [Primer_Apellido], 
+    [VW_ListaClientes].[Segundo_Apellido] AS [Segundo_Apellido], 
+    [VW_ListaClientes].[Tipo_Cliente] AS [Tipo_Cliente], 
+    [VW_ListaClientes].[Tel_Principal] AS [Tel_Principal], 
+    [VW_ListaClientes].[Extensión] AS [Extensión], 
+    [VW_ListaClientes].[Tel_Secundario] AS [Tel_Secundario], 
+    [VW_ListaClientes].[Calle] AS [Calle], 
+    [VW_ListaClientes].[Numero] AS [Numero], 
+    [VW_ListaClientes].[Punto_Referencia] AS [Punto_Referencia], 
+    [VW_ListaClientes].[Ciudad] AS [Ciudad], 
+    [VW_ListaClientes].[Codigo_Postal] AS [Codigo_Postal], 
+    [VW_ListaClientes].[Correo] AS [Correo], 
+    [VW_ListaClientes].[Web] AS [Web], 
+    [VW_ListaClientes].[Fecha_Registro] AS [Fecha_Registro], 
+    [VW_ListaClientes].[Codigo_Fecha] AS [Codigo_Fecha], 
+    [VW_ListaClientes].[Observación] AS [Observación]
+    FROM [dbo].[VW_ListaClientes] AS [VW_ListaClientes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_ListaTipoClientes" EntityType="Self.VW_ListaTipoClientes" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ListaTipoClientes].[id_TipoCliente] AS [id_TipoCliente], 
+    [VW_ListaTipoClientes].[Tip_Cliente] AS [Tip_Cliente]
+    FROM [dbo].[VW_ListaTipoClientes] AS [VW_ListaTipoClientes]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BAClientesEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BAClientesModel" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="EliminarCliente">
+          <Parameter Name="id_Cliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ActualizarClientes">
+            <Parameter Name="ID_Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="ID_ClienteDetalle" Mode="In" Type="Int32" />
+            <Parameter Name="Nom_Empresa" Mode="In" Type="String" />
+            <Parameter Name="Nom_Proyecto" Mode="In" Type="String" />
+            <Parameter Name="Rnc_Empresa" Mode="In" Type="String" />
+            <Parameter Name="Cedula_Cliente" Mode="In" Type="String" />
+            <Parameter Name="Pri_Nombre" Mode="In" Type="String" />
+            <Parameter Name="Seg_Nombre" Mode="In" Type="String" />
+            <Parameter Name="Pri_Apellido" Mode="In" Type="String" />
+            <Parameter Name="Seg_Apellido" Mode="In" Type="String" />
+            <Parameter Name="id_TipoCliente" Mode="In" Type="Int32" />
+            <Parameter Name="Tl1_Cliente" Mode="In" Type="String" />
+            <Parameter Name="Ext_Tl1_Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="Tl2_Cliente" Mode="In" Type="String" />
+            <Parameter Name="Dir_Calle" Mode="In" Type="String" />
+            <Parameter Name="Dir_Numero" Mode="In" Type="Int32" />
+            <Parameter Name="Pun_Referencia" Mode="In" Type="String" />
+            <Parameter Name="id_Ciudad" Mode="In" Type="Int32" />
+            <Parameter Name="Cod_Postal" Mode="In" Type="Int32" />
+            <Parameter Name="Correo_Cliente" Mode="In" Type="String" />
+            <Parameter Name="pag_WebCliente" Mode="In" Type="String" />
+            <Parameter Name="Obs_Cliente" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertarClientes">
+            <Parameter Name="Nom_Empresa" Mode="In" Type="String" />
+            <Parameter Name="Nom_Proyecto" Mode="In" Type="String" />
+            <Parameter Name="Rnc_Empresa" Mode="In" Type="String" />
+            <Parameter Name="Cedula_Cliente" Mode="In" Type="String" />
+            <Parameter Name="Pri_Nombre" Mode="In" Type="String" />
+            <Parameter Name="Seg_Nombre" Mode="In" Type="String" />
+            <Parameter Name="Pri_Apellido" Mode="In" Type="String" />
+            <Parameter Name="Seg_Apellido" Mode="In" Type="String" />
+            <Parameter Name="id_TipoCliente" Mode="In" Type="Int32" />
+            <Parameter Name="Tl1_Cliente" Mode="In" Type="String" />
+            <Parameter Name="Ext_Tl1_Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="Tl2_Cliente" Mode="In" Type="String" />
+            <Parameter Name="Dir_Calle" Mode="In" Type="String" />
+            <Parameter Name="Dir_Numero" Mode="In" Type="Int32" />
+            <Parameter Name="Pun_Referencia" Mode="In" Type="String" />
+            <Parameter Name="id_Ciudad" Mode="In" Type="Int32" />
+            <Parameter Name="Cod_Postal" Mode="In" Type="Int32" />
+            <Parameter Name="Correo_Cliente" Mode="In" Type="String" />
+            <Parameter Name="pag_WebCliente" Mode="In" Type="String" />
+            <Parameter Name="Obs_Cliente" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="VW_ListaTipoClientes" EntityType="BAClientesEntities.VW_ListaTipoClientes" />
+          <EntitySet Name="VW_ListaCiudades" EntityType="BAClientesEntities.VW_ListaCiudades" />
+          <EntitySet Name="VW_ListaClientes" EntityType="BAClientesEntities.VW_ListaClientes" />
+        </EntityContainer>
+        <EntityType Name="VW_ListaTipoClientes">
+          <Key>
+            <PropertyRef Name="id_TipoCliente" />
+            <PropertyRef Name="Tip_Cliente" />
+          </Key>
+          <Property Name="id_TipoCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tip_Cliente" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VW_ListaCiudades">
+          <Key>
+            <PropertyRef Name="id_Ciudad" />
+            <PropertyRef Name="Nom_Ciudad" />
+          </Key>
+          <Property Name="id_Ciudad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_Ciudad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VW_ListaClientes">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Tipo_Cliente" />
+            <PropertyRef Name="Tel_Principal" />
+            <PropertyRef Name="Calle" />
+            <PropertyRef Name="Ciudad" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Empresa" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Proyecto" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="RNC" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Primer_Nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Segundo_Nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Primer_Apellido" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Segundo_Apellido" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo_Cliente" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Tel_Principal" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Extensión" Type="Int32" />
+          <Property Name="Tel_Secundario" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Calle" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Numero" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Punto_Referencia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Ciudad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Codigo_Postal" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Web" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Registro" Type="DateTime" Precision="3" />
+          <Property Name="Codigo_Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Observación" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BAClientesEntitiesStoreContainer" CdmEntityContainer="BAClientesModel">
+          <FunctionImportMapping FunctionImportName="EliminarCliente" FunctionName="BAClientesEntities.Store.EliminarCliente" />
+          <FunctionImportMapping FunctionImportName="SP_ActualizarClientes" FunctionName="BAClientesEntities.Store.SP_ActualizarClientes" />
+          <FunctionImportMapping FunctionImportName="SP_InsertarClientes" FunctionName="BAClientesEntities.Store.SP_InsertarClientes" />
+          <EntitySetMapping Name="VW_ListaTipoClientes">
+            <EntityTypeMapping TypeName="BAClientesEntities.VW_ListaTipoClientes">
+              <MappingFragment StoreEntitySet="VW_ListaTipoClientes">
+                <ScalarProperty Name="Tip_Cliente" ColumnName="Tip_Cliente" />
+                <ScalarProperty Name="id_TipoCliente" ColumnName="id_TipoCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_ListaCiudades">
+            <EntityTypeMapping TypeName="BAClientesEntities.VW_ListaCiudades">
+              <MappingFragment StoreEntitySet="VW_ListaCiudades">
+                <ScalarProperty Name="Nom_Ciudad" ColumnName="Nom_Ciudad" />
+                <ScalarProperty Name="id_Ciudad" ColumnName="id_Ciudad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_ListaClientes">
+            <EntityTypeMapping TypeName="BAClientesEntities.VW_ListaClientes">
+              <MappingFragment StoreEntitySet="VW_ListaClientes">
+                <ScalarProperty Name="Observación" ColumnName="Observación" />
+                <ScalarProperty Name="Codigo_Fecha" ColumnName="Codigo_Fecha" />
+                <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
+                <ScalarProperty Name="Web" ColumnName="Web" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Codigo_Postal" ColumnName="Codigo_Postal" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Punto_Referencia" ColumnName="Punto_Referencia" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Calle" ColumnName="Calle" />
+                <ScalarProperty Name="Tel_Secundario" ColumnName="Tel_Secundario" />
+                <ScalarProperty Name="Extensión" ColumnName="Extensión" />
+                <ScalarProperty Name="Tel_Principal" ColumnName="Tel_Principal" />
+                <ScalarProperty Name="Tipo_Cliente" ColumnName="Tipo_Cliente" />
+                <ScalarProperty Name="Segundo_Apellido" ColumnName="Segundo_Apellido" />
+                <ScalarProperty Name="Primer_Apellido" ColumnName="Primer_Apellido" />
+                <ScalarProperty Name="Segundo_Nombre" ColumnName="Segundo_Nombre" />
+                <ScalarProperty Name="Primer_Nombre" ColumnName="Primer_Nombre" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="RNC" ColumnName="RNC" />
+                <ScalarProperty Name="Proyecto" ColumnName="Proyecto" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,1188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{96525603-C2EE-4151-8B97-0BF2A0324994}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Sistema_de_Gestión</RootNamespace>
+    <AssemblyName>Sistema de Gestión BA Edwin e Ismael</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>\\LG01\Users\DELL\Desktop\BA\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>true</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>\\LG01\Users\DELL\Desktop\BA\</UpdateUrl>
+    <MinimumRequiredVersion>1.0.0.1</MinimumRequiredVersion>
+    <WebPage>publish.htm</WebPage>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>14</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>C8147D9097486DC0C35681C777AD52761BDFCA7B</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Sistema de Gestión_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>LogoBoteAgregados-PNG.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CRVFactura.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRVFactura.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CRVCotizacion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRVCotizacion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CRVRedacciones.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRVRedacciones.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CRVReporteFacturasCredito.cs">
+      <DependentUpon>CRVReporteFacturasCredito.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="DSReportes.cs">
+      <DependentUpon>DSReportes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSReportes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSReportes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BACategoriasModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BACategoriasModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BACategoriasModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BACategoriasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BACategoriasModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BACategoriasModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAClientesModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAClientesModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAClientesModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAClientesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAClientesModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAClientesModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BACotizacionesModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BACotizacionesModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BACotizacionesModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BACotizacionesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BACotizacionesModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BACotizacionesModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAPedidosModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAPedidosModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAPedidosModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAPedidosModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAPedidosModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BARedaccionesModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BARedaccionesModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BARedaccionesModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BARedaccionesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BARedaccionesModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BARedaccionesModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAReportesModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAReportesModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAReportesModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAReportesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAReportesModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAReportesModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAVehiculosModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAVehiculosModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAVehiculosModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAVehiculosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAVehiculosModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAVehiculosModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\ComprobantesFiscalesModel.cs" />
+    <Compile Include="Modelos\BAConprobantesFiscalesModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAConprobantesFiscalesModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAConprobantesFiscalesModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAConprobantesFiscalesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAConprobantesFiscalesModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAConprobantesFiscalesModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAEmpleadosModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAEmpleadosModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAEmpleadosModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAEmpleadosModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAEmpleadosModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAFacturacionModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAFacturacionModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAFacturacionModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAFacturacionModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAFacturacionModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAProductos.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAProductos.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAProductos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAProductos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAProductos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAProductos.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAProveedoresModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAProveedoresModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAProveedoresModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAProveedoresModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BAProveedoresModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BAProveedoresModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Categorias.cs" />
+    <Compile Include="Modelos\Clientes.cs" />
+    <Compile Include="Modelos\Cotizaciones.cs" />
+    <Compile Include="Modelos\DiseñoInterface.cs" />
+    <Compile Include="Modelos\Empleados.cs" />
+    <Compile Include="Modelos\FacturacionModel.cs" />
+    <Compile Include="Modelos\Funciones.cs" />
+    <Compile Include="Modelos\IFormularios.cs" />
+    <Compile Include="Modelos\PedidosModel.cs" />
+    <Compile Include="Modelos\Productos.cs" />
+    <Compile Include="Modelos\Proveedores.cs" />
+    <Compile Include="Modelos\RedaccionesModel.cs" />
+    <Compile Include="Modelos\ReportesModel.cs" />
+    <Compile Include="Modelos\SP_BuscarClienteCodigo_Result.cs">
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_ObtenerUsuario_Result.cs">
+      <DependentUpon>BALogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_VerConducesPedidos_Result.cs">
+      <DependentUpon>BARedaccionesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_VerDetalleRedaccion_Result.cs">
+      <DependentUpon>BARedaccionesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_VerDetallesConduces_Result.cs">
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_VerFacturaID_Result.cs">
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_VerRedaccionClienteID_Result.cs">
+      <DependentUpon>BARedaccionesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VehiculosModel.cs" />
+    <Compile Include="Modelos\VW_EmpleadosFactura.cs">
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaCategoriaLicencia.cs">
+      <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaCategorias.cs">
+      <DependentUpon>BACategoriasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaCiudades.cs">
+      <DependentUpon>BAClientesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaClientes.cs">
+      <DependentUpon>BAClientesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaDepartamentos.cs">
+      <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaEstatusEmpleados.cs">
+      <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaEstatusProductos.cs">
+      <DependentUpon>BAProductos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaEstatusVehiculos.cs">
+      <DependentUpon>BAVehiculosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaGeneralProductos.cs">
+      <DependentUpon>BAProductos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaGeneros.cs">
+      <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaProveedores.cs">
+      <DependentUpon>BAProveedoresModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaPuestos.cs">
+      <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListarBancos.cs">
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListarEmpleados.cs">
+      <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListarMedidas.cs">
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListarMetodos.cs">
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListarVehiculos.cs">
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaSeguroMedico.cs">
+      <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaSeguroVehicular.cs">
+      <DependentUpon>BAVehiculosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaSueldos.cs">
+      <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaSupervisores.cs">
+      <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaTipoClientes.cs">
+      <DependentUpon>BAClientesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaTipoSangre.cs">
+      <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ProductosFactura.cs">
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_VerComprobantesFiscales.cs">
+      <DependentUpon>BAConprobantesFiscalesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_VerFacturas.cs">
+      <DependentUpon>BAReportesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_VerListaVehiculos.cs">
+      <DependentUpon>BAVehiculosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_VerReportesFacturasPendientesCredito.cs">
+      <DependentUpon>BAReportesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_VerRolesUsuario.cs">
+      <DependentUpon>BALogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_VerUltimoNumeroCotizacion.cs">
+      <DependentUpon>BACotizacionesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_VerUltimoNumeroFactura.cs">
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_VerUltimoNumeroPedido.cs">
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_VerUsuarios.cs">
+      <DependentUpon>BALogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Facturación.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Facturación.Designer.cs">
+      <DependentUpon>Facturación.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\EntrarLogin.cs" />
+    <Compile Include="Presentacion\frmAcercaDe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmAcercaDe.Designer.cs">
+      <DependentUpon>frmAcercaDe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmBuscarCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmBuscarCotizacion.Designer.cs">
+      <DependentUpon>frmBuscarCotizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmBuscarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmBuscarFactura.Designer.cs">
+      <DependentUpon>frmBuscarFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmCambiarClave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmCambiarClave.Designer.cs">
+      <DependentUpon>frmCambiarClave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmConfiguraciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmConfiguraciones.Designer.cs">
+      <DependentUpon>frmConfiguraciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmCotización.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmCotización.Designer.cs">
+      <DependentUpon>frmCotización.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmDialogoVencimientoFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmDialogoVencimientoFactura.Designer.cs">
+      <DependentUpon>frmDialogoVencimientoFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmMantenimientoCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmMantenimientoCategorias.Designer.cs">
+      <DependentUpon>frmMantenimientoCategorias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmMantenimientoClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmMantenimientoClientes.Designer.cs">
+      <DependentUpon>frmMantenimientoClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmMantenimientoEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmMantenimientoEmpleados.Designer.cs">
+      <DependentUpon>frmMantenimientoEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmMantenimientoProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmMantenimientoProductos.Designer.cs">
+      <DependentUpon>frmMantenimientoProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmMantenimientoProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmMantenimientoProveedores.Designer.cs">
+      <DependentUpon>frmMantenimientoProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmMantenimientoVehiculos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmMantenimientoVehiculos.Designer.cs">
+      <DependentUpon>frmMantenimientoVehiculos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmNotaFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmNotaFactura.Designer.cs">
+      <DependentUpon>frmNotaFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmPagarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmPagarFactura.Designer.cs">
+      <DependentUpon>frmPagarFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmPagoCheque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmPagoCheque.Designer.cs">
+      <DependentUpon>frmPagoCheque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmPedidos.Designer.cs">
+      <DependentUpon>frmPedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmReporteFacturasPendientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmReporteFacturasPendientes.Designer.cs">
+      <DependentUpon>frmReporteFacturasPendientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmReportePedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmReportePedidos.Designer.cs">
+      <DependentUpon>frmReportePedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmReportes.Designer.cs">
+      <DependentUpon>frmReportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmViajesChofer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmViajesChofer.Designer.cs">
+      <DependentUpon>frmViajesChofer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmVistaCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmVistaCotizacion.Designer.cs">
+      <DependentUpon>frmVistaCotizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmVistaFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmVistaFactura.Designer.cs">
+      <DependentUpon>frmVistaFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmVistaRedacciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmVistaRedacciones.Designer.cs">
+      <DependentUpon>frmVistaRedacciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Loading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Loading.Designer.cs">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\LoadingCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\LoadingCotizacion.Designer.cs">
+      <DependentUpon>LoadingCotizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\LoadingReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\LoadingReportes.Designer.cs">
+      <DependentUpon>LoadingReportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BALogin.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BALogin.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BALogin.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BALogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\BALogin.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BALogin.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecursosBA.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosBA.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CRVFactura.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRVFactura.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRVCotizacion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRVCotizacion.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRVRedacciones.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRVRedacciones.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRVReporteFacturasCredito.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRVReporteFacturasCredito.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Facturación.resx">
+      <DependentUpon>Facturación.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmAcercaDe.resx">
+      <DependentUpon>frmAcercaDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmBuscarCotizacion.resx">
+      <DependentUpon>frmBuscarCotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmBuscarFactura.resx">
+      <DependentUpon>frmBuscarFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmCambiarClave.resx">
+      <DependentUpon>frmCambiarClave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmConfiguraciones.resx">
+      <DependentUpon>frmConfiguraciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmCotización.resx">
+      <DependentUpon>frmCotización.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmDialogoVencimientoFactura.resx">
+      <DependentUpon>frmDialogoVencimientoFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmMantenimientoCategorias.resx">
+      <DependentUpon>frmMantenimientoCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmMantenimientoClientes.resx">
+      <DependentUpon>frmMantenimientoClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmMantenimientoEmpleados.resx">
+      <DependentUpon>frmMantenimientoEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmMantenimientoProductos.resx">
+      <DependentUpon>frmMantenimientoProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmMantenimientoProveedores.resx">
+      <DependentUpon>frmMantenimientoProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmMantenimientoVehiculos.resx">
+      <DependentUpon>frmMantenimientoVehiculos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmNotaFactura.resx">
+      <DependentUpon>frmNotaFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmPagarFactura.resx">
+      <DependentUpon>frmPagarFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmPagoCheque.resx">
+      <DependentUpon>frmPagoCheque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmPedidos.resx">
+      <DependentUpon>frmPedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmReporteFacturasPendientes.resx">
+      <DependentUpon>frmReporteFacturasPendientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmReportePedidos.resx">
+      <DependentUpon>frmReportePedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmReportes.resx">
+      <DependentUpon>frmReportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmViajesChofer.resx">
+      <DependentUpon>frmViajesChofer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmVistaCotizacion.resx">
+      <DependentUpon>frmVistaCotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmVistaFactura.resx">
+      <DependentUpon>frmVistaFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmVistaRedacciones.resx">
+      <DependentUpon>frmVistaRedacciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Loading.resx">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\LoadingCotizacion.resx">
+      <DependentUpon>LoadingCotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\LoadingReportes.resx">
+      <DependentUpon>LoadingReportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="RecursosBA.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosBA.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="Modelos\BALogin.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BALogin.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Modelos\BACategoriasModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BACategoriasModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DSReportes.xsc">
+      <DependentUpon>DSReportes.xsd</DependentUpon>
+    </None>
+    <None Include="DSReportes.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSReportes.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSReportes.xss">
+      <DependentUpon>DSReportes.xsd</DependentUpon>
+    </None>
+    <None Include="Modelos\BACategoriasModel.edmx.diagram">
+      <DependentUpon>BACategoriasModel.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Modelos\BAClientesModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BAClientesModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Modelos\BAClientesModel.edmx.diagram">
+      <DependentUpon>BAClientesModel.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Modelos\BAEmpleadosModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BAEmpleadosModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Modelos\BAConprobantesFiscalesModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BAConprobantesFiscalesModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Modelos\BAConprobantesFiscalesModel.edmx.diagram">
+      <DependentUpon>BAConprobantesFiscalesModel.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Modelos\BACotizacionesModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BACotizacionesModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Modelos\BACotizacionesModel.edmx.diagram">
+      <DependentUpon>BACotizacionesModel.edmx</DependentUpon>
+    </None>
+    <None Include="Modelos\BAEmpleadosModel.edmx.diagram">
+      <DependentUpon>BAEmpleadosModel.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Modelos\BAFacturacionModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BAFacturacionModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Modelos\BAFacturacionModel.edmx.diagram">
+      <DependentUpon>BAFacturacionModel.edmx</DependentUpon>
+    </None>
+    <None Include="Modelos\BALogin.edmx.diagram">
+      <DependentUpon>BALogin.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Modelos\BAProductos.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BAProductos.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Modelos\BAPedidosModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BAPedidosModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Modelos\BAPedidosModel.edmx.diagram">
+      <DependentUpon>BAPedidosModel.edmx</DependentUpon>
+    </None>
+    <None Include="Modelos\BAProductos.edmx.diagram">
+      <DependentUpon>BAProductos.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Modelos\BAProveedoresModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BAProveedoresModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Modelos\BAProveedoresModel.edmx.diagram">
+      <DependentUpon>BAProveedoresModel.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Modelos\BAReportesModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BAReportesModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Modelos\BARedaccionesModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BARedaccionesModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Modelos\BARedaccionesModel.edmx.diagram">
+      <DependentUpon>BARedaccionesModel.edmx</DependentUpon>
+    </None>
+    <None Include="Modelos\BAReportesModel.edmx.diagram">
+      <DependentUpon>BAReportesModel.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Modelos\BAVehiculosModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BAVehiculosModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Modelos\BAVehiculosModel.edmx.diagram">
+      <DependentUpon>BAVehiculosModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Sistema de Gestión_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LogoBoteAgregados-PNG.ico" />
+    <Content Include="Modelos\BACategoriasModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BACategoriasModel.edmx</DependentUpon>
+      <LastGenOutput>BACategoriasModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BACategoriasModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BACategoriasModel.edmx</DependentUpon>
+      <LastGenOutput>BACategoriasModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BAClientesModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BAClientesModel.edmx</DependentUpon>
+      <LastGenOutput>BAClientesModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BAClientesModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BAClientesModel.edmx</DependentUpon>
+      <LastGenOutput>BAClientesModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BAConprobantesFiscalesModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BAConprobantesFiscalesModel.edmx</DependentUpon>
+      <LastGenOutput>BAConprobantesFiscalesModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BAConprobantesFiscalesModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BAConprobantesFiscalesModel.edmx</DependentUpon>
+      <LastGenOutput>BAConprobantesFiscalesModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BACotizacionesModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BACotizacionesModel.edmx</DependentUpon>
+      <LastGenOutput>BACotizacionesModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BACotizacionesModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BACotizacionesModel.edmx</DependentUpon>
+      <LastGenOutput>BACotizacionesModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BAEmpleadosModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BAEmpleadosModel.edmx</DependentUpon>
+      <LastGenOutput>BAEmpleadosModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BAEmpleadosModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BAEmpleadosModel.edmx</DependentUpon>
+      <LastGenOutput>BAEmpleadosModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BAFacturacionModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BAFacturacionModel.edmx</DependentUpon>
+      <LastGenOutput>BAFacturacionModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BAFacturacionModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BAFacturacionModel.edmx</DependentUpon>
+      <LastGenOutput>BAFacturacionModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BALogin.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BALogin.Context.cs</LastGenOutput>
+      <DependentUpon>BALogin.edmx</DependentUpon>
+    </Content>
+    <Content Include="Modelos\BALogin.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BALogin.edmx</DependentUpon>
+      <LastGenOutput>BALogin.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BAPedidosModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BAPedidosModel.edmx</DependentUpon>
+      <LastGenOutput>BAPedidosModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BAPedidosModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BAPedidosModel.edmx</DependentUpon>
+      <LastGenOutput>BAPedidosModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BAProductos.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BAProductos.edmx</DependentUpon>
+      <LastGenOutput>BAProductos.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BAProductos.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BAProductos.edmx</DependentUpon>
+      <LastGenOutput>BAProductos.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BAProveedoresModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BAProveedoresModel.edmx</DependentUpon>
+      <LastGenOutput>BAProveedoresModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BAProveedoresModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BAProveedoresModel.edmx</DependentUpon>
+      <LastGenOutput>BAProveedoresModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BARedaccionesModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BARedaccionesModel.edmx</DependentUpon>
+      <LastGenOutput>BARedaccionesModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BARedaccionesModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BARedaccionesModel.edmx</DependentUpon>
+      <LastGenOutput>BARedaccionesModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BAReportesModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BAReportesModel.edmx</DependentUpon>
+      <LastGenOutput>BAReportesModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BAReportesModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BAReportesModel.edmx</DependentUpon>
+      <LastGenOutput>BAReportesModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BAVehiculosModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BAVehiculosModel.edmx</DependentUpon>
+      <LastGenOutput>BAVehiculosModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelos\BAVehiculosModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BAVehiculosModel.edmx</DependentUpon>
+      <LastGenOutput>BAVehiculosModel.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\BotonAgregarConduceOver.jpg" />
+    <None Include="Resources\BotonAgregarConduceClick.jpg" />
+    <None Include="Resources\BotonAgregarConduce.jpg" />
+    <None Include="Resources\BotonRegistrarPedidoOver.jpg" />
+    <None Include="Resources\BotonRegistrarPedidoClick.jpg" />
+    <None Include="Resources\BotonRegistrarPedido.jpg" />
+    <None Include="Resources\FondoContenedorFinal2.jpg" />
+    <None Include="Resources\icons8-constructor-100.png" />
+    <None Include="Resources\TituloPedidos.jpg" />
+    <None Include="Resources\Pedidos.png" />
+    <None Include="Resources\FondoPedidos.jpg" />
+    <None Include="Resources\FondoContenedorFinal.jpg" />
+    <None Include="Resources\FondoAcercaDe1.png" />
+    <None Include="Resources\FondoAcercaDe.png" />
+    <None Include="Resources\aboutInfo2.png" />
+    <None Include="Resources\AboutInfo.jpg" />
+    <None Include="Resources\icons8-información-64.png" />
+    <None Include="Resources\BotonAgregarComentarioOver.jpg" />
+    <None Include="Resources\BotonAgregarComentarioClick.jpg" />
+    <None Include="Resources\BotonAgregarComentario.jpg" />
+    <None Include="Resources\FondoAgregarComentario2.png" />
+    <None Include="Resources\FondoAgregarComentario.png" />
+    <None Include="Resources\Proveedores2.png" />
+    <None Include="Resources\Productos2.png" />
+    <None Include="Resources\Facturacion2.png" />
+    <None Include="Resources\Empleados2.png" />
+    <None Include="Resources\Cotizacion2.png" />
+    <None Include="Resources\Clientes2.png" />
+    <None Include="Resources\Categorizar2.png" />
+    <None Include="Resources\Reportes2.png" />
+    <None Include="Resources\Configuracion2.png" />
+    <None Include="Resources\Icon1.ico" />
+    <None Include="Resources\icons8-configuración-de-datos-48.png" />
+    <None Include="Resources\icons8-crear-orden-96.png" />
+    <None Include="Resources\find_search_locate_9572.png" />
+    <None Include="Resources\invoice_78456 %281%29.png" />
+    <None Include="Resources\icons8-factura-50.png" />
+    <None Include="Resources\LogoBoteAgregados PNG.png" />
+    <None Include="Resources\icons8-customers-58.png" />
+    <None Include="Resources\icons8-colaboración-hombre-mujer-100.png" />
+    <None Include="Resources\icons8-producto-nuevo-48.png" />
+    <None Include="Resources\icons8-categorizar-64.png" />
+    <None Include="Resources\icons8-proveedor-48.png" />
+    <None Include="Resources\icons8-customers-64.png" />
+    <None Include="Resources\FondoMantenimientoVehiculos3.jpg" />
+    <None Include="Resources\FondoMantenimientoVehiculos2.jpg" />
+    <None Include="Resources\FondoMantenimientoVehiculos1.jpg" />
+    <None Include="Resources\FondoMantenimientoVehiculos.jpg" />
+    <None Include="Resources\FondoCambiarClave2.jpg" />
+    <None Include="Resources\icons8-contraseña-96.png" />
+    <None Include="Resources\LOG.png" />
+    <None Include="Resources\BotonGuardarClaveOver.jpg" />
+    <None Include="Resources\BotonGuardarClaveClick.jpg" />
+    <None Include="Resources\BotonGuardarClave.jpg" />
+    <None Include="Resources\FondoCambiarClave1.jpg" />
+    <None Include="Resources\FondoCambiarClave.jpg" />
+    <None Include="Resources\FondoBuscarCotizacion.jpg" />
+    <None Include="Resources\BotonBuscarCotizacionOver.jpg" />
+    <None Include="Resources\BotonBuscarCotizacionClick.jpg" />
+    <None Include="Resources\BotonBuscarCotizacion.jpg" />
+    <None Include="Resources\BotonNuevaCotizacionOver.jpg" />
+    <None Include="Resources\BotonNuevaCotizacionClick.jpg" />
+    <None Include="Resources\BotonNuevaCotizacion.jpg" />
+    <None Include="Resources\BotonGuardarCotizacionOver.jpg" />
+    <None Include="Resources\BotonGuardarCotizacionClick.jpg" />
+    <None Include="Resources\BotonGuardarCotizacion.jpg" />
+    <None Include="Resources\EncabezadoFacturaFinal4.jpg" />
+    <None Include="Resources\TituloCotizacion.jpg" />
+    <None Include="Resources\FondoPagoFacturaFinal.jpg" />
+    <None Include="Resources\FondoPagoFactura.jpg" />
+    <None Include="Resources\BotonPagarFacturaReporteOver.jpg" />
+    <None Include="Resources\BotonPagarFacturaReporteClick.jpg" />
+    <None Include="Resources\BotonPagarFacturaReporte.jpg" />
+    <None Include="Resources\FondoContenedor.jpg" />
+    <None Include="Resources\FondoFacturaCredito.jpg" />
+    <None Include="Resources\FondoViajesChoferes.jpg" />
+    <None Include="Resources\BotonCerrarVentanaOver.jpg" />
+    <None Include="Resources\BotonCerrarVentanaClick.jpg" />
+    <None Include="Resources\BotonCerrarVentana.jpg" />
+    <None Include="Resources\BotonBuscarReporteOver.jpg" />
+    <None Include="Resources\BotonBuscarReporteClick.jpg" />
+    <None Include="Resources\BotonBuscarReporte.jpg" />
+    <None Include="Resources\BotonVerFacturaReporteOver.jpg" />
+    <None Include="Resources\BotonVerFacturaReporteClick.jpg" />
+    <None Include="Resources\BotonVerFacturaReporte.jpg" />
+    <None Include="Resources\FondoReporteFacturas.jpg" />
+    <None Include="Resources\BotonAgregarEntradaOver.jpg" />
+    <None Include="Resources\BotonAgregarEntradaClick.jpg" />
+    <None Include="Resources\BotonAgregarEntrada.jpg" />
+    <None Include="Resources\BotonAgregarChoferHover.jpg" />
+    <None Include="Resources\BotonAgregarChoferClick.jpg" />
+    <None Include="Resources\BotonAgregarChofer.jpg" />
+    <None Include="Resources\BotonCerrarFacturaOver.jpg" />
+    <None Include="Resources\BotonCerrarFacturaClick.jpg" />
+    <None Include="Resources\BotonCerrarFactura.jpg" />
+    <None Include="Resources\BotonBuscarFacturaOver.jpg" />
+    <None Include="Resources\BotonBuscarFacturaClick.jpg" />
+    <None Include="Resources\BotonBuscarFactura.jpg" />
+    <None Include="Resources\BotonImprimirFacturarOver.jpg" />
+    <None Include="Resources\BotonImprimirFacturarClick.jpg" />
+    <None Include="Resources\BotonImprimirFacturar.jpg" />
+    <None Include="Resources\BotonNuevaFacturaSinNCFOver.jpg" />
+    <None Include="Resources\BotonNuevaFacturaSinNCFClick.jpg" />
+    <None Include="Resources\BotonNuevaFacturaSinNCF.jpg" />
+    <None Include="Resources\BotonNuevaFacturaNCFOver.jpg" />
+    <None Include="Resources\BotonNuevaFacturaNCFClick.jpg" />
+    <None Include="Resources\BotonNuevaFacturaNCF.jpg" />
+    <None Include="Resources\loading.gif" />
+    <None Include="Resources\BotonMostrarFacturaOver.jpg" />
+    <None Include="Resources\BotonMostrarFacturaDown.jpg" />
+    <None Include="Resources\BotonMostrarFactura.jpg" />
+    <None Include="Resources\FondoBuscarFactura.jpg" />
+    <None Include="Resources\LogoFondoFactura2.png" />
+    <None Include="Resources\FondoConfiguracion.jpg" />
+    <None Include="Resources\user_icon-icons.com_57997.png" />
+    <None Include="Resources\login_gov_icon_146024.png" />
+    <None Include="Resources\FondoMantEmpleadosFinal.jpg" />
+    <None Include="Resources\FondoMantClientes2.jpg" />
+    <None Include="Resources\FondoMantClientes.jpg" />
+    <None Include="Resources\BotonInsertarOver.jpg" />
+    <None Include="Resources\BotonInsertarClick.jpg" />
+    <None Include="Resources\BotonInsertar.jpg" />
+    <None Include="Resources\FondoMantProveedores.jpg" />
+    <None Include="Resources\FondoMantCategorias.jpg" />
+    <None Include="Resources\BotonActualizarHover.jpg" />
+    <None Include="Resources\BotonActualizarClick.jpg" />
+    <None Include="Resources\BotonActualizar.jpg" />
+    <None Include="Resources\BotonSalirLongHover.jpg" />
+    <None Include="Resources\BotonSalirLongClick.jpg" />
+    <None Include="Resources\BotonSalirLong.jpg" />
+    <None Include="Resources\BotonGuardarHover.jpg" />
+    <None Include="Resources\BotonGuardarClick.jpg" />
+    <None Include="Resources\BotonGuardar.jpg" />
+    <None Include="Resources\BotonEliminarHover.jpg" />
+    <None Include="Resources\BotonEliminarClick.jpg" />
+    <None Include="Resources\BotonEliminar.jpg" />
+    <None Include="Resources\FondoAgregarProducto3.jpg" />
+    <None Include="Resources\FondoMantProducto2.jpg" />
+    <None Include="Resources\FondoMantProducto3.jpg" />
+    <None Include="Resources\BotonLimpiarClick.jpg" />
+    <None Include="Resources\BotonLimpiarOver.jpg" />
+    <None Include="Resources\BotonLimpiar.jpg" />
+    <None Include="Resources\BotonAgregar.jpg" />
+    <None Include="Resources\BotonAgregarClick.jpg" />
+    <None Include="Resources\BotonAgregarOver.jpg" />
+    <None Include="Resources\BotonSalirClick.jpg" />
+    <None Include="Resources\BotonSalirOver.jpg" />
+    <None Include="Resources\BotonSalir.jpg" />
+    <None Include="Resources\btSalirHover.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

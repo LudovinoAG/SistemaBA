@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BAComprobantesFiscalesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerComprobantesFiscales' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_VerComprobantesFiscales">
+          <Key>
+            <PropertyRef Name="id_Comprobante" />
+            <PropertyRef Name="Comprobante_Desde" />
+            <PropertyRef Name="Comprobante_Hasta" />
+            <PropertyRef Name="Cantidad_Comprobantes" />
+            <PropertyRef Name="Fecha_Vencimiento_Comprobante" />
+            <PropertyRef Name="Estatus_Comprobante" />
+            <PropertyRef Name="Serie" />
+            <PropertyRef Name="Tipo" />
+          </Key>
+          <Property Name="id_Comprobante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Comprobante_Desde" Type="int" Nullable="false" />
+          <Property Name="Comprobante_Hasta" Type="int" Nullable="false" />
+          <Property Name="Cantidad_Comprobantes" Type="int" Nullable="false" />
+          <Property Name="Cantidad_Comprobantes_Usados" Type="int" />
+          <Property Name="Cantidad_Comprobantes_Disponibles" Type="int" />
+          <Property Name="Proximo_Comprobante" Type="varchar" MaxLength="12" />
+          <Property Name="Fecha_Vencimiento_Comprobante" Type="datetime" Nullable="false" />
+          <Property Name="Estatus_Comprobante" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="Serie" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <Function Name="SP_ActualizarUsoComprobante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Comprobante" Type="int" Mode="In" />
+          <Parameter Name="Cantidad_Usada" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_DesactivarComprobante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDComprobante" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertarComprobantes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ComprobanteDesde" Type="int" Mode="In" />
+          <Parameter Name="ComprobanteHasta" Type="int" Mode="In" />
+          <Parameter Name="Cantidad_Comprobantes" Type="int" Mode="In" />
+          <Parameter Name="Fecha_Vencimiento" Type="datetime" Mode="In" />
+          <Parameter Name="Estatus_Comprobante" Type="varchar" Mode="In" />
+          <Parameter Name="Serie" Type="varchar" Mode="In" />
+          <Parameter Name="Tipo" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="BAComprobantesFiscalesModelStoreContainer">
+          <EntitySet Name="VW_VerComprobantesFiscales" EntityType="Self.VW_VerComprobantesFiscales" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_VerComprobantesFiscales].[id_Comprobante] AS [id_Comprobante], 
+    [VW_VerComprobantesFiscales].[Comprobante_Desde] AS [Comprobante_Desde], 
+    [VW_VerComprobantesFiscales].[Comprobante_Hasta] AS [Comprobante_Hasta], 
+    [VW_VerComprobantesFiscales].[Cantidad_Comprobantes] AS [Cantidad_Comprobantes], 
+    [VW_VerComprobantesFiscales].[Cantidad_Comprobantes_Usados] AS [Cantidad_Comprobantes_Usados], 
+    [VW_VerComprobantesFiscales].[Cantidad_Comprobantes_Disponibles] AS [Cantidad_Comprobantes_Disponibles], 
+    [VW_VerComprobantesFiscales].[Proximo_Comprobante] AS [Proximo_Comprobante], 
+    [VW_VerComprobantesFiscales].[Fecha_Vencimiento_Comprobante] AS [Fecha_Vencimiento_Comprobante], 
+    [VW_VerComprobantesFiscales].[Estatus_Comprobante] AS [Estatus_Comprobante], 
+    [VW_VerComprobantesFiscales].[Serie] AS [Serie], 
+    [VW_VerComprobantesFiscales].[Tipo] AS [Tipo]
+    FROM [dbo].[VW_VerComprobantesFiscales] AS [VW_VerComprobantesFiscales]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BAComprobantesFiscalesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BAComprobantesFiscalesEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="SP_InsertarComprobantes">
+            <Parameter Name="ComprobanteDesde" Mode="In" Type="Int32" />
+            <Parameter Name="ComprobanteHasta" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad_Comprobantes" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha_Vencimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="Estatus_Comprobante" Mode="In" Type="String" />
+            <Parameter Name="Serie" Mode="In" Type="String" />
+            <Parameter Name="Tipo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ActualizarUsoComprobante">
+            <Parameter Name="id_Comprobante" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad_Usada" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="VW_VerComprobantesFiscales" EntityType="BAComprobantesFiscalesModel.VW_VerComprobantesFiscales" />
+          <FunctionImport Name="SP_DesactivarComprobante">
+            <Parameter Name="IDComprobante" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="VW_VerComprobantesFiscales">
+          <Key>
+            <PropertyRef Name="id_Comprobante" />
+            <PropertyRef Name="Comprobante_Desde" />
+            <PropertyRef Name="Comprobante_Hasta" />
+            <PropertyRef Name="Cantidad_Comprobantes" />
+            <PropertyRef Name="Fecha_Vencimiento_Comprobante" />
+            <PropertyRef Name="Estatus_Comprobante" />
+            <PropertyRef Name="Serie" />
+            <PropertyRef Name="Tipo" />
+          </Key>
+          <Property Name="id_Comprobante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Comprobante_Desde" Type="Int32" Nullable="false" />
+          <Property Name="Comprobante_Hasta" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad_Comprobantes" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad_Comprobantes_Usados" Type="Int32" />
+          <Property Name="Cantidad_Comprobantes_Disponibles" Type="Int32" />
+          <Property Name="Proximo_Comprobante" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Vencimiento_Comprobante" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estatus_Comprobante" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="Serie" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BAComprobantesFiscalesModelStoreContainer" CdmEntityContainer="BAComprobantesFiscalesEntities">
+          <FunctionImportMapping FunctionImportName="SP_InsertarComprobantes" FunctionName="BAComprobantesFiscalesModel.Store.SP_InsertarComprobantes" />
+          <FunctionImportMapping FunctionImportName="SP_ActualizarUsoComprobante" FunctionName="BAComprobantesFiscalesModel.Store.SP_ActualizarUsoComprobante" />
+          <EntitySetMapping Name="VW_VerComprobantesFiscales">
+            <EntityTypeMapping TypeName="BAComprobantesFiscalesModel.VW_VerComprobantesFiscales">
+              <MappingFragment StoreEntitySet="VW_VerComprobantesFiscales">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Serie" ColumnName="Serie" />
+                <ScalarProperty Name="Estatus_Comprobante" ColumnName="Estatus_Comprobante" />
+                <ScalarProperty Name="Fecha_Vencimiento_Comprobante" ColumnName="Fecha_Vencimiento_Comprobante" />
+                <ScalarProperty Name="Proximo_Comprobante" ColumnName="Proximo_Comprobante" />
+                <ScalarProperty Name="Cantidad_Comprobantes_Disponibles" ColumnName="Cantidad_Comprobantes_Disponibles" />
+                <ScalarProperty Name="Cantidad_Comprobantes_Usados" ColumnName="Cantidad_Comprobantes_Usados" />
+                <ScalarProperty Name="Cantidad_Comprobantes" ColumnName="Cantidad_Comprobantes" />
+                <ScalarProperty Name="Comprobante_Hasta" ColumnName="Comprobante_Hasta" />
+                <ScalarProperty Name="Comprobante_Desde" ColumnName="Comprobante_Desde" />
+                <ScalarProperty Name="id_Comprobante" ColumnName="id_Comprobante" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_DesactivarComprobante" FunctionName="BAComprobantesFiscalesModel.Store.SP_DesactivarComprobante" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
