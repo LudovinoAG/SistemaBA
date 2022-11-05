@@ -12,6 +12,9 @@ namespace Sistema_de_Gestión.Modelos
 
         public decimal SubTotal { get; set; }
         public decimal Costo { get; set; }
+        public decimal CapacidadTotal { get; set; }
+
+        public int capacidad { get; set; }
         public int Cantidad { get; set; }
         public decimal SumaSubTotales { get; set; }
         public decimal ITBIS { get; set; }
@@ -82,7 +85,7 @@ namespace Sistema_de_Gestión.Modelos
         }
 
         public void AgregarChoferFactura(DataGridView dgvChoferes, int IDFila, int Conduce, int Chofer,
-          int Vehiculo, int Producto, int Medida, int Factura, int CantidadViaje)
+          int Vehiculo, int Producto, int Medida, int Factura, int CantidadViaje, int Capacidad)
         {
             //Tabla de informacion referencial
             int entradachoferes = dgvChoferes.Rows.Add();
@@ -94,6 +97,7 @@ namespace Sistema_de_Gestión.Modelos
             dgvChoferes.Rows[entradachoferes].Cells["id_Medida"].Value = Medida;
             dgvChoferes.Rows[entradachoferes].Cells["id_Factura"].Value = Factura;
             dgvChoferes.Rows[entradachoferes].Cells["clCantidadChofer"].Value = CantidadViaje;
+            dgvChoferes.Rows[entradachoferes].Cells["clSCapacidad"].Value = Capacidad;
 
         }
 
@@ -375,15 +379,17 @@ namespace Sistema_de_Gestión.Modelos
             }
         }
 
-        public decimal CalcularSubtotal(int cantidad, decimal costo)
+        public decimal CalcularSubtotal(int Medida, int cantidad, decimal costo)
         {
 
-            this.Cantidad = cantidad;
-            this.Costo = costo;
-            this.SubTotal = 0;
-            this.SubTotal = this.Costo * this.Cantidad;
+                this.Cantidad = cantidad;
+                this.Costo = costo;
+                this.SubTotal = 0;
+                this.SubTotal = this.Costo * this.Cantidad;
 
-            return this.SubTotal;
+                return this.SubTotal;
+
+
         }
 
 

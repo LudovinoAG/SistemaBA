@@ -185,7 +185,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_VisualizarRedaccionClienteTableAdapter" GeneratorDataComponentClassName="SP_VisualizarRedaccionClienteTableAdapter" Name="SP_VisualizarRedaccionCliente" UserDataComponentName="SP_VisualizarRedaccionClienteTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="BoteAgregadosReportesConnectionString (Settings)" DbObjectName="BoteAgregados.dbo.SP_VisualizarRedaccionCliente" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="BoteAgregadosReportesConnectionString (Settings)" DbObjectName="BoteAgregados.dbo.SP_VisualizarRedaccionCliente" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.SP_VisualizarRedaccionCliente</CommandText>
@@ -211,6 +211,9 @@
               <Mapping SourceColumn="M3_Total" DataSetColumn="M3_Total" />
               <Mapping SourceColumn="Precio" DataSetColumn="Precio" />
               <Mapping SourceColumn="SubTotal" DataSetColumn="SubTotal" />
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="ITBIS" DataSetColumn="ITBIS" />
+              <Mapping SourceColumn="Total" DataSetColumn="Total" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -222,7 +225,7 @@
   <xs:element name="DSReportes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSReportes" msprop:Generator_UserDSName="DSReportes">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="VW_VerReportesFacturasPendientesCredito" msprop:Generator_TableClassName="VW_VerReportesFacturasPendientesCreditoDataTable" msprop:Generator_TableVarName="tableVW_VerReportesFacturasPendientesCredito" msprop:Generator_RowChangedName="VW_VerReportesFacturasPendientesCreditoRowChanged" msprop:Generator_TablePropName="VW_VerReportesFacturasPendientesCredito" msprop:Generator_RowDeletingName="VW_VerReportesFacturasPendientesCreditoRowDeleting" msprop:Generator_RowChangingName="VW_VerReportesFacturasPendientesCreditoRowChanging" msprop:Generator_RowEvHandlerName="VW_VerReportesFacturasPendientesCreditoRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_VerReportesFacturasPendientesCreditoRowDeleted" msprop:Generator_RowClassName="VW_VerReportesFacturasPendientesCreditoRow" msprop:Generator_UserTableName="VW_VerReportesFacturasPendientesCredito" msprop:Generator_RowEvArgName="VW_VerReportesFacturasPendientesCreditoRowChangeEvent">
+        <xs:element name="VW_VerReportesFacturasPendientesCredito" msprop:Generator_TableClassName="VW_VerReportesFacturasPendientesCreditoDataTable" msprop:Generator_TableVarName="tableVW_VerReportesFacturasPendientesCredito" msprop:Generator_TablePropName="VW_VerReportesFacturasPendientesCredito" msprop:Generator_RowDeletingName="VW_VerReportesFacturasPendientesCreditoRowDeleting" msprop:Generator_RowChangingName="VW_VerReportesFacturasPendientesCreditoRowChanging" msprop:Generator_RowEvHandlerName="VW_VerReportesFacturasPendientesCreditoRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_VerReportesFacturasPendientesCreditoRowDeleted" msprop:Generator_UserTableName="VW_VerReportesFacturasPendientesCredito" msprop:Generator_RowChangedName="VW_VerReportesFacturasPendientesCreditoRowChanged" msprop:Generator_RowEvArgName="VW_VerReportesFacturasPendientesCreditoRowChangeEvent" msprop:Generator_RowClassName="VW_VerReportesFacturasPendientesCreditoRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="NumFactura" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNumFactura" msprop:Generator_ColumnPropNameInRow="NumFactura" msprop:Generator_ColumnPropNameInTable="NumFacturaColumn" msprop:Generator_UserColumnName="NumFactura" minOccurs="0">
@@ -289,7 +292,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_VerCotizacion" msprop:Generator_TableClassName="SP_VerCotizacionDataTable" msprop:Generator_TableVarName="tableSP_VerCotizacion" msprop:Generator_TablePropName="SP_VerCotizacion" msprop:Generator_RowDeletingName="SP_VerCotizacionRowDeleting" msprop:Generator_RowChangingName="SP_VerCotizacionRowChanging" msprop:Generator_RowEvHandlerName="SP_VerCotizacionRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerCotizacionRowDeleted" msprop:Generator_UserTableName="SP_VerCotizacion" msprop:Generator_RowChangedName="SP_VerCotizacionRowChanged" msprop:Generator_RowEvArgName="SP_VerCotizacionRowChangeEvent" msprop:Generator_RowClassName="SP_VerCotizacionRow">
+        <xs:element name="SP_VerCotizacion" msprop:Generator_TableClassName="SP_VerCotizacionDataTable" msprop:Generator_TableVarName="tableSP_VerCotizacion" msprop:Generator_RowChangedName="SP_VerCotizacionRowChanged" msprop:Generator_TablePropName="SP_VerCotizacion" msprop:Generator_RowDeletingName="SP_VerCotizacionRowDeleting" msprop:Generator_RowChangingName="SP_VerCotizacionRowChanging" msprop:Generator_RowEvHandlerName="SP_VerCotizacionRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerCotizacionRowDeleted" msprop:Generator_RowClassName="SP_VerCotizacionRow" msprop:Generator_UserTableName="SP_VerCotizacion" msprop:Generator_RowEvArgName="SP_VerCotizacionRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_Cotizacion" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnid_Cotizacion" msprop:Generator_ColumnPropNameInRow="id_Cotizacion" msprop:Generator_ColumnPropNameInTable="id_CotizacionColumn" msprop:Generator_UserColumnName="id_Cotizacion" type="xs:int" />
@@ -372,7 +375,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_VerDetalleCotizacion" msprop:Generator_TableClassName="SP_VerDetalleCotizacionDataTable" msprop:Generator_TableVarName="tableSP_VerDetalleCotizacion" msprop:Generator_TablePropName="SP_VerDetalleCotizacion" msprop:Generator_RowDeletingName="SP_VerDetalleCotizacionRowDeleting" msprop:Generator_RowChangingName="SP_VerDetalleCotizacionRowChanging" msprop:Generator_RowEvHandlerName="SP_VerDetalleCotizacionRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerDetalleCotizacionRowDeleted" msprop:Generator_UserTableName="SP_VerDetalleCotizacion" msprop:Generator_RowChangedName="SP_VerDetalleCotizacionRowChanged" msprop:Generator_RowEvArgName="SP_VerDetalleCotizacionRowChangeEvent" msprop:Generator_RowClassName="SP_VerDetalleCotizacionRow">
+        <xs:element name="SP_VerDetalleCotizacion" msprop:Generator_TableClassName="SP_VerDetalleCotizacionDataTable" msprop:Generator_TableVarName="tableSP_VerDetalleCotizacion" msprop:Generator_RowChangedName="SP_VerDetalleCotizacionRowChanged" msprop:Generator_TablePropName="SP_VerDetalleCotizacion" msprop:Generator_RowDeletingName="SP_VerDetalleCotizacionRowDeleting" msprop:Generator_RowChangingName="SP_VerDetalleCotizacionRowChanging" msprop:Generator_RowEvHandlerName="SP_VerDetalleCotizacionRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerDetalleCotizacionRowDeleted" msprop:Generator_RowClassName="SP_VerDetalleCotizacionRow" msprop:Generator_UserTableName="SP_VerDetalleCotizacion" msprop:Generator_RowEvArgName="SP_VerDetalleCotizacionRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_UserColumnName="Cantidad" type="xs:int" minOccurs="0" />
@@ -402,7 +405,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_VerDetalleFactura" msprop:Generator_TableClassName="SP_VerDetalleFacturaDataTable" msprop:Generator_TableVarName="tableSP_VerDetalleFactura" msprop:Generator_TablePropName="SP_VerDetalleFactura" msprop:Generator_RowDeletingName="SP_VerDetalleFacturaRowDeleting" msprop:Generator_RowChangingName="SP_VerDetalleFacturaRowChanging" msprop:Generator_RowEvHandlerName="SP_VerDetalleFacturaRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerDetalleFacturaRowDeleted" msprop:Generator_UserTableName="SP_VerDetalleFactura" msprop:Generator_RowChangedName="SP_VerDetalleFacturaRowChanged" msprop:Generator_RowEvArgName="SP_VerDetalleFacturaRowChangeEvent" msprop:Generator_RowClassName="SP_VerDetalleFacturaRow">
+        <xs:element name="SP_VerDetalleFactura" msprop:Generator_TableClassName="SP_VerDetalleFacturaDataTable" msprop:Generator_TableVarName="tableSP_VerDetalleFactura" msprop:Generator_RowChangedName="SP_VerDetalleFacturaRowChanged" msprop:Generator_TablePropName="SP_VerDetalleFactura" msprop:Generator_RowDeletingName="SP_VerDetalleFacturaRowDeleting" msprop:Generator_RowChangingName="SP_VerDetalleFacturaRowChanging" msprop:Generator_RowEvHandlerName="SP_VerDetalleFacturaRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerDetalleFacturaRowDeleted" msprop:Generator_RowClassName="SP_VerDetalleFacturaRow" msprop:Generator_UserTableName="SP_VerDetalleFactura" msprop:Generator_RowEvArgName="SP_VerDetalleFacturaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_UserColumnName="Cantidad" type="xs:int" />
@@ -432,7 +435,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_VerDetallesConduces" msprop:Generator_TableClassName="SP_VerDetallesConducesDataTable" msprop:Generator_TableVarName="tableSP_VerDetallesConduces" msprop:Generator_TablePropName="SP_VerDetallesConduces" msprop:Generator_RowDeletingName="SP_VerDetallesConducesRowDeleting" msprop:Generator_RowChangingName="SP_VerDetallesConducesRowChanging" msprop:Generator_RowEvHandlerName="SP_VerDetallesConducesRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerDetallesConducesRowDeleted" msprop:Generator_UserTableName="SP_VerDetallesConduces" msprop:Generator_RowChangedName="SP_VerDetallesConducesRowChanged" msprop:Generator_RowEvArgName="SP_VerDetallesConducesRowChangeEvent" msprop:Generator_RowClassName="SP_VerDetallesConducesRow">
+        <xs:element name="SP_VerDetallesConduces" msprop:Generator_TableClassName="SP_VerDetallesConducesDataTable" msprop:Generator_TableVarName="tableSP_VerDetallesConduces" msprop:Generator_RowChangedName="SP_VerDetallesConducesRowChanged" msprop:Generator_TablePropName="SP_VerDetallesConduces" msprop:Generator_RowDeletingName="SP_VerDetallesConducesRowDeleting" msprop:Generator_RowChangingName="SP_VerDetallesConducesRowChanging" msprop:Generator_RowEvHandlerName="SP_VerDetallesConducesRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerDetallesConducesRowDeleted" msprop:Generator_RowClassName="SP_VerDetallesConducesRow" msprop:Generator_UserTableName="SP_VerDetallesConduces" msprop:Generator_RowEvArgName="SP_VerDetallesConducesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="NumFacturaConduce" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNumFacturaConduce" msprop:Generator_ColumnPropNameInRow="NumFacturaConduce" msprop:Generator_ColumnPropNameInTable="NumFacturaConduceColumn" msprop:Generator_UserColumnName="NumFacturaConduce" type="xs:int" minOccurs="0" />
@@ -469,7 +472,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_VerFacturaID" msprop:Generator_TableClassName="SP_VerFacturaIDDataTable" msprop:Generator_TableVarName="tableSP_VerFacturaID" msprop:Generator_TablePropName="SP_VerFacturaID" msprop:Generator_RowDeletingName="SP_VerFacturaIDRowDeleting" msprop:Generator_RowChangingName="SP_VerFacturaIDRowChanging" msprop:Generator_RowEvHandlerName="SP_VerFacturaIDRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerFacturaIDRowDeleted" msprop:Generator_UserTableName="SP_VerFacturaID" msprop:Generator_RowChangedName="SP_VerFacturaIDRowChanged" msprop:Generator_RowEvArgName="SP_VerFacturaIDRowChangeEvent" msprop:Generator_RowClassName="SP_VerFacturaIDRow">
+        <xs:element name="SP_VerFacturaID" msprop:Generator_TableClassName="SP_VerFacturaIDDataTable" msprop:Generator_TableVarName="tableSP_VerFacturaID" msprop:Generator_RowChangedName="SP_VerFacturaIDRowChanged" msprop:Generator_TablePropName="SP_VerFacturaID" msprop:Generator_RowDeletingName="SP_VerFacturaIDRowDeleting" msprop:Generator_RowChangingName="SP_VerFacturaIDRowChanging" msprop:Generator_RowEvHandlerName="SP_VerFacturaIDRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerFacturaIDRowDeleted" msprop:Generator_RowClassName="SP_VerFacturaIDRow" msprop:Generator_UserTableName="SP_VerFacturaID" msprop:Generator_RowEvArgName="SP_VerFacturaIDRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_Factura" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnid_Factura" msprop:Generator_ColumnPropNameInRow="id_Factura" msprop:Generator_ColumnPropNameInTable="id_FacturaColumn" msprop:Generator_UserColumnName="id_Factura" type="xs:int" />
@@ -581,7 +584,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_VisualizarRedaccionCliente" msprop:Generator_TableClassName="SP_VisualizarRedaccionClienteDataTable" msprop:Generator_TableVarName="tableSP_VisualizarRedaccionCliente" msprop:Generator_TablePropName="SP_VisualizarRedaccionCliente" msprop:Generator_RowDeletingName="SP_VisualizarRedaccionClienteRowDeleting" msprop:Generator_RowChangingName="SP_VisualizarRedaccionClienteRowChanging" msprop:Generator_RowEvHandlerName="SP_VisualizarRedaccionClienteRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VisualizarRedaccionClienteRowDeleted" msprop:Generator_UserTableName="SP_VisualizarRedaccionCliente" msprop:Generator_RowChangedName="SP_VisualizarRedaccionClienteRowChanged" msprop:Generator_RowEvArgName="SP_VisualizarRedaccionClienteRowChangeEvent" msprop:Generator_RowClassName="SP_VisualizarRedaccionClienteRow">
+        <xs:element name="SP_VisualizarRedaccionCliente" msprop:Generator_TableClassName="SP_VisualizarRedaccionClienteDataTable" msprop:Generator_TableVarName="tableSP_VisualizarRedaccionCliente" msprop:Generator_RowChangedName="SP_VisualizarRedaccionClienteRowChanged" msprop:Generator_TablePropName="SP_VisualizarRedaccionCliente" msprop:Generator_RowDeletingName="SP_VisualizarRedaccionClienteRowDeleting" msprop:Generator_RowChangingName="SP_VisualizarRedaccionClienteRowChanging" msprop:Generator_RowEvHandlerName="SP_VisualizarRedaccionClienteRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VisualizarRedaccionClienteRowDeleted" msprop:Generator_RowClassName="SP_VisualizarRedaccionClienteRow" msprop:Generator_UserTableName="SP_VisualizarRedaccionCliente" msprop:Generator_RowEvArgName="SP_VisualizarRedaccionClienteRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Empresa" msprop:Generator_ColumnVarNameInTable="columnEmpresa" msprop:Generator_ColumnPropNameInRow="Empresa" msprop:Generator_ColumnPropNameInTable="EmpresaColumn" msprop:Generator_UserColumnName="Empresa" minOccurs="0">
@@ -633,6 +636,9 @@
               <xs:element name="M3_Total" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnM3_Total" msprop:Generator_ColumnPropNameInRow="M3_Total" msprop:Generator_ColumnPropNameInTable="M3_TotalColumn" msprop:Generator_UserColumnName="M3_Total" type="xs:int" minOccurs="0" />
               <xs:element name="Precio" msprop:Generator_ColumnVarNameInTable="columnPrecio" msprop:Generator_ColumnPropNameInRow="Precio" msprop:Generator_ColumnPropNameInTable="PrecioColumn" msprop:Generator_UserColumnName="Precio" type="xs:decimal" minOccurs="0" />
               <xs:element name="SubTotal" msprop:Generator_ColumnVarNameInTable="columnSubTotal" msprop:Generator_ColumnPropNameInRow="SubTotal" msprop:Generator_ColumnPropNameInTable="SubTotalColumn" msprop:Generator_UserColumnName="SubTotal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="ITBIS" msprop:Generator_ColumnVarNameInTable="columnITBIS" msprop:Generator_ColumnPropNameInRow="ITBIS" msprop:Generator_ColumnPropNameInTable="ITBISColumn" msprop:Generator_UserColumnName="ITBIS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -645,6 +651,10 @@
     <xs:unique name="SP_VerFacturaID_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:SP_VerFacturaID" />
       <xs:field xpath="mstns:id_Factura" />
+    </xs:unique>
+    <xs:unique name="SP_VisualizarRedaccionCliente_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SP_VisualizarRedaccionCliente" />
+      <xs:field xpath="mstns:ID" />
     </xs:unique>
   </xs:element>
 </xs:schema>

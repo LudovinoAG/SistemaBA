@@ -61,6 +61,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "frmVistaRedacciones";
             this.Text = "frmVistaRedacciones";
+            this.Load += new System.EventHandler(this.frmVistaRedacciones_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dsReportes1)).EndInit();
             this.ResumeLayout(false);
 

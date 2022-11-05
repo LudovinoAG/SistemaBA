@@ -12,7 +12,7 @@
     <Shape ID="DesignTable:SP_VerDetalleFactura" ZOrder="4" X="1109" Y="70" Height="191" Width="268" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
     <Shape ID="DesignTable:SP_VerDetallesConduces" ZOrder="3" X="1447" Y="70" Height="210" Width="286" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
     <Shape ID="DesignTable:SP_VerFacturaID" ZOrder="2" X="1803" Y="70" Height="305" Width="240" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
-    <Shape ID="DesignTable:SP_VisualizarRedaccionCliente" ZOrder="1" X="631" Y="247" Height="305" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
+    <Shape ID="DesignTable:SP_VisualizarRedaccionCliente" ZOrder="1" X="630" Y="247" Height="305" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

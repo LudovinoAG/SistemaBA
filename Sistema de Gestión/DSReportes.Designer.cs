@@ -3041,6 +3041,12 @@ namespace Sistema_de_Gestión {
             
             private global::System.Data.DataColumn columnSubTotal;
             
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnITBIS;
+            
+            private global::System.Data.DataColumn columnTotal;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public SP_VisualizarRedaccionClienteDataTable() {
@@ -3180,6 +3186,30 @@ namespace Sistema_de_Gestión {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ITBISColumn {
+                get {
+                    return this.columnITBIS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TotalColumn {
+                get {
+                    return this.columnTotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3215,7 +3245,7 @@ namespace Sistema_de_Gestión {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public SP_VisualizarRedaccionClienteRow AddSP_VisualizarRedaccionClienteRow(string Empresa, string RNC, string Proyecto, System.DateTime Fecha, string Placa, int Conduce, string Producto, int Capacidad_M3, string Medida, int Cantidad, int M3_Total, decimal Precio, decimal SubTotal) {
+            public SP_VisualizarRedaccionClienteRow AddSP_VisualizarRedaccionClienteRow(string Empresa, string RNC, string Proyecto, System.DateTime Fecha, string Placa, int Conduce, string Producto, int Capacidad_M3, string Medida, int Cantidad, int M3_Total, decimal Precio, decimal SubTotal, decimal ITBIS, decimal Total) {
                 SP_VisualizarRedaccionClienteRow rowSP_VisualizarRedaccionClienteRow = ((SP_VisualizarRedaccionClienteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Empresa,
@@ -3230,10 +3260,20 @@ namespace Sistema_de_Gestión {
                         Cantidad,
                         M3_Total,
                         Precio,
-                        SubTotal};
+                        SubTotal,
+                        null,
+                        ITBIS,
+                        Total};
                 rowSP_VisualizarRedaccionClienteRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSP_VisualizarRedaccionClienteRow);
                 return rowSP_VisualizarRedaccionClienteRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public SP_VisualizarRedaccionClienteRow FindByID(int ID) {
+                return ((SP_VisualizarRedaccionClienteRow)(this.Rows.Find(new object[] {
+                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3266,6 +3306,9 @@ namespace Sistema_de_Gestión {
                 this.columnM3_Total = base.Columns["M3_Total"];
                 this.columnPrecio = base.Columns["Precio"];
                 this.columnSubTotal = base.Columns["SubTotal"];
+                this.columnID = base.Columns["ID"];
+                this.columnITBIS = base.Columns["ITBIS"];
+                this.columnTotal = base.Columns["Total"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3297,6 +3340,14 @@ namespace Sistema_de_Gestión {
                 base.Columns.Add(this.columnPrecio);
                 this.columnSubTotal = new global::System.Data.DataColumn("SubTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSubTotal);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnITBIS = new global::System.Data.DataColumn("ITBIS", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnITBIS);
+                this.columnTotal = new global::System.Data.DataColumn("Total", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotal);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID}, true));
                 this.columnEmpresa.MaxLength = 60;
                 this.columnRNC.MaxLength = 12;
                 this.columnProyecto.MaxLength = 60;
@@ -3308,6 +3359,12 @@ namespace Sistema_de_Gestión {
                 this.columnMedida.AllowDBNull = false;
                 this.columnMedida.MaxLength = 15;
                 this.columnM3_Total.ReadOnly = true;
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnID.ReadOnly = true;
+                this.columnID.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5395,6 +5452,51 @@ namespace Sistema_de_Gestión {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int ID {
+                get {
+                    return ((int)(this[this.tableSP_VisualizarRedaccionCliente.IDColumn]));
+                }
+                set {
+                    this[this.tableSP_VisualizarRedaccionCliente.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal ITBIS {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableSP_VisualizarRedaccionCliente.ITBISColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ITBIS\' de la tabla \'SP_VisualizarRedaccionCliente\' es DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_VisualizarRedaccionCliente.ITBISColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal Total {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableSP_VisualizarRedaccionCliente.TotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Total\' de la tabla \'SP_VisualizarRedaccionCliente\' es DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_VisualizarRedaccionCliente.TotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsEmpresaNull() {
                 return this.IsNull(this.tableSP_VisualizarRedaccionCliente.EmpresaColumn);
             }
@@ -5511,6 +5613,30 @@ namespace Sistema_de_Gestión {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetSubTotalNull() {
                 this[this.tableSP_VisualizarRedaccionCliente.SubTotalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsITBISNull() {
+                return this.IsNull(this.tableSP_VisualizarRedaccionCliente.ITBISColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetITBISNull() {
+                this[this.tableSP_VisualizarRedaccionCliente.ITBISColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTotalNull() {
+                return this.IsNull(this.tableSP_VisualizarRedaccionCliente.TotalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTotalNull() {
+                this[this.tableSP_VisualizarRedaccionCliente.TotalColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -7029,6 +7155,9 @@ namespace Sistema_de_Gestión.DSReportesTableAdapters {
             tableMapping.ColumnMappings.Add("M3_Total", "M3_Total");
             tableMapping.ColumnMappings.Add("Precio", "Precio");
             tableMapping.ColumnMappings.Add("SubTotal", "SubTotal");
+            tableMapping.ColumnMappings.Add("ID", "ID");
+            tableMapping.ColumnMappings.Add("ITBIS", "ITBIS");
+            tableMapping.ColumnMappings.Add("Total", "Total");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

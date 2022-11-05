@@ -142,22 +142,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
     <edmx:ConceptualModels>
       <Schema Namespace="BAPedidosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BAPedidosEntities" annotation:LazyLoadingEnabled="true" >
-          <FunctionImport Name="SP_InsertarDetallesPedido">
-            <Parameter Name="idProducto" Mode="In" Type="Int32" />
-            <Parameter Name="id_Medida" Mode="In" Type="Int32" />
-            <Parameter Name="cantidad" Mode="In" Type="Int32" />
-            <Parameter Name="precio" Mode="In" Type="Decimal" />
-            <Parameter Name="subtotal" Mode="In" Type="Decimal" />
-            <Parameter Name="descripcion" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SP_InsertarPedido">
-            <Parameter Name="idCliente" Mode="In" Type="Int32" />
-            <Parameter Name="idEstatusPedido" Mode="In" Type="Int32" />
-            <Parameter Name="SubtotalPedido" Mode="In" Type="Decimal" />
-            <Parameter Name="totalPedido" Mode="In" Type="Decimal" />
-            <Parameter Name="ITBISPedido" Mode="In" Type="Decimal" />
-            <Parameter Name="DescuentoPedido" Mode="In" Type="Decimal" />
-          </FunctionImport>
           <FunctionImport Name="SP_BuscarClienteCodigo" ReturnType="Collection(BAPedidosModel.SP_BuscarClienteCodigo_Result)">
           <Parameter Name="Codigo_Cliente" Mode="In" Type="String" />
           </FunctionImport>
@@ -181,6 +165,22 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
             <Parameter Name="id_vehiculo" Mode="In" Type="Int32" />
             <Parameter Name="id_medida" Mode="In" Type="Int32" />
             <Parameter Name="CantidadViajes" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertarDetallesPedido">
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
+            <Parameter Name="id_Medida" Mode="In" Type="Int32" />
+            <Parameter Name="cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="precio" Mode="In" Type="Decimal" />
+            <Parameter Name="subtotal" Mode="In" Type="Decimal" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertarPedido">
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+            <Parameter Name="idEstatusPedido" Mode="In" Type="Int32" />
+            <Parameter Name="SubtotalPedido" Mode="In" Type="Decimal" />
+            <Parameter Name="totalPedido" Mode="In" Type="Decimal" />
+            <Parameter Name="ITBISPedido" Mode="In" Type="Decimal" />
+            <Parameter Name="DescuentoPedido" Mode="In" Type="Decimal" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_BuscarClienteCodigo_Result">
@@ -249,8 +249,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BAPedidosModelStoreContainer" CdmEntityContainer="BAPedidosEntities" >
-          <FunctionImportMapping FunctionImportName="SP_InsertarDetallesPedido" FunctionName="BAPedidosModel.Store.SP_InsertarDetallesPedido" />
-          <FunctionImportMapping FunctionImportName="SP_InsertarPedido" FunctionName="BAPedidosModel.Store.SP_InsertarPedido" />
           <FunctionImportMapping FunctionImportName="SP_BuscarClienteCodigo" FunctionName="BAPedidosModel.Store.SP_BuscarClienteCodigo">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BAPedidosModel.SP_BuscarClienteCodigo_Result">
@@ -314,6 +312,8 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_InsertarConduces" FunctionName="BAPedidosModel.Store.SP_InsertarConduces" />
           <FunctionImportMapping FunctionImportName="SP_InsertarConducesPedidos" FunctionName="BAPedidosModel.Store.SP_InsertarConducesPedidos" />
+          <FunctionImportMapping FunctionImportName="SP_InsertarDetallesPedido" FunctionName="BAPedidosModel.Store.SP_InsertarDetallesPedido" />
+          <FunctionImportMapping FunctionImportName="SP_InsertarPedido" FunctionName="BAPedidosModel.Store.SP_InsertarPedido" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

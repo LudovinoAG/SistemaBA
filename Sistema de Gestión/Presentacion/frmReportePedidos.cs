@@ -84,5 +84,13 @@ namespace Sistema_de_Gestión.Presentacion
             dgvDetallesPedidos.Columns["Precio"].DefaultCellStyle.Format = "C2";
             dgvDetallesPedidos.Columns["SubTotal"].DefaultCellStyle.Format = "C2";
         }
+
+        private void cmdVerRedaccion_Click(object sender, EventArgs e)
+        {
+            frmVistaRedacciones VistaRedaccion = new frmVistaRedacciones();
+            //int NumFactura = int.Parse(txtNumFactura.Text);
+            //VistaRedaccion = NumFactura;
+            VistaRedaccion.Show();
+        }
     }
 }

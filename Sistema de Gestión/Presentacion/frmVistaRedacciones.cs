@@ -26,11 +26,16 @@ namespace Sistema_de_Gestión.Presentacion
             DSReportesTableAdapters.SP_VisualizarRedaccionClienteTableAdapter taRedaccion = new
                 DSReportesTableAdapters.SP_VisualizarRedaccionClienteTableAdapter();
 
-            taRedaccion.Fill(ds.SP_VisualizarRedaccionCliente, 7);
+            taRedaccion.Fill(ds.SP_VisualizarRedaccionCliente, RedaccionesModel.IDCliente);
 
             crvRedacciones1.SetDataSource(ds);
 
             crystalReportViewer1.ReportSource = crvRedacciones1;
+        }
+
+        private void frmVistaRedacciones_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

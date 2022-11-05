@@ -37,15 +37,6 @@ namespace Sistema_de_Gestión.Modelos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_VerDetalleRedaccion_Result>("SP_VerDetalleRedaccion", iDPedidosParameter);
         }
     
-        public virtual ObjectResult<SP_VerRedaccionClienteID_Result> SP_VerRedaccionClienteID(Nullable<int> iDCliente)
-        {
-            var iDClienteParameter = iDCliente.HasValue ?
-                new ObjectParameter("IDCliente", iDCliente) :
-                new ObjectParameter("IDCliente", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_VerRedaccionClienteID_Result>("SP_VerRedaccionClienteID", iDClienteParameter);
-        }
-    
         public virtual ObjectResult<SP_VerConducesPedidos_Result> SP_VerConducesPedidos(Nullable<int> iDPedido)
         {
             var iDPedidoParameter = iDPedido.HasValue ?
@@ -53,6 +44,15 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("IDPedido", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_VerConducesPedidos_Result>("SP_VerConducesPedidos", iDPedidoParameter);
+        }
+    
+        public virtual ObjectResult<SP_VerRedaccionClienteID_Result> SP_VerRedaccionClienteID(Nullable<int> iDCliente)
+        {
+            var iDClienteParameter = iDCliente.HasValue ?
+                new ObjectParameter("IDCliente", iDCliente) :
+                new ObjectParameter("IDCliente", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_VerRedaccionClienteID_Result>("SP_VerRedaccionClienteID", iDClienteParameter);
         }
     }
 }
