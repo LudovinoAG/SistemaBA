@@ -3017,9 +3017,13 @@ namespace Sistema_de_Gestión {
             
             private global::System.Data.DataColumn columnEmpresa;
             
+            private global::System.Data.DataColumn columnProyecto;
+            
             private global::System.Data.DataColumn columnRNC;
             
-            private global::System.Data.DataColumn columnProyecto;
+            private global::System.Data.DataColumn columnContacto;
+            
+            private global::System.Data.DataColumn columnCodigo;
             
             private global::System.Data.DataColumn columnFecha;
             
@@ -3029,21 +3033,15 @@ namespace Sistema_de_Gestión {
             
             private global::System.Data.DataColumn columnProducto;
             
+            private global::System.Data.DataColumn columnServicios;
+            
             private global::System.Data.DataColumn columnCapacidad_M3;
             
             private global::System.Data.DataColumn columnMedida;
             
-            private global::System.Data.DataColumn columnCantidad;
-            
             private global::System.Data.DataColumn columnM3_Total;
             
             private global::System.Data.DataColumn columnPrecio;
-            
-            private global::System.Data.DataColumn columnSubTotal;
-            
-            private global::System.Data.DataColumn columnID;
-            
-            private global::System.Data.DataColumn columnITBIS;
             
             private global::System.Data.DataColumn columnTotal;
             
@@ -3090,6 +3088,14 @@ namespace Sistema_de_Gestión {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ProyectoColumn {
+                get {
+                    return this.columnProyecto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn RNCColumn {
                 get {
                     return this.columnRNC;
@@ -3098,9 +3104,17 @@ namespace Sistema_de_Gestión {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ProyectoColumn {
+            public global::System.Data.DataColumn ContactoColumn {
                 get {
-                    return this.columnProyecto;
+                    return this.columnContacto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CodigoColumn {
+                get {
+                    return this.columnCodigo;
                 }
             }
             
@@ -3138,6 +3152,14 @@ namespace Sistema_de_Gestión {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ServiciosColumn {
+                get {
+                    return this.columnServicios;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn Capacidad_M3Column {
                 get {
                     return this.columnCapacidad_M3;
@@ -3154,14 +3176,6 @@ namespace Sistema_de_Gestión {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn CantidadColumn {
-                get {
-                    return this.columnCantidad;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn M3_TotalColumn {
                 get {
                     return this.columnM3_Total;
@@ -3173,30 +3187,6 @@ namespace Sistema_de_Gestión {
             public global::System.Data.DataColumn PrecioColumn {
                 get {
                     return this.columnPrecio;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn SubTotalColumn {
-                get {
-                    return this.columnSubTotal;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
-                get {
-                    return this.columnID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ITBISColumn {
-                get {
-                    return this.columnITBIS;
                 }
             }
             
@@ -3245,35 +3235,27 @@ namespace Sistema_de_Gestión {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public SP_VisualizarRedaccionClienteRow AddSP_VisualizarRedaccionClienteRow(string Empresa, string RNC, string Proyecto, System.DateTime Fecha, string Placa, int Conduce, string Producto, int Capacidad_M3, string Medida, int Cantidad, int M3_Total, decimal Precio, decimal SubTotal, decimal ITBIS, decimal Total) {
+            public SP_VisualizarRedaccionClienteRow AddSP_VisualizarRedaccionClienteRow(string Empresa, string Proyecto, string RNC, string Contacto, string Codigo, System.DateTime Fecha, string Placa, decimal Conduce, string Producto, int Servicios, decimal Capacidad_M3, string Medida, decimal M3_Total, decimal Precio, decimal Total) {
                 SP_VisualizarRedaccionClienteRow rowSP_VisualizarRedaccionClienteRow = ((SP_VisualizarRedaccionClienteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Empresa,
-                        RNC,
                         Proyecto,
+                        RNC,
+                        Contacto,
+                        Codigo,
                         Fecha,
                         Placa,
                         Conduce,
                         Producto,
+                        Servicios,
                         Capacidad_M3,
                         Medida,
-                        Cantidad,
                         M3_Total,
                         Precio,
-                        SubTotal,
-                        null,
-                        ITBIS,
                         Total};
                 rowSP_VisualizarRedaccionClienteRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSP_VisualizarRedaccionClienteRow);
                 return rowSP_VisualizarRedaccionClienteRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public SP_VisualizarRedaccionClienteRow FindByID(int ID) {
-                return ((SP_VisualizarRedaccionClienteRow)(this.Rows.Find(new object[] {
-                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3294,20 +3276,19 @@ namespace Sistema_de_Gestión {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnEmpresa = base.Columns["Empresa"];
-                this.columnRNC = base.Columns["RNC"];
                 this.columnProyecto = base.Columns["Proyecto"];
+                this.columnRNC = base.Columns["RNC"];
+                this.columnContacto = base.Columns["Contacto"];
+                this.columnCodigo = base.Columns["Codigo"];
                 this.columnFecha = base.Columns["Fecha"];
                 this.columnPlaca = base.Columns["Placa"];
                 this.columnConduce = base.Columns["Conduce"];
                 this.columnProducto = base.Columns["Producto"];
+                this.columnServicios = base.Columns["Servicios"];
                 this.columnCapacidad_M3 = base.Columns["Capacidad_M3"];
                 this.columnMedida = base.Columns["Medida"];
-                this.columnCantidad = base.Columns["Cantidad"];
                 this.columnM3_Total = base.Columns["M3_Total"];
                 this.columnPrecio = base.Columns["Precio"];
-                this.columnSubTotal = base.Columns["SubTotal"];
-                this.columnID = base.Columns["ID"];
-                this.columnITBIS = base.Columns["ITBIS"];
                 this.columnTotal = base.Columns["Total"];
             }
             
@@ -3316,55 +3297,53 @@ namespace Sistema_de_Gestión {
             private void InitClass() {
                 this.columnEmpresa = new global::System.Data.DataColumn("Empresa", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEmpresa);
-                this.columnRNC = new global::System.Data.DataColumn("RNC", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRNC);
                 this.columnProyecto = new global::System.Data.DataColumn("Proyecto", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProyecto);
+                this.columnRNC = new global::System.Data.DataColumn("RNC", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRNC);
+                this.columnContacto = new global::System.Data.DataColumn("Contacto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnContacto);
+                this.columnCodigo = new global::System.Data.DataColumn("Codigo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodigo);
                 this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFecha);
                 this.columnPlaca = new global::System.Data.DataColumn("Placa", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPlaca);
-                this.columnConduce = new global::System.Data.DataColumn("Conduce", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnConduce = new global::System.Data.DataColumn("Conduce", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnConduce);
                 this.columnProducto = new global::System.Data.DataColumn("Producto", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProducto);
-                this.columnCapacidad_M3 = new global::System.Data.DataColumn("Capacidad_M3", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnServicios = new global::System.Data.DataColumn("Servicios", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnServicios);
+                this.columnCapacidad_M3 = new global::System.Data.DataColumn("Capacidad_M3", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCapacidad_M3);
                 this.columnMedida = new global::System.Data.DataColumn("Medida", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMedida);
-                this.columnCantidad = new global::System.Data.DataColumn("Cantidad", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCantidad);
-                this.columnM3_Total = new global::System.Data.DataColumn("M3_Total", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnM3_Total = new global::System.Data.DataColumn("M3_Total", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnM3_Total);
                 this.columnPrecio = new global::System.Data.DataColumn("Precio", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPrecio);
-                this.columnSubTotal = new global::System.Data.DataColumn("SubTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSubTotal);
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
-                this.columnITBIS = new global::System.Data.DataColumn("ITBIS", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnITBIS);
                 this.columnTotal = new global::System.Data.DataColumn("Total", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotal);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID}, true));
                 this.columnEmpresa.MaxLength = 60;
-                this.columnRNC.MaxLength = 12;
                 this.columnProyecto.MaxLength = 60;
-                this.columnFecha.ReadOnly = true;
+                this.columnRNC.MaxLength = 12;
+                this.columnContacto.ReadOnly = true;
+                this.columnContacto.MaxLength = 31;
+                this.columnCodigo.MaxLength = 7;
+                this.columnFecha.AllowDBNull = false;
                 this.columnPlaca.AllowDBNull = false;
-                this.columnPlaca.MaxLength = 18;
+                this.columnPlaca.MaxLength = 7;
+                this.columnConduce.AllowDBNull = false;
                 this.columnProducto.AllowDBNull = false;
-                this.columnProducto.MaxLength = 30;
+                this.columnProducto.MaxLength = 100;
+                this.columnServicios.AllowDBNull = false;
+                this.columnCapacidad_M3.AllowDBNull = false;
                 this.columnMedida.AllowDBNull = false;
-                this.columnMedida.MaxLength = 15;
-                this.columnM3_Total.ReadOnly = true;
-                this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
-                this.columnID.AllowDBNull = false;
-                this.columnID.ReadOnly = true;
-                this.columnID.Unique = true;
+                this.columnMedida.MaxLength = 30;
+                this.columnM3_Total.AllowDBNull = false;
+                this.columnPrecio.AllowDBNull = false;
+                this.columnTotal.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5266,23 +5245,6 @@ namespace Sistema_de_Gestión {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string RNC {
-                get {
-                    try {
-                        return ((string)(this[this.tableSP_VisualizarRedaccionCliente.RNCColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RNC\' de la tabla \'SP_VisualizarRedaccionCliente\' es DBNul" +
-                                "l.", e);
-                    }
-                }
-                set {
-                    this[this.tableSP_VisualizarRedaccionCliente.RNCColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Proyecto {
                 get {
                     try {
@@ -5300,15 +5262,60 @@ namespace Sistema_de_Gestión {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime Fecha {
+            public string RNC {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableSP_VisualizarRedaccionCliente.FechaColumn]));
+                        return ((string)(this[this.tableSP_VisualizarRedaccionCliente.RNCColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Fecha\' de la tabla \'SP_VisualizarRedaccionCliente\' es DBN" +
-                                "ull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RNC\' de la tabla \'SP_VisualizarRedaccionCliente\' es DBNul" +
+                                "l.", e);
                     }
+                }
+                set {
+                    this[this.tableSP_VisualizarRedaccionCliente.RNCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Contacto {
+                get {
+                    try {
+                        return ((string)(this[this.tableSP_VisualizarRedaccionCliente.ContactoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Contacto\' de la tabla \'SP_VisualizarRedaccionCliente\' es " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_VisualizarRedaccionCliente.ContactoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Codigo {
+                get {
+                    try {
+                        return ((string)(this[this.tableSP_VisualizarRedaccionCliente.CodigoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Codigo\' de la tabla \'SP_VisualizarRedaccionCliente\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_VisualizarRedaccionCliente.CodigoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime Fecha {
+                get {
+                    return ((global::System.DateTime)(this[this.tableSP_VisualizarRedaccionCliente.FechaColumn]));
                 }
                 set {
                     this[this.tableSP_VisualizarRedaccionCliente.FechaColumn] = value;
@@ -5328,15 +5335,9 @@ namespace Sistema_de_Gestión {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Conduce {
+            public decimal Conduce {
                 get {
-                    try {
-                        return ((int)(this[this.tableSP_VisualizarRedaccionCliente.ConduceColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Conduce\' de la tabla \'SP_VisualizarRedaccionCliente\' es D" +
-                                "BNull.", e);
-                    }
+                    return ((decimal)(this[this.tableSP_VisualizarRedaccionCliente.ConduceColumn]));
                 }
                 set {
                     this[this.tableSP_VisualizarRedaccionCliente.ConduceColumn] = value;
@@ -5356,15 +5357,20 @@ namespace Sistema_de_Gestión {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Capacidad_M3 {
+            public int Servicios {
                 get {
-                    try {
-                        return ((int)(this[this.tableSP_VisualizarRedaccionCliente.Capacidad_M3Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Capacidad_M3\' de la tabla \'SP_VisualizarRedaccionCliente\'" +
-                                " es DBNull.", e);
-                    }
+                    return ((int)(this[this.tableSP_VisualizarRedaccionCliente.ServiciosColumn]));
+                }
+                set {
+                    this[this.tableSP_VisualizarRedaccionCliente.ServiciosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal Capacidad_M3 {
+                get {
+                    return ((decimal)(this[this.tableSP_VisualizarRedaccionCliente.Capacidad_M3Column]));
                 }
                 set {
                     this[this.tableSP_VisualizarRedaccionCliente.Capacidad_M3Column] = value;
@@ -5384,32 +5390,9 @@ namespace Sistema_de_Gestión {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Cantidad {
+            public decimal M3_Total {
                 get {
-                    try {
-                        return ((int)(this[this.tableSP_VisualizarRedaccionCliente.CantidadColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Cantidad\' de la tabla \'SP_VisualizarRedaccionCliente\' es " +
-                                "DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSP_VisualizarRedaccionCliente.CantidadColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int M3_Total {
-                get {
-                    try {
-                        return ((int)(this[this.tableSP_VisualizarRedaccionCliente.M3_TotalColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'M3_Total\' de la tabla \'SP_VisualizarRedaccionCliente\' es " +
-                                "DBNull.", e);
-                    }
+                    return ((decimal)(this[this.tableSP_VisualizarRedaccionCliente.M3_TotalColumn]));
                 }
                 set {
                     this[this.tableSP_VisualizarRedaccionCliente.M3_TotalColumn] = value;
@@ -5420,13 +5403,7 @@ namespace Sistema_de_Gestión {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public decimal Precio {
                 get {
-                    try {
-                        return ((decimal)(this[this.tableSP_VisualizarRedaccionCliente.PrecioColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Precio\' de la tabla \'SP_VisualizarRedaccionCliente\' es DB" +
-                                "Null.", e);
-                    }
+                    return ((decimal)(this[this.tableSP_VisualizarRedaccionCliente.PrecioColumn]));
                 }
                 set {
                     this[this.tableSP_VisualizarRedaccionCliente.PrecioColumn] = value;
@@ -5435,60 +5412,9 @@ namespace Sistema_de_Gestión {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal SubTotal {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableSP_VisualizarRedaccionCliente.SubTotalColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'SubTotal\' de la tabla \'SP_VisualizarRedaccionCliente\' es " +
-                                "DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSP_VisualizarRedaccionCliente.SubTotalColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int ID {
-                get {
-                    return ((int)(this[this.tableSP_VisualizarRedaccionCliente.IDColumn]));
-                }
-                set {
-                    this[this.tableSP_VisualizarRedaccionCliente.IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal ITBIS {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableSP_VisualizarRedaccionCliente.ITBISColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ITBIS\' de la tabla \'SP_VisualizarRedaccionCliente\' es DBN" +
-                                "ull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSP_VisualizarRedaccionCliente.ITBISColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public decimal Total {
                 get {
-                    try {
-                        return ((decimal)(this[this.tableSP_VisualizarRedaccionCliente.TotalColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Total\' de la tabla \'SP_VisualizarRedaccionCliente\' es DBN" +
-                                "ull.", e);
-                    }
+                    return ((decimal)(this[this.tableSP_VisualizarRedaccionCliente.TotalColumn]));
                 }
                 set {
                     this[this.tableSP_VisualizarRedaccionCliente.TotalColumn] = value;
@@ -5509,18 +5435,6 @@ namespace Sistema_de_Gestión {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsRNCNull() {
-                return this.IsNull(this.tableSP_VisualizarRedaccionCliente.RNCColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetRNCNull() {
-                this[this.tableSP_VisualizarRedaccionCliente.RNCColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsProyectoNull() {
                 return this.IsNull(this.tableSP_VisualizarRedaccionCliente.ProyectoColumn);
             }
@@ -5533,110 +5447,38 @@ namespace Sistema_de_Gestión {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsFechaNull() {
-                return this.IsNull(this.tableSP_VisualizarRedaccionCliente.FechaColumn);
+            public bool IsRNCNull() {
+                return this.IsNull(this.tableSP_VisualizarRedaccionCliente.RNCColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetFechaNull() {
-                this[this.tableSP_VisualizarRedaccionCliente.FechaColumn] = global::System.Convert.DBNull;
+            public void SetRNCNull() {
+                this[this.tableSP_VisualizarRedaccionCliente.RNCColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsConduceNull() {
-                return this.IsNull(this.tableSP_VisualizarRedaccionCliente.ConduceColumn);
+            public bool IsContactoNull() {
+                return this.IsNull(this.tableSP_VisualizarRedaccionCliente.ContactoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetConduceNull() {
-                this[this.tableSP_VisualizarRedaccionCliente.ConduceColumn] = global::System.Convert.DBNull;
+            public void SetContactoNull() {
+                this[this.tableSP_VisualizarRedaccionCliente.ContactoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsCapacidad_M3Null() {
-                return this.IsNull(this.tableSP_VisualizarRedaccionCliente.Capacidad_M3Column);
+            public bool IsCodigoNull() {
+                return this.IsNull(this.tableSP_VisualizarRedaccionCliente.CodigoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetCapacidad_M3Null() {
-                this[this.tableSP_VisualizarRedaccionCliente.Capacidad_M3Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsCantidadNull() {
-                return this.IsNull(this.tableSP_VisualizarRedaccionCliente.CantidadColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetCantidadNull() {
-                this[this.tableSP_VisualizarRedaccionCliente.CantidadColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsM3_TotalNull() {
-                return this.IsNull(this.tableSP_VisualizarRedaccionCliente.M3_TotalColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetM3_TotalNull() {
-                this[this.tableSP_VisualizarRedaccionCliente.M3_TotalColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPrecioNull() {
-                return this.IsNull(this.tableSP_VisualizarRedaccionCliente.PrecioColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPrecioNull() {
-                this[this.tableSP_VisualizarRedaccionCliente.PrecioColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsSubTotalNull() {
-                return this.IsNull(this.tableSP_VisualizarRedaccionCliente.SubTotalColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetSubTotalNull() {
-                this[this.tableSP_VisualizarRedaccionCliente.SubTotalColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsITBISNull() {
-                return this.IsNull(this.tableSP_VisualizarRedaccionCliente.ITBISColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetITBISNull() {
-                this[this.tableSP_VisualizarRedaccionCliente.ITBISColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsTotalNull() {
-                return this.IsNull(this.tableSP_VisualizarRedaccionCliente.TotalColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetTotalNull() {
-                this[this.tableSP_VisualizarRedaccionCliente.TotalColumn] = global::System.Convert.DBNull;
+            public void SetCodigoNull() {
+                this[this.tableSP_VisualizarRedaccionCliente.CodigoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -7143,20 +6985,19 @@ namespace Sistema_de_Gestión.DSReportesTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "SP_VisualizarRedaccionCliente";
             tableMapping.ColumnMappings.Add("Empresa", "Empresa");
-            tableMapping.ColumnMappings.Add("RNC", "RNC");
             tableMapping.ColumnMappings.Add("Proyecto", "Proyecto");
+            tableMapping.ColumnMappings.Add("RNC", "RNC");
+            tableMapping.ColumnMappings.Add("Contacto", "Contacto");
+            tableMapping.ColumnMappings.Add("Codigo", "Codigo");
             tableMapping.ColumnMappings.Add("Fecha", "Fecha");
             tableMapping.ColumnMappings.Add("Placa", "Placa");
             tableMapping.ColumnMappings.Add("Conduce", "Conduce");
             tableMapping.ColumnMappings.Add("Producto", "Producto");
+            tableMapping.ColumnMappings.Add("Servicios", "Servicios");
             tableMapping.ColumnMappings.Add("Capacidad_M3", "Capacidad_M3");
             tableMapping.ColumnMappings.Add("Medida", "Medida");
-            tableMapping.ColumnMappings.Add("Cantidad", "Cantidad");
             tableMapping.ColumnMappings.Add("M3_Total", "M3_Total");
             tableMapping.ColumnMappings.Add("Precio", "Precio");
-            tableMapping.ColumnMappings.Add("SubTotal", "SubTotal");
-            tableMapping.ColumnMappings.Add("ID", "ID");
-            tableMapping.ColumnMappings.Add("ITBIS", "ITBIS");
             tableMapping.ColumnMappings.Add("Total", "Total");
             this._adapter.TableMappings.Add(tableMapping);
         }

@@ -190,8 +190,10 @@ namespace Sistema_de_Gestión.Presentacion
                         if (!string.IsNullOrEmpty(txtConduce.Text) && txtConduce.Text.Length == 5)
                         {
                             PedidosModel.CantidadChofer = (int)UDViajes.Value;
+                            PedidosModel.Placa = txtPlaca.Text;
+                            
 
-                            int Fila = (int)dgvFactura.SelectedRows[0].Cells["IDProducto"].Value;
+                            int Fila = dgvFactura.SelectedRows[0].Index + 1;
                             PM.Conduce = int.Parse(txtConduce.Text);
                             PM.IDChofer = (int)cboChofer.SelectedValue;
                             PM.IDProducto = (int)dgvFactura.SelectedRows[0].Cells["IDProducto"].Value;
@@ -199,10 +201,12 @@ namespace Sistema_de_Gestión.Presentacion
                             PM.IDMedida = (int)dgvFactura.SelectedRows[0].Cells["IDMedida"].Value;
                             PM.IDVehiculo = (int)cboVehiculos.SelectedValue;
                             PM.capacidad = int.Parse(txtCapacidad.Text);
+                           
 
 
                             PM.AgregarChoferFactura(dgvChoferes, Fila, PM.Conduce, PM.IDChofer, PM.IDVehiculo,
-                                PM.IDProducto, PM.IDMedida, PM.IDFactura, PedidosModel.CantidadChofer, PM.capacidad);
+                                PM.IDProducto, PM.IDMedida, PM.IDFactura, PedidosModel.CantidadChofer, PM.capacidad,
+                                PedidosModel.Placa);
 
                             int NuevaEntrada = dgvListaChoferes.Rows.Add();
                             dgvListaChoferes.Rows[NuevaEntrada].Cells["clChofer"].Value = cboChofer.Text;
@@ -212,9 +216,11 @@ namespace Sistema_de_Gestión.Presentacion
                             dgvListaChoferes.Rows[NuevaEntrada].Cells["clFactura"].Value = txtNumPedido.Text;
                             dgvListaChoferes.Rows[NuevaEntrada].Cells["clMedida"].Value = cboMedida.Text;
                             dgvListaChoferes.Rows[NuevaEntrada].Cells["clCantidad"].Value = dgvFactura.SelectedRows[0].Cells["Cantidad"].Value;
-                            dgvListaChoferes.Rows[NuevaEntrada].Cells["clNum"].Value = NuevaEntrada + 1;
+                            dgvListaChoferes.Rows[NuevaEntrada].Cells["clNum"].Value = dgvFactura.SelectedRows[0].Index + 1;
                             dgvListaChoferes.Rows[NuevaEntrada].Cells["clCantidad"].Value = PedidosModel.CantidadChofer;
                             dgvListaChoferes.Rows[NuevaEntrada].Cells["Capacidad"].Value = txtCapacidad.Text;
+                            dgvListaChoferes.Rows[NuevaEntrada].Cells["clsPlaca"].Value = PedidosModel.Placa;
+
 
 
                             //Agregar conduce a la descripcion del producto seleccionado
@@ -297,7 +303,7 @@ namespace Sistema_de_Gestión.Presentacion
 
                 if (PM.InsertarPedido(PM.IDCliente,PM.IDConduce,PM.EstatusPedido,decimal.Parse(txtSubTotal.Text),
                     decimal.Parse(TxtTotalGeneral.Text),decimal.Parse(txtITBIS.Text), decimal.Parse(txtDesc.Text),
-                    dgvFactura,dgvChoferes))
+                    dgvFactura,dgvChoferes,dgvListaChoferes))
                 {
                     MessageBox.Show("Se ha registrado el pedido correctamente", "Registro Pedidos", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);

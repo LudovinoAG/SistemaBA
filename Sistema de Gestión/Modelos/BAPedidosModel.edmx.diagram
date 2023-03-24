@@ -8,8 +8,9 @@
         <EntityTypeShape EntityType="BAPedidosModel.VW_VerUltimoNumeroPedido" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="BAPedidosModel.VW_EmpleadosFactura" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="BAPedidosModel.VW_ListarVehiculos" Width="2.125" PointX="1.125" PointY="2.625" />
-        <EntityTypeShape EntityType="BAPedidosModel.VW_ListarMedidas" Width="1.5" PointX="4.375" PointY="3.75" />
+        <EntityTypeShape EntityType="BAPedidosModel.VW_ListarMedidas" Width="1.5" PointX="3.375" PointY="2.75" />
         <EntityTypeShape EntityType="BAPedidosModel.VW_ProductosFactura" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BAPedidosModel.VW_VerUltimoID_Detalles_Pedidos" Width="1.5" PointX="5.125" PointY="3" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

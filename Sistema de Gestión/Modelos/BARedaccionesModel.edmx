@@ -5,6 +5,18 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BARedaccionesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="SP_InsertarRedaccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="placa" Type="varchar" Mode="In" />
+          <Parameter Name="conduce" Type="int" Mode="In" />
+          <Parameter Name="producto" Type="varchar" Mode="In" />
+          <Parameter Name="servicios" Type="int" Mode="In" />
+          <Parameter Name="capacidad_m3" Type="numeric" Mode="In" />
+          <Parameter Name="medida" Type="varchar" Mode="In" />
+          <Parameter Name="m3_total" Type="numeric" Mode="In" />
+          <Parameter Name="precio" Type="money" Mode="In" />
+          <Parameter Name="total_pedido" Type="money" Mode="In" />
+          <Parameter Name="id_cliente" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_VerConducesPedidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IDPedido" Type="int" Mode="In" />
         </Function>
@@ -27,7 +39,19 @@
           <Parameter Name="IDPedido" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_VerRedaccionClienteID" ReturnType="Collection(BARedaccionesModel.SP_VerRedaccionClienteID_Result)">
-            <Parameter Name="IDCliente" Mode="In" Type="Int32" />
+          <Parameter Name="IDCliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertarRedaccion">
+            <Parameter Name="placa" Mode="In" Type="String" />
+            <Parameter Name="conduce" Mode="In" Type="Int32" />
+            <Parameter Name="producto" Mode="In" Type="String" />
+            <Parameter Name="servicios" Mode="In" Type="Int32" />
+            <Parameter Name="capacidad_m3" Mode="In" Type="Decimal" />
+            <Parameter Name="medida" Mode="In" Type="String" />
+            <Parameter Name="m3_total" Mode="In" Type="Decimal" />
+            <Parameter Name="precio" Mode="In" Type="Decimal" />
+            <Parameter Name="total_pedido" Mode="In" Type="Decimal" />
+            <Parameter Name="id_cliente" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_VerDetalleRedaccion_Result">
@@ -114,6 +138,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_InsertarRedaccion" FunctionName="BARedaccionesModel.Store.SP_InsertarRedaccion" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

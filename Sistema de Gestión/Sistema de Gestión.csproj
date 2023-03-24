@@ -434,6 +434,9 @@
     <Compile Include="Modelos\VW_VerRolesUsuario.cs">
       <DependentUpon>BALogin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\VW_VerUltimoID_Detalles_Pedidos.cs">
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\VW_VerUltimoNumeroCotizacion.cs">
       <DependentUpon>BACotizacionesModel.tt</DependentUpon>
     </Compile>

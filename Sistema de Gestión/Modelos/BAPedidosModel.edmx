@@ -56,6 +56,15 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ProductosFactura' no ti
           <Property Name="Precio" Type="money" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoID_Detalles_Pedidos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_VerUltimoID_Detalles_Pedidos">
+          <Key>
+            <PropertyRef Name="id_DetallesPedido" />
+          </Key>
+          <Property Name="UltimoID_Detalles" Type="numeric" Precision="38" Scale="0" />
+          <Property Name="id_DetallesPedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="VW_VerUltimoNumeroPedido">
           <Key>
@@ -76,20 +85,25 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Parameter Name="CantidadViajes" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_InsertarConducesPedidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Cliente" Type="int" Mode="In" />
           <Parameter Name="id_Empleado" Type="int" Mode="In" />
           <Parameter Name="num_Conduce" Type="int" Mode="In" />
           <Parameter Name="id_producto" Type="int" Mode="In" />
           <Parameter Name="id_vehiculo" Type="int" Mode="In" />
           <Parameter Name="id_medida" Type="int" Mode="In" />
           <Parameter Name="CantidadViajes" Type="int" Mode="In" />
+          <Parameter Name="idCount" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_InsertarDetallesPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="detalles" Type="int" Mode="In" />
+          <Parameter Name="idCliente" Type="int" Mode="In" />
           <Parameter Name="idProducto" Type="int" Mode="In" />
           <Parameter Name="id_Medida" Type="int" Mode="In" />
           <Parameter Name="cantidad" Type="int" Mode="In" />
           <Parameter Name="precio" Type="money" Mode="In" />
           <Parameter Name="subtotal" Type="money" Mode="In" />
           <Parameter Name="descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="conduce" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_InsertarPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idCliente" Type="int" Mode="In" />
@@ -130,6 +144,12 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
     [VW_ProductosFactura].[Precio] AS [Precio]
     FROM [dbo].[VW_ProductosFactura] AS [VW_ProductosFactura]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="VW_VerUltimoID_Detalles_Pedidos" EntityType="Self.VW_VerUltimoID_Detalles_Pedidos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_VerUltimoID_Detalles_Pedidos].[UltimoID_Detalles] AS [UltimoID_Detalles], 
+    [VW_VerUltimoID_Detalles_Pedidos].[id_DetallesPedido] AS [id_DetallesPedido]
+    FROM [dbo].[VW_VerUltimoID_Detalles_Pedidos] AS [VW_VerUltimoID_Detalles_Pedidos]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="VW_VerUltimoNumeroPedido" EntityType="Self.VW_VerUltimoNumeroPedido" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [VW_VerUltimoNumeroPedido].[UltimoNumeroPedido] AS [UltimoNumeroPedido], 
@@ -159,20 +179,14 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
             <Parameter Name="CantidadViajes" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_InsertarConducesPedidos">
+            <Parameter Name="id_Cliente" Mode="In" Type="Int32" />
             <Parameter Name="id_Empleado" Mode="In" Type="Int32" />
             <Parameter Name="num_Conduce" Mode="In" Type="Int32" />
             <Parameter Name="id_producto" Mode="In" Type="Int32" />
             <Parameter Name="id_vehiculo" Mode="In" Type="Int32" />
             <Parameter Name="id_medida" Mode="In" Type="Int32" />
             <Parameter Name="CantidadViajes" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_InsertarDetallesPedido">
-            <Parameter Name="idProducto" Mode="In" Type="Int32" />
-            <Parameter Name="id_Medida" Mode="In" Type="Int32" />
-            <Parameter Name="cantidad" Mode="In" Type="Int32" />
-            <Parameter Name="precio" Mode="In" Type="Decimal" />
-            <Parameter Name="subtotal" Mode="In" Type="Decimal" />
-            <Parameter Name="descripcion" Mode="In" Type="String" />
+            <Parameter Name="idCount" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_InsertarPedido">
             <Parameter Name="idCliente" Mode="In" Type="Int32" />
@@ -182,6 +196,18 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
             <Parameter Name="ITBISPedido" Mode="In" Type="Decimal" />
             <Parameter Name="DescuentoPedido" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="SP_InsertarDetallesPedido">
+            <Parameter Name="detalles" Mode="In" Type="Int32" />
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
+            <Parameter Name="id_Medida" Mode="In" Type="Int32" />
+            <Parameter Name="cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="precio" Mode="In" Type="Decimal" />
+            <Parameter Name="subtotal" Mode="In" Type="Decimal" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+            <Parameter Name="conduce" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="VW_VerUltimoID_Detalles_Pedidos" EntityType="BAPedidosModel.VW_VerUltimoID_Detalles_Pedidos" />
         </EntityContainer>
         <ComplexType Name="SP_BuscarClienteCodigo_Result">
           <Property Type="String" Name="Proyecto" Nullable="true" MaxLength="60" />
@@ -242,6 +268,13 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Property Name="Producto" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="Precio" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="VW_VerUltimoID_Detalles_Pedidos">
+          <Key>
+            <PropertyRef Name="id_DetallesPedido" />
+          </Key>
+          <Property Name="UltimoID_Detalles" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="id_DetallesPedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -312,8 +345,16 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_InsertarConduces" FunctionName="BAPedidosModel.Store.SP_InsertarConduces" />
           <FunctionImportMapping FunctionImportName="SP_InsertarConducesPedidos" FunctionName="BAPedidosModel.Store.SP_InsertarConducesPedidos" />
-          <FunctionImportMapping FunctionImportName="SP_InsertarDetallesPedido" FunctionName="BAPedidosModel.Store.SP_InsertarDetallesPedido" />
           <FunctionImportMapping FunctionImportName="SP_InsertarPedido" FunctionName="BAPedidosModel.Store.SP_InsertarPedido" />
+          <FunctionImportMapping FunctionImportName="SP_InsertarDetallesPedido" FunctionName="BAPedidosModel.Store.SP_InsertarDetallesPedido" />
+          <EntitySetMapping Name="VW_VerUltimoID_Detalles_Pedidos">
+            <EntityTypeMapping TypeName="BAPedidosModel.VW_VerUltimoID_Detalles_Pedidos">
+              <MappingFragment StoreEntitySet="VW_VerUltimoID_Detalles_Pedidos">
+                <ScalarProperty Name="id_DetallesPedido" ColumnName="id_DetallesPedido" />
+                <ScalarProperty Name="UltimoID_Detalles" ColumnName="UltimoID_Detalles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
