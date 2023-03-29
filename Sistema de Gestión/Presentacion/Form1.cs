@@ -232,5 +232,15 @@ namespace Sistema_de_Gestión
                 frmPedidosReportes.Show();
             }
         }
+
+        private void mnuReportesFacturasProforma_Click(object sender, EventArgs e)
+        {
+            if (!FC.ValidarVentanaAbierta("frmVerProforma"))
+            {
+                frmVerProforma frmVerProforma = new frmVerProforma();
+                frmVerProforma.MdiParent = this;
+                frmVerProforma.Show();
+            }
+        }
     }
 }

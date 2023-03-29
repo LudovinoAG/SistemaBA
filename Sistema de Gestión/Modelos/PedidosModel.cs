@@ -37,6 +37,14 @@ namespace Sistema_de_Gestión.Modelos
 
         public int CountPedidos { get; set; }
 
+        public static string Empresa { get; set; }
+        public static string Rnc { get; set; }
+        public static string NombreContacto { get; set; }
+        public static string TelContacto { get; set; }
+        public static string Direccion { get; set; }
+        public static string Correo { get; set; }
+        public static string Condiciones { get; set; }
+
 
         public void AgregarProducto(int cantidad, int IDProducto, string medida, int IDMedida, string producto, string descripcion, decimal costo,
            decimal subtotal, DataGridView dgvFacturar)
@@ -178,10 +186,13 @@ namespace Sistema_de_Gestión.Modelos
                 using (BAPedidosEntities PM = new BAPedidosEntities())
                 {
                     PM.SP_InsertarPedido(IDCliente, idEstatusPedido, SubTotal, totalPedido, 
-                        ITBISPedido,DescuentoPedido);
+                        ITBISPedido,DescuentoPedido,Condiciones);
 
-                        //int RegPedidos = FilaPedidos.Index + 1;
-                        int totalPedidos = dgvFactura.Rows.Count;
+                    //PM.SP_InsertarFacturaProforma(IDCliente, Empresa, Rnc, NombreContacto, TelContacto,
+                    //    Direccion, Correo, Condiciones);
+
+                    //int RegPedidos = FilaPedidos.Index + 1;
+                    int totalPedidos = dgvFactura.Rows.Count;
                         int totalConduces = dgvChoferes.Rows.Count;
 
 
@@ -217,6 +228,10 @@ namespace Sistema_de_Gestión.Modelos
 
                                     PM.SP_InsertarConducesPedidos(IDCliente, IDEmpleado, NumConduce, IDProducto, IDVehiculo, IDMedida,
                                         CantidadViajesPedido, RegConduces);
+
+                                    //PM.SP_InsertarDetalleProforma(IDCliente,IDProducto, IDMedida, CantidadProducto,PrecioPedido, 
+                                    //    SubTotalFilas);
+
 
                                     using(BARedaccionesEntities RM = new BARedaccionesEntities())
                                     {

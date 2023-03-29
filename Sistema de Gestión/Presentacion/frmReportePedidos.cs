@@ -50,6 +50,8 @@ namespace Sistema_de_Gestión.Presentacion
         private void dgvPedidos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             RedaccionesModel.IDPedido = (int)dgvPedidos.SelectedRows[0].Cells["Num_Pedido"].Value;
+            ProformaFactura.FechaInicio = dtpFechaInicio.Value;
+            ProformaFactura.FechaFin = dtpFechaFin.Value;
             dgvDetallesPedidos.DataSource = null;
             dgvDetallesPedidos.DataSource = RM.VerDetallesRedaccion(RedaccionesModel.IDPedido);
 
@@ -92,5 +94,6 @@ namespace Sistema_de_Gestión.Presentacion
             //VistaRedaccion = NumFactura;
             VistaRedaccion.Show();
         }
+
     }
 }

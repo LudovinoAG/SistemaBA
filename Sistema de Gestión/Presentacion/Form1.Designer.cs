@@ -44,11 +44,12 @@ namespace Sistema_de_Gestión
             this.facturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFacturaPendientes = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuVerFacturasGeneral = new System.Windows.Forms.ToolStripMenuItem();
+            this.redaccionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPrincipalConfiguracion = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPrincipalAcercaDe = new System.Windows.Forms.ToolStripMenuItem();
             this.BarEstado = new System.Windows.Forms.StatusStrip();
             this.toolUsuario = new System.Windows.Forms.ToolStripStatusLabel();
-            this.redaccionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuReportesFacturasProforma = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPrincipal.SuspendLayout();
             this.BarEstado.SuspendLayout();
             this.SuspendLayout();
@@ -183,7 +184,8 @@ namespace Sistema_de_Gestión
             // 
             this.facturasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFacturaPendientes,
-            this.mnuVerFacturasGeneral});
+            this.mnuVerFacturasGeneral,
+            this.mnuReportesFacturasProforma});
             this.facturasToolStripMenuItem.Name = "facturasToolStripMenuItem";
             this.facturasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.facturasToolStripMenuItem.Text = "Facturas";
@@ -203,6 +205,13 @@ namespace Sistema_de_Gestión
             this.mnuVerFacturasGeneral.Size = new System.Drawing.Size(230, 30);
             this.mnuVerFacturasGeneral.Text = "Buscar por filtro";
             this.mnuVerFacturasGeneral.Click += new System.EventHandler(this.mnuVerFacturasGeneral_Click);
+            // 
+            // redaccionesToolStripMenuItem
+            // 
+            this.redaccionesToolStripMenuItem.Name = "redaccionesToolStripMenuItem";
+            this.redaccionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.redaccionesToolStripMenuItem.Text = "Redacciones";
+            this.redaccionesToolStripMenuItem.Click += new System.EventHandler(this.redaccionesToolStripMenuItem_Click);
             // 
             // mnuPrincipalConfiguracion
             // 
@@ -247,12 +256,12 @@ namespace Sistema_de_Gestión
             this.toolUsuario.ToolTipText = "Cambiar contraseña";
             this.toolUsuario.Click += new System.EventHandler(this.toolUsuario_Click);
             // 
-            // redaccionesToolStripMenuItem
+            // mnuReportesFacturasProforma
             // 
-            this.redaccionesToolStripMenuItem.Name = "redaccionesToolStripMenuItem";
-            this.redaccionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.redaccionesToolStripMenuItem.Text = "Redacciones";
-            this.redaccionesToolStripMenuItem.Click += new System.EventHandler(this.redaccionesToolStripMenuItem_Click);
+            this.mnuReportesFacturasProforma.Name = "mnuReportesFacturasProforma";
+            this.mnuReportesFacturasProforma.Size = new System.Drawing.Size(230, 30);
+            this.mnuReportesFacturasProforma.Text = "Proforma";
+            this.mnuReportesFacturasProforma.Click += new System.EventHandler(this.mnuReportesFacturasProforma_Click);
             // 
             // frmPrincipal
             // 
@@ -302,6 +311,7 @@ namespace Sistema_de_Gestión
         private System.Windows.Forms.ToolStripMenuItem mnuPrincipalAcercaDe;
         private System.Windows.Forms.ToolStripMenuItem mnuPrincipalPedidos;
         private System.Windows.Forms.ToolStripMenuItem redaccionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuReportesFacturasProforma;
     }
 }
 

@@ -60,6 +60,8 @@ namespace Sistema_de_Gestión.Presentacion
             this.label9 = new System.Windows.Forms.Label();
             this.cmdBuscarPedido = new System.Windows.Forms.Button();
             this.cmdVerRedaccion = new System.Windows.Forms.Button();
+            this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
             this.gbCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallesPedidos)).BeginInit();
@@ -405,11 +407,33 @@ namespace Sistema_de_Gestión.Presentacion
             this.cmdVerRedaccion.UseVisualStyleBackColor = false;
             this.cmdVerRedaccion.Click += new System.EventHandler(this.cmdVerRedaccion_Click);
             // 
+            // dtpFechaInicio
+            // 
+            this.dtpFechaInicio.CustomFormat = "yyyy/mm/dd";
+            this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaInicio.Location = new System.Drawing.Point(1232, 36);
+            this.dtpFechaInicio.Name = "dtpFechaInicio";
+            this.dtpFechaInicio.Size = new System.Drawing.Size(105, 20);
+            this.dtpFechaInicio.TabIndex = 90;
+            this.dtpFechaInicio.Value = new System.DateTime(2023, 3, 27, 0, 0, 0, 0);
+            // 
+            // dtpFechaFin
+            // 
+            this.dtpFechaFin.CustomFormat = "yyyy/mm/dd";
+            this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaFin.Location = new System.Drawing.Point(1232, 62);
+            this.dtpFechaFin.Name = "dtpFechaFin";
+            this.dtpFechaFin.Size = new System.Drawing.Size(105, 20);
+            this.dtpFechaFin.TabIndex = 91;
+            this.dtpFechaFin.Value = new System.DateTime(2023, 3, 27, 0, 0, 0, 0);
+            // 
             // frmRedaccionesClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.dtpFechaFin);
+            this.Controls.Add(this.dtpFechaInicio);
             this.Controls.Add(this.cmdVerRedaccion);
             this.Controls.Add(this.cmdBuscarPedido);
             this.Controls.Add(this.dgvConducePedidos);
@@ -458,5 +482,7 @@ namespace Sistema_de_Gestión.Presentacion
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button cmdBuscarPedido;
         private System.Windows.Forms.Button cmdVerRedaccion;
+        private System.Windows.Forms.DateTimePicker dtpFechaInicio;
+        private System.Windows.Forms.DateTimePicker dtpFechaFin;
     }
 }

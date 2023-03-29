@@ -96,6 +96,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CRVConducesProforma.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRVConducesProforma.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CRVFactura.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -106,6 +112,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CRVCotizacion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CRVProforma.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRVProforma.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CRVRedacciones.cs">
@@ -319,14 +331,24 @@
     <Compile Include="Modelos\IFormularios.cs" />
     <Compile Include="Modelos\PedidosModel.cs" />
     <Compile Include="Modelos\Productos.cs" />
+    <Compile Include="Modelos\ProformaFactura.cs" />
     <Compile Include="Modelos\Proveedores.cs" />
     <Compile Include="Modelos\RedaccionesModel.cs" />
     <Compile Include="Modelos\ReportesModel.cs" />
     <Compile Include="Modelos\SP_BuscarClienteCodigo_Result.cs">
       <DependentUpon>BAPedidosModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\SP_BuscarClienteProforma_Result.cs">
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\SP_ObtenerUsuario_Result.cs">
       <DependentUpon>BALogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_ProformaBuscarConducesPorPedido_Result.cs">
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_ProformaBuscarPedidosPendientesCliente_Result.cs">
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\SP_VerConducesPedidos_Result.cs">
       <DependentUpon>BARedaccionesModel.tt</DependentUpon>
@@ -342,6 +364,12 @@
     </Compile>
     <Compile Include="Modelos\SP_VerRedaccionClienteID_Result.cs">
       <DependentUpon>BARedaccionesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_ViewDetailsPreform_Result.cs">
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_ViewQueryPreform_Result.cs">
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VehiculosModel.cs" />
     <Compile Include="Modelos\VW_EmpleadosFactura.cs">
@@ -582,6 +610,12 @@
     <Compile Include="Presentacion\frmReportes.Designer.cs">
       <DependentUpon>frmReportes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\frmVerProforma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmVerProforma.Designer.cs">
+      <DependentUpon>frmVerProforma.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\frmViajesChofer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -599,6 +633,12 @@
     </Compile>
     <Compile Include="Presentacion\frmVistaFactura.Designer.cs">
       <DependentUpon>frmVistaFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmVistaProforma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmVistaProforma.Designer.cs">
+      <DependentUpon>frmVistaProforma.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\frmVistaRedacciones.cs">
       <SubType>Form</SubType>
@@ -652,6 +692,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecursosBA.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CRVConducesProforma.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRVConducesProforma.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CRVFactura.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CRVFactura.cs</LastGenOutput>
@@ -659,6 +703,10 @@
     <EmbeddedResource Include="CRVCotizacion.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CRVCotizacion.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRVProforma.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRVProforma.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="CRVRedacciones.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -734,6 +782,9 @@
     <EmbeddedResource Include="Presentacion\frmReportes.resx">
       <DependentUpon>frmReportes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmVerProforma.resx">
+      <DependentUpon>frmVerProforma.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmViajesChofer.resx">
       <DependentUpon>frmViajesChofer.cs</DependentUpon>
     </EmbeddedResource>
@@ -742,6 +793,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmVistaFactura.resx">
       <DependentUpon>frmVistaFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmVistaProforma.resx">
+      <DependentUpon>frmVistaProforma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmVistaRedacciones.resx">
       <DependentUpon>frmVistaRedacciones.cs</DependentUpon>

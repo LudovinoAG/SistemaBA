@@ -29,10 +29,10 @@ namespace Sistema_de_Gestión.Presentacion
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPedidos));
             this.txtNumPedido = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -110,6 +110,11 @@ namespace Sistema_de_Gestión.Presentacion
             this.cmdBuscarCliente = new System.Windows.Forms.Button();
             this.pbFondo = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.groupOpt = new System.Windows.Forms.GroupBox();
+            this.rbTransferencia = new System.Windows.Forms.RadioButton();
+            this.rdbCredito = new System.Windows.Forms.RadioButton();
+            this.rdbCheque = new System.Windows.Forms.RadioButton();
+            this.rdbEfectivo = new System.Windows.Forms.RadioButton();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Conduce = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Chofer = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -121,6 +126,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.clsCapacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDConduce = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Placa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CondicionPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clChofer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clConduce = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -131,6 +137,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.clCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clsPlaca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clsCondicionPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelChofer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UDViajes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -142,6 +149,7 @@ namespace Sistema_de_Gestión.Presentacion
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFondo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.groupOpt.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtNumPedido
@@ -665,14 +673,14 @@ namespace Sistema_de_Gestión.Presentacion
             this.dgvFactura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFactura.BackgroundColor = System.Drawing.Color.White;
             this.dgvFactura.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
             this.dgvFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFactura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cantidad,
@@ -684,21 +692,21 @@ namespace Sistema_de_Gestión.Presentacion
             this.Costo,
             this.SubTotal,
             this.Accion});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Khaki;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFactura.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFactura.DefaultCellStyle = dataGridViewCellStyle27;
             this.dgvFactura.Location = new System.Drawing.Point(76, 304);
             this.dgvFactura.MultiSelect = false;
             this.dgvFactura.Name = "dgvFactura";
             this.dgvFactura.ReadOnly = true;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            this.dgvFactura.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.Color.Black;
+            this.dgvFactura.RowsDefaultCellStyle = dataGridViewCellStyle28;
             this.dgvFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFactura.Size = new System.Drawing.Size(1288, 213);
             this.dgvFactura.TabIndex = 93;
@@ -786,10 +794,10 @@ namespace Sistema_de_Gestión.Presentacion
             // Accion
             // 
             this.Accion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.DarkRed;
-            this.Accion.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.DarkRed;
+            this.Accion.DefaultCellStyle = dataGridViewCellStyle26;
             this.Accion.HeaderText = "Fila";
             this.Accion.MinimumWidth = 100;
             this.Accion.Name = "Accion";
@@ -875,7 +883,8 @@ namespace Sistema_de_Gestión.Presentacion
             this.clCantidadChofer,
             this.clsCapacidad,
             this.IDConduce,
-            this.Placa});
+            this.Placa,
+            this.CondicionPago});
             this.dgvChoferes.Location = new System.Drawing.Point(7, 54);
             this.dgvChoferes.MultiSelect = false;
             this.dgvChoferes.Name = "dgvChoferes";
@@ -903,7 +912,8 @@ namespace Sistema_de_Gestión.Presentacion
             this.clMedida,
             this.clCantidad,
             this.Capacidad,
-            this.clsPlaca});
+            this.clsPlaca,
+            this.clsCondicionPago});
             this.dgvListaChoferes.Location = new System.Drawing.Point(7, 14);
             this.dgvListaChoferes.MultiSelect = false;
             this.dgvListaChoferes.Name = "dgvListaChoferes";
@@ -1104,6 +1114,65 @@ namespace Sistema_de_Gestión.Presentacion
             this.pictureBox3.TabIndex = 56;
             this.pictureBox3.TabStop = false;
             // 
+            // groupOpt
+            // 
+            this.groupOpt.Controls.Add(this.rbTransferencia);
+            this.groupOpt.Controls.Add(this.rdbCredito);
+            this.groupOpt.Controls.Add(this.rdbCheque);
+            this.groupOpt.Controls.Add(this.rdbEfectivo);
+            this.groupOpt.Location = new System.Drawing.Point(1026, 142);
+            this.groupOpt.Name = "groupOpt";
+            this.groupOpt.Size = new System.Drawing.Size(338, 62);
+            this.groupOpt.TabIndex = 129;
+            this.groupOpt.TabStop = false;
+            this.groupOpt.Text = "Condición de Pago:";
+            // 
+            // rbTransferencia
+            // 
+            this.rbTransferencia.AutoSize = true;
+            this.rbTransferencia.Location = new System.Drawing.Point(165, 25);
+            this.rbTransferencia.Name = "rbTransferencia";
+            this.rbTransferencia.Size = new System.Drawing.Size(90, 17);
+            this.rbTransferencia.TabIndex = 3;
+            this.rbTransferencia.Text = "Transferencia";
+            this.rbTransferencia.UseVisualStyleBackColor = true;
+            this.rbTransferencia.CheckedChanged += new System.EventHandler(this.rbTransferencia_CheckedChanged);
+            // 
+            // rdbCredito
+            // 
+            this.rdbCredito.AutoSize = true;
+            this.rdbCredito.Location = new System.Drawing.Point(267, 25);
+            this.rdbCredito.Name = "rdbCredito";
+            this.rdbCredito.Size = new System.Drawing.Size(58, 17);
+            this.rdbCredito.TabIndex = 2;
+            this.rdbCredito.Text = "Credito";
+            this.rdbCredito.UseVisualStyleBackColor = true;
+            this.rdbCredito.CheckedChanged += new System.EventHandler(this.rdbCredito_CheckedChanged);
+            // 
+            // rdbCheque
+            // 
+            this.rdbCheque.AutoSize = true;
+            this.rdbCheque.Location = new System.Drawing.Point(92, 25);
+            this.rdbCheque.Name = "rdbCheque";
+            this.rdbCheque.Size = new System.Drawing.Size(62, 17);
+            this.rdbCheque.TabIndex = 1;
+            this.rdbCheque.Text = "Cheque";
+            this.rdbCheque.UseVisualStyleBackColor = true;
+            this.rdbCheque.CheckedChanged += new System.EventHandler(this.rdbCheque_CheckedChanged);
+            // 
+            // rdbEfectivo
+            // 
+            this.rdbEfectivo.AutoSize = true;
+            this.rdbEfectivo.Checked = true;
+            this.rdbEfectivo.Location = new System.Drawing.Point(17, 25);
+            this.rdbEfectivo.Name = "rdbEfectivo";
+            this.rdbEfectivo.Size = new System.Drawing.Size(64, 17);
+            this.rdbEfectivo.TabIndex = 0;
+            this.rdbEfectivo.TabStop = true;
+            this.rdbEfectivo.Text = "Efectivo";
+            this.rdbEfectivo.UseVisualStyleBackColor = true;
+            this.rdbEfectivo.CheckedChanged += new System.EventHandler(this.rdbEfectivo_CheckedChanged);
+            // 
             // ID
             // 
             this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -1183,6 +1252,12 @@ namespace Sistema_de_Gestión.Presentacion
             this.Placa.Name = "Placa";
             this.Placa.ReadOnly = true;
             // 
+            // CondicionPago
+            // 
+            this.CondicionPago.HeaderText = "CondicicionPago";
+            this.CondicionPago.Name = "CondicionPago";
+            this.CondicionPago.ReadOnly = true;
+            // 
             // clNum
             // 
             this.clNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -1260,11 +1335,19 @@ namespace Sistema_de_Gestión.Presentacion
             this.clsPlaca.ReadOnly = true;
             this.clsPlaca.Width = 59;
             // 
+            // clsCondicionPago
+            // 
+            this.clsCondicionPago.HeaderText = "CondicionPago";
+            this.clsCondicionPago.Name = "clsCondicionPago";
+            this.clsCondicionPago.ReadOnly = true;
+            this.clsCondicionPago.Width = 112;
+            // 
             // frmPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 691);
+            this.Controls.Add(this.groupOpt);
             this.Controls.Add(this.CKITBIS);
             this.Controls.Add(this.TxtTotalGeneral);
             this.Controls.Add(this.txtDesc);
@@ -1330,6 +1413,8 @@ namespace Sistema_de_Gestión.Presentacion
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFondo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.groupOpt.ResumeLayout(false);
+            this.groupOpt.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1413,6 +1498,11 @@ namespace Sistema_de_Gestión.Presentacion
         private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubTotal;
         private System.Windows.Forms.DataGridViewButtonColumn Accion;
+        private System.Windows.Forms.GroupBox groupOpt;
+        private System.Windows.Forms.RadioButton rbTransferencia;
+        private System.Windows.Forms.RadioButton rdbCredito;
+        private System.Windows.Forms.RadioButton rdbCheque;
+        private System.Windows.Forms.RadioButton rdbEfectivo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Conduce;
         private System.Windows.Forms.DataGridViewTextBoxColumn Chofer;
@@ -1424,6 +1514,7 @@ namespace Sistema_de_Gestión.Presentacion
         private System.Windows.Forms.DataGridViewTextBoxColumn clsCapacidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDConduce;
         private System.Windows.Forms.DataGridViewTextBoxColumn Placa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CondicionPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn clNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn clChofer;
         private System.Windows.Forms.DataGridViewTextBoxColumn clConduce;
@@ -1434,5 +1525,6 @@ namespace Sistema_de_Gestión.Presentacion
         private System.Windows.Forms.DataGridViewTextBoxColumn clCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Capacidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn clsPlaca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clsCondicionPago;
     }
 }

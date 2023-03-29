@@ -109,35 +109,6 @@ namespace Sistema_de_Gestión.Modelos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarConducesPedidos", id_ClienteParameter, id_EmpleadoParameter, num_ConduceParameter, id_productoParameter, id_vehiculoParameter, id_medidaParameter, cantidadViajesParameter, idCountParameter);
         }
     
-        public virtual int SP_InsertarPedido(Nullable<int> idCliente, Nullable<int> idEstatusPedido, Nullable<decimal> subtotalPedido, Nullable<decimal> totalPedido, Nullable<decimal> iTBISPedido, Nullable<decimal> descuentoPedido)
-        {
-            var idClienteParameter = idCliente.HasValue ?
-                new ObjectParameter("idCliente", idCliente) :
-                new ObjectParameter("idCliente", typeof(int));
-    
-            var idEstatusPedidoParameter = idEstatusPedido.HasValue ?
-                new ObjectParameter("idEstatusPedido", idEstatusPedido) :
-                new ObjectParameter("idEstatusPedido", typeof(int));
-    
-            var subtotalPedidoParameter = subtotalPedido.HasValue ?
-                new ObjectParameter("SubtotalPedido", subtotalPedido) :
-                new ObjectParameter("SubtotalPedido", typeof(decimal));
-    
-            var totalPedidoParameter = totalPedido.HasValue ?
-                new ObjectParameter("totalPedido", totalPedido) :
-                new ObjectParameter("totalPedido", typeof(decimal));
-    
-            var iTBISPedidoParameter = iTBISPedido.HasValue ?
-                new ObjectParameter("ITBISPedido", iTBISPedido) :
-                new ObjectParameter("ITBISPedido", typeof(decimal));
-    
-            var descuentoPedidoParameter = descuentoPedido.HasValue ?
-                new ObjectParameter("DescuentoPedido", descuentoPedido) :
-                new ObjectParameter("DescuentoPedido", typeof(decimal));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarPedido", idClienteParameter, idEstatusPedidoParameter, subtotalPedidoParameter, totalPedidoParameter, iTBISPedidoParameter, descuentoPedidoParameter);
-        }
-    
         public virtual int SP_InsertarDetallesPedido(Nullable<int> detalles, Nullable<int> idCliente, Nullable<int> idProducto, Nullable<int> id_Medida, Nullable<int> cantidad, Nullable<decimal> precio, Nullable<decimal> subtotal, string descripcion, Nullable<int> conduce)
         {
             var detallesParameter = detalles.HasValue ?
@@ -177,6 +148,186 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("conduce", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarDetallesPedido", detallesParameter, idClienteParameter, idProductoParameter, id_MedidaParameter, cantidadParameter, precioParameter, subtotalParameter, descripcionParameter, conduceParameter);
+        }
+    
+        public virtual int SP_InsertarDetalleProforma(Nullable<int> id_Cliente, Nullable<int> id_producto, Nullable<int> id_medida, Nullable<double> cantidad, Nullable<decimal> costo, Nullable<decimal> subtotal)
+        {
+            var id_ClienteParameter = id_Cliente.HasValue ?
+                new ObjectParameter("id_Cliente", id_Cliente) :
+                new ObjectParameter("id_Cliente", typeof(int));
+    
+            var id_productoParameter = id_producto.HasValue ?
+                new ObjectParameter("id_producto", id_producto) :
+                new ObjectParameter("id_producto", typeof(int));
+    
+            var id_medidaParameter = id_medida.HasValue ?
+                new ObjectParameter("id_medida", id_medida) :
+                new ObjectParameter("id_medida", typeof(int));
+    
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("cantidad", cantidad) :
+                new ObjectParameter("cantidad", typeof(double));
+    
+            var costoParameter = costo.HasValue ?
+                new ObjectParameter("costo", costo) :
+                new ObjectParameter("costo", typeof(decimal));
+    
+            var subtotalParameter = subtotal.HasValue ?
+                new ObjectParameter("subtotal", subtotal) :
+                new ObjectParameter("subtotal", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarDetalleProforma", id_ClienteParameter, id_productoParameter, id_medidaParameter, cantidadParameter, costoParameter, subtotalParameter);
+        }
+    
+        public virtual int SP_InsertarFacturaProforma(Nullable<int> id_Cliente, string empresa, string rnc, string nombreContacto, string telContacto, string direccion, string correo, string condiciones, Nullable<decimal> itbis, Nullable<decimal> total)
+        {
+            var id_ClienteParameter = id_Cliente.HasValue ?
+                new ObjectParameter("id_Cliente", id_Cliente) :
+                new ObjectParameter("id_Cliente", typeof(int));
+    
+            var empresaParameter = empresa != null ?
+                new ObjectParameter("empresa", empresa) :
+                new ObjectParameter("empresa", typeof(string));
+    
+            var rncParameter = rnc != null ?
+                new ObjectParameter("rnc", rnc) :
+                new ObjectParameter("rnc", typeof(string));
+    
+            var nombreContactoParameter = nombreContacto != null ?
+                new ObjectParameter("nombreContacto", nombreContacto) :
+                new ObjectParameter("nombreContacto", typeof(string));
+    
+            var telContactoParameter = telContacto != null ?
+                new ObjectParameter("telContacto", telContacto) :
+                new ObjectParameter("telContacto", typeof(string));
+    
+            var direccionParameter = direccion != null ?
+                new ObjectParameter("direccion", direccion) :
+                new ObjectParameter("direccion", typeof(string));
+    
+            var correoParameter = correo != null ?
+                new ObjectParameter("correo", correo) :
+                new ObjectParameter("correo", typeof(string));
+    
+            var condicionesParameter = condiciones != null ?
+                new ObjectParameter("condiciones", condiciones) :
+                new ObjectParameter("condiciones", typeof(string));
+    
+            var itbisParameter = itbis.HasValue ?
+                new ObjectParameter("itbis", itbis) :
+                new ObjectParameter("itbis", typeof(decimal));
+    
+            var totalParameter = total.HasValue ?
+                new ObjectParameter("total", total) :
+                new ObjectParameter("total", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarFacturaProforma", id_ClienteParameter, empresaParameter, rncParameter, nombreContactoParameter, telContactoParameter, direccionParameter, correoParameter, condicionesParameter, itbisParameter, totalParameter);
+        }
+    
+        public virtual ObjectResult<SP_ViewDetailsPreform_Result> SP_ViewDetailsPreform(Nullable<int> id_Cliente)
+        {
+            var id_ClienteParameter = id_Cliente.HasValue ?
+                new ObjectParameter("id_Cliente", id_Cliente) :
+                new ObjectParameter("id_Cliente", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ViewDetailsPreform_Result>("SP_ViewDetailsPreform", id_ClienteParameter);
+        }
+    
+        public virtual ObjectResult<SP_ViewQueryPreform_Result> SP_ViewQueryPreform(Nullable<int> id_Cliente, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFin)
+        {
+            var id_ClienteParameter = id_Cliente.HasValue ?
+                new ObjectParameter("id_Cliente", id_Cliente) :
+                new ObjectParameter("id_Cliente", typeof(int));
+    
+            var fechaInicioParameter = fechaInicio.HasValue ?
+                new ObjectParameter("FechaInicio", fechaInicio) :
+                new ObjectParameter("FechaInicio", typeof(System.DateTime));
+    
+            var fechaFinParameter = fechaFin.HasValue ?
+                new ObjectParameter("FechaFin", fechaFin) :
+                new ObjectParameter("FechaFin", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ViewQueryPreform_Result>("SP_ViewQueryPreform", id_ClienteParameter, fechaInicioParameter, fechaFinParameter);
+        }
+    
+        public virtual int SP_InsertarPedido(Nullable<int> idCliente, Nullable<int> idEstatusPedido, Nullable<decimal> subtotalPedido, Nullable<decimal> totalPedido, Nullable<decimal> iTBISPedido, Nullable<decimal> descuentoPedido, string condicion)
+        {
+            var idClienteParameter = idCliente.HasValue ?
+                new ObjectParameter("idCliente", idCliente) :
+                new ObjectParameter("idCliente", typeof(int));
+    
+            var idEstatusPedidoParameter = idEstatusPedido.HasValue ?
+                new ObjectParameter("idEstatusPedido", idEstatusPedido) :
+                new ObjectParameter("idEstatusPedido", typeof(int));
+    
+            var subtotalPedidoParameter = subtotalPedido.HasValue ?
+                new ObjectParameter("SubtotalPedido", subtotalPedido) :
+                new ObjectParameter("SubtotalPedido", typeof(decimal));
+    
+            var totalPedidoParameter = totalPedido.HasValue ?
+                new ObjectParameter("totalPedido", totalPedido) :
+                new ObjectParameter("totalPedido", typeof(decimal));
+    
+            var iTBISPedidoParameter = iTBISPedido.HasValue ?
+                new ObjectParameter("ITBISPedido", iTBISPedido) :
+                new ObjectParameter("ITBISPedido", typeof(decimal));
+    
+            var descuentoPedidoParameter = descuentoPedido.HasValue ?
+                new ObjectParameter("DescuentoPedido", descuentoPedido) :
+                new ObjectParameter("DescuentoPedido", typeof(decimal));
+    
+            var condicionParameter = condicion != null ?
+                new ObjectParameter("Condicion", condicion) :
+                new ObjectParameter("Condicion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarPedido", idClienteParameter, idEstatusPedidoParameter, subtotalPedidoParameter, totalPedidoParameter, iTBISPedidoParameter, descuentoPedidoParameter, condicionParameter);
+        }
+    
+        public virtual ObjectResult<SP_ProformaBuscarConducesPorPedido_Result> SP_ProformaBuscarConducesPorPedido(Nullable<int> iD_Cliente, Nullable<int> iD_Pedido, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFin)
+        {
+            var iD_ClienteParameter = iD_Cliente.HasValue ?
+                new ObjectParameter("ID_Cliente", iD_Cliente) :
+                new ObjectParameter("ID_Cliente", typeof(int));
+    
+            var iD_PedidoParameter = iD_Pedido.HasValue ?
+                new ObjectParameter("ID_Pedido", iD_Pedido) :
+                new ObjectParameter("ID_Pedido", typeof(int));
+    
+            var fechaInicioParameter = fechaInicio.HasValue ?
+                new ObjectParameter("FechaInicio", fechaInicio) :
+                new ObjectParameter("FechaInicio", typeof(System.DateTime));
+    
+            var fechaFinParameter = fechaFin.HasValue ?
+                new ObjectParameter("FechaFin", fechaFin) :
+                new ObjectParameter("FechaFin", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ProformaBuscarConducesPorPedido_Result>("SP_ProformaBuscarConducesPorPedido", iD_ClienteParameter, iD_PedidoParameter, fechaInicioParameter, fechaFinParameter);
+        }
+    
+        public virtual ObjectResult<SP_ProformaBuscarPedidosPendientesCliente_Result> SP_ProformaBuscarPedidosPendientesCliente(Nullable<int> id_Cliente, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFin)
+        {
+            var id_ClienteParameter = id_Cliente.HasValue ?
+                new ObjectParameter("id_Cliente", id_Cliente) :
+                new ObjectParameter("id_Cliente", typeof(int));
+    
+            var fechaInicioParameter = fechaInicio.HasValue ?
+                new ObjectParameter("FechaInicio", fechaInicio) :
+                new ObjectParameter("FechaInicio", typeof(System.DateTime));
+    
+            var fechaFinParameter = fechaFin.HasValue ?
+                new ObjectParameter("FechaFin", fechaFin) :
+                new ObjectParameter("FechaFin", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ProformaBuscarPedidosPendientesCliente_Result>("SP_ProformaBuscarPedidosPendientesCliente", id_ClienteParameter, fechaInicioParameter, fechaFinParameter);
+        }
+    
+        public virtual ObjectResult<SP_BuscarClienteProforma_Result> SP_BuscarClienteProforma(string codigoCliente)
+        {
+            var codigoClienteParameter = codigoCliente != null ?
+                new ObjectParameter("CodigoCliente", codigoCliente) :
+                new ObjectParameter("CodigoCliente", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_BuscarClienteProforma_Result>("SP_BuscarClienteProforma", codigoClienteParameter);
         }
     }
 }

@@ -300,6 +300,12 @@ namespace Sistema_de_Gestión.Presentacion
             if (PM.ValidarCamposFactura(this.Controls, panelChofer.Controls, this.groupBox2.Controls))
             {
                 PM.EstatusPedido = 1;
+                PedidosModel.Empresa = txtCliente.Text;
+                PedidosModel.Rnc = TxtRNC.Text;
+                PedidosModel.NombreContacto = txtContactos.Text;
+                PedidosModel.TelContacto = txtTelefonos.Text.Substring(0,12);
+                PedidosModel.Correo = txtCorreo.Text;
+                PedidosModel.Direccion = txtDirección.Text;
 
                 if (PM.InsertarPedido(PM.IDCliente,PM.IDConduce,PM.EstatusPedido,decimal.Parse(txtSubTotal.Text),
                     decimal.Parse(TxtTotalGeneral.Text),decimal.Parse(txtITBIS.Text), decimal.Parse(txtDesc.Text),
@@ -392,6 +398,38 @@ namespace Sistema_de_Gestión.Presentacion
             PM.DESC = decimal.Parse(txtDesc.Text);
             PM.ITBIS = decimal.Parse(txtITBIS.Text);
             PM.ActualizarTotales(dgvFactura, txtSubTotal, TxtTotalGeneral, txtITBIS, CKITBIS);
+        }
+
+        private void rdbEfectivo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbEfectivo.Checked == true)
+            {
+                PedidosModel.Condiciones = rdbEfectivo.Text;
+            }
+        }
+
+        private void rdbCheque_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbCheque.Checked == true)
+            {
+                PedidosModel.Condiciones = rdbCheque.Text;
+            }
+        }
+
+        private void rbTransferencia_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbTransferencia.Checked == true)
+            {
+                PedidosModel.Condiciones = rbTransferencia.Text;
+            }
+        }
+
+        private void rdbCredito_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbCredito.Checked == true)
+            {
+                PedidosModel.Condiciones = rdbCredito.Text;
+            }
         }
     }
 }
