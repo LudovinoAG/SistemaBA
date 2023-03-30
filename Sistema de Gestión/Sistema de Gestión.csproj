@@ -341,6 +341,9 @@
     <Compile Include="Modelos\SP_BuscarClienteProforma_Result.cs">
       <DependentUpon>BAPedidosModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\SP_BuscarClienteRedaccion_Result.cs">
+      <DependentUpon>BARedaccionesModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\SP_ObtenerUsuario_Result.cs">
       <DependentUpon>BALogin.tt</DependentUpon>
     </Compile>

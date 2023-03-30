@@ -29,6 +29,7 @@ namespace Sistema_de_Gestión.Modelos
                     ClienteProforma = PE.SP_BuscarClienteProforma(cod_cliente).ToList();
                     if (ClienteProforma.Count != 0)
                     {
+
                         return ClienteProforma;
                     }
                     else

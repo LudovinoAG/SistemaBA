@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema_de_Gestión.Modelos;
+using Sistema_de_Gestión.Presentacion;
+using System.Threading;
 
 namespace Sistema_de_Gestión.Modelos
 {
@@ -346,6 +348,49 @@ namespace Sistema_de_Gestión.Modelos
             {
                 return Tecla.Handled = true;
             }
+        }
+
+
+        public void Cargando()
+        {
+            Thread.Sleep(2000);
+        }
+
+        public void Mostrar(Form Formulario)
+        {
+            Formulario.Show();
+            Formulario.TopMost = true;
+        }
+
+        public void Cerrar(Form Formulario)
+        {
+            if (Formulario != null)
+            {
+                Formulario.Close();
+            }
+        }
+        
+        public void Ejecutar(Form FormularioVista, Form FormularioLoading)
+        {
+            Mostrar(FormularioLoading);
+            Task otaskProforma = new Task(Cargando);
+            otaskProforma.Start();
+            FormularioVista.Show();
+            Cerrar(FormularioLoading);
+        }
+
+        public List<SP_BuscarClienteProforma_Result> EjecutarAccion(ProformaFactura PF, string cliente, 
+            ToolStripLabel msg, Button Boton)
+        {
+            msg.Text = "Buscando...";
+            Boton.Enabled = false;
+            Task otaskProforma = new Task(Cargando);
+            otaskProforma.Start();
+            PF.VerClienteProforma(cliente);
+            msg.Text = "Listo";
+            Boton.Enabled = true;
+            return PF.ClienteProforma;
+
         }
 
     }

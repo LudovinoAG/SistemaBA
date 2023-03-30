@@ -6,24 +6,30 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using Sistema_de_Gestión.Modelos;
+using Sistema_de_Gestión.Presentacion;
 
 namespace Sistema_de_Gestión.Presentacion
 {
     public partial class frmVerProforma : Form
     {
         ProformaFactura PF = new ProformaFactura();
+        Funciones FC = new Funciones();
         public frmVerProforma()
         {
             InitializeComponent();
+
         }
 
         private void cmdBuscarCliente_Click(object sender, EventArgs e)
         {
             if ((txtCodigoCliente.Text != "") && (txtCodigoCliente.TextLength==txtCodigoCliente.MaxLength))
             {
-                PF.VerClienteProforma(txtCodigoCliente.Text);
+                FC.LimpiarCampos(Controls);
+                //PF.VerClienteProforma(txtCodigoCliente.Text);
+                FC.EjecutarAccion(PF,txtCodigoCliente.Text, toolProformaEstado, cmdBuscarCliente);
                 ProformaFactura.IDCliente = PF.ClienteProforma.Single().ID;
                 ProformaFactura.Nombre_Cliente = PF.ClienteProforma.Single().Empresa;
                 TxtRNC.Text = PF.ClienteProforma.Single().RNC;
@@ -54,6 +60,7 @@ namespace Sistema_de_Gestión.Presentacion
                 TxtDescuento.Text = PF.PedidoProforma.ToList().Sum(x => x.Descuento).Value.ToString("0,0.00");
                 txtITBIS.Text = PF.PedidoProforma.ToList().Sum(x => x.ITBIS).Value.ToString("0,0.00");
                 txtTotal.Text = PF.PedidoProforma.ToList().Sum(x => x.TotalPedido).Value.ToString("0,0.00");
+                toolProformaPedidosRegistrados.Text = $"Pedidos registrados: {PF.PedidoProforma.Count()}";
 
                 //Cambiar nombre de encabezado de columnas
                 dgvPedidos.Columns["NumPedido"].HeaderText = "Pedido #";
@@ -68,22 +75,42 @@ namespace Sistema_de_Gestión.Presentacion
                 dgvPedidos.Columns["ITBIS"].DefaultCellStyle.Format = "N";
                 dgvPedidos.Columns["TotalPedido"].DefaultCellStyle.Format = "N";
             }
+            else
+            {
+                MessageBox.Show("Debe buscar primero el cliente a consultar", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtCodigoCliente.Focus();
+            }
         }
 
         private void cmdVerProforma_Click(object sender, EventArgs e)
         {
-            frmVistaProforma VistaProformo= new frmVistaProforma();
-            //int NumFactura = int.Parse(txtNumFactura.Text);
-            //VistaRedaccion = NumFactura;
-            ProformaFactura.FechaInicio = dtpFechaInicio.Value;
-            ProformaFactura.FechaFin = dtpFechaFin.Value;
 
-            frmVistaProforma.idCliente = ProformaFactura.IDCliente;
-            frmVistaProforma.idPedido = ProformaFactura.IDPedido;
-            frmVistaProforma.FechaInicio = ProformaFactura.FechaInicio;
-            frmVistaProforma.FechaFin = ProformaFactura.FechaFin;
-            VistaProformo.Show();
+            if (!FC.ValidarVentanaAbierta("frmVistaProforma"))
+            {
+                frmVistaProforma VistaProformo = new frmVistaProforma();
+                LoadingReportes LoadReport = new LoadingReportes();
+
+                ProformaFactura.FechaInicio = dtpFechaInicio.Value;
+                ProformaFactura.FechaFin = dtpFechaFin.Value;
+
+                frmVistaProforma.idCliente = ProformaFactura.IDCliente;
+                frmVistaProforma.idPedido = ProformaFactura.IDPedido;
+                frmVistaProforma.FechaInicio = ProformaFactura.FechaInicio;
+                frmVistaProforma.FechaFin = ProformaFactura.FechaFin;
+
+                //Ejecutar la siguiente tarea
+                FC.Ejecutar(VistaProformo, LoadReport);
+
+            }
+            else
+            {
+                MessageBox.Show("Ya se esta visualizando la factura proforma indicada", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+           
         }
+
 
         private void dgvPedidos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -93,9 +120,18 @@ namespace Sistema_de_Gestión.Presentacion
                 PF.VerConduceProforma(ProformaFactura.IDCliente, ProformaFactura.IDPedido,
                     dtpFechaInicio.Value, dtpFechaFin.Value);
 
+                toolProformaConducesRegistrados.Text = $"Conduces: {PF.ConduceProforma.Count()}";
+
                 dgvConduceProforma.DataSource = null;
                 dgvConduceProforma.DataSource = PF.ConduceProforma.ToList();
             }
+        }
+
+        private void frmVerProforma_Load(object sender, EventArgs e)
+        {
+            //Actualiza los elementos Datapicker con la fecha actual
+            dtpFechaInicio.Value = DateTime.Today;
+            dtpFechaFin.Value = DateTime.Today;
         }
     }
 }

@@ -13,6 +13,10 @@ namespace Sistema_de_Gestión.Modelos
     
     public partial class SP_VerDetalleRedaccion_Result
     {
+        public string Placa { get; set; }
+        public Nullable<int> Capacidad { get; set; }
+        public Nullable<int> Servicios { get; set; }
+        public Nullable<int> Conduce { get; set; }
         public Nullable<int> Cantidad { get; set; }
         public string Medida { get; set; }
         public string Producto { get; set; }

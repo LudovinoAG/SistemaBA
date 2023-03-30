@@ -236,7 +236,7 @@ namespace Sistema_de_Gestión.Modelos
                                     using(BARedaccionesEntities RM = new BARedaccionesEntities())
                                     {
                                         string Placa = dgvChoferes.Rows[c].Cells["Placa"].Value.ToString();
-                                        string NameProducto = dgvFactura.Rows[c].Cells["Producto"].Value.ToString();
+                                        string NameProducto = dgvListaChoferes.Rows[c].Cells["clProducto"].Value.ToString();
                                         int Capacidad = (int)dgvChoferes.Rows[c].Cells["clsCapacidad"].Value;
                                         string Medida = dgvListaChoferes.Rows[c].Cells["clMedida"].Value.ToString();
                                         int m3Total = Capacidad * CantidadViajesPedido;

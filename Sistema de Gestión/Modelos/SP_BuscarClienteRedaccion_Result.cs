@@ -11,15 +11,13 @@ namespace Sistema_de_Gestión.Modelos
 {
     using System;
     
-    public partial class SP_VerRedaccionClienteID_Result
+    public partial class SP_BuscarClienteRedaccion_Result
     {
-        public int Num_Pedido { get; set; }
-        public string FechaPedido { get; set; }
-        public string Mes { get; set; }
-        public Nullable<decimal> Sub_Total { get; set; }
-        public Nullable<decimal> ITBIS { get; set; }
-        public Nullable<decimal> Descuento { get; set; }
-        public Nullable<decimal> TotalPedido { get; set; }
-        public string Estatus { get; set; }
+        public int ID { get; set; }
+        public string Empresa { get; set; }
+        public string Proyecto { get; set; }
+        public string RNC { get; set; }
+        public string NombreContacto { get; set; }
+        public string TelefonoContactos { get; set; }
     }
 }

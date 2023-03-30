@@ -26,7 +26,9 @@ namespace Sistema_de_Gestión.Presentacion
             DSReportesTableAdapters.SP_VisualizarRedaccionClienteTableAdapter taRedaccion = new
                 DSReportesTableAdapters.SP_VisualizarRedaccionClienteTableAdapter();
 
-            taRedaccion.Fill(ds.SP_VisualizarRedaccionCliente, RedaccionesModel.IDCliente);
+            taRedaccion.Fill(ds.SP_VisualizarRedaccionCliente, RedaccionesModel.IDCliente, 
+                RedaccionesModel.IDPedido, RedaccionesModel.ModoReporte, RedaccionesModel.EstatudPedido,
+                RedaccionesModel.FechaInicio, RedaccionesModel.FechaFin);
 
             crvRedacciones1.SetDataSource(ds);
 
