@@ -139,12 +139,17 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
         </Function>
         <Function Name="SP_ProformaBuscarConducesPorPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID_Cliente" Type="int" Mode="In" />
-          <Parameter Name="ID_Pedido" Type="int" Mode="In" />
+          <Parameter Name="id_Pedido" Type="int" Mode="In" />
+          <Parameter Name="ModoReporte" Type="varchar" Mode="In" />
+          <Parameter Name="id_EstatusPedido" Type="int" Mode="In" />
           <Parameter Name="FechaInicio" Type="date" Mode="In" />
           <Parameter Name="FechaFin" Type="date" Mode="In" />
         </Function>
         <Function Name="SP_ProformaBuscarPedidosPendientesCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_Cliente" Type="int" Mode="In" />
+          <Parameter Name="id_Pedido" Type="int" Mode="In" />
+          <Parameter Name="ModoReporte" Type="varchar" Mode="In" />
+          <Parameter Name="id_EstatusPedido" Type="int" Mode="In" />
           <Parameter Name="FechaInicio" Type="date" Mode="In" />
           <Parameter Name="FechaFin" Type="date" Mode="In" />
         </Function>
@@ -153,6 +158,9 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
         </Function>
         <Function Name="SP_ViewQueryPreform" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_Cliente" Type="int" Mode="In" />
+          <Parameter Name="id_Pedido" Type="int" Mode="In" />
+          <Parameter Name="ModoReporte" Type="varchar" Mode="In" />
+          <Parameter Name="id_EstatusPedido" Type="int" Mode="In" />
           <Parameter Name="FechaInicio" Type="date" Mode="In" />
           <Parameter Name="FechaFin" Type="date" Mode="In" />
         </Function>
@@ -268,6 +276,9 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           </FunctionImport>
           <FunctionImport Name="SP_ViewQueryPreform" ReturnType="Collection(BAPedidosModel.SP_ViewQueryPreform_Result)">
             <Parameter Name="id_Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="id_Pedido" Mode="In" Type="Int32" />
+            <Parameter Name="ModoReporte" Mode="In" Type="String" />
+            <Parameter Name="id_EstatusPedido" Mode="In" Type="Int32" />
             <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
             <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -282,12 +293,17 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           </FunctionImport>
           <FunctionImport Name="SP_ProformaBuscarConducesPorPedido" ReturnType="Collection(BAPedidosModel.SP_ProformaBuscarConducesPorPedido_Result)">
             <Parameter Name="ID_Cliente" Mode="In" Type="Int32" />
-            <Parameter Name="ID_Pedido" Mode="In" Type="Int32" />
+            <Parameter Name="id_Pedido" Mode="In" Type="Int32" />
+            <Parameter Name="ModoReporte" Mode="In" Type="String" />
+            <Parameter Name="id_EstatusPedido" Mode="In" Type="Int32" />
             <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
             <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="SP_ProformaBuscarPedidosPendientesCliente" ReturnType="Collection(BAPedidosModel.SP_ProformaBuscarPedidosPendientesCliente_Result)">
             <Parameter Name="id_Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="id_Pedido" Mode="In" Type="Int32" />
+            <Parameter Name="ModoReporte" Mode="In" Type="String" />
+            <Parameter Name="id_EstatusPedido" Mode="In" Type="Int32" />
             <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
             <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
           </FunctionImport>

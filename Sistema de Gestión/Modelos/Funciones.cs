@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Sistema_de_Gestión.Modelos;
 using Sistema_de_Gestión.Presentacion;
 using System.Threading;
+using System.Drawing;
 
 namespace Sistema_de_Gestión.Modelos
 {
@@ -22,6 +23,8 @@ namespace Sistema_de_Gestión.Modelos
             var PictureBx = control.OfType<PictureBox>().Where(t => t.Name == "pbFotoEmpleado").SingleOrDefault();
             var LBL = control.OfType<Label>().Where(t => t.Name == "LblID").SingleOrDefault();
             var lblCodigo = control.OfType<Label>().Where(t => t.Name == "lblCodigo").SingleOrDefault();
+            var DataGrid = control.OfType<DataGridView>().ToList();
+            var BarraEstado = control.OfType<ToolStrip>().ToList();
 
             //Limpiar todos los TextBox
             foreach (var Camp in CamposTXT)
@@ -62,6 +65,38 @@ namespace Sistema_de_Gestión.Modelos
             {
                 PictureBx.Image = RecursosBA.DefaultImage;
                 this.Modo = "Insertando";
+            }
+
+            //DataGridViews del formulario Proforma
+            if (DataGrid.Count!=0)
+            {
+                foreach (var elemento in DataGrid)
+                {
+                    switch (elemento.Name)
+                    {
+                        case "dgvPedidos":
+                        case "dgvConduceProforma":
+                            elemento.DataSource = null;
+                            break;
+
+                    }
+                }
+            }
+
+            //Barra de estados de los formularios
+            if (BarraEstado.Count!=0)
+            {
+                foreach (var elemento in BarraEstado)
+                {
+                    switch (elemento.Name)
+                    {
+                        case "StatusBarProforma":
+                            elemento.Items["toolProformaPedidosRegistrados"].Text = "Pedidos registrados: 0";
+                            elemento.Items["toolProformaConducesRegistrados"].Text = "Conduces: 0";
+                            break;
+
+                    }
+                }
             }
 
         }
@@ -310,12 +345,12 @@ namespace Sistema_de_Gestión.Modelos
 
         public bool ValidarVentanaAbierta(string formName)
         {
-            Form formulario = Application.OpenForms.OfType<Form>().SingleOrDefault(t => t.Name == formName);
+            Form formulario = Application.OpenForms.OfType<Form>().SingleOrDefault(t => t.Text == formName);
             frmPrincipal Principal = new frmPrincipal();
 
               if (formulario != null)
               {
-                MessageBox.Show($"La ventana {formulario.Text} ya esta abierta.", "Aviso", MessageBoxButtons.OK, 
+                MessageBox.Show($"El reporte [{formulario.Text}] ya esta abierto.", "Aviso", MessageBoxButtons.OK, 
                      MessageBoxIcon.Exclamation);
                 formulario.Focus();
                 return true;
@@ -370,26 +405,61 @@ namespace Sistema_de_Gestión.Modelos
             }
         }
         
-        public void Ejecutar(Form FormularioVista, Form FormularioLoading)
+        public async void Ejecutar(Form FormularioVista, Form FormularioLoading, string Cliente)
         {
             Mostrar(FormularioLoading);
             Task otaskProforma = new Task(Cargando);
             otaskProforma.Start();
+            FormularioVista.Text += " - " + Cliente;
             FormularioVista.Show();
+            await otaskProforma;
             Cerrar(FormularioLoading);
         }
 
-        public List<SP_BuscarClienteProforma_Result> EjecutarAccion(ProformaFactura PF, string cliente, 
+        public async Task<List<SP_BuscarClienteProforma_Result>> EjecutarAccion(ProformaFactura PF, string cliente, 
             ToolStripLabel msg, Button Boton)
         {
-            msg.Text = "Buscando...";
             Boton.Enabled = false;
+            msg.Text = "Buscando...";
             Task otaskProforma = new Task(Cargando);
             otaskProforma.Start();
+            msg.BackColor = Color.Brown;
+            msg.ForeColor = Color.White;
+            
             PF.VerClienteProforma(cliente);
-            msg.Text = "Listo";
+            
+            msg.BackColor = Color.Transparent;
+            msg.ForeColor = Color.Black;
             Boton.Enabled = true;
+            msg.Text = "Listo";
+            await otaskProforma;
+                
             return PF.ClienteProforma;
+
+
+        }
+
+        public async Task<List<SP_ProformaBuscarPedidosPendientesCliente_Result>> EjecutarAccion(ProformaFactura PF, 
+           ToolStripLabel msg, Button Boton, int idCliente,int pedido, string modoreporte, int estatus, 
+           DateTime FechaInicio, DateTime FechaFin)
+        {
+            Boton.Enabled = false;
+            msg.Text = "Buscando...";
+            msg.BackColor = Color.Brown;
+            msg.ForeColor = Color.White;
+            Task otaskProforma = new Task(Cargando);
+            otaskProforma.Start();
+
+            PF.VerPedidoProforma(idCliente, pedido, modoreporte, estatus, FechaInicio, FechaFin);
+
+            msg.BackColor = Color.Transparent;
+            msg.ForeColor = Color.Black;
+            Boton.Enabled = true;
+            msg.Text = "Listo";
+            await otaskProforma;
+
+            return PF.PedidoProforma;
+
 
         }
 

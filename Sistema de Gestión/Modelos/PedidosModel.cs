@@ -241,11 +241,11 @@ namespace Sistema_de_Gestión.Modelos
                                         string Medida = dgvListaChoferes.Rows[c].Cells["clMedida"].Value.ToString();
                                         int m3Total = Capacidad * CantidadViajesPedido;
                                         decimal Total = PrecioPedido * m3Total;
-
+                                    
 
                                         RM.SP_InsertarRedaccion(Placa, NumConduce, NameProducto, 
                                             CantidadViajesPedido,Capacidad, Medida, m3Total, PrecioPedido, 
-                                            Total, IDCliente);
+                                            Total, IDCliente,1);
                                     }
 
                                 }
@@ -324,7 +324,7 @@ namespace Sistema_de_Gestión.Modelos
             catch (Exception ex)
             {
 
-                MessageBox.Show("No fue posible registrar el pedido actual. " + ex.Message, "Pedidos", MessageBoxButtons.OK,
+                MessageBox.Show("No fue posible registrar el pedido actual. " + ex.Message + ex.InnerException, "Pedidos", MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
                 return false;
             }

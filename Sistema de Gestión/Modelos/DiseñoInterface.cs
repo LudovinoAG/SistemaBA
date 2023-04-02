@@ -484,11 +484,55 @@ namespace Sistema_de_Gestión.Modelos
                     }
                     break;
 
+                case "cmdBuscarPedido":
+                    if (Evento == 1)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonBuscarPedidosProformaOver;
+                    }
+                    else if (Evento == 2)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonBuscarPedidosProformaClick;
+                    }
+                    else
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonBuscarPedidosProforma;
+                    }
+                    break;
+
+                case "cmdResetCriterios":
+                    if (Evento == 1)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonResetCriteriosProformaOver;
+                    }
+                    else if (Evento == 2)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonResetCriteriosProformaClick;
+                    }
+                    else
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonResetCriteriosProforma;
+                    }
+                    break;
+
+                case "cmdVerProforma":
+                    if (Evento == 1)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonVerProformaOver;
+                    }
+                    else if (Evento == 2)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonVerProformaClick;
+                    }
+                    else
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonVerProforma;
+                    }
+                    break;
 
 
 
 
-                    
+
 
 
                 default:

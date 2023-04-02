@@ -1077,6 +1077,16 @@
       <DependentUpon>BAVehiculosModel.edmx</DependentUpon>
       <LastGenOutput>BAVehiculosModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\BotonVerProformaOver.jpg" />
+    <None Include="Resources\BotonVerProformaClick.jpg" />
+    <None Include="Resources\BotonVerProforma.jpg" />
+    <None Include="Resources\BotonResetCriteriosProformaOver.jpg" />
+    <None Include="Resources\BotonResetCriteriosProformaClick.jpg" />
+    <None Include="Resources\BotonResetCriteriosProforma.jpg" />
+    <None Include="Resources\BotonBuscarPedidosProformaOver.jpg" />
+    <None Include="Resources\BotonBuscarPedidosProformaClick.jpg" />
+    <None Include="Resources\BotonBuscarPedidosProforma.jpg" />
+    <None Include="Resources\FondoProforma.jpg" />
     <None Include="Resources\BotonAgregarConduceOver.jpg" />
     <None Include="Resources\BotonAgregarConduceClick.jpg" />
     <None Include="Resources\BotonAgregarConduce.jpg" />

@@ -313,6 +313,36 @@ namespace Sistema_de_Gestión {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BotonBuscarPedidosProforma {
+            get {
+                object obj = ResourceManager.GetObject("BotonBuscarPedidosProforma", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonBuscarPedidosProformaClick {
+            get {
+                object obj = ResourceManager.GetObject("BotonBuscarPedidosProformaClick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonBuscarPedidosProformaOver {
+            get {
+                object obj = ResourceManager.GetObject("BotonBuscarPedidosProformaOver", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BotonBuscarReporte {
             get {
                 object obj = ResourceManager.GetObject("BotonBuscarReporte", resourceCulture);
@@ -763,6 +793,36 @@ namespace Sistema_de_Gestión {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BotonResetCriteriosProforma {
+            get {
+                object obj = ResourceManager.GetObject("BotonResetCriteriosProforma", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonResetCriteriosProformaClick {
+            get {
+                object obj = ResourceManager.GetObject("BotonResetCriteriosProformaClick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonResetCriteriosProformaOver {
+            get {
+                object obj = ResourceManager.GetObject("BotonResetCriteriosProformaOver", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BotonSalir {
             get {
                 object obj = ResourceManager.GetObject("BotonSalir", resourceCulture);
@@ -846,6 +906,36 @@ namespace Sistema_de_Gestión {
         internal static System.Drawing.Bitmap BotonVerFacturaReporteOver {
             get {
                 object obj = ResourceManager.GetObject("BotonVerFacturaReporteOver", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonVerProforma {
+            get {
+                object obj = ResourceManager.GetObject("BotonVerProforma", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonVerProformaClick {
+            get {
+                object obj = ResourceManager.GetObject("BotonVerProformaClick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonVerProformaOver {
+            get {
+                object obj = ResourceManager.GetObject("BotonVerProformaOver", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1286,6 +1376,16 @@ namespace Sistema_de_Gestión {
         internal static System.Drawing.Bitmap FondoPedidos {
             get {
                 object obj = ResourceManager.GetObject("FondoPedidos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FondoProforma {
+            get {
+                object obj = ResourceManager.GetObject("FondoProforma", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

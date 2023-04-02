@@ -19,6 +19,7 @@
           <Parameter Name="precio" Type="money" Mode="In" />
           <Parameter Name="total_pedido" Type="money" Mode="In" />
           <Parameter Name="id_cliente" Type="int" Mode="In" />
+          <Parameter Name="id_estatus" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_VerConducesPedidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IDCliente" Type="int" Mode="In" />
@@ -26,6 +27,10 @@
         <Function Name="SP_VerDetalleRedaccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID_Cliente" Type="int" Mode="In" />
           <Parameter Name="ID_Pedido" Type="int" Mode="In" />
+          <Parameter Name="ModoReporte" Type="varchar" Mode="In" />
+          <Parameter Name="EstatusPedido" Type="int" Mode="In" />
+          <Parameter Name="FechaInicio" Type="date" Mode="In" />
+          <Parameter Name="FechaFin" Type="date" Mode="In" />
         </Function>
         <Function Name="SP_VerRedaccionClienteID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IDCliente" Type="int" Mode="In" />
@@ -55,6 +60,7 @@
             <Parameter Name="precio" Mode="In" Type="Decimal" />
             <Parameter Name="total_pedido" Mode="In" Type="Decimal" />
             <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+            <Parameter Name="id_estatus" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_BuscarClienteRedaccion" ReturnType="Collection(BARedaccionesModel.SP_BuscarClienteRedaccion_Result)">
           <Parameter Name="CodigoCliente" Mode="In" Type="String" />
@@ -70,6 +76,10 @@
           <FunctionImport Name="SP_VerDetalleRedaccion" ReturnType="Collection(BARedaccionesModel.SP_VerDetalleRedaccion_Result)">
             <Parameter Name="ID_Cliente" Mode="In" Type="Int32" />
             <Parameter Name="ID_Pedido" Mode="In" Type="Int32" />
+            <Parameter Name="ModoReporte" Mode="In" Type="String" />
+            <Parameter Name="EstatusPedido" Mode="In" Type="Int32" />
+            <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_VerConducesPedidos_Result">

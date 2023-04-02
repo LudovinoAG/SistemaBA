@@ -44,13 +44,15 @@ namespace Sistema_de_Gestión.Modelos
             }
         }
         
-        public List<SP_VerDetalleRedaccion_Result> VerDetallesRedaccion(int Cliente, int Pedido)
+        public List<SP_VerDetalleRedaccion_Result> VerDetallesRedaccion(int Cliente, int Pedido,string ModoReporte,
+            int EstatudPedido, DateTime FechaInicio, DateTime FechaFin)
         {
             try
             {
                 using (BARedaccionesEntities RE = new BARedaccionesEntities())
                 {
-                    RedaccionesDetalles = RE.SP_VerDetalleRedaccion(Cliente,Pedido).ToList();
+                    RedaccionesDetalles = RE.SP_VerDetalleRedaccion(Cliente,Pedido, ModoReporte,
+                        EstatudPedido, FechaInicio, FechaFin).ToList();
                     if (RedaccionesDetalles.Count != 0)
                     {
                         return RedaccionesDetalles;

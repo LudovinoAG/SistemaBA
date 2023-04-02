@@ -54,6 +54,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.crystalReportViewer1.ShowGotoPageButton = false;
             this.crystalReportViewer1.ShowGroupTreeButton = false;
             this.crystalReportViewer1.ShowLogo = false;
+            this.crystalReportViewer1.ShowParameterPanelButton = false;
             this.crystalReportViewer1.ShowTextSearchButton = false;
             this.crystalReportViewer1.Size = new System.Drawing.Size(787, 421);
             this.crystalReportViewer1.TabIndex = 0;
@@ -67,7 +68,8 @@ namespace Sistema_de_Gestión.Presentacion
             this.ClientSize = new System.Drawing.Size(787, 421);
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "frmVistaProforma";
-            this.Text = "frmVistaProforma";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Vista Factura Proforma";
             ((System.ComponentModel.ISupportInitialize)(this.dsReportes1)).EndInit();
             this.ResumeLayout(false);
 

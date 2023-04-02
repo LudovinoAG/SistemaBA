@@ -13,6 +13,9 @@ namespace Sistema_de_Gestión.Modelos
         public static DateTime FechaFin { get; set; }
         public static int IDCliente { get; set; }
         public static int IDPedido { get; set; }
+        public static int EstatusPedido { get; set; }
+        public static string ModoReporte { get; set; }
+
         public static string Nombre_Cliente { get; set; }
         public List<SP_BuscarClienteProforma_Result> ClienteProforma { get; set; }
         public List<SP_ProformaBuscarPedidosPendientesCliente_Result> PedidoProforma { get; set; }
@@ -34,7 +37,7 @@ namespace Sistema_de_Gestión.Modelos
                     }
                     else
                     {
-                        MessageBox.Show($"No se encontró al cliente con el codigo C{cod_cliente.ToString().PadLeft(6, '0')}",
+                        MessageBox.Show($"No se encontró al cliente con el codigo {cod_cliente.ToString().PadLeft(6, '0')}",
                             "Buscar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                         return ClienteProforma;
@@ -53,14 +56,14 @@ namespace Sistema_de_Gestión.Modelos
         }
 
         public List<SP_ProformaBuscarPedidosPendientesCliente_Result> VerPedidoProforma(int id_cliente,
-            DateTime FechaInicio, DateTime FechaFin)
+            int id_Pedido,string ModoReporte, int Estatus, DateTime FechaInicio, DateTime FechaFin)
         {
             try
             {
                 using (BAPedidosEntities PE = new BAPedidosEntities())
                 {
-                    PedidoProforma = PE.SP_ProformaBuscarPedidosPendientesCliente(id_cliente, FechaInicio.Date, 
-                        FechaFin.Date).ToList();
+                    PedidoProforma = PE.SP_ProformaBuscarPedidosPendientesCliente(id_cliente, id_Pedido,
+                        ModoReporte, Estatus,FechaInicio.Date, FechaFin.Date).ToList();
                     if (PedidoProforma.Count != 0)
                     {
                         return PedidoProforma;
@@ -85,14 +88,14 @@ namespace Sistema_de_Gestión.Modelos
         }
 
         public List<SP_ProformaBuscarConducesPorPedido_Result> VerConduceProforma(int id_cliente, int id_pedido,
-            DateTime FechaInicio, DateTime FechaFin)
+            string ModoReporte, int Estatus,DateTime FechaInicio, DateTime FechaFin)
         {
             try
             {
                 using (BAPedidosEntities PE = new BAPedidosEntities())
                 {
-                    ConduceProforma = PE.SP_ProformaBuscarConducesPorPedido(id_cliente, id_pedido,
-                        FechaInicio.Date, FechaFin.Date).ToList();
+                    ConduceProforma = PE.SP_ProformaBuscarConducesPorPedido(id_cliente, id_pedido, ModoReporte,
+                        Estatus,FechaInicio.Date, FechaFin.Date).ToList();
                     if (ConduceProforma.Count != 0)
                     {
                         return ConduceProforma;
@@ -116,5 +119,20 @@ namespace Sistema_de_Gestión.Modelos
             }
         }
 
+
+        public void DefaultValueProforms(ComboBox Pedidos, ComboBox Estatus, ComboBox Modo,
+            DateTimePicker FechaInicio, DateTimePicker FechaFin, NumericUpDown Pedido)
+        {
+            IDPedido = 0;
+            ModoReporte = "Todas";
+            EstatusPedido = 0;
+
+            Pedidos.SelectedIndex = 0;
+            Estatus.SelectedIndex = 0;
+            Modo.SelectedIndex = 0;
+            FechaInicio.Value = DateTime.Today;
+            FechaFin.Value = DateTime.Today;
+            Pedido.Value = 1;
+        }
     }
 }
