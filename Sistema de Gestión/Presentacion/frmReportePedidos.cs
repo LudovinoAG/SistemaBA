@@ -253,11 +253,30 @@ namespace Sistema_de_Gestión.Presentacion
 
         private void cmdVerRedaccion_Click(object sender, EventArgs e)
         {
-            frmVistaRedacciones VistaRedaccion = new frmVistaRedacciones();
+            if (!FC.ValidarVentanaAbierta($"Vista Redaccion - {txtCliente.Text}"))
+            {
+                if (dgvPedidos.RowCount != 0)
+                {
 
-            ValidarCriterios();
+                    frmVistaRedacciones VistaRedaccion = new frmVistaRedacciones();
+                    LoadingReportes VentanaCarga = new LoadingReportes();
+                    ValidarCriterios();
 
-            VistaRedaccion.Show();
+                    FC.Ejecutar(VistaRedaccion, VentanaCarga, txtCliente.Text);
+
+                }
+                else
+                {
+                    MessageBox.Show("Debe buscar los pedidos a cliente que desea mostrar", "Aviso", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ya se esta visualizando la redacción indicada", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+           
         }
 
         private void cmdVerRedaccion_MouseMove(object sender, MouseEventArgs e)
