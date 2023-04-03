@@ -17,11 +17,12 @@ namespace Sistema_de_Gestión.Modelos
         public Nullable<int> Capacidad { get; set; }
         public Nullable<int> Servicios { get; set; }
         public Nullable<int> Conduce { get; set; }
-        public Nullable<int> Cantidad { get; set; }
+        public Nullable<decimal> Cantidad { get; set; }
         public string Medida { get; set; }
         public string Producto { get; set; }
         public string Descripcion { get; set; }
         public Nullable<decimal> Precio { get; set; }
         public Nullable<decimal> SubTotal { get; set; }
+        public string Estatus { get; set; }
     }
 }

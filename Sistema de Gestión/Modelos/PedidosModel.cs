@@ -15,7 +15,7 @@ namespace Sistema_de_Gestión.Modelos
         public decimal CapacidadTotal { get; set; }
 
         public int capacidad { get; set; }
-        public int Cantidad { get; set; }
+        public decimal Cantidad { get; set; }
         public decimal SumaSubTotales { get; set; }
         public decimal ITBIS { get; set; }
         public decimal DESC { get; set; }
@@ -46,8 +46,8 @@ namespace Sistema_de_Gestión.Modelos
         public static string Condiciones { get; set; }
 
 
-        public void AgregarProducto(int cantidad, int IDProducto, string medida, int IDMedida, string producto, string descripcion, decimal costo,
-           decimal subtotal, DataGridView dgvFacturar)
+        public void AgregarProducto(decimal cantidad, int IDProducto, string medida, int IDMedida, 
+            string producto, string descripcion, decimal costo, decimal subtotal, DataGridView dgvFacturar)
         {
             int NuevoRegistro = dgvFacturar.Rows.Add();
             dgvFacturar.Rows[NuevoRegistro].Cells["Cantidad"].Value = cantidad;
@@ -201,7 +201,7 @@ namespace Sistema_de_Gestión.Modelos
                             //int ID_Detalles_Pedido = (int)PM.VW_VerUltimoNumeroPedido.SingleOrDefault().UltimoNumeroPedido;
 
                             int IDProducto = (int)dgvFactura.Rows[i].Cells["IDProducto"].Value;
-                            int CantidadProducto = (int)dgvFactura.Rows[i].Cells["Cantidad"].Value;
+                            decimal CantidadProducto = (decimal)dgvFactura.Rows[i].Cells["Cantidad"].Value;
                             int IDMedida = (int)dgvFactura.Rows[i].Cells["IDMedida"].Value;
                             string PedidoDescripcion = dgvFactura.Rows[i].Cells["Descripción"].Value.ToString();
                             decimal PrecioPedido = decimal.Parse(dgvFactura.Rows[i].Cells["Costo"].Value.ToString());
@@ -240,12 +240,11 @@ namespace Sistema_de_Gestión.Modelos
                                         int Capacidad = (int)dgvChoferes.Rows[c].Cells["clsCapacidad"].Value;
                                         string Medida = dgvListaChoferes.Rows[c].Cells["clMedida"].Value.ToString();
                                         int m3Total = Capacidad * CantidadViajesPedido;
-                                        decimal Total = PrecioPedido * m3Total;
+                                        //decimal Total = PrecioPedido * m3Total;
                                     
-
                                         RM.SP_InsertarRedaccion(Placa, NumConduce, NameProducto, 
-                                            CantidadViajesPedido,Capacidad, Medida, m3Total, PrecioPedido, 
-                                            Total, IDCliente,1);
+                                            CantidadViajesPedido,Capacidad, Medida, m3Total, PrecioPedido,
+                                            totalPedido, IDCliente,1);
                                     }
 
                                 }
@@ -253,69 +252,6 @@ namespace Sistema_de_Gestión.Modelos
                             }
 
                         }
-
-                        /*foreach (DataGridViewRow FilaChoferes in dgvChoferes.Rows)
-                        {
-
-                            int IDProducto = (int)FilaPedidos.Cells["IDProducto"].Value;
-                            int CantidadProducto = (int)FilaPedidos.Cells["Cantidad"].Value;
-                            int IDMedida = (int)FilaPedidos.Cells["IDMedida"].Value;
-                            string PedidoDescripcion = FilaPedidos.Cells["Descripción"].Value.ToString();
-                            decimal PrecioPedido = decimal.Parse(FilaPedidos.Cells["Costo"].Value.ToString());
-                            decimal SubTotalFilas = decimal.Parse(FilaPedidos.Cells["SubTotal"].Value.ToString());
-
-                            int RegConduces = FilaChoferes.Index + 1;
-
-                            PM.SP_InsertarDetallesPedido(RegPedidos, IDCliente, IDProducto, IDMedida, CantidadProducto, PrecioPedido, SubTotalFilas,
-                                PedidoDescripcion, RegConduces);
-
-                            int IDEmpleado = (int)FilaChoferes.Cells["Chofer"].Value;
-                            int NumConduce = (int)FilaChoferes.Cells["Conduce"].Value;
-                            IDProducto = (int)FilaChoferes.Cells["id_Producto"].Value;
-                            int IDVehiculo = (int)FilaChoferes.Cells["Vehiculo"].Value;
-                            IDMedida = (int)FilaChoferes.Cells["id_Medida"].Value;
-                            int CantidadViajesPedido = (int)FilaChoferes.Cells["clCantidadChofer"].Value;
-
-                            PM.SP_InsertarConducesPedidos(IDCliente, IDEmpleado, NumConduce, IDProducto, IDVehiculo, IDMedida,
-                                CantidadViajesPedido, RegConduces);
-
-
-                        }*/
-
-                    
-
-
-                    //foreach (DataGridViewRow FilaPedidos in dgvFactura.Rows)
-                    //{
-                    //    int IDProducto = (int)FilaPedidos.Cells["IDProducto"].Value;
-                    //    int CantidadProducto = (int)FilaPedidos.Cells["Cantidad"].Value;
-                    //    int IDMedida = (int)FilaPedidos.Cells["IDMedida"].Value;
-                    //    string PedidoDescripcion = FilaPedidos.Cells["Descripción"].Value.ToString();
-                    //    decimal PrecioPedido = decimal.Parse(FilaPedidos.Cells["Costo"].Value.ToString());
-                    //    decimal SubTotalFilas = decimal.Parse(FilaPedidos.Cells["SubTotal"].Value.ToString());
-
-                    //    CountPedidos++;
-
-                    //    PM.SP_InsertarDetallesPedido(CountPedidos,IDCliente, IDProducto, IDMedida, CantidadProducto, PrecioPedido, SubTotalFilas,
-                    //        PedidoDescripcion);
-
-
-                    //}
-
-                    //foreach (DataGridViewRow FilaChoferes in dgvChoferes.Rows)
-                    //{
-                    //    //int ID_Detalles_Pedido = (int)PM.VW_VerUltimoNumeroPedido.SingleOrDefault().UltimoNumeroPedido;
-
-                    //    int IDEmpleado = (int)FilaChoferes.Cells["Chofer"].Value;
-                    //    int NumConduce = (int)FilaChoferes.Cells["Conduce"].Value;
-                    //    int IDProducto = (int)FilaChoferes.Cells["id_Producto"].Value;
-                    //    int IDVehiculo = (int)FilaChoferes.Cells["Vehiculo"].Value;
-                    //    int IDMedida = (int)FilaChoferes.Cells["id_Medida"].Value;
-                    //    int CantidadViajesPedido = (int)FilaChoferes.Cells["clCantidadChofer"].Value;
-
-                    //    PM.SP_InsertarConducesPedidos(IDCliente,IDEmpleado, NumConduce, IDProducto, IDVehiculo, IDMedida,
-                    //        CantidadViajesPedido);
-                    //}
 
                 }
 
@@ -495,7 +431,7 @@ namespace Sistema_de_Gestión.Modelos
             }
         }
 
-        public decimal CalcularSubtotal(int Medida, int cantidad, decimal costo)
+        public decimal CalcularSubtotal(int Medida, decimal cantidad, decimal costo)
         {
 
                 this.Cantidad = cantidad;

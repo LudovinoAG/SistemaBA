@@ -129,7 +129,7 @@ namespace Sistema_de_Gestión.Presentacion
 
             txtDescripcion.Text = Resultado.SingleOrDefault(n => n.ID == (int)cboProductos.SelectedValue).Descripcion;
             decimal Costo = Resultado.SingleOrDefault(n => n.ID == (int)cboProductos.SelectedValue).Precio;
-            decimal SubTotal = PM.CalcularSubtotal(cboMedida.SelectedIndex, int.Parse(UdCantidad.Text), Costo);
+            decimal SubTotal = PM.CalcularSubtotal(cboMedida.SelectedIndex, UdCantidad.Value, Costo);
 
             txtCosto.Text = string.Format("{0:N}", Costo);
             txtNuevoSubTotal.Text = string.Format("{0:N}", SubTotal);
@@ -139,7 +139,7 @@ namespace Sistema_de_Gestión.Presentacion
         {
             var Resultado = PM.ProductosFactura().ToList();
             decimal Costo = Resultado.SingleOrDefault(n => n.ID == (int)cboProductos.SelectedValue).Precio;
-            decimal SubTotal = PM.CalcularSubtotal(cboMedida.SelectedIndex, int.Parse(UdCantidad.Text), Costo);
+            decimal SubTotal = PM.CalcularSubtotal(cboMedida.SelectedIndex, UdCantidad.Value, Costo);
 
             txtCosto.Text = string.Format("{0:N}", Costo);
             txtNuevoSubTotal.Text = string.Format("{0:N}", SubTotal);
@@ -165,12 +165,12 @@ namespace Sistema_de_Gestión.Presentacion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PM.AgregarProducto(int.Parse(UdCantidad.Text), (int)cboProductos.SelectedValue, cboMedida.Text,
+            PM.AgregarProducto(UdCantidad.Value, (int)cboProductos.SelectedValue, cboMedida.Text,
                (int)cboMedida.SelectedValue, cboProductos.Text, txtDescripcion.Text, decimal.Parse(txtCosto.Text),
                decimal.Parse(txtNuevoSubTotal.Text), dgvFactura);
 
             //Limpiar Entradas
-            UdCantidad.Value = 1;
+            UdCantidad.Value = UdCantidad.Minimum;
             cboMedida.SelectedIndex = 0;
             cboProductos.SelectedIndex = 0;
 
@@ -225,7 +225,7 @@ namespace Sistema_de_Gestión.Presentacion
 
                             //Agregar conduce a la descripcion del producto seleccionado
                             dgvFactura.SelectedRows[0].Cells["Descripción"].Value += ", CON.#" + txtConduce.Text;
-                            int CapacidadTotalVendida = (int)((int)dgvFactura.SelectedRows[0].Cells["Cantidad"].Value * UDViajes.Value);
+                            decimal CapacidadTotalVendida = (decimal)dgvFactura.SelectedRows[0].Cells["Cantidad"].Value * UDViajes.Value;
                             decimal NuevoSubTotal = Convert.ToDecimal(dgvFactura.SelectedRows[0].Cells["Costo"].Value) * CapacidadTotalVendida;
                             dgvFactura.SelectedRows[0].Cells["SubTotal"].Value = string.Format("{0:N}", NuevoSubTotal);
                             PM.ResetCamposChofer(panelChofer.Controls);
@@ -373,7 +373,7 @@ namespace Sistema_de_Gestión.Presentacion
 
         private void txtCosto_Leave(object sender, EventArgs e)
         {
-            PM.CalcularSubtotal(cboMedida.SelectedIndex, int.Parse(UdCantidad.Text), decimal.Parse(txtCosto.Text));
+            PM.CalcularSubtotal(cboMedida.SelectedIndex, UdCantidad.Value, decimal.Parse(txtCosto.Text));
             txtNuevoSubTotal.Text = string.Format("{0:N}", PM.SubTotal);
             txtCosto.Text = string.Format("{0:N}", PM.Costo);
         }
@@ -382,7 +382,7 @@ namespace Sistema_de_Gestión.Presentacion
         {
             if (e.KeyChar == 13)
             {
-                PM.CalcularSubtotal(cboMedida.SelectedIndex, int.Parse(UdCantidad.Text), decimal.Parse(txtCosto.Text));
+                PM.CalcularSubtotal(cboMedida.SelectedIndex, UdCantidad.Value, decimal.Parse(txtCosto.Text));
                 txtNuevoSubTotal.Text = string.Format("{0:N}", PM.SubTotal);
                 txtCosto.Text = string.Format("{0:N}", PM.Costo);
             }

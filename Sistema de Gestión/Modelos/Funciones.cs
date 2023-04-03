@@ -25,6 +25,7 @@ namespace Sistema_de_Gestión.Modelos
             var lblCodigo = control.OfType<Label>().Where(t => t.Name == "lblCodigo").SingleOrDefault();
             var DataGrid = control.OfType<DataGridView>().ToList();
             var BarraEstado = control.OfType<ToolStrip>().ToList();
+            var LblTotalGeneral = control.OfType<Label>().Where(t => t.Name == "lblTotalGeneral").SingleOrDefault();
 
             //Limpiar todos los TextBox
             foreach (var Camp in CamposTXT)
@@ -54,6 +55,11 @@ namespace Sistema_de_Gestión.Modelos
                 LBL.Text = "";
             }
 
+            if (LblTotalGeneral!=null)
+            {
+                LblTotalGeneral.Text = "$0.00";
+            }
+
             //Reset Codigo Empleado
             if (lblCodigo!=null)
             {
@@ -76,6 +82,7 @@ namespace Sistema_de_Gestión.Modelos
                     {
                         case "dgvPedidos":
                         case "dgvConduceProforma":
+                        case "dgvDetallesPedidos":
                             elemento.DataSource = null;
                             break;
 

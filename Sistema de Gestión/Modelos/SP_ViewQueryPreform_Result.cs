@@ -13,16 +13,26 @@ namespace Sistema_de_Gestión.Modelos
     
     public partial class SP_ViewQueryPreform_Result
     {
-        public int ID { get; set; }
-        public System.DateTime Fecha { get; set; }
+        public int NumPedido { get; set; }
+        public string COD { get; set; }
+        public Nullable<System.DateTime> FechaPedido { get; set; }
         public string Empresa { get; set; }
         public string RNC { get; set; }
-        public string Contacto { get; set; }
-        public string Telefono { get; set; }
+        public string Proyecto { get; set; }
+        public string NombreContacto { get; set; }
+        public string NumeroContactos { get; set; }
         public string Direccion { get; set; }
-        public string Correo { get; set; }
-        public string Condicion { get; set; }
+        public string CorreoElectronico { get; set; }
+        public Nullable<decimal> Cantidad { get; set; }
+        public string Medida { get; set; }
+        public string Producto { get; set; }
+        public string Descripcion { get; set; }
+        public Nullable<decimal> Precio { get; set; }
+        public Nullable<decimal> SubTotal { get; set; }
+        public Nullable<decimal> Descuento { get; set; }
         public Nullable<decimal> ITBIS { get; set; }
-        public Nullable<decimal> Total { get; set; }
+        public Nullable<decimal> TotalPedido { get; set; }
+        public string Condicion { get; set; }
+        public string Estatus { get; set; }
     }
 }

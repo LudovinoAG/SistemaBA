@@ -17,7 +17,7 @@ namespace Sistema_de_Gestión
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FrmLogin());
+            Application.Run(new FrmLogin());
             //Application.Run(new frmNuevoProducto());
             //Application.Run(new frmMantenimientoProductos());
             //Application.Run(new Facturación());
@@ -31,7 +31,7 @@ namespace Sistema_de_Gestión
             //Application.Run(new frmNotaFactura());
             //Application.Run(new frmAcercaDe());
             //Application.Run(new frmPedidos());
-            Application.Run(new frmRedaccionesClientes());
+            //Application.Run(new frmRedaccionesClientes());
             //Application.Run(new frmVerProforma());
 
 

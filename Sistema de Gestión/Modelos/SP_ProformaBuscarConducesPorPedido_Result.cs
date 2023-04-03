@@ -20,5 +20,6 @@ namespace Sistema_de_Gestión.Modelos
         public string Placa { get; set; }
         public Nullable<int> Capacidad { get; set; }
         public Nullable<int> Viajes { get; set; }
+        public string Estatus { get; set; }
     }
 }

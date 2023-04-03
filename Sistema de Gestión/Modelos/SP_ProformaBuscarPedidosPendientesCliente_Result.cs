@@ -15,7 +15,7 @@ namespace Sistema_de_Gestión.Modelos
     {
         public int NumPedido { get; set; }
         public Nullable<System.DateTime> FechaPedido { get; set; }
-        public Nullable<int> Cantidad { get; set; }
+        public Nullable<decimal> Cantidad { get; set; }
         public string Medida { get; set; }
         public string Producto { get; set; }
         public string Descripcion { get; set; }
@@ -24,5 +24,7 @@ namespace Sistema_de_Gestión.Modelos
         public Nullable<decimal> Descuento { get; set; }
         public Nullable<decimal> ITBIS { get; set; }
         public Nullable<decimal> TotalPedido { get; set; }
+        public string Condicion { get; set; }
+        public string Estatus { get; set; }
     }
 }

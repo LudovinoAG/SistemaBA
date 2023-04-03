@@ -1077,6 +1077,9 @@
       <DependentUpon>BAVehiculosModel.edmx</DependentUpon>
       <LastGenOutput>BAVehiculosModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\BotonVerRedaccionOver.jpg" />
+    <None Include="Resources\BotonVerRedaccionClick.jpg" />
+    <None Include="Resources\BotonVerRedaccion.jpg" />
     <None Include="Resources\BotonVerProformaOver.jpg" />
     <None Include="Resources\BotonVerProformaClick.jpg" />
     <None Include="Resources\BotonVerProforma.jpg" />

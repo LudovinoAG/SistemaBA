@@ -529,9 +529,25 @@ namespace Sistema_de_Gestión.Modelos
                     }
                     break;
 
+                case "cmdVerRedaccion":
+                    if (Evento == 1)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonVerRedaccionOver;
+                    }
+                    else if (Evento == 2)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonVerRedaccionClick;
+                    }
+                    else
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonVerRedaccion;
+                    }
+                    break;
 
 
 
+
+                    
 
 
 

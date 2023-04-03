@@ -114,12 +114,13 @@
           <Property Type="Int32" Name="Capacidad" Nullable="true" />
           <Property Type="Int32" Name="Servicios" Nullable="true" />
           <Property Type="Int32" Name="Conduce" Nullable="true" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+          <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="5" Scale="2" />
           <Property Type="String" Name="Medida" Nullable="false" MaxLength="15" />
           <Property Type="String" Name="Producto" Nullable="false" MaxLength="30" />
           <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="800" />
           <Property Type="Decimal" Name="Precio" Nullable="true" Precision="19" />
           <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -180,6 +181,7 @@
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Precio" ColumnName="Precio" />
                 <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

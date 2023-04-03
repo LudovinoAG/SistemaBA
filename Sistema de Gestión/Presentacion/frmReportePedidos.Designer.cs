@@ -52,9 +52,9 @@ namespace Sistema_de_Gestión.Presentacion
             this.dgvDetallesPedidos = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.lblPedidoSeleccionado = new System.Windows.Forms.Label();
-            this.cmdVerRedaccion = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cmdVerRedaccion = new System.Windows.Forms.Button();
+            this.cmdResetCriterios = new System.Windows.Forms.Button();
             this.cmdBuscarPedido = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -69,6 +69,9 @@ namespace Sistema_de_Gestión.Presentacion
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.gbTotalGeneral = new System.Windows.Forms.GroupBox();
+            this.lblTotalGeneral = new System.Windows.Forms.Label();
             this.gbCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallesPedidos)).BeginInit();
@@ -77,10 +80,12 @@ namespace Sistema_de_Gestión.Presentacion
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUpDownPedidos)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.gbTotalGeneral.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbCliente
             // 
+            this.gbCliente.BackColor = System.Drawing.Color.Transparent;
             this.gbCliente.Controls.Add(this.txtProyecto);
             this.gbCliente.Controls.Add(this.label1);
             this.gbCliente.Controls.Add(this.txtCliente);
@@ -97,7 +102,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.gbCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbCliente.Location = new System.Drawing.Point(12, 12);
             this.gbCliente.Name = "gbCliente";
-            this.gbCliente.Size = new System.Drawing.Size(756, 90);
+            this.gbCliente.Size = new System.Drawing.Size(718, 87);
             this.gbCliente.TabIndex = 0;
             this.gbCliente.TabStop = false;
             this.gbCliente.Text = "Info. Cliente:";
@@ -105,33 +110,35 @@ namespace Sistema_de_Gestión.Presentacion
             // txtProyecto
             // 
             this.txtProyecto.BackColor = System.Drawing.Color.Khaki;
+            this.txtProyecto.Enabled = false;
             this.txtProyecto.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProyecto.Location = new System.Drawing.Point(289, 52);
+            this.txtProyecto.Location = new System.Drawing.Point(265, 52);
             this.txtProyecto.MaxLength = 60;
             this.txtProyecto.Name = "txtProyecto";
-            this.txtProyecto.Size = new System.Drawing.Size(222, 21);
+            this.txtProyecto.Size = new System.Drawing.Size(221, 21);
             this.txtProyecto.TabIndex = 90;
             this.txtProyecto.Tag = "Proyecto";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(228, 55);
+            this.label1.Location = new System.Drawing.Point(208, 56);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 16);
+            this.label1.Size = new System.Drawing.Size(56, 14);
             this.label1.TabIndex = 89;
             this.label1.Text = "Proyecto:";
             // 
             // txtCliente
             // 
             this.txtCliente.BackColor = System.Drawing.Color.Khaki;
+            this.txtCliente.Enabled = false;
             this.txtCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCliente.Location = new System.Drawing.Point(289, 26);
+            this.txtCliente.Location = new System.Drawing.Point(265, 26);
             this.txtCliente.MaxLength = 60;
             this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(222, 21);
+            this.txtCliente.Size = new System.Drawing.Size(221, 21);
             this.txtCliente.TabIndex = 74;
             this.txtCliente.Tag = "Cliente";
             // 
@@ -140,19 +147,20 @@ namespace Sistema_de_Gestión.Presentacion
             this.txtCodigoCliente.BackColor = System.Drawing.Color.White;
             this.txtCodigoCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigoCliente.ForeColor = System.Drawing.Color.DarkRed;
-            this.txtCodigoCliente.Location = new System.Drawing.Point(71, 24);
+            this.txtCodigoCliente.Location = new System.Drawing.Point(56, 23);
             this.txtCodigoCliente.MaxLength = 7;
             this.txtCodigoCliente.Name = "txtCodigoCliente";
             this.txtCodigoCliente.Size = new System.Drawing.Size(103, 24);
             this.txtCodigoCliente.TabIndex = 73;
             this.txtCodigoCliente.Tag = "Codigo";
+            this.txtCodigoCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoCliente_KeyPress);
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.DarkRed;
-            this.label20.Location = new System.Drawing.Point(19, 28);
+            this.label20.Location = new System.Drawing.Point(8, 27);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(49, 16);
             this.label20.TabIndex = 86;
@@ -161,7 +169,7 @@ namespace Sistema_de_Gestión.Presentacion
             // cmdBuscarCliente
             // 
             this.cmdBuscarCliente.Image = ((System.Drawing.Image)(resources.GetObject("cmdBuscarCliente.Image")));
-            this.cmdBuscarCliente.Location = new System.Drawing.Point(180, 23);
+            this.cmdBuscarCliente.Location = new System.Drawing.Point(165, 22);
             this.cmdBuscarCliente.Name = "cmdBuscarCliente";
             this.cmdBuscarCliente.Size = new System.Drawing.Size(36, 26);
             this.cmdBuscarCliente.TabIndex = 85;
@@ -171,8 +179,9 @@ namespace Sistema_de_Gestión.Presentacion
             // txtTelefonos
             // 
             this.txtTelefonos.BackColor = System.Drawing.Color.Khaki;
+            this.txtTelefonos.Enabled = false;
             this.txtTelefonos.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelefonos.Location = new System.Drawing.Point(585, 26);
+            this.txtTelefonos.Location = new System.Drawing.Point(555, 27);
             this.txtTelefonos.MaxLength = 60;
             this.txtTelefonos.Name = "txtTelefonos";
             this.txtTelefonos.Size = new System.Drawing.Size(158, 21);
@@ -182,19 +191,20 @@ namespace Sistema_de_Gestión.Presentacion
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.DimGray;
-            this.label5.Location = new System.Drawing.Point(550, 29);
+            this.label5.Location = new System.Drawing.Point(522, 31);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 16);
+            this.label5.Size = new System.Drawing.Size(30, 14);
             this.label5.TabIndex = 81;
             this.label5.Text = "Tels:";
             // 
             // txtContactos
             // 
             this.txtContactos.BackColor = System.Drawing.Color.Khaki;
+            this.txtContactos.Enabled = false;
             this.txtContactos.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContactos.Location = new System.Drawing.Point(585, 51);
+            this.txtContactos.Location = new System.Drawing.Point(555, 52);
             this.txtContactos.MaxLength = 80;
             this.txtContactos.Name = "txtContactos";
             this.txtContactos.Size = new System.Drawing.Size(158, 21);
@@ -204,19 +214,20 @@ namespace Sistema_de_Gestión.Presentacion
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DimGray;
-            this.label4.Location = new System.Drawing.Point(517, 54);
+            this.label4.Location = new System.Drawing.Point(490, 56);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 16);
+            this.label4.Size = new System.Drawing.Size(62, 14);
             this.label4.TabIndex = 78;
             this.label4.Text = "Contactos:";
             // 
             // TxtRNC
             // 
             this.TxtRNC.BackColor = System.Drawing.Color.Khaki;
+            this.TxtRNC.Enabled = false;
             this.TxtRNC.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtRNC.Location = new System.Drawing.Point(71, 54);
+            this.TxtRNC.Location = new System.Drawing.Point(56, 53);
             this.TxtRNC.MaxLength = 15;
             this.TxtRNC.Name = "TxtRNC";
             this.TxtRNC.Size = new System.Drawing.Size(144, 21);
@@ -226,22 +237,22 @@ namespace Sistema_de_Gestión.Presentacion
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DimGray;
-            this.label3.Location = new System.Drawing.Point(33, 57);
+            this.label3.Location = new System.Drawing.Point(22, 56);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 16);
+            this.label3.Size = new System.Drawing.Size(33, 14);
             this.label3.TabIndex = 75;
             this.label3.Text = "RNC:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DimGray;
-            this.label2.Location = new System.Drawing.Point(230, 29);
+            this.label2.Location = new System.Drawing.Point(210, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 16);
+            this.label2.Size = new System.Drawing.Size(54, 14);
             this.label2.TabIndex = 72;
             this.label2.Text = "Empresa:";
             // 
@@ -274,7 +285,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.dgvPedidos.Name = "dgvPedidos";
             this.dgvPedidos.ReadOnly = true;
             this.dgvPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPedidos.Size = new System.Drawing.Size(756, 216);
+            this.dgvPedidos.Size = new System.Drawing.Size(726, 238);
             this.dgvPedidos.TabIndex = 1;
             this.dgvPedidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedidos_CellClick);
             // 
@@ -302,19 +313,20 @@ namespace Sistema_de_Gestión.Presentacion
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDetallesPedidos.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvDetallesPedidos.Location = new System.Drawing.Point(13, 379);
+            this.dgvDetallesPedidos.Location = new System.Drawing.Point(12, 393);
             this.dgvDetallesPedidos.MultiSelect = false;
             this.dgvDetallesPedidos.Name = "dgvDetallesPedidos";
             this.dgvDetallesPedidos.ReadOnly = true;
             this.dgvDetallesPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDetallesPedidos.Size = new System.Drawing.Size(755, 160);
+            this.dgvDetallesPedidos.Size = new System.Drawing.Size(725, 190);
             this.dgvDetallesPedidos.TabIndex = 2;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.DimGray;
+            this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(10, 115);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(178, 16);
@@ -324,17 +336,35 @@ namespace Sistema_de_Gestión.Presentacion
             // lblPedidoSeleccionado
             // 
             this.lblPedidoSeleccionado.AutoSize = true;
+            this.lblPedidoSeleccionado.BackColor = System.Drawing.Color.Transparent;
             this.lblPedidoSeleccionado.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPedidoSeleccionado.ForeColor = System.Drawing.Color.DimGray;
-            this.lblPedidoSeleccionado.Location = new System.Drawing.Point(11, 360);
+            this.lblPedidoSeleccionado.ForeColor = System.Drawing.Color.White;
+            this.lblPedidoSeleccionado.Location = new System.Drawing.Point(10, 374);
             this.lblPedidoSeleccionado.Name = "lblPedidoSeleccionado";
-            this.lblPedidoSeleccionado.Size = new System.Drawing.Size(192, 16);
+            this.lblPedidoSeleccionado.Size = new System.Drawing.Size(185, 16);
             this.lblPedidoSeleccionado.TabIndex = 3;
-            this.lblPedidoSeleccionado.Text = "Conduces asociados al pedido #: 0";
+            this.lblPedidoSeleccionado.Text = "Conduces asociados al pedido #: ";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.cmdVerRedaccion);
+            this.groupBox1.Controls.Add(this.cmdResetCriterios);
+            this.groupBox1.Controls.Add(this.cmdBuscarPedido);
+            this.groupBox1.Controls.Add(this.groupBox4);
+            this.groupBox1.Controls.Add(this.groupBox3);
+            this.groupBox1.Controls.Add(this.groupBox2);
+            this.groupBox1.Location = new System.Drawing.Point(756, 90);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(260, 401);
+            this.groupBox1.TabIndex = 100;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Criterios de búsqueda:";
             // 
             // cmdVerRedaccion
             // 
             this.cmdVerRedaccion.BackColor = System.Drawing.SystemColors.Control;
+            this.cmdVerRedaccion.BackgroundImage = global::Sistema_de_Gestión.RecursosBA.BotonVerRedaccion;
             this.cmdVerRedaccion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.cmdVerRedaccion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmdVerRedaccion.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -344,52 +374,50 @@ namespace Sistema_de_Gestión.Presentacion
             this.cmdVerRedaccion.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdVerRedaccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cmdVerRedaccion.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.cmdVerRedaccion.Location = new System.Drawing.Point(13, 547);
+            this.cmdVerRedaccion.Location = new System.Drawing.Point(19, 335);
             this.cmdVerRedaccion.Name = "cmdVerRedaccion";
-            this.cmdVerRedaccion.Size = new System.Drawing.Size(144, 55);
-            this.cmdVerRedaccion.TabIndex = 88;
+            this.cmdVerRedaccion.Size = new System.Drawing.Size(229, 52);
+            this.cmdVerRedaccion.TabIndex = 106;
             this.cmdVerRedaccion.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.cmdVerRedaccion.UseVisualStyleBackColor = false;
             this.cmdVerRedaccion.Click += new System.EventHandler(this.cmdVerRedaccion_Click);
+            this.cmdVerRedaccion.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmdVerRedaccion_MouseDown);
+            this.cmdVerRedaccion.MouseLeave += new System.EventHandler(this.cmdVerRedaccion_MouseLeave);
+            this.cmdVerRedaccion.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cmdVerRedaccion_MouseMove);
             // 
-            // groupBox1
+            // cmdResetCriterios
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.cmdBuscarPedido);
-            this.groupBox1.Controls.Add(this.groupBox4);
-            this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Location = new System.Drawing.Point(785, 127);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(265, 412);
-            this.groupBox1.TabIndex = 100;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Criterios de búsqueda:";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(16, 359);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(229, 47);
-            this.button1.TabIndex = 105;
-            this.button1.Text = "&Resetear Criterios";
-            this.button1.UseVisualStyleBackColor = true;
+            this.cmdResetCriterios.BackgroundImage = global::Sistema_de_Gestión.RecursosBA.BotonResetCriteriosProforma;
+            this.cmdResetCriterios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.cmdResetCriterios.Location = new System.Drawing.Point(135, 285);
+            this.cmdResetCriterios.Name = "cmdResetCriterios";
+            this.cmdResetCriterios.Size = new System.Drawing.Size(112, 48);
+            this.cmdResetCriterios.TabIndex = 105;
+            this.cmdResetCriterios.UseVisualStyleBackColor = true;
+            this.cmdResetCriterios.Click += new System.EventHandler(this.cmdResetCriterios_Click);
+            this.cmdResetCriterios.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmdResetCriterios_MouseDown);
+            this.cmdResetCriterios.MouseLeave += new System.EventHandler(this.cmdResetCriterios_MouseLeave);
+            this.cmdResetCriterios.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cmdResetCriterios_MouseMove);
             // 
             // cmdBuscarPedido
             // 
-            this.cmdBuscarPedido.Location = new System.Drawing.Point(16, 306);
+            this.cmdBuscarPedido.BackgroundImage = global::Sistema_de_Gestión.RecursosBA.BotonBuscarPedidosProforma;
+            this.cmdBuscarPedido.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.cmdBuscarPedido.Location = new System.Drawing.Point(19, 285);
             this.cmdBuscarPedido.Name = "cmdBuscarPedido";
-            this.cmdBuscarPedido.Size = new System.Drawing.Size(229, 47);
+            this.cmdBuscarPedido.Size = new System.Drawing.Size(112, 48);
             this.cmdBuscarPedido.TabIndex = 104;
-            this.cmdBuscarPedido.Text = "&Buscar Pedidos";
             this.cmdBuscarPedido.UseVisualStyleBackColor = true;
             this.cmdBuscarPedido.Click += new System.EventHandler(this.cmdBuscarPedido_Click);
+            this.cmdBuscarPedido.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmdBuscarPedido_MouseDown);
+            this.cmdBuscarPedido.MouseLeave += new System.EventHandler(this.cmdBuscarPedido_MouseLeave);
+            this.cmdBuscarPedido.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cmdBuscarPedido_MouseMove);
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.cboEstatusPedidos);
-            this.groupBox4.Location = new System.Drawing.Point(16, 90);
+            this.groupBox4.Location = new System.Drawing.Point(18, 90);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(229, 56);
             this.groupBox4.TabIndex = 103;
@@ -422,7 +450,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             this.groupBox3.Controls.Add(this.nUpDownPedidos);
             this.groupBox3.Controls.Add(this.cboCriterioPedidos);
-            this.groupBox3.Location = new System.Drawing.Point(16, 24);
+            this.groupBox3.Location = new System.Drawing.Point(18, 24);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(229, 56);
             this.groupBox3.TabIndex = 102;
@@ -474,7 +502,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.groupBox2.Controls.Add(this.dtpFechaInicio);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Location = new System.Drawing.Point(16, 156);
+            this.groupBox2.Location = new System.Drawing.Point(18, 156);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(229, 121);
             this.groupBox2.TabIndex = 101;
@@ -540,21 +568,64 @@ namespace Sistema_de_Gestión.Presentacion
             this.label7.TabIndex = 101;
             this.label7.Text = "Inicio:";
             // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.DarkGray;
+            this.label9.Location = new System.Drawing.Point(771, 23);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(229, 59);
+            this.label9.TabIndex = 101;
+            this.label9.Text = "REPORTE DE MOVIMIENTOS DE TIERRA Y EQUIPOS";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // gbTotalGeneral
+            // 
+            this.gbTotalGeneral.BackColor = System.Drawing.Color.Transparent;
+            this.gbTotalGeneral.Controls.Add(this.lblTotalGeneral);
+            this.gbTotalGeneral.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbTotalGeneral.Location = new System.Drawing.Point(756, 503);
+            this.gbTotalGeneral.Name = "gbTotalGeneral";
+            this.gbTotalGeneral.Size = new System.Drawing.Size(256, 80);
+            this.gbTotalGeneral.TabIndex = 102;
+            this.gbTotalGeneral.TabStop = false;
+            this.gbTotalGeneral.Text = "TOTAL GENERAL;";
+            // 
+            // lblTotalGeneral
+            // 
+            this.lblTotalGeneral.BackColor = System.Drawing.Color.Khaki;
+            this.lblTotalGeneral.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalGeneral.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblTotalGeneral.Location = new System.Drawing.Point(6, 20);
+            this.lblTotalGeneral.Name = "lblTotalGeneral";
+            this.lblTotalGeneral.Size = new System.Drawing.Size(244, 52);
+            this.lblTotalGeneral.TabIndex = 0;
+            this.lblTotalGeneral.Text = "$0.00";
+            this.lblTotalGeneral.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmRedaccionesClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1065, 612);
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.BackgroundImage = global::Sistema_de_Gestión.RecursosBA.FondoProforma;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1030, 598);
+            this.Controls.Add(this.gbTotalGeneral);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.cmdVerRedaccion);
             this.Controls.Add(this.lblPedidoSeleccionado);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dgvDetallesPedidos);
             this.Controls.Add(this.dgvPedidos);
             this.Controls.Add(this.gbCliente);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "frmRedaccionesClientes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Redacciones de Clientes";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmRedaccionesClientes_Load);
             this.gbCliente.ResumeLayout(false);
             this.gbCliente.PerformLayout();
@@ -567,6 +638,7 @@ namespace Sistema_de_Gestión.Presentacion
             ((System.ComponentModel.ISupportInitialize)(this.nUpDownPedidos)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.gbTotalGeneral.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -590,7 +662,6 @@ namespace Sistema_de_Gestión.Presentacion
         private System.Windows.Forms.DataGridView dgvDetallesPedidos;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblPedidoSeleccionado;
-        private System.Windows.Forms.Button cmdVerRedaccion;
         private System.Windows.Forms.TextBox txtProyecto;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -604,10 +675,14 @@ namespace Sistema_de_Gestión.Presentacion
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ComboBox cboEstatusPedidos;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button cmdResetCriterios;
         private System.Windows.Forms.Button cmdBuscarPedido;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cboModoReporte;
+        private System.Windows.Forms.Button cmdVerRedaccion;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox gbTotalGeneral;
+        private System.Windows.Forms.Label lblTotalGeneral;
     }
 }
