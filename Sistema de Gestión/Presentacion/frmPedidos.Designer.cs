@@ -29,10 +29,10 @@ namespace Sistema_de_Gestión.Presentacion
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPedidos));
             this.txtNumPedido = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -77,7 +77,34 @@ namespace Sistema_de_Gestión.Presentacion
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvChoferes = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Conduce = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Chofer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_Factura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_Medida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clCantidadChofer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clsCapacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDConduce = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Placa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CondicionPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clOrometroInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clOrometroFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvListaChoferes = new System.Windows.Forms.DataGridView();
+            this.clNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clChofer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clConduce = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clVehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clsPlaca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clsCondicionPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrometroInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrometroFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -102,36 +129,27 @@ namespace Sistema_de_Gestión.Presentacion
             this.tpMateriales = new System.Windows.Forms.TabPage();
             this.label10 = new System.Windows.Forms.Label();
             this.UDViajes = new System.Windows.Forms.NumericUpDown();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtCapacidad = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.cmdAgregarInfoChofer = new System.Windows.Forms.Button();
+            this.txtConduce = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txtFlota = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.txtPlaca = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.tpAlquiler = new System.Windows.Forms.TabPage();
-            this.panelChofer = new System.Windows.Forms.Panel();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Conduce = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Chofer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_Factura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_Medida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clCantidadChofer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clsCapacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDConduce = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Placa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CondicionPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clOrometroInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clOrometroFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cboChofer = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.cboVehiculos = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtFlota = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.txtConduce = new System.Windows.Forms.TextBox();
-            this.cmdAgregarInfoChofer = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.cboVehiculos = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cboChofer = new System.Windows.Forms.ComboBox();
+            this.tpAlquiler = new System.Windows.Forms.TabPage();
+            this.label32 = new System.Windows.Forms.Label();
+            this.cboVehiculoAlquiler = new System.Windows.Forms.ComboBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.txtOrometroFinal = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.txtOrometroInicio = new System.Windows.Forms.TextBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.cmdAgregarConduceAlquiler = new System.Windows.Forms.Button();
             this.txtConduceAlquiler = new System.Windows.Forms.TextBox();
@@ -140,25 +158,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.label25 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.cboChoferAlquiler = new System.Windows.Forms.ComboBox();
-            this.txtOrometroInicio = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.txtOrometroFinal = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.cboVehiculoAlquiler = new System.Windows.Forms.ComboBox();
-            this.clNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clChofer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clConduce = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clVehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clsPlaca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clsCondicionPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrometroInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrometroFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelChofer = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.UdCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -171,8 +171,8 @@ namespace Sistema_de_Gestión.Presentacion
             this.tabControl1.SuspendLayout();
             this.tpMateriales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UDViajes)).BeginInit();
-            this.tpAlquiler.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tpAlquiler.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
@@ -230,9 +230,11 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // txtCliente
             // 
+            this.txtCliente.BackColor = System.Drawing.Color.Khaki;
             this.txtCliente.Location = new System.Drawing.Point(239, 142);
             this.txtCliente.MaxLength = 60;
             this.txtCliente.Name = "txtCliente";
+            this.txtCliente.ReadOnly = true;
             this.txtCliente.Size = new System.Drawing.Size(183, 20);
             this.txtCliente.TabIndex = 5;
             this.txtCliente.Tag = "Cliente";
@@ -245,6 +247,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.txtCodigoCliente.Size = new System.Drawing.Size(62, 20);
             this.txtCodigoCliente.TabIndex = 1;
             this.txtCodigoCliente.Tag = "Codigo";
+            this.txtCodigoCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoCliente_KeyPress);
             // 
             // label20
             // 
@@ -258,10 +261,12 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // txtDirección
             // 
+            this.txtDirección.BackColor = System.Drawing.Color.Khaki;
             this.txtDirección.Location = new System.Drawing.Point(76, 213);
             this.txtDirección.MaxLength = 250;
             this.txtDirección.Multiline = true;
             this.txtDirección.Name = "txtDirección";
+            this.txtDirección.ReadOnly = true;
             this.txtDirección.Size = new System.Drawing.Size(346, 50);
             this.txtDirección.TabIndex = 4;
             this.txtDirección.Tag = "Direccion";
@@ -277,18 +282,22 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // txtCorreo
             // 
+            this.txtCorreo.BackColor = System.Drawing.Color.Khaki;
             this.txtCorreo.Location = new System.Drawing.Point(239, 190);
             this.txtCorreo.MaxLength = 60;
             this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.ReadOnly = true;
             this.txtCorreo.Size = new System.Drawing.Size(183, 20);
             this.txtCorreo.TabIndex = 7;
             this.txtCorreo.Tag = "Correo";
             // 
             // txtTelefonos
             // 
+            this.txtTelefonos.BackColor = System.Drawing.Color.Khaki;
             this.txtTelefonos.Location = new System.Drawing.Point(76, 190);
             this.txtTelefonos.MaxLength = 60;
             this.txtTelefonos.Name = "txtTelefonos";
+            this.txtTelefonos.ReadOnly = true;
             this.txtTelefonos.Size = new System.Drawing.Size(100, 20);
             this.txtTelefonos.TabIndex = 3;
             this.txtTelefonos.Tag = "Telefonos";
@@ -304,18 +313,22 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // txtContactos
             // 
+            this.txtContactos.BackColor = System.Drawing.Color.Khaki;
             this.txtContactos.Location = new System.Drawing.Point(239, 167);
             this.txtContactos.MaxLength = 80;
             this.txtContactos.Name = "txtContactos";
+            this.txtContactos.ReadOnly = true;
             this.txtContactos.Size = new System.Drawing.Size(183, 20);
             this.txtContactos.TabIndex = 6;
             this.txtContactos.Tag = "Contactos";
             // 
             // TxtRNC
             // 
+            this.TxtRNC.BackColor = System.Drawing.Color.Khaki;
             this.TxtRNC.Location = new System.Drawing.Point(76, 167);
             this.TxtRNC.MaxLength = 15;
             this.TxtRNC.Name = "TxtRNC";
+            this.TxtRNC.ReadOnly = true;
             this.TxtRNC.Size = new System.Drawing.Size(100, 20);
             this.TxtRNC.TabIndex = 2;
             this.TxtRNC.Tag = "RNC";
@@ -497,14 +510,14 @@ namespace Sistema_de_Gestión.Presentacion
             this.dgvFactura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFactura.BackgroundColor = System.Drawing.Color.White;
             this.dgvFactura.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFactura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cantidad,
@@ -516,21 +529,21 @@ namespace Sistema_de_Gestión.Presentacion
             this.Costo,
             this.SubTotal,
             this.Accion});
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.Khaki;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFactura.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFactura.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvFactura.Location = new System.Drawing.Point(76, 304);
             this.dgvFactura.MultiSelect = false;
             this.dgvFactura.Name = "dgvFactura";
             this.dgvFactura.ReadOnly = true;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
-            this.dgvFactura.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            this.dgvFactura.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFactura.Size = new System.Drawing.Size(1288, 213);
             this.dgvFactura.TabIndex = 93;
@@ -618,10 +631,10 @@ namespace Sistema_de_Gestión.Presentacion
             // Accion
             // 
             this.Accion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.DarkRed;
-            this.Accion.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.DarkRed;
+            this.Accion.DefaultCellStyle = dataGridViewCellStyle6;
             this.Accion.HeaderText = "Fila";
             this.Accion.MinimumWidth = 100;
             this.Accion.Name = "Accion";
@@ -719,6 +732,103 @@ namespace Sistema_de_Gestión.Presentacion
             this.dgvChoferes.Size = new System.Drawing.Size(521, 52);
             this.dgvChoferes.TabIndex = 0;
             // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ID.HeaderText = "ID";
+            this.ID.MaxInputLength = 250;
+            this.ID.MinimumWidth = 50;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 50;
+            // 
+            // Conduce
+            // 
+            this.Conduce.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Conduce.HeaderText = "Conduce";
+            this.Conduce.MaxInputLength = 8;
+            this.Conduce.Name = "Conduce";
+            this.Conduce.ReadOnly = true;
+            this.Conduce.Width = 78;
+            // 
+            // Chofer
+            // 
+            this.Chofer.HeaderText = "Chofer";
+            this.Chofer.Name = "Chofer";
+            this.Chofer.ReadOnly = true;
+            this.Chofer.Width = 61;
+            // 
+            // Vehiculo
+            // 
+            this.Vehiculo.HeaderText = "Vehiculo";
+            this.Vehiculo.Name = "Vehiculo";
+            this.Vehiculo.ReadOnly = true;
+            this.Vehiculo.Width = 69;
+            // 
+            // id_Producto
+            // 
+            this.id_Producto.HeaderText = "Producto";
+            this.id_Producto.Name = "id_Producto";
+            this.id_Producto.ReadOnly = true;
+            // 
+            // id_Factura
+            // 
+            this.id_Factura.HeaderText = "Factura";
+            this.id_Factura.Name = "id_Factura";
+            this.id_Factura.ReadOnly = true;
+            // 
+            // id_Medida
+            // 
+            this.id_Medida.HeaderText = "Medida";
+            this.id_Medida.Name = "id_Medida";
+            this.id_Medida.ReadOnly = true;
+            // 
+            // clCantidadChofer
+            // 
+            this.clCantidadChofer.HeaderText = "Cantidad";
+            this.clCantidadChofer.MaxInputLength = 15;
+            this.clCantidadChofer.Name = "clCantidadChofer";
+            this.clCantidadChofer.ReadOnly = true;
+            // 
+            // clsCapacidad
+            // 
+            this.clsCapacidad.HeaderText = "Capacidad";
+            this.clsCapacidad.MaxInputLength = 6;
+            this.clsCapacidad.Name = "clsCapacidad";
+            this.clsCapacidad.ReadOnly = true;
+            // 
+            // IDConduce
+            // 
+            this.IDConduce.HeaderText = "IDConduce";
+            this.IDConduce.MaxInputLength = 5;
+            this.IDConduce.Name = "IDConduce";
+            this.IDConduce.ReadOnly = true;
+            // 
+            // Placa
+            // 
+            this.Placa.HeaderText = "Placa";
+            this.Placa.MaxInputLength = 10;
+            this.Placa.Name = "Placa";
+            this.Placa.ReadOnly = true;
+            // 
+            // CondicionPago
+            // 
+            this.CondicionPago.HeaderText = "CondicicionPago";
+            this.CondicionPago.Name = "CondicionPago";
+            this.CondicionPago.ReadOnly = true;
+            // 
+            // clOrometroInicio
+            // 
+            this.clOrometroInicio.HeaderText = "Orometro Inicio";
+            this.clOrometroInicio.Name = "clOrometroInicio";
+            this.clOrometroInicio.ReadOnly = true;
+            // 
+            // clOrometroFinal
+            // 
+            this.clOrometroFinal.HeaderText = "Orometro Final";
+            this.clOrometroFinal.Name = "clOrometroFinal";
+            this.clOrometroFinal.ReadOnly = true;
+            // 
             // dgvListaChoferes
             // 
             this.dgvListaChoferes.AllowUserToAddRows = false;
@@ -749,6 +859,104 @@ namespace Sistema_de_Gestión.Presentacion
             this.dgvListaChoferes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaChoferes.Size = new System.Drawing.Size(521, 87);
             this.dgvListaChoferes.TabIndex = 1;
+            // 
+            // clNum
+            // 
+            this.clNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.clNum.HeaderText = "#";
+            this.clNum.MaxInputLength = 250;
+            this.clNum.MinimumWidth = 50;
+            this.clNum.Name = "clNum";
+            this.clNum.ReadOnly = true;
+            this.clNum.Width = 50;
+            // 
+            // clChofer
+            // 
+            this.clChofer.HeaderText = "Chofer";
+            this.clChofer.Name = "clChofer";
+            this.clChofer.ReadOnly = true;
+            this.clChofer.Width = 67;
+            // 
+            // clConduce
+            // 
+            this.clConduce.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.clConduce.HeaderText = "Conduce";
+            this.clConduce.MaxInputLength = 8;
+            this.clConduce.Name = "clConduce";
+            this.clConduce.ReadOnly = true;
+            this.clConduce.Width = 78;
+            // 
+            // clVehiculo
+            // 
+            this.clVehiculo.HeaderText = "Vehiculo";
+            this.clVehiculo.Name = "clVehiculo";
+            this.clVehiculo.ReadOnly = true;
+            this.clVehiculo.Width = 77;
+            // 
+            // clProducto
+            // 
+            this.clProducto.HeaderText = "Producto";
+            this.clProducto.Name = "clProducto";
+            this.clProducto.ReadOnly = true;
+            this.clProducto.Width = 80;
+            // 
+            // clFactura
+            // 
+            this.clFactura.HeaderText = "Pedido";
+            this.clFactura.Name = "clFactura";
+            this.clFactura.ReadOnly = true;
+            this.clFactura.Width = 69;
+            // 
+            // clMedida
+            // 
+            this.clMedida.HeaderText = "Medida";
+            this.clMedida.Name = "clMedida";
+            this.clMedida.ReadOnly = true;
+            this.clMedida.Width = 72;
+            // 
+            // clCantidad
+            // 
+            this.clCantidad.HeaderText = "Cantidad";
+            this.clCantidad.Name = "clCantidad";
+            this.clCantidad.ReadOnly = true;
+            this.clCantidad.Width = 79;
+            // 
+            // Capacidad
+            // 
+            this.Capacidad.HeaderText = "Capacidad";
+            this.Capacidad.MaxInputLength = 5;
+            this.Capacidad.Name = "Capacidad";
+            this.Capacidad.ReadOnly = true;
+            this.Capacidad.Width = 86;
+            // 
+            // clsPlaca
+            // 
+            this.clsPlaca.HeaderText = "Placa";
+            this.clsPlaca.MaxInputLength = 10;
+            this.clsPlaca.Name = "clsPlaca";
+            this.clsPlaca.ReadOnly = true;
+            this.clsPlaca.Width = 59;
+            // 
+            // clsCondicionPago
+            // 
+            this.clsCondicionPago.HeaderText = "CondicionPago";
+            this.clsCondicionPago.Name = "clsCondicionPago";
+            this.clsCondicionPago.ReadOnly = true;
+            this.clsCondicionPago.Width = 112;
+            // 
+            // OrometroInicio
+            // 
+            this.OrometroInicio.HeaderText = "OrometroInicio";
+            this.OrometroInicio.Name = "OrometroInicio";
+            this.OrometroInicio.ReadOnly = true;
+            this.OrometroInicio.Width = 110;
+            // 
+            // OrometroFinal
+            // 
+            this.OrometroFinal.HeaderText = "OrometroFinal";
+            this.OrometroFinal.Name = "OrometroFinal";
+            this.OrometroFinal.ReadOnly = true;
+            this.OrometroFinal.Width = 107;
             // 
             // label6
             // 
@@ -991,12 +1199,10 @@ namespace Sistema_de_Gestión.Presentacion
             // rdbEfectivo
             // 
             this.rdbEfectivo.AutoSize = true;
-            this.rdbEfectivo.Checked = true;
             this.rdbEfectivo.Location = new System.Drawing.Point(17, 25);
             this.rdbEfectivo.Name = "rdbEfectivo";
             this.rdbEfectivo.Size = new System.Drawing.Size(64, 17);
             this.rdbEfectivo.TabIndex = 0;
-            this.rdbEfectivo.TabStop = true;
             this.rdbEfectivo.Text = "Efectivo";
             this.rdbEfectivo.UseVisualStyleBackColor = true;
             this.rdbEfectivo.CheckedChanged += new System.EventHandler(this.rdbEfectivo_CheckedChanged);
@@ -1073,6 +1279,16 @@ namespace Sistema_de_Gestión.Presentacion
             0,
             0});
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Sistema_de_Gestión.RecursosBA.Constructor;
+            this.pictureBox1.Location = new System.Drawing.Point(6, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 85);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 123;
+            this.pictureBox1.TabStop = false;
+            // 
             // txtCapacidad
             // 
             this.txtCapacidad.Location = new System.Drawing.Point(174, 76);
@@ -1092,6 +1308,60 @@ namespace Sistema_de_Gestión.Presentacion
             this.label2.TabIndex = 121;
             this.label2.Text = "Capacidad:";
             // 
+            // cmdAgregarInfoChofer
+            // 
+            this.cmdAgregarInfoChofer.BackgroundImage = global::Sistema_de_Gestión.RecursosBA.BotonAgregarConduce;
+            this.cmdAgregarInfoChofer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.cmdAgregarInfoChofer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdAgregarInfoChofer.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdAgregarInfoChofer.ForeColor = System.Drawing.Color.Navy;
+            this.cmdAgregarInfoChofer.Location = new System.Drawing.Point(372, 28);
+            this.cmdAgregarInfoChofer.Name = "cmdAgregarInfoChofer";
+            this.cmdAgregarInfoChofer.Size = new System.Drawing.Size(149, 69);
+            this.cmdAgregarInfoChofer.TabIndex = 120;
+            this.cmdAgregarInfoChofer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.cmdAgregarInfoChofer.UseVisualStyleBackColor = true;
+            this.cmdAgregarInfoChofer.Click += new System.EventHandler(this.cmdAgregarInfoChofer_Click);
+            // 
+            // txtConduce
+            // 
+            this.txtConduce.Location = new System.Drawing.Point(174, 5);
+            this.txtConduce.MaxLength = 5;
+            this.txtConduce.Name = "txtConduce";
+            this.txtConduce.Size = new System.Drawing.Size(72, 20);
+            this.txtConduce.TabIndex = 119;
+            this.txtConduce.Tag = "Conduce";
+            this.txtConduce.Text = "0";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label28.ForeColor = System.Drawing.Color.DarkRed;
+            this.label28.Location = new System.Drawing.Point(107, 8);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(65, 16);
+            this.label28.TabIndex = 118;
+            this.label28.Text = "Conduce:";
+            // 
+            // txtFlota
+            // 
+            this.txtFlota.Location = new System.Drawing.Point(424, 5);
+            this.txtFlota.MaxLength = 15;
+            this.txtFlota.Name = "txtFlota";
+            this.txtFlota.Size = new System.Drawing.Size(96, 20);
+            this.txtFlota.TabIndex = 117;
+            this.txtFlota.Tag = "Flota";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(368, 9);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(54, 13);
+            this.label11.TabIndex = 116;
+            this.label11.Text = "Tel. Flota:";
+            // 
             // txtPlaca
             // 
             this.txtPlaca.Location = new System.Drawing.Point(266, 76);
@@ -1109,6 +1379,48 @@ namespace Sistema_de_Gestión.Presentacion
             this.label14.Size = new System.Drawing.Size(37, 13);
             this.label14.TabIndex = 114;
             this.label14.Text = "Placa:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(121, 55);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(51, 13);
+            this.label13.TabIndex = 113;
+            this.label13.Text = "Vehiculo:";
+            // 
+            // cboVehiculos
+            // 
+            this.cboVehiculos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboVehiculos.FormattingEnabled = true;
+            this.cboVehiculos.Location = new System.Drawing.Point(174, 52);
+            this.cboVehiculos.Name = "cboVehiculos";
+            this.cboVehiculos.Size = new System.Drawing.Size(188, 21);
+            this.cboVehiculos.TabIndex = 111;
+            this.cboVehiculos.Tag = "Vehiculo";
+            this.cboVehiculos.SelectedIndexChanged += new System.EventHandler(this.cboVehiculos_SelectedIndexChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(119, 31);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 16);
+            this.label12.TabIndex = 112;
+            this.label12.Text = "Chofer:";
+            // 
+            // cboChofer
+            // 
+            this.cboChofer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboChofer.FormattingEnabled = true;
+            this.cboChofer.Location = new System.Drawing.Point(174, 28);
+            this.cboChofer.Name = "cboChofer";
+            this.cboChofer.Size = new System.Drawing.Size(188, 21);
+            this.cboChofer.TabIndex = 110;
+            this.cboChofer.Tag = "Chofer";
+            this.cboChofer.SelectedIndexChanged += new System.EventHandler(this.cboChofer_SelectedIndexChanged);
             // 
             // tpAlquiler
             // 
@@ -1134,217 +1446,60 @@ namespace Sistema_de_Gestión.Presentacion
             this.tpAlquiler.Text = "Conduce Alquiler";
             this.tpAlquiler.UseVisualStyleBackColor = true;
             // 
-            // panelChofer
+            // label32
             // 
-            this.panelChofer.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelChofer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelChofer.Location = new System.Drawing.Point(844, 35);
-            this.panelChofer.Name = "panelChofer";
-            this.panelChofer.Size = new System.Drawing.Size(115, 41);
-            this.panelChofer.TabIndex = 84;
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(123, 78);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(51, 13);
+            this.label32.TabIndex = 139;
+            this.label32.Text = "Vehiculo:";
             // 
-            // ID
+            // cboVehiculoAlquiler
             // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ID.HeaderText = "ID";
-            this.ID.MaxInputLength = 250;
-            this.ID.MinimumWidth = 50;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 50;
+            this.cboVehiculoAlquiler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboVehiculoAlquiler.FormattingEnabled = true;
+            this.cboVehiculoAlquiler.Location = new System.Drawing.Point(176, 75);
+            this.cboVehiculoAlquiler.Name = "cboVehiculoAlquiler";
+            this.cboVehiculoAlquiler.Size = new System.Drawing.Size(169, 21);
+            this.cboVehiculoAlquiler.TabIndex = 138;
+            this.cboVehiculoAlquiler.Tag = "Vehiculo";
             // 
-            // Conduce
+            // label31
             // 
-            this.Conduce.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Conduce.HeaderText = "Conduce";
-            this.Conduce.MaxInputLength = 8;
-            this.Conduce.Name = "Conduce";
-            this.Conduce.ReadOnly = true;
-            this.Conduce.Width = 78;
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(436, 8);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(32, 13);
+            this.label31.TabIndex = 137;
+            this.label31.Text = "Final:";
             // 
-            // Chofer
+            // txtOrometroFinal
             // 
-            this.Chofer.HeaderText = "Chofer";
-            this.Chofer.Name = "Chofer";
-            this.Chofer.ReadOnly = true;
-            this.Chofer.Width = 61;
+            this.txtOrometroFinal.Location = new System.Drawing.Point(471, 5);
+            this.txtOrometroFinal.Name = "txtOrometroFinal";
+            this.txtOrometroFinal.Size = new System.Drawing.Size(52, 20);
+            this.txtOrometroFinal.TabIndex = 136;
+            this.txtOrometroFinal.Text = "0";
+            this.txtOrometroFinal.TextChanged += new System.EventHandler(this.txtOrometroFinal_TextChanged);
             // 
-            // Vehiculo
+            // label29
             // 
-            this.Vehiculo.HeaderText = "Vehiculo";
-            this.Vehiculo.Name = "Vehiculo";
-            this.Vehiculo.ReadOnly = true;
-            this.Vehiculo.Width = 69;
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(291, 8);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(81, 13);
+            this.label29.TabIndex = 135;
+            this.label29.Text = "Orometro Inicio:";
             // 
-            // id_Producto
+            // txtOrometroInicio
             // 
-            this.id_Producto.HeaderText = "Producto";
-            this.id_Producto.Name = "id_Producto";
-            this.id_Producto.ReadOnly = true;
-            // 
-            // id_Factura
-            // 
-            this.id_Factura.HeaderText = "Factura";
-            this.id_Factura.Name = "id_Factura";
-            this.id_Factura.ReadOnly = true;
-            // 
-            // id_Medida
-            // 
-            this.id_Medida.HeaderText = "Medida";
-            this.id_Medida.Name = "id_Medida";
-            this.id_Medida.ReadOnly = true;
-            // 
-            // clCantidadChofer
-            // 
-            this.clCantidadChofer.HeaderText = "Cantidad";
-            this.clCantidadChofer.MaxInputLength = 15;
-            this.clCantidadChofer.Name = "clCantidadChofer";
-            this.clCantidadChofer.ReadOnly = true;
-            // 
-            // clsCapacidad
-            // 
-            this.clsCapacidad.HeaderText = "Capacidad";
-            this.clsCapacidad.MaxInputLength = 6;
-            this.clsCapacidad.Name = "clsCapacidad";
-            this.clsCapacidad.ReadOnly = true;
-            // 
-            // IDConduce
-            // 
-            this.IDConduce.HeaderText = "IDConduce";
-            this.IDConduce.MaxInputLength = 5;
-            this.IDConduce.Name = "IDConduce";
-            this.IDConduce.ReadOnly = true;
-            // 
-            // Placa
-            // 
-            this.Placa.HeaderText = "Placa";
-            this.Placa.MaxInputLength = 10;
-            this.Placa.Name = "Placa";
-            this.Placa.ReadOnly = true;
-            // 
-            // CondicionPago
-            // 
-            this.CondicionPago.HeaderText = "CondicicionPago";
-            this.CondicionPago.Name = "CondicionPago";
-            this.CondicionPago.ReadOnly = true;
-            // 
-            // clOrometroInicio
-            // 
-            this.clOrometroInicio.HeaderText = "Orometro Inicio";
-            this.clOrometroInicio.Name = "clOrometroInicio";
-            this.clOrometroInicio.ReadOnly = true;
-            // 
-            // clOrometroFinal
-            // 
-            this.clOrometroFinal.HeaderText = "Orometro Final";
-            this.clOrometroFinal.Name = "clOrometroFinal";
-            this.clOrometroFinal.ReadOnly = true;
-            // 
-            // cboChofer
-            // 
-            this.cboChofer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboChofer.FormattingEnabled = true;
-            this.cboChofer.Location = new System.Drawing.Point(174, 28);
-            this.cboChofer.Name = "cboChofer";
-            this.cboChofer.Size = new System.Drawing.Size(188, 21);
-            this.cboChofer.TabIndex = 110;
-            this.cboChofer.Tag = "Chofer";
-            this.cboChofer.SelectedIndexChanged += new System.EventHandler(this.cboChofer_SelectedIndexChanged);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(119, 31);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(53, 16);
-            this.label12.TabIndex = 112;
-            this.label12.Text = "Chofer:";
-            // 
-            // cboVehiculos
-            // 
-            this.cboVehiculos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboVehiculos.FormattingEnabled = true;
-            this.cboVehiculos.Location = new System.Drawing.Point(174, 52);
-            this.cboVehiculos.Name = "cboVehiculos";
-            this.cboVehiculos.Size = new System.Drawing.Size(188, 21);
-            this.cboVehiculos.TabIndex = 111;
-            this.cboVehiculos.Tag = "Vehiculo";
-            this.cboVehiculos.SelectedIndexChanged += new System.EventHandler(this.cboVehiculos_SelectedIndexChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(121, 55);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(51, 13);
-            this.label13.TabIndex = 113;
-            this.label13.Text = "Vehiculo:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(368, 9);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(54, 13);
-            this.label11.TabIndex = 116;
-            this.label11.Text = "Tel. Flota:";
-            // 
-            // txtFlota
-            // 
-            this.txtFlota.Location = new System.Drawing.Point(424, 5);
-            this.txtFlota.MaxLength = 15;
-            this.txtFlota.Name = "txtFlota";
-            this.txtFlota.Size = new System.Drawing.Size(96, 20);
-            this.txtFlota.TabIndex = 117;
-            this.txtFlota.Tag = "Flota";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label28.ForeColor = System.Drawing.Color.DarkRed;
-            this.label28.Location = new System.Drawing.Point(107, 8);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(65, 16);
-            this.label28.TabIndex = 118;
-            this.label28.Text = "Conduce:";
-            // 
-            // txtConduce
-            // 
-            this.txtConduce.Location = new System.Drawing.Point(174, 5);
-            this.txtConduce.MaxLength = 5;
-            this.txtConduce.Name = "txtConduce";
-            this.txtConduce.Size = new System.Drawing.Size(72, 20);
-            this.txtConduce.TabIndex = 119;
-            this.txtConduce.Tag = "Conduce";
-            this.txtConduce.Text = "0";
-            // 
-            // cmdAgregarInfoChofer
-            // 
-            this.cmdAgregarInfoChofer.BackgroundImage = global::Sistema_de_Gestión.RecursosBA.BotonAgregarConduce;
-            this.cmdAgregarInfoChofer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cmdAgregarInfoChofer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmdAgregarInfoChofer.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdAgregarInfoChofer.ForeColor = System.Drawing.Color.Navy;
-            this.cmdAgregarInfoChofer.Location = new System.Drawing.Point(372, 28);
-            this.cmdAgregarInfoChofer.Name = "cmdAgregarInfoChofer";
-            this.cmdAgregarInfoChofer.Size = new System.Drawing.Size(149, 69);
-            this.cmdAgregarInfoChofer.TabIndex = 120;
-            this.cmdAgregarInfoChofer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.cmdAgregarInfoChofer.UseVisualStyleBackColor = true;
-            this.cmdAgregarInfoChofer.Click += new System.EventHandler(this.cmdAgregarInfoChofer_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Sistema_de_Gestión.RecursosBA.Constructor;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 85);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 123;
-            this.pictureBox1.TabStop = false;
+            this.txtOrometroInicio.Location = new System.Drawing.Point(375, 5);
+            this.txtOrometroInicio.Name = "txtOrometroInicio";
+            this.txtOrometroInicio.Size = new System.Drawing.Size(54, 20);
+            this.txtOrometroInicio.TabIndex = 134;
+            this.txtOrometroInicio.Text = "0";
             // 
             // pictureBox4
             // 
@@ -1432,158 +1587,14 @@ namespace Sistema_de_Gestión.Presentacion
             this.cboChoferAlquiler.Tag = "Chofer";
             this.cboChoferAlquiler.SelectedIndexChanged += new System.EventHandler(this.cboChoferAlquiler_SelectedIndexChanged);
             // 
-            // txtOrometroInicio
+            // panelChofer
             // 
-            this.txtOrometroInicio.Location = new System.Drawing.Point(375, 5);
-            this.txtOrometroInicio.Name = "txtOrometroInicio";
-            this.txtOrometroInicio.Size = new System.Drawing.Size(54, 20);
-            this.txtOrometroInicio.TabIndex = 134;
-            this.txtOrometroInicio.Text = "0";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(291, 8);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(81, 13);
-            this.label29.TabIndex = 135;
-            this.label29.Text = "Orometro Inicio:";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(436, 8);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(32, 13);
-            this.label31.TabIndex = 137;
-            this.label31.Text = "Final:";
-            // 
-            // txtOrometroFinal
-            // 
-            this.txtOrometroFinal.Location = new System.Drawing.Point(471, 5);
-            this.txtOrometroFinal.Name = "txtOrometroFinal";
-            this.txtOrometroFinal.Size = new System.Drawing.Size(52, 20);
-            this.txtOrometroFinal.TabIndex = 136;
-            this.txtOrometroFinal.Text = "0";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(123, 78);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(51, 13);
-            this.label32.TabIndex = 139;
-            this.label32.Text = "Vehiculo:";
-            // 
-            // cboVehiculoAlquiler
-            // 
-            this.cboVehiculoAlquiler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboVehiculoAlquiler.FormattingEnabled = true;
-            this.cboVehiculoAlquiler.Location = new System.Drawing.Point(176, 75);
-            this.cboVehiculoAlquiler.Name = "cboVehiculoAlquiler";
-            this.cboVehiculoAlquiler.Size = new System.Drawing.Size(169, 21);
-            this.cboVehiculoAlquiler.TabIndex = 138;
-            this.cboVehiculoAlquiler.Tag = "Vehiculo";
-            this.cboVehiculoAlquiler.SelectedIndexChanged += new System.EventHandler(this.cboVehiculoAlquiler_SelectedIndexChanged);
-            // 
-            // clNum
-            // 
-            this.clNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.clNum.HeaderText = "#";
-            this.clNum.MaxInputLength = 250;
-            this.clNum.MinimumWidth = 50;
-            this.clNum.Name = "clNum";
-            this.clNum.ReadOnly = true;
-            this.clNum.Width = 50;
-            // 
-            // clChofer
-            // 
-            this.clChofer.HeaderText = "Chofer";
-            this.clChofer.Name = "clChofer";
-            this.clChofer.ReadOnly = true;
-            this.clChofer.Width = 67;
-            // 
-            // clConduce
-            // 
-            this.clConduce.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.clConduce.HeaderText = "Conduce";
-            this.clConduce.MaxInputLength = 8;
-            this.clConduce.Name = "clConduce";
-            this.clConduce.ReadOnly = true;
-            this.clConduce.Width = 78;
-            // 
-            // clVehiculo
-            // 
-            this.clVehiculo.HeaderText = "Vehiculo";
-            this.clVehiculo.Name = "clVehiculo";
-            this.clVehiculo.ReadOnly = true;
-            this.clVehiculo.Width = 77;
-            // 
-            // clProducto
-            // 
-            this.clProducto.HeaderText = "Producto";
-            this.clProducto.Name = "clProducto";
-            this.clProducto.ReadOnly = true;
-            this.clProducto.Width = 80;
-            // 
-            // clFactura
-            // 
-            this.clFactura.HeaderText = "Pedido";
-            this.clFactura.Name = "clFactura";
-            this.clFactura.ReadOnly = true;
-            this.clFactura.Width = 69;
-            // 
-            // clMedida
-            // 
-            this.clMedida.HeaderText = "Medida";
-            this.clMedida.Name = "clMedida";
-            this.clMedida.ReadOnly = true;
-            this.clMedida.Width = 72;
-            // 
-            // clCantidad
-            // 
-            this.clCantidad.HeaderText = "Cantidad";
-            this.clCantidad.Name = "clCantidad";
-            this.clCantidad.ReadOnly = true;
-            this.clCantidad.Width = 79;
-            // 
-            // Capacidad
-            // 
-            this.Capacidad.HeaderText = "Capacidad";
-            this.Capacidad.MaxInputLength = 5;
-            this.Capacidad.Name = "Capacidad";
-            this.Capacidad.ReadOnly = true;
-            this.Capacidad.Width = 86;
-            // 
-            // clsPlaca
-            // 
-            this.clsPlaca.HeaderText = "Placa";
-            this.clsPlaca.MaxInputLength = 10;
-            this.clsPlaca.Name = "clsPlaca";
-            this.clsPlaca.ReadOnly = true;
-            this.clsPlaca.Width = 59;
-            // 
-            // clsCondicionPago
-            // 
-            this.clsCondicionPago.HeaderText = "CondicionPago";
-            this.clsCondicionPago.Name = "clsCondicionPago";
-            this.clsCondicionPago.ReadOnly = true;
-            this.clsCondicionPago.Width = 112;
-            // 
-            // OrometroInicio
-            // 
-            this.OrometroInicio.HeaderText = "OrometroInicio";
-            this.OrometroInicio.Name = "OrometroInicio";
-            this.OrometroInicio.ReadOnly = true;
-            this.OrometroInicio.Width = 110;
-            // 
-            // OrometroFinal
-            // 
-            this.OrometroFinal.HeaderText = "OrometroFinal";
-            this.OrometroFinal.Name = "OrometroFinal";
-            this.OrometroFinal.ReadOnly = true;
-            this.OrometroFinal.Width = 107;
+            this.panelChofer.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelChofer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelChofer.Location = new System.Drawing.Point(844, 35);
+            this.panelChofer.Name = "panelChofer";
+            this.panelChofer.Size = new System.Drawing.Size(115, 41);
+            this.panelChofer.TabIndex = 84;
             // 
             // frmPedidos
             // 
@@ -1659,9 +1670,9 @@ namespace Sistema_de_Gestión.Presentacion
             this.tpMateriales.ResumeLayout(false);
             this.tpMateriales.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UDViajes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tpAlquiler.ResumeLayout(false);
             this.tpAlquiler.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

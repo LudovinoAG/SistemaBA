@@ -74,17 +74,22 @@ namespace Sistema_de_Gestión.Presentacion
         {
             txtNumPedido.Text = PM.CargarNuevoPedido().ToString("000000");
             txtFechaPedido.Text = DateTime.Now.ToShortDateString();
+            rdbEfectivo.Checked = true;
         }
 
         private void cmdBuscarCliente_Click(object sender, EventArgs e)
         {
-            var Resultado = PM.BuscarClienteCodigo(txtCodigoCliente.Text).SingleOrDefault();
+            string CodigoCliente = $"C{txtCodigoCliente.Text.PadLeft(6, '0')}";
+            var Resultado = PM.BuscarClienteCodigo(CodigoCliente).SingleOrDefault();
 
             //Llenar los campos con el resultado
             if (!string.IsNullOrEmpty(txtCodigoCliente.Text))
             {
                 if (Resultado != null)
                 {
+                    txtCodigoCliente.Text = CodigoCliente;
+                    txtCodigoCliente.SelectAll();
+                    txtCodigoCliente.Focus();
                     txtCliente.Text = Resultado.Cliente;
                     TxtRNC.Text = Resultado.RNC;
                     txtContactos.Text = Resultado.Contactos;
@@ -96,7 +101,7 @@ namespace Sistema_de_Gestión.Presentacion
                 }
                 else
                 {
-                    MessageBox.Show($"No se encontro el cliente con el codigo {txtCodigoCliente.Text}", "Buscar cliente",
+                    MessageBox.Show($"No se encontro el cliente con el codigo {CodigoCliente}", "Buscar cliente",
                             MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
@@ -522,8 +527,28 @@ namespace Sistema_de_Gestión.Presentacion
 
         }
 
-        private void cboVehiculoAlquiler_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void txtCodigoCliente_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar==13)
+            {
+                cmdBuscarCliente_Click(sender, e);
+            }
+        }
+
+        private void txtOrometroFinal_TextChanged(object sender, EventArgs e)
+        {
+            if (txtOrometroFinal.Text!="")
+            {
+                decimal nuevoValor = decimal.Parse(txtOrometroFinal.Text) - decimal.Parse(txtOrometroInicio.Text);
+
+                if (nuevoValor>0)
+                {
+                    UdCantidad.Value = nuevoValor;
+                }
+
+                
+            }
             
         }
     }
