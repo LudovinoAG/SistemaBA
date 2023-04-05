@@ -96,6 +96,8 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Parameter Name="id_medida" Type="int" Mode="In" />
           <Parameter Name="CantidadViajes" Type="int" Mode="In" />
           <Parameter Name="idCount" Type="int" Mode="In" />
+          <Parameter Name="OrometroInicio" Type="decimal" Mode="In" />
+          <Parameter Name="OrometroFinal" Type="decimal" Mode="In" />
         </Function>
         <Function Name="SP_InsertarDetalleProforma" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_Cliente" Type="int" Mode="In" />
@@ -238,6 +240,8 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
             <Parameter Name="id_medida" Mode="In" Type="Int32" />
             <Parameter Name="CantidadViajes" Mode="In" Type="Int32" />
             <Parameter Name="idCount" Mode="In" Type="Int32" />
+            <Parameter Name="OrometroInicio" Mode="In" Type="Decimal" />
+            <Parameter Name="OrometroFinal" Mode="In" Type="Decimal" />
           </FunctionImport>
           <EntitySet Name="VW_VerUltimoID_Detalles_Pedidos" EntityType="BAPedidosModel.VW_VerUltimoID_Detalles_Pedidos" />
           <FunctionImport Name="SP_InsertarDetalleProforma">
@@ -286,6 +290,14 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
             <Parameter Name="descripcion" Mode="In" Type="String" />
             <Parameter Name="conduce" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="SP_ViewQueryPreform" ReturnType="Collection(BAPedidosModel.SP_ViewQueryPreform_Result)">
+            <Parameter Name="id_Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="id_Pedido" Mode="In" Type="Int32" />
+            <Parameter Name="ModoReporte" Mode="In" Type="String" />
+            <Parameter Name="id_EstatusPedido" Mode="In" Type="Int32" />
+            <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="SP_ProformaBuscarConducesPorPedido" ReturnType="Collection(BAPedidosModel.SP_ProformaBuscarConducesPorPedido_Result)">
             <Parameter Name="ID_Cliente" Mode="In" Type="Int32" />
             <Parameter Name="id_Pedido" Mode="In" Type="Int32" />
@@ -295,14 +307,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
             <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="SP_ProformaBuscarPedidosPendientesCliente" ReturnType="Collection(BAPedidosModel.SP_ProformaBuscarPedidosPendientesCliente_Result)">
-            <Parameter Name="id_Cliente" Mode="In" Type="Int32" />
-            <Parameter Name="id_Pedido" Mode="In" Type="Int32" />
-            <Parameter Name="ModoReporte" Mode="In" Type="String" />
-            <Parameter Name="id_EstatusPedido" Mode="In" Type="Int32" />
-            <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
-            <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="SP_ViewQueryPreform" ReturnType="Collection(BAPedidosModel.SP_ViewQueryPreform_Result)">
             <Parameter Name="id_Cliente" Mode="In" Type="Int32" />
             <Parameter Name="id_Pedido" Mode="In" Type="Int32" />
             <Parameter Name="ModoReporte" Mode="In" Type="String" />
@@ -396,6 +400,29 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Property Type="String" Name="NombreContacto" Nullable="false" MaxLength="31" />
           <Property Type="String" Name="TelefonoContactos" Nullable="false" MaxLength="27" />
         </ComplexType>
+        <ComplexType Name="SP_ViewQueryPreform_Result">
+          <Property Type="Int32" Name="NumPedido" Nullable="false" />
+          <Property Type="String" Name="COD" Nullable="true" MaxLength="4000" />
+          <Property Type="DateTime" Name="FechaPedido" Nullable="true" />
+          <Property Type="String" Name="Empresa" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="RNC" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="Proyecto" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="NombreContacto" Nullable="true" MaxLength="31" />
+          <Property Type="String" Name="NumeroContactos" Nullable="true" MaxLength="27" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="CorreoElectronico" Nullable="true" MaxLength="60" />
+          <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="String" Name="Medida" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Producto" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="800" />
+          <Property Type="Decimal" Name="Precio" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Descuento" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="ITBIS" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TotalPedido" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Condicion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
+        </ComplexType>
         <ComplexType Name="SP_ProformaBuscarConducesPorPedido_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Chofer" Nullable="false" MaxLength="31" />
@@ -410,29 +437,8 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Property Type="Int32" Name="NumPedido" Nullable="false" />
           <Property Type="DateTime" Name="FechaPedido" Nullable="true" />
           <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="5" Scale="2" />
-          <Property Type="String" Name="Medida" Nullable="false" MaxLength="15" />
-          <Property Type="String" Name="Producto" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="800" />
-          <Property Type="Decimal" Name="Precio" Nullable="true" Precision="19" />
-          <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
-          <Property Type="Decimal" Name="Descuento" Nullable="true" Precision="19" />
-          <Property Type="Decimal" Name="ITBIS" Nullable="true" Precision="19" />
-          <Property Type="Decimal" Name="TotalPedido" Nullable="true" Precision="19" />
-          <Property Type="String" Name="Condicion" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
-        </ComplexType>
-        <ComplexType Name="SP_ViewQueryPreform_Result">
-          <Property Type="Int32" Name="NumPedido" Nullable="false" />
-          <Property Type="String" Name="COD" Nullable="true" MaxLength="4000" />
-          <Property Type="DateTime" Name="FechaPedido" Nullable="true" />
-          <Property Type="String" Name="Empresa" Nullable="true" MaxLength="60" />
-          <Property Type="String" Name="RNC" Nullable="true" MaxLength="12" />
-          <Property Type="String" Name="Proyecto" Nullable="true" MaxLength="60" />
-          <Property Type="String" Name="NombreContacto" Nullable="true" MaxLength="31" />
-          <Property Type="String" Name="NumeroContactos" Nullable="true" MaxLength="27" />
-          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="80" />
-          <Property Type="String" Name="CorreoElectronico" Nullable="true" MaxLength="60" />
-          <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="OrometroInicio" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="OrometroFinal" Nullable="true" Precision="10" Scale="2" />
           <Property Type="String" Name="Medida" Nullable="false" MaxLength="15" />
           <Property Type="String" Name="Producto" Nullable="false" MaxLength="30" />
           <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="800" />
@@ -551,6 +557,33 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_InsertarDetallesPedido" FunctionName="BAPedidosModel.Store.SP_InsertarDetallesPedido" />
+          <FunctionImportMapping FunctionImportName="SP_ViewQueryPreform" FunctionName="BAPedidosModel.Store.SP_ViewQueryPreform">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BAPedidosModel.SP_ViewQueryPreform_Result">
+                <ScalarProperty Name="NumPedido" ColumnName="NumPedido" />
+                <ScalarProperty Name="COD" ColumnName="COD" />
+                <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="RNC" ColumnName="RNC" />
+                <ScalarProperty Name="Proyecto" ColumnName="Proyecto" />
+                <ScalarProperty Name="NombreContacto" ColumnName="NombreContacto" />
+                <ScalarProperty Name="NumeroContactos" ColumnName="NumeroContactos" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Medida" ColumnName="Medida" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
+                <ScalarProperty Name="TotalPedido" ColumnName="TotalPedido" />
+                <ScalarProperty Name="Condicion" ColumnName="Condicion" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_ProformaBuscarConducesPorPedido" FunctionName="BAPedidosModel.Store.SP_ProformaBuscarConducesPorPedido">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BAPedidosModel.SP_ProformaBuscarConducesPorPedido_Result">
@@ -571,33 +604,8 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
                 <ScalarProperty Name="NumPedido" ColumnName="NumPedido" />
                 <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Medida" ColumnName="Medida" />
-                <ScalarProperty Name="Producto" ColumnName="Producto" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
-                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
-                <ScalarProperty Name="TotalPedido" ColumnName="TotalPedido" />
-                <ScalarProperty Name="Condicion" ColumnName="Condicion" />
-                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_ViewQueryPreform" FunctionName="BAPedidosModel.Store.SP_ViewQueryPreform">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BAPedidosModel.SP_ViewQueryPreform_Result">
-                <ScalarProperty Name="NumPedido" ColumnName="NumPedido" />
-                <ScalarProperty Name="COD" ColumnName="COD" />
-                <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
-                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
-                <ScalarProperty Name="RNC" ColumnName="RNC" />
-                <ScalarProperty Name="Proyecto" ColumnName="Proyecto" />
-                <ScalarProperty Name="NombreContacto" ColumnName="NombreContacto" />
-                <ScalarProperty Name="NumeroContactos" ColumnName="NumeroContactos" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="OrometroInicio" ColumnName="OrometroInicio" />
+                <ScalarProperty Name="OrometroFinal" ColumnName="OrometroFinal" />
                 <ScalarProperty Name="Medida" ColumnName="Medida" />
                 <ScalarProperty Name="Producto" ColumnName="Producto" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />

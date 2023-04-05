@@ -16,6 +16,8 @@ namespace Sistema_de_Gestión.Modelos
         public int NumPedido { get; set; }
         public Nullable<System.DateTime> FechaPedido { get; set; }
         public Nullable<decimal> Cantidad { get; set; }
+        public Nullable<decimal> OrometroInicio { get; set; }
+        public Nullable<decimal> OrometroFinal { get; set; }
         public string Medida { get; set; }
         public string Producto { get; set; }
         public string Descripcion { get; set; }

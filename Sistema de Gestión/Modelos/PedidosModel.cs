@@ -29,6 +29,9 @@ namespace Sistema_de_Gestión.Modelos
         public int Conduce { get; set; }
         public static string Placa { get; set; }
         public static int CantidadChofer { get; set; }
+        public decimal OrometroInicio { get; set; }
+        public decimal OrometroFinal { get; set; }
+
         public int MetodoPago { get; set; }
         public int TipoCliente { get; set; }
         public int TipoFactura { get; set; }
@@ -55,7 +58,16 @@ namespace Sistema_de_Gestión.Modelos
             dgvFacturar.Rows[NuevoRegistro].Cells["Medida"].Value = medida;
             dgvFacturar.Rows[NuevoRegistro].Cells["IDMedida"].Value = IDMedida;
             dgvFacturar.Rows[NuevoRegistro].Cells["Producto"].Value = producto;
-            dgvFacturar.Rows[NuevoRegistro].Cells["Descripción"].Value = descripcion;
+                
+            if (IDMedida==2)
+            {
+                dgvFacturar.Rows[NuevoRegistro].Cells["Descripción"].Value = ($"Alquiler de {descripcion}");
+            }
+            else if (IDMedida == 1)
+            {
+                dgvFacturar.Rows[NuevoRegistro].Cells["Descripción"].Value = descripcion;
+            }
+            
             dgvFacturar.Rows[NuevoRegistro].Cells["Costo"].Value = string.Format("{0:N}", costo);
             dgvFacturar.Rows[NuevoRegistro].Cells["SubTotal"].Value = string.Format("{0:N}", subtotal);
 
@@ -96,7 +108,8 @@ namespace Sistema_de_Gestión.Modelos
         }
 
         public void AgregarChoferFactura(DataGridView dgvChoferes, int IDFila, int Conduce, int Chofer,
-          int Vehiculo, int Producto, int Medida, int Factura, int CantidadViaje, int Capacidad, string Placa)
+          int Vehiculo, int Producto, int Medida, int Factura, int CantidadViaje, int Capacidad, string Placa,
+          decimal OrometroInicio, decimal OrometroFinal)
         {
             //Tabla de informacion referencial
             int entradachoferes = dgvChoferes.Rows.Add();
@@ -110,32 +123,50 @@ namespace Sistema_de_Gestión.Modelos
             dgvChoferes.Rows[entradachoferes].Cells["clCantidadChofer"].Value = CantidadViaje;
             dgvChoferes.Rows[entradachoferes].Cells["clSCapacidad"].Value = Capacidad;
             dgvChoferes.Rows[entradachoferes].Cells["Placa"].Value = Placa;
+            dgvChoferes.Rows[entradachoferes].Cells["clOrometroInicio"].Value = OrometroInicio;
+            dgvChoferes.Rows[entradachoferes].Cells["clOrometroFinal"].Value = OrometroFinal;
+
 
         }
 
         public void ResetCamposChofer(Control.ControlCollection controles)
         {
-            var CboChofer = controles.OfType<ComboBox>().Where(t => t.Name == "cboChofer");
-            var cboVehiculo = controles.OfType<ComboBox>().Where(t => t.Name == "cboVehiculos");
-            var txtConduce = controles.OfType<TextBox>().Where(t => t.Name == "txtConduce");
+            var CboChofer = controles.OfType<ComboBox>().ToList();
+            var cboVehiculo = controles.OfType<ComboBox>().ToList();
+            var txtConduce = controles.OfType<TextBox>().ToList();
             var UDViajes = controles.OfType<NumericUpDown>().Where(t => t.Name == "UDViajes").SingleOrDefault();
 
-            foreach (var item in CboChofer)
+            if (CboChofer!=null)
             {
-                item.SelectedIndex = 0;
+                foreach (var item in CboChofer)
+                {
+                    item.SelectedIndex = 0;
+                }
             }
 
-            foreach (var item in cboVehiculo)
+            if (cboVehiculo!=null)
             {
-                item.SelectedIndex = 0;
+                foreach (var item in cboVehiculo)
+                {
+                    item.SelectedIndex = 0;
+                }
             }
 
-            foreach (var item in txtConduce)
+
+            if (UDViajes!=null)
             {
-                item.Text = "0";
+                UDViajes.Value = 1;
             }
 
-            UDViajes.Value = 1;
+            if (txtConduce != null)
+            {
+                foreach (var item in txtConduce)
+                {
+                    item.Text = "0";
+                }
+            }
+
+            
 
 
         }
@@ -224,14 +255,11 @@ namespace Sistema_de_Gestión.Modelos
                                     int IDVehiculo = (int)dgvChoferes.Rows[c].Cells["Vehiculo"].Value;
                                     IDMedida = (int)dgvChoferes.Rows[c].Cells["id_Medida"].Value;
                                     int CantidadViajesPedido = (int)dgvChoferes.Rows[c].Cells["clCantidadChofer"].Value;
-                                    
+                                    decimal OrometroInicio = (decimal)dgvChoferes.Rows[c].Cells["clOrometroInicio"].Value;
+                                    decimal OrometroFinal = (decimal)dgvChoferes.Rows[c].Cells["clOrometroFinal"].Value;
 
                                     PM.SP_InsertarConducesPedidos(IDCliente, IDEmpleado, NumConduce, IDProducto, IDVehiculo, IDMedida,
-                                        CantidadViajesPedido, RegConduces);
-
-                                    //PM.SP_InsertarDetalleProforma(IDCliente,IDProducto, IDMedida, CantidadProducto,PrecioPedido, 
-                                    //    SubTotalFilas);
-
+                                        CantidadViajesPedido, RegConduces, OrometroInicio, OrometroFinal);
 
                                     using(BARedaccionesEntities RM = new BARedaccionesEntities())
                                     {

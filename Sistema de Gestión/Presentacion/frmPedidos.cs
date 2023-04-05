@@ -30,16 +30,26 @@ namespace Sistema_de_Gestión.Presentacion
             cboChofer.DataSource = Resultado;
             txtFlota.Text = Resultado.SingleOrDefault(n => n.ID == (int)cboChofer.SelectedValue).Celular;
 
+            cboChoferAlquiler.DisplayMember = "Chofer";
+            cboChoferAlquiler.ValueMember = "ID";
+            cboChoferAlquiler.DataSource = Resultado;
+            txtFlotaAlquiler.Text = Resultado.SingleOrDefault(n => n.ID == (int)cboChoferAlquiler.SelectedValue).Celular;
+
         }
 
         private void LoadVehiculos()
         {
-            var Resultado = PM.VehiculosFactura().ToList();
+            var Resultado = PM.VehiculosFactura().Where(t=>t.Capacidad!=1).ToList();
+            var ResultadoAlquiler = PM.VehiculosFactura().Where(t => t.Capacidad==1).ToList();
 
             cboVehiculos.DisplayMember = "Descripcion";
             cboVehiculos.ValueMember = "ID";
             cboVehiculos.DataSource = Resultado;
             txtPlaca.Text = Resultado.SingleOrDefault(n => n.ID == (int)cboVehiculos.SelectedValue).Matricula;
+
+            cboVehiculoAlquiler.DisplayMember = "Descripcion";
+            cboVehiculoAlquiler.ValueMember = "ID";
+            cboVehiculoAlquiler.DataSource = ResultadoAlquiler;
         }
 
         private void LoadMedidas()
@@ -192,7 +202,6 @@ namespace Sistema_de_Gestión.Presentacion
                             PedidosModel.CantidadChofer = (int)UDViajes.Value;
                             PedidosModel.Placa = txtPlaca.Text;
                             
-
                             int Fila = dgvFactura.SelectedRows[0].Index + 1;
                             PM.Conduce = int.Parse(txtConduce.Text);
                             PM.IDChofer = (int)cboChofer.SelectedValue;
@@ -201,12 +210,12 @@ namespace Sistema_de_Gestión.Presentacion
                             PM.IDMedida = (int)dgvFactura.SelectedRows[0].Cells["IDMedida"].Value;
                             PM.IDVehiculo = (int)cboVehiculos.SelectedValue;
                             PM.capacidad = int.Parse(txtCapacidad.Text);
-                           
-
+                            PM.OrometroInicio = decimal.Parse(txtOrometroInicio.Text);
+                            PM.OrometroFinal = decimal.Parse(txtOrometroFinal.Text);
 
                             PM.AgregarChoferFactura(dgvChoferes, Fila, PM.Conduce, PM.IDChofer, PM.IDVehiculo,
                                 PM.IDProducto, PM.IDMedida, PM.IDFactura, PedidosModel.CantidadChofer, PM.capacidad,
-                                PedidosModel.Placa);
+                                PedidosModel.Placa, PM.OrometroInicio, PM.OrometroFinal);
 
                             int NuevaEntrada = dgvListaChoferes.Rows.Add();
                             dgvListaChoferes.Rows[NuevaEntrada].Cells["clChofer"].Value = cboChofer.Text;
@@ -228,7 +237,7 @@ namespace Sistema_de_Gestión.Presentacion
                             decimal CapacidadTotalVendida = (decimal)dgvFactura.SelectedRows[0].Cells["Cantidad"].Value * UDViajes.Value;
                             decimal NuevoSubTotal = Convert.ToDecimal(dgvFactura.SelectedRows[0].Cells["Costo"].Value) * CapacidadTotalVendida;
                             dgvFactura.SelectedRows[0].Cells["SubTotal"].Value = string.Format("{0:N}", NuevoSubTotal);
-                            PM.ResetCamposChofer(panelChofer.Controls);
+                            PM.ResetCamposChofer(tpMateriales.Controls);
 
                             //Actualizar totales
                             PM.DESC = decimal.Parse(txtDesc.Text);
@@ -358,17 +367,17 @@ namespace Sistema_de_Gestión.Presentacion
 
         private void cmdAgregarInfoChofer_MouseMove(object sender, MouseEventArgs e)
         {
-            DI.BTMouseEvent(cmdAgregarConduce, 1);
+            DI.BTMouseEvent(cmdAgregarInfoChofer, 1);
         }
 
         private void cmdAgregarInfoChofer_MouseLeave(object sender, EventArgs e)
         {
-            DI.BTMouseEvent(cmdAgregarConduce, 0);
+            DI.BTMouseEvent(cmdAgregarInfoChofer, 0);
         }
 
         private void cmdAgregarInfoChofer_MouseDown(object sender, MouseEventArgs e)
         {
-            DI.BTMouseEvent(cmdAgregarConduce, 2);
+            DI.BTMouseEvent(cmdAgregarInfoChofer, 2);
         }
 
         private void txtCosto_Leave(object sender, EventArgs e)
@@ -430,6 +439,92 @@ namespace Sistema_de_Gestión.Presentacion
             {
                 PedidosModel.Condiciones = rdbCredito.Text;
             }
+        }
+
+        private void cboChoferAlquiler_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var Resultado = PM.EmpleadosFactura().ToList();
+            txtFlotaAlquiler.Text = Resultado.SingleOrDefault(n => n.ID == (int)cboChoferAlquiler.SelectedValue).Celular;
+        }
+
+        private void cmdAgregarConduceAlquiler_Click(object sender, EventArgs e)
+        {
+            if (cboChoferAlquiler.SelectedIndex!=0)
+            {
+                if (dgvFactura.RowCount != 0)
+                {
+                    if (!string.IsNullOrEmpty(txtConduceAlquiler.Text) && txtConduceAlquiler.TextLength == 5)
+                    {
+                        int Fila = dgvFactura.SelectedRows[0].Index + 1;
+                        PM.Conduce = int.Parse(txtConduceAlquiler.Text);
+                        PM.IDChofer = (int)cboChoferAlquiler.SelectedValue;
+                        PM.IDProducto = (int)dgvFactura.SelectedRows[0].Cells["IDProducto"].Value;
+                        PM.IDFactura = int.Parse(txtNumPedido.Text);
+                        PM.IDMedida = (int)dgvFactura.SelectedRows[0].Cells["IDMedida"].Value;
+                        PM.IDVehiculo = (int)cboVehiculoAlquiler.SelectedValue;
+                        PM.capacidad = int.Parse(txtCapacidad.Text);
+                        PM.OrometroInicio = decimal.Parse(txtOrometroInicio.Text);
+                        PM.OrometroFinal = decimal.Parse(txtOrometroFinal.Text);
+
+                        PM.AgregarChoferFactura(dgvChoferes, Fila, PM.Conduce, PM.IDChofer, PM.IDVehiculo,
+                            PM.IDProducto, PM.IDMedida, PM.IDFactura, 1, 0,
+                            "-", PM.OrometroInicio, PM.OrometroFinal);
+
+                        int NuevaEntrada = dgvListaChoferes.Rows.Add();
+                        dgvListaChoferes.Rows[NuevaEntrada].Cells["clChofer"].Value = cboChoferAlquiler.Text;
+                        dgvListaChoferes.Rows[NuevaEntrada].Cells["clConduce"].Value = txtConduceAlquiler.Text;
+                        dgvListaChoferes.Rows[NuevaEntrada].Cells["clVehiculo"].Value = cboVehiculoAlquiler.Text;
+                        dgvListaChoferes.Rows[NuevaEntrada].Cells["clProducto"].Value = dgvFactura.SelectedRows[0].Cells["Producto"].Value;
+                        dgvListaChoferes.Rows[NuevaEntrada].Cells["clFactura"].Value = txtNumPedido.Text;
+                        dgvListaChoferes.Rows[NuevaEntrada].Cells["clMedida"].Value = dgvFactura.SelectedRows[0].Cells["Medida"].Value;
+                        dgvListaChoferes.Rows[NuevaEntrada].Cells["clCantidad"].Value = dgvFactura.SelectedRows[0].Cells["Cantidad"].Value;
+                        dgvListaChoferes.Rows[NuevaEntrada].Cells["clNum"].Value = dgvFactura.SelectedRows[0].Index + 1;
+                        dgvListaChoferes.Rows[NuevaEntrada].Cells["clCantidad"].Value = 0;
+                        dgvListaChoferes.Rows[NuevaEntrada].Cells["Capacidad"].Value = 0;
+                        dgvListaChoferes.Rows[NuevaEntrada].Cells["clsPlaca"].Value = "-";
+                        dgvListaChoferes.Rows[NuevaEntrada].Cells["OrometroInicio"].Value = PM.OrometroInicio;
+                        dgvListaChoferes.Rows[NuevaEntrada].Cells["OrometroFinal"].Value = PM.OrometroFinal;
+
+                        //Agregar conduce a la descripcion del producto seleccionado
+                        dgvFactura.SelectedRows[0].Cells["Descripción"].Value += ", CON.#" + txtConduceAlquiler.Text;
+                        //decimal CapacidadTotalVendida = (decimal)dgvFactura.SelectedRows[0].Cells["Cantidad"].Value * UDViajes.Value;
+                        //decimal NuevoSubTotal = Convert.ToDecimal(dgvFactura.SelectedRows[0].Cells["Costo"].Value) * CapacidadTotalVendida;
+                        //dgvFactura.SelectedRows[0].Cells["SubTotal"].Value = string.Format("{0:N}", NuevoSubTotal);
+                        PM.ResetCamposChofer(tpAlquiler.Controls);
+
+                        //Actualizar totales
+                        PM.DESC = decimal.Parse(txtDesc.Text);
+                        PM.ITBIS = decimal.Parse(txtITBIS.Text);
+                        PM.ActualizarTotales(dgvFactura, txtSubTotal, TxtTotalGeneral, txtITBIS, CKITBIS);
+                    }
+                    else
+                    { 
+                        MessageBox.Show("Debe indicar un numero de conduce valido", "Aviso",
+                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        txtConduce.Focus();
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Debe agregar un producto a la factura", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    cboProductos.Focus();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Debe Seleccionar un Chofer antes de agregar.", "Agregar Chofer",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                cboChofer.Focus();
+            }
+
+        }
+
+        private void cboVehiculoAlquiler_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
