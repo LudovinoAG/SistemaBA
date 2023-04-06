@@ -89,6 +89,7 @@ namespace Sistema_de_Gestión
             // 
             // FrmLogin
             // 
+            this.AcceptButton = this.cmdEntrar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));

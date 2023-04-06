@@ -300,6 +300,8 @@ namespace Sistema_de_Gestión.Presentacion
             {
                 cmdBuscarCliente_Click(sender, e);
             }
+
+            FC.SoloNumeros(e);
         }
 
         private void cmdResetCriterios_Click(object sender, EventArgs e)

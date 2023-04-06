@@ -16,6 +16,9 @@ namespace Sistema_de_Gestión.Presentacion
     {
         PedidosModel PM = new PedidosModel();
         DiseñoInterface DI = new DiseñoInterface();
+        Funciones FC = new Funciones();
+        public static decimal CapacidadTotalVendida { get; set; }
+        public static decimal NuevoSubTotal { get; set; }
         public frmPedidos()
         {
             InitializeComponent();
@@ -63,11 +66,21 @@ namespace Sistema_de_Gestión.Presentacion
 
         private void LoadProductosFactura()
         {
-            var Resultado = PM.ProductosFactura().ToList();
+            List<VW_ProductosFactura> Resultado = new List<VW_ProductosFactura>();
+
+            if (tabControl1.SelectedTab.Name=="tpMateriales")
+            {
+                Resultado = PM.ProductosFactura().Where(t => t.Codigo.Substring(0, 4) != "MAQU").ToList();
+            }
+            else if (tabControl1.SelectedTab.Name == "tpAlquiler")
+            {
+                Resultado = PM.ProductosFactura().Where(t => t.Codigo.Substring(0, 4) == "MAQU").ToList();
+            }
 
             cboProductos.DisplayMember = "Producto";
             cboProductos.ValueMember = "ID";
             cboProductos.DataSource = Resultado;
+
         }
 
         private void CargarNuevoPedido()
@@ -239,8 +252,8 @@ namespace Sistema_de_Gestión.Presentacion
 
                             //Agregar conduce a la descripcion del producto seleccionado
                             dgvFactura.SelectedRows[0].Cells["Descripción"].Value += ", CON.#" + txtConduce.Text;
-                            decimal CapacidadTotalVendida = (decimal)dgvFactura.SelectedRows[0].Cells["Cantidad"].Value * UDViajes.Value;
-                            decimal NuevoSubTotal = Convert.ToDecimal(dgvFactura.SelectedRows[0].Cells["Costo"].Value) * CapacidadTotalVendida;
+                            CapacidadTotalVendida += (decimal)dgvFactura.SelectedRows[0].Cells["Cantidad"].Value * UDViajes.Value;
+                            NuevoSubTotal = Convert.ToDecimal(dgvFactura.SelectedRows[0].Cells["Costo"].Value) * CapacidadTotalVendida;
                             dgvFactura.SelectedRows[0].Cells["SubTotal"].Value = string.Format("{0:N}", NuevoSubTotal);
                             PM.ResetCamposChofer(tpMateriales.Controls);
 
@@ -287,24 +300,24 @@ namespace Sistema_de_Gestión.Presentacion
         {
             if (e.ColumnIndex == dgvFactura.Columns["Accion"].Index)
             {
-            Bucle:
-                for (int i = 0; i < dgvChoferes.Rows.Count; i++)
+
+                for (int i = dgvFactura.Rows.Count-1; i >= 0; i--)
                 {
-                    if ((int)dgvFactura.Rows[e.RowIndex].Cells["IDProducto"].Value == (int)dgvChoferes.Rows[i].Cells["ID"].Value)
+                    for(int j = dgvChoferes.Rows.Count-1; j >= 0; j--)
                     {
-                        dgvChoferes.Rows.Remove(dgvChoferes.Rows[i]);
-                        dgvListaChoferes.Rows.Remove(dgvListaChoferes.Rows[i]);
-
-                        goto Bucle;
-
+                        if ((int)dgvFactura.Rows[e.RowIndex].Cells["IDProducto"].Value==(int)dgvChoferes.Rows[j].Cells["id_Producto"].Value)
+                        {
+                            dgvChoferes.Rows.Remove(dgvChoferes.Rows[j]);
+                            dgvListaChoferes.Rows.Remove(dgvListaChoferes.Rows[j]);
+                        }
                     }
+                    break;
                 }
                 dgvFactura.Rows.RemoveAt(e.RowIndex);
                 PM.TotalGeneral = 0.00m;
                 PM.ITBIS = 0.00m;
 
                 PM.ActualizarTotales(dgvFactura, txtSubTotal, TxtTotalGeneral, txtITBIS, CKITBIS);
-
 
             }
         }
@@ -534,6 +547,10 @@ namespace Sistema_de_Gestión.Presentacion
             {
                 cmdBuscarCliente_Click(sender, e);
             }
+
+            FC.SoloNumeros(e);
+
+
         }
 
         private void txtOrometroFinal_TextChanged(object sender, EventArgs e)
@@ -550,6 +567,21 @@ namespace Sistema_de_Gestión.Presentacion
                 
             }
             
+        }
+
+        private void tabControl1_Selected(object sender, TabControlEventArgs e)
+        {
+            if (e.TabPage.Name=="tpAlquiler")
+            {
+                cboMedida.SelectedIndex = 1;
+                
+            }
+            else if (e.TabPage.Name == "tpMateriales")
+            {
+                cboMedida.SelectedIndex = 0;
+            }
+
+            LoadProductosFactura();
         }
     }
 }

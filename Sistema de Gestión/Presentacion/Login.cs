@@ -40,6 +40,7 @@ namespace Sistema_de_Gestión
         {
             //Ocultar la ventada principal
             form.Hide();
+            
         }
 
         private void cmdSalir_Click(object sender, EventArgs e)
