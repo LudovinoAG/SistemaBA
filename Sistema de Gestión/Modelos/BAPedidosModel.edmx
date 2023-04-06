@@ -73,6 +73,9 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Property Name="UltimoNumeroPedido" Type="numeric" Precision="38" Scale="0" />
           <Property Name="id_Pedidos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
+        <Function Name="SearchConduce" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CONDUCE" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_BuscarClienteCodigo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Codigo_Cliente" Type="varchar" Mode="In" />
         </Function>
@@ -313,6 +316,9 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
             <Parameter Name="id_EstatusPedido" Mode="In" Type="Int32" />
             <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
             <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SearchConduce" ReturnType="Collection(Int32)">
+            <Parameter Name="CONDUCE" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_BuscarClienteCodigo_Result">
@@ -619,6 +625,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SearchConduce" FunctionName="BAPedidosModel.Store.SearchConduce" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

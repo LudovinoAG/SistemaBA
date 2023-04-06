@@ -54,6 +54,8 @@ namespace Sistema_de_Gestión
                 frmMantenimientoProductos frmMantenimiento = new frmMantenimientoProductos();
                 frmMantenimiento.MdiParent = this;
                 frmMantenimiento.Show();
+                frmMantenimiento.WindowState = FormWindowState.Normal;
+
             }
 
         }
@@ -66,6 +68,7 @@ namespace Sistema_de_Gestión
                 frmMantenimientoClientes frmMantenimiento = new frmMantenimientoClientes();
                 frmMantenimiento.MdiParent = this;
                 frmMantenimiento.Show();
+                frmMantenimiento.WindowState = FormWindowState.Normal;
             }
 
         }
@@ -77,6 +80,7 @@ namespace Sistema_de_Gestión
                 Facturación frmFacturacion = new Facturación();
                 frmFacturacion.MdiParent = this;
                 frmFacturacion.Show();
+                frmFacturacion.WindowState = FormWindowState.Normal;
             }
 
         }
@@ -89,6 +93,7 @@ namespace Sistema_de_Gestión
                 frmMantenimientoEmpleados frmEmpleados = new frmMantenimientoEmpleados();
                 frmEmpleados.MdiParent = this;
                 frmEmpleados.Show();
+                frmEmpleados.WindowState = FormWindowState.Normal;
             }
 
         }
@@ -101,6 +106,7 @@ namespace Sistema_de_Gestión
                 frmMantenimientoCategorias frmCategorias = new frmMantenimientoCategorias();
                 frmCategorias.MdiParent = this;
                 frmCategorias.Show();
+                frmCategorias.WindowState = FormWindowState.Normal;
             }
         }
 
@@ -111,6 +117,7 @@ namespace Sistema_de_Gestión
                 frmMantenimientoProveedores frmProveedores = new frmMantenimientoProveedores();
                 frmProveedores.MdiParent = this;
                 frmProveedores.Show();
+                frmProveedores.WindowState = FormWindowState.Normal;
 
             }
 
@@ -136,6 +143,7 @@ namespace Sistema_de_Gestión
                 frmReportesFacturas frmReportes = new frmReportesFacturas();
                 frmReportes.MdiParent = this;
                 frmReportes.Show();
+                frmReportes.WindowState = FormWindowState.Normal;
             }
         }
 
@@ -183,6 +191,7 @@ namespace Sistema_de_Gestión
                 frmCotización frmCotiza = new frmCotización();
                 frmCotiza.MdiParent = this;
                 frmCotiza.Show();
+                frmCotiza.WindowState = FormWindowState.Normal;
             }
         }
 
@@ -199,6 +208,7 @@ namespace Sistema_de_Gestión
                 frmMantenimientoVehiculos frmVehiculos = new frmMantenimientoVehiculos();
                 frmVehiculos.MdiParent = this;
                 frmVehiculos.Show();
+                frmVehiculos.WindowState = FormWindowState.Normal;
             }
 
         }
@@ -220,6 +230,7 @@ namespace Sistema_de_Gestión
                 frmPedidos frmPedidos = new frmPedidos();
                 frmPedidos.MdiParent = this;
                 frmPedidos.Show();
+                frmPedidos.WindowState = FormWindowState.Normal;
             }
         }
 
@@ -230,6 +241,7 @@ namespace Sistema_de_Gestión
                 frmRedaccionesClientes frmPedidosReportes = new frmRedaccionesClientes();
                 frmPedidosReportes.MdiParent = this;
                 frmPedidosReportes.Show();
+                frmPedidosReportes.WindowState = FormWindowState.Normal;
             }
         }
 
@@ -240,6 +252,7 @@ namespace Sistema_de_Gestión
                 frmVerProforma frmVerProforma = new frmVerProforma();
                 frmVerProforma.MdiParent = this;
                 frmVerProforma.Show();
+                frmVerProforma.WindowState = FormWindowState.Normal;
             }
         }
     }

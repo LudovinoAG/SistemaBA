@@ -217,50 +217,59 @@ namespace Sistema_de_Gestión.Presentacion
                     {
                         if (!string.IsNullOrEmpty(txtConduce.Text) && txtConduce.Text.Length == 5)
                         {
-                            PedidosModel.CantidadChofer = (int)UDViajes.Value;
-                            PedidosModel.Placa = txtPlaca.Text;
-                            
-                            int Fila = dgvFactura.SelectedRows[0].Index + 1;
-                            PM.Conduce = int.Parse(txtConduce.Text);
-                            PM.IDChofer = (int)cboChofer.SelectedValue;
-                            PM.IDProducto = (int)dgvFactura.SelectedRows[0].Cells["IDProducto"].Value;
-                            PM.IDFactura = int.Parse(txtNumPedido.Text);
-                            PM.IDMedida = (int)dgvFactura.SelectedRows[0].Cells["IDMedida"].Value;
-                            PM.IDVehiculo = (int)cboVehiculos.SelectedValue;
-                            PM.capacidad = int.Parse(txtCapacidad.Text);
-                            PM.OrometroInicio = decimal.Parse(txtOrometroInicio.Text);
-                            PM.OrometroFinal = decimal.Parse(txtOrometroFinal.Text);
+                            if (!PM.ConduceExiste(int.Parse(txtConduce.Text),dgvChoferes))
+                            {
+                                PedidosModel.CantidadChofer = (int)UDViajes.Value;
+                                PedidosModel.Placa = txtPlaca.Text;
 
-                            PM.AgregarChoferFactura(dgvChoferes, Fila, PM.Conduce, PM.IDChofer, PM.IDVehiculo,
-                                PM.IDProducto, PM.IDMedida, PM.IDFactura, PedidosModel.CantidadChofer, PM.capacidad,
-                                PedidosModel.Placa, PM.OrometroInicio, PM.OrometroFinal);
+                                int Fila = dgvFactura.SelectedRows[0].Index + 1;
+                                PM.Conduce = int.Parse(txtConduce.Text);
+                                PM.IDChofer = (int)cboChofer.SelectedValue;
+                                PM.IDProducto = (int)dgvFactura.SelectedRows[0].Cells["IDProducto"].Value;
+                                PM.IDFactura = int.Parse(txtNumPedido.Text);
+                                PM.IDMedida = (int)dgvFactura.SelectedRows[0].Cells["IDMedida"].Value;
+                                PM.IDVehiculo = (int)cboVehiculos.SelectedValue;
+                                PM.capacidad = int.Parse(txtCapacidad.Text);
+                                PM.OrometroInicio = decimal.Parse(txtOrometroInicio.Text);
+                                PM.OrometroFinal = decimal.Parse(txtOrometroFinal.Text);
 
-                            int NuevaEntrada = dgvListaChoferes.Rows.Add();
-                            dgvListaChoferes.Rows[NuevaEntrada].Cells["clChofer"].Value = cboChofer.Text;
-                            dgvListaChoferes.Rows[NuevaEntrada].Cells["clConduce"].Value = txtConduce.Text;
-                            dgvListaChoferes.Rows[NuevaEntrada].Cells["clVehiculo"].Value = cboVehiculos.Text;
-                            dgvListaChoferes.Rows[NuevaEntrada].Cells["clProducto"].Value = dgvFactura.SelectedRows[0].Cells["Producto"].Value;
-                            dgvListaChoferes.Rows[NuevaEntrada].Cells["clFactura"].Value = txtNumPedido.Text;
-                            dgvListaChoferes.Rows[NuevaEntrada].Cells["clMedida"].Value = cboMedida.Text;
-                            dgvListaChoferes.Rows[NuevaEntrada].Cells["clCantidad"].Value = dgvFactura.SelectedRows[0].Cells["Cantidad"].Value;
-                            dgvListaChoferes.Rows[NuevaEntrada].Cells["clNum"].Value = dgvFactura.SelectedRows[0].Index + 1;
-                            dgvListaChoferes.Rows[NuevaEntrada].Cells["clCantidad"].Value = PedidosModel.CantidadChofer;
-                            dgvListaChoferes.Rows[NuevaEntrada].Cells["Capacidad"].Value = txtCapacidad.Text;
-                            dgvListaChoferes.Rows[NuevaEntrada].Cells["clsPlaca"].Value = PedidosModel.Placa;
+                                PM.AgregarChoferFactura(dgvChoferes, Fila, PM.Conduce, PM.IDChofer, PM.IDVehiculo,
+                                    PM.IDProducto, PM.IDMedida, PM.IDFactura, PedidosModel.CantidadChofer, PM.capacidad,
+                                    PedidosModel.Placa, PM.OrometroInicio, PM.OrometroFinal);
+
+                                int NuevaEntrada = dgvListaChoferes.Rows.Add();
+                                dgvListaChoferes.Rows[NuevaEntrada].Cells["clChofer"].Value = cboChofer.Text;
+                                dgvListaChoferes.Rows[NuevaEntrada].Cells["clConduce"].Value = txtConduce.Text;
+                                dgvListaChoferes.Rows[NuevaEntrada].Cells["clVehiculo"].Value = cboVehiculos.Text;
+                                dgvListaChoferes.Rows[NuevaEntrada].Cells["clProducto"].Value = dgvFactura.SelectedRows[0].Cells["Producto"].Value;
+                                dgvListaChoferes.Rows[NuevaEntrada].Cells["clFactura"].Value = txtNumPedido.Text;
+                                dgvListaChoferes.Rows[NuevaEntrada].Cells["clMedida"].Value = cboMedida.Text;
+                                dgvListaChoferes.Rows[NuevaEntrada].Cells["clCantidad"].Value = dgvFactura.SelectedRows[0].Cells["Cantidad"].Value;
+                                dgvListaChoferes.Rows[NuevaEntrada].Cells["clNum"].Value = dgvFactura.SelectedRows[0].Index + 1;
+                                dgvListaChoferes.Rows[NuevaEntrada].Cells["clCantidad"].Value = PedidosModel.CantidadChofer;
+                                dgvListaChoferes.Rows[NuevaEntrada].Cells["Capacidad"].Value = txtCapacidad.Text;
+                                dgvListaChoferes.Rows[NuevaEntrada].Cells["clsPlaca"].Value = PedidosModel.Placa;
 
 
 
-                            //Agregar conduce a la descripcion del producto seleccionado
-                            dgvFactura.SelectedRows[0].Cells["Descripción"].Value += ", CON.#" + txtConduce.Text;
-                            CapacidadTotalVendida += (decimal)dgvFactura.SelectedRows[0].Cells["Cantidad"].Value * UDViajes.Value;
-                            NuevoSubTotal = Convert.ToDecimal(dgvFactura.SelectedRows[0].Cells["Costo"].Value) * CapacidadTotalVendida;
-                            dgvFactura.SelectedRows[0].Cells["SubTotal"].Value = string.Format("{0:N}", NuevoSubTotal);
-                            PM.ResetCamposChofer(tpMateriales.Controls);
+                                //Agregar conduce a la descripcion del producto seleccionado
+                                dgvFactura.SelectedRows[0].Cells["Descripción"].Value += ", CON.#" + txtConduce.Text;
+                                CapacidadTotalVendida += (decimal)dgvFactura.SelectedRows[0].Cells["Cantidad"].Value * UDViajes.Value;
+                                NuevoSubTotal = Convert.ToDecimal(dgvFactura.SelectedRows[0].Cells["Costo"].Value) * CapacidadTotalVendida;
+                                dgvFactura.SelectedRows[0].Cells["SubTotal"].Value = string.Format("{0:N}", NuevoSubTotal);
+                                PM.ResetCamposChofer(tpMateriales.Controls);
 
-                            //Actualizar totales
-                            PM.DESC = decimal.Parse(txtDesc.Text);
-                            PM.ITBIS = decimal.Parse(txtITBIS.Text);
-                            PM.ActualizarTotales(dgvFactura, txtSubTotal, TxtTotalGeneral, txtITBIS, CKITBIS);
+                                //Actualizar totales
+                                PM.DESC = decimal.Parse(txtDesc.Text);
+                                PM.ITBIS = decimal.Parse(txtITBIS.Text);
+                                PM.ActualizarTotales(dgvFactura, txtSubTotal, TxtTotalGeneral, txtITBIS, CKITBIS);
+                            }
+                            else
+                            {
+                                txtConduce.SelectAll();
+                                txtConduce.Focus();
+                            }
+                           
                         }
                         else
                         {
@@ -342,6 +351,7 @@ namespace Sistema_de_Gestión.Presentacion
                         MessageBoxIcon.Information);
 
                     PM.LimpiarPedido(this.Controls, dgvChoferes, dgvFactura, dgvListaChoferes, CKITBIS);
+          
 
                     CargarNuevoPedido();
                 }

@@ -369,5 +369,14 @@ namespace Sistema_de_Gestión.Modelos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ProformaBuscarPedidosPendientesCliente_Result>("SP_ProformaBuscarPedidosPendientesCliente", id_ClienteParameter, id_PedidoParameter, modoReporteParameter, id_EstatusPedidoParameter, fechaInicioParameter, fechaFinParameter);
         }
+    
+        public virtual ObjectResult<Nullable<int>> SearchConduce(Nullable<int> cONDUCE)
+        {
+            var cONDUCEParameter = cONDUCE.HasValue ?
+                new ObjectParameter("CONDUCE", cONDUCE) :
+                new ObjectParameter("CONDUCE", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SearchConduce", cONDUCEParameter);
+        }
     }
 }

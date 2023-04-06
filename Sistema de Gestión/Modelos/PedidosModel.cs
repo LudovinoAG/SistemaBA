@@ -459,6 +459,27 @@ namespace Sistema_de_Gestión.Modelos
             }
         }
 
+        public int BuscarConduce(int conduce)
+        {
+            try
+            {
+                using(BAPedidosEntities PE = new BAPedidosEntities())
+                {
+                    var resultado = PE.SearchConduce(conduce).ToList();
+                    if (resultado.Count!=0)
+                    {
+                        return 1;
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("No fue posible realizar la búsqueda del conduce. " + Ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return 0;
+        }
         public decimal CalcularSubtotal(int Medida, decimal cantidad, decimal costo)
         {
 
@@ -472,7 +493,33 @@ namespace Sistema_de_Gestión.Modelos
 
         }
 
+        public bool ConduceExiste (int Conduce, DataGridView dgvChoferes)
+        {
+            for(int i = 0;i < dgvChoferes.Rows.Count; i++)
+            {
+                if ((int)dgvChoferes.Rows[i].Cells["Conduce"].Value == Conduce)
+                {
+                    MessageBox.Show($"El conduce [{Conduce}] ya existe en el detalle de este pedido.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
+                    return true;
+                }
+
+            }
+
+            int ResulConduce = BuscarConduce(Conduce);
+
+            if (ResulConduce != 0)
+            {
+                MessageBox.Show($"El conduce [{Conduce}] ya se encuentra asociado a un cliente, \n" +
+                    $"por favor valide o introduzca un nuevo conduce", "Aviso",
+                       MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                return true;
+            }
+
+            return false;
+        }
 
     }
 }
