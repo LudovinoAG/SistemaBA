@@ -28,11 +28,11 @@ namespace Sistema_de_Gestión.Modelos
         }
     
         public virtual DbSet<VW_VerUltimoNumeroPedido> VW_VerUltimoNumeroPedido { get; set; }
-        public virtual DbSet<VW_EmpleadosFactura> VW_EmpleadosFactura { get; set; }
         public virtual DbSet<VW_ListarVehiculos> VW_ListarVehiculos { get; set; }
         public virtual DbSet<VW_ListarMedidas> VW_ListarMedidas { get; set; }
         public virtual DbSet<VW_ProductosFactura> VW_ProductosFactura { get; set; }
         public virtual DbSet<VW_VerUltimoID_Detalles_Pedidos> VW_VerUltimoID_Detalles_Pedidos { get; set; }
+        public virtual DbSet<VW_EmpleadosFactura> VW_EmpleadosFactura { get; set; }
     
         public virtual ObjectResult<SP_BuscarClienteCodigo_Result> SP_BuscarClienteCodigo(string codigo_Cliente)
         {
@@ -43,33 +43,29 @@ namespace Sistema_de_Gestión.Modelos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_BuscarClienteCodigo_Result>("SP_BuscarClienteCodigo", codigo_ClienteParameter);
         }
     
-        public virtual int SP_InsertarConduces(Nullable<int> id_Empleado, Nullable<int> num_Conduce, Nullable<int> id_producto, Nullable<int> id_vehiculo, Nullable<int> id_medida, Nullable<int> cantidadViajes)
+        public virtual int SP_InsertarConduces(string nomEmpleado, Nullable<int> num_Conduce, string nomVehiculo, string placa, Nullable<int> cantidadViajes)
         {
-            var id_EmpleadoParameter = id_Empleado.HasValue ?
-                new ObjectParameter("id_Empleado", id_Empleado) :
-                new ObjectParameter("id_Empleado", typeof(int));
+            var nomEmpleadoParameter = nomEmpleado != null ?
+                new ObjectParameter("NomEmpleado", nomEmpleado) :
+                new ObjectParameter("NomEmpleado", typeof(string));
     
             var num_ConduceParameter = num_Conduce.HasValue ?
                 new ObjectParameter("num_Conduce", num_Conduce) :
                 new ObjectParameter("num_Conduce", typeof(int));
     
-            var id_productoParameter = id_producto.HasValue ?
-                new ObjectParameter("id_producto", id_producto) :
-                new ObjectParameter("id_producto", typeof(int));
+            var nomVehiculoParameter = nomVehiculo != null ?
+                new ObjectParameter("NomVehiculo", nomVehiculo) :
+                new ObjectParameter("NomVehiculo", typeof(string));
     
-            var id_vehiculoParameter = id_vehiculo.HasValue ?
-                new ObjectParameter("id_vehiculo", id_vehiculo) :
-                new ObjectParameter("id_vehiculo", typeof(int));
-    
-            var id_medidaParameter = id_medida.HasValue ?
-                new ObjectParameter("id_medida", id_medida) :
-                new ObjectParameter("id_medida", typeof(int));
+            var placaParameter = placa != null ?
+                new ObjectParameter("Placa", placa) :
+                new ObjectParameter("Placa", typeof(string));
     
             var cantidadViajesParameter = cantidadViajes.HasValue ?
                 new ObjectParameter("CantidadViajes", cantidadViajes) :
                 new ObjectParameter("CantidadViajes", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarConduces", id_EmpleadoParameter, num_ConduceParameter, id_productoParameter, id_vehiculoParameter, id_medidaParameter, cantidadViajesParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarConduces", nomEmpleadoParameter, num_ConduceParameter, nomVehiculoParameter, placaParameter, cantidadViajesParameter);
         }
     
         public virtual int SP_InsertarConducesPedidos(Nullable<int> id_Cliente, Nullable<int> id_Empleado, Nullable<int> num_Conduce, Nullable<int> id_producto, Nullable<int> id_vehiculo, Nullable<int> id_medida, Nullable<int> cantidadViajes, Nullable<int> idCount, Nullable<decimal> orometroInicio, Nullable<decimal> orometroFinal)

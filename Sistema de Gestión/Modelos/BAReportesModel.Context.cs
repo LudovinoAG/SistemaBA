@@ -25,7 +25,7 @@ namespace Sistema_de_Gestión.Modelos
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<VW_VerFacturas> VW_VerFacturas { get; set; }
         public virtual DbSet<VW_VerReportesFacturasPendientesCredito> VW_VerReportesFacturasPendientesCredito { get; set; }
+        public virtual DbSet<VW_VerFacturas> VW_VerFacturas { get; set; }
     }
 }

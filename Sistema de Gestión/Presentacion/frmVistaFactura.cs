@@ -42,13 +42,13 @@ namespace Sistema_de_Gestión.Presentacion
             DSReportesTableAdapters.SP_VerDetallesConducesTableAdapter taDetallesConduce = new
                 DSReportesTableAdapters.SP_VerDetallesConducesTableAdapter();
 
-            taFactura.Fill(ds.SP_VerFacturaID,this.idFactura);
-            taDetallesFactura.Fill(ds.SP_VerDetalleFactura, this.idFactura);
-            taDetallesConduce.Fill(ds.SP_VerDetallesConduces, this.idFactura);
+            taFactura.Fill(ds.SP_VerFacturaID, FacturacionModel.IDFactura);
+            taDetallesFactura.Fill(ds.SP_VerDetalleFactura, FacturacionModel.IDFactura);
+            taDetallesConduce.Fill(ds.SP_VerDetallesConduces, FacturacionModel.IDFactura);
 
             
             crvFactura1.SetDataSource(ds);
-            crvFactura1.SetParameterValue("Pm-SP_VerDetallesConduces;1.id_Factura", this.idFactura);
+            crvFactura1.SetParameterValue("Pm-SP_VerDetallesConduces;1.id_Factura", FacturacionModel.IDFactura);
             crystalReportViewer1.ReportSource = crvFactura1;
 
         }

@@ -83,11 +83,10 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Parameter Name="CodigoCliente" Type="varchar" Mode="In" />
         </Function>
         <Function Name="SP_InsertarConduces" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id_Empleado" Type="int" Mode="In" />
+          <Parameter Name="NomEmpleado" Type="varchar" Mode="In" />
           <Parameter Name="num_Conduce" Type="int" Mode="In" />
-          <Parameter Name="id_producto" Type="int" Mode="In" />
-          <Parameter Name="id_vehiculo" Type="int" Mode="In" />
-          <Parameter Name="id_medida" Type="int" Mode="In" />
+          <Parameter Name="NomVehiculo" Type="varchar" Mode="In" />
+          <Parameter Name="Placa" Type="varchar" Mode="In" />
           <Parameter Name="CantidadViajes" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_InsertarConducesPedidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -222,16 +221,14 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Parameter Name="Codigo_Cliente" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="VW_VerUltimoNumeroPedido" EntityType="BAPedidosModel.VW_VerUltimoNumeroPedido" />
-          <EntitySet Name="VW_EmpleadosFactura" EntityType="BAPedidosModel.VW_EmpleadosFactura" />
           <EntitySet Name="VW_ListarVehiculos" EntityType="BAPedidosModel.VW_ListarVehiculos" />
           <EntitySet Name="VW_ListarMedidas" EntityType="BAPedidosModel.VW_ListarMedidas" />
           <EntitySet Name="VW_ProductosFactura" EntityType="BAPedidosModel.VW_ProductosFactura" />
           <FunctionImport Name="SP_InsertarConduces">
-            <Parameter Name="id_Empleado" Mode="In" Type="Int32" />
+            <Parameter Name="NomEmpleado" Mode="In" Type="String" />
             <Parameter Name="num_Conduce" Mode="In" Type="Int32" />
-            <Parameter Name="id_producto" Mode="In" Type="Int32" />
-            <Parameter Name="id_vehiculo" Mode="In" Type="Int32" />
-            <Parameter Name="id_medida" Mode="In" Type="Int32" />
+            <Parameter Name="NomVehiculo" Mode="In" Type="String" />
+            <Parameter Name="Placa" Mode="In" Type="String" />
             <Parameter Name="CantidadViajes" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_InsertarConducesPedidos">
@@ -318,8 +315,9 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
             <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="SearchConduce" ReturnType="Collection(Int32)">
-            <Parameter Name="CONDUCE" Mode="In" Type="Int32" />
+          <Parameter Name="CONDUCE" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="VW_EmpleadosFactura" EntityType="BAPedidosModel.VW_EmpleadosFactura" />
         </EntityContainer>
         <ComplexType Name="SP_BuscarClienteCodigo_Result">
           <Property Type="String" Name="Proyecto" Nullable="true" MaxLength="60" />
@@ -338,15 +336,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           </Key>
           <Property Name="UltimoNumeroPedido" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="id_Pedidos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="VW_EmpleadosFactura">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="Chofer" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Chofer" Type="String" Nullable="false" MaxLength="31" FixedLength="false" Unicode="false" />
-          <Property Name="Celular" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="VW_ListarVehiculos">
           <Key>
@@ -456,6 +445,15 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Property Type="String" Name="Condicion" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
         </ComplexType>
+        <EntityType Name="VW_EmpleadosFactura">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Chofer" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Chofer" Type="String" Nullable="false" MaxLength="31" FixedLength="false" Unicode="false" />
+          <Property Name="Celular" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -482,15 +480,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
               <MappingFragment StoreEntitySet="VW_VerUltimoNumeroPedido">
                 <ScalarProperty Name="id_Pedidos" ColumnName="id_Pedidos" />
                 <ScalarProperty Name="UltimoNumeroPedido" ColumnName="UltimoNumeroPedido" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VW_EmpleadosFactura">
-            <EntityTypeMapping TypeName="BAPedidosModel.VW_EmpleadosFactura">
-              <MappingFragment StoreEntitySet="VW_EmpleadosFactura">
-                <ScalarProperty Name="Celular" ColumnName="Celular" />
-                <ScalarProperty Name="Chofer" ColumnName="Chofer" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -626,6 +615,15 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SearchConduce" FunctionName="BAPedidosModel.Store.SearchConduce" />
+          <EntitySetMapping Name="VW_EmpleadosFactura">
+            <EntityTypeMapping TypeName="BAPedidosModel.VW_EmpleadosFactura">
+              <MappingFragment StoreEntitySet="VW_EmpleadosFactura">
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Chofer" ColumnName="Chofer" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

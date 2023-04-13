@@ -18,6 +18,7 @@ namespace Sistema_de_Gestión.Presentacion
         ProformaFactura PF = new ProformaFactura();
         Funciones FC = new Funciones();
         DiseñoInterface DI = new DiseñoInterface();
+        FacturacionModel FM = new FacturacionModel();
         
         public frmVerProforma()
         {
@@ -296,6 +297,17 @@ namespace Sistema_de_Gestión.Presentacion
         private void cmdVerProforma_MouseDown(object sender, MouseEventArgs e)
         {
             DI.BTMouseEvent(cmdVerProforma, 2);
+        }
+
+        private void cmdFacturacion_Click(object sender, EventArgs e)
+        {
+            FacturacionModel.IDCliente = ProformaFactura.IDCliente;
+            FacturacionModel.NombreCliente = txtCliente.Text;
+            
+
+
+            Facturación Factura = new Facturación();
+            Factura.Show();
         }
     }
 }

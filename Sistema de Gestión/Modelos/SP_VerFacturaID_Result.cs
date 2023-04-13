@@ -13,27 +13,28 @@ namespace Sistema_de_Gestión.Modelos
     
     public partial class SP_VerFacturaID_Result
     {
-        public int id_Factura { get; set; }
-        public string Num_Factura { get; set; }
+        public Nullable<System.DateTime> Fecha { get; set; }
+        public string NumFactura { get; set; }
         public string TipoFactura { get; set; }
         public string NCF { get; set; }
         public string Empresa { get; set; }
-        public string Proyecto { get; set; }
-        public string Nom_Contacto { get; set; }
-        public string Telefonos { get; set; }
         public string RNC { get; set; }
+        public string Contacto { get; set; }
+        public string Telefonos { get; set; }
+        public string Direccion { get; set; }
         public string Correo { get; set; }
-        public string Dirección { get; set; }
-        public string Nom_Estatus { get; set; }
-        public Nullable<decimal> SubTotalFactura { get; set; }
+        public string EstatusFactura { get; set; }
+        public Nullable<double> SubTotal { get; set; }
         public Nullable<decimal> TotalFactura { get; set; }
+        public Nullable<decimal> MontoPagado { get; set; }
+        public Nullable<decimal> MontoPendiente { get; set; }
         public string MetodoPago { get; set; }
-        public Nullable<decimal> Descuento { get; set; }
-        public Nullable<decimal> ITBIS { get; set; }
-        public Nullable<System.DateTime> FechaFactura { get; set; }
+        public Nullable<double> Descuento { get; set; }
+        public Nullable<double> ITBIS { get; set; }
         public Nullable<System.TimeSpan> HoraFactura { get; set; }
-        public Nullable<System.DateTime> FechaVencimientoFactura { get; set; }
-        public string NotaFactura { get; set; }
-        public string NombreUsuario { get; set; }
+        public Nullable<System.DateTime> FechaVencimiento { get; set; }
+        public string Nota { get; set; }
+        public string Usuario { get; set; }
+        public Nullable<System.DateTime> VigenciaNCF { get; set; }
     }
 }

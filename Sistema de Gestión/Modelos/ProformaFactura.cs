@@ -72,7 +72,6 @@ namespace Sistema_de_Gestión.Modelos
                     {
                         MessageBox.Show($"No se encontró los pedidos del cliente [{Nombre_Cliente}]",
                             "Buscar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
                         return PedidoProforma;
                     }
 

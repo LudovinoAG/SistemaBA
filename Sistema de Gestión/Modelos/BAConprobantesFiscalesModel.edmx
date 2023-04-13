@@ -83,7 +83,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerComprobantesFiscales
           </FunctionImport>
           <EntitySet Name="VW_VerComprobantesFiscales" EntityType="BAComprobantesFiscalesModel.VW_VerComprobantesFiscales" />
           <FunctionImport Name="SP_DesactivarComprobante">
-            <Parameter Name="IDComprobante" Mode="In" Type="Int32" />
+          <Parameter Name="IDComprobante" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="VW_VerComprobantesFiscales">

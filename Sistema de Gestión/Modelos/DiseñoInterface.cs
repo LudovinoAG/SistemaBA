@@ -544,7 +544,20 @@ namespace Sistema_de_Gestión.Modelos
                     }
                     break;
 
-
+                case "cmdAplicarPago":
+                    if (Evento == 1)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonPagarFacturaReporteOver;
+                    }
+                    else if (Evento == 2)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonPagarFacturaReporteClick;
+                    }
+                    else
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonPagarFacturaReporte;
+                    }
+                    break;
 
 
                     

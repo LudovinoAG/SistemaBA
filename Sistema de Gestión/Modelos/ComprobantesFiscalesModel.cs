@@ -14,7 +14,9 @@ namespace Sistema_de_Gestión.Modelos
 
         public string ModoComprobante { get; set; }
 
-        public int VencimientoComprobante { get; set; }
+        public static DateTime VencimientoComprobante { get; set; }
+
+        public List<VW_VerComprobantesFiscales> ComprobantesFiscales { get; set; }
 
         public void AgregarComprobantes(int Desde, int Hasta, int Cantidad, string FechaVencimiento,
             string Estatus, string Serie, string Tipo)
@@ -75,20 +77,21 @@ namespace Sistema_de_Gestión.Modelos
         {
             using (BAComprobantesFiscalesEntities CF = new BAComprobantesFiscalesEntities())
             {
-                var orueba = new List<VW_VerComprobantesFiscales>(1);
+                //var orueba = new List<VW_VerComprobantesFiscales>(1);
                 try
                 {
-                    var Resultado = CF.VW_VerComprobantesFiscales.ToList();
-                    if (Resultado.Count!=0)
+                    ComprobantesFiscales = CF.VW_VerComprobantesFiscales.ToList();
+                    if (ComprobantesFiscales.Count!=0)
                     {
-                        return Resultado;
+                        return ComprobantesFiscales;
                     }
                     else
                     {
-                        VW_VerComprobantesFiscales item = new VW_VerComprobantesFiscales();
-                        item.Estatus_Comprobante = "Desactivado";
-                        item.Fecha_Vencimiento_Comprobante = DateTime.Now;
-                        orueba.Add(item);
+                        //VW_VerComprobantesFiscales item = new VW_VerComprobantesFiscales();
+                        DateTime FechaNeutra = new DateTime();
+                        ComprobantesFiscales.SingleOrDefault().Estatus_Comprobante = "Desactivado";
+                        ComprobantesFiscales.SingleOrDefault().Fecha_Vencimiento_Comprobante = DateTime.Parse(FechaNeutra.ToString("dd/MM/yyyy"));
+                        //orueba.Add(ComprobantesFiscales);
                     }
                        
                 }
@@ -96,25 +99,42 @@ namespace Sistema_de_Gestión.Modelos
                 {
                     MessageBox.Show("No fue posible cargar los comprobantes. " + Ex.Message,"Comprobantes",
                         MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-                    return null;
+                    return ComprobantesFiscales;
                 }
-                return orueba;
+                return ComprobantesFiscales;
             }
         }
 
         public string CargarNuevoComprobante()
         {
-            this.ValidarFechaComprobante();
+            int result = ValidarFechaComprobante();
             try
             {
-                this.ModoComprobante = this.VerComprobantes().SingleOrDefault().Estatus_Comprobante;
+                ComprobantesFiscales = this.VerComprobantes().ToList();
+                this.ModoComprobante = ComprobantesFiscales.SingleOrDefault().Estatus_Comprobante; //this.VerComprobantes().SingleOrDefault().Estatus_Comprobante;
 
                 if (this.ModoComprobante != "Desactivado")
                 {
-                    int Desde = this.VerComprobantes().SingleOrDefault().Comprobante_Desde;
-                    var Nuevo = Desde + (int)this.VerComprobantes().SingleOrDefault().Cantidad_Comprobantes_Usados;
-                    string Patron = this.VerComprobantes().SingleOrDefault().Serie + this.VerComprobantes().SingleOrDefault().Tipo;
+                    int Desde = ComprobantesFiscales.SingleOrDefault().Comprobante_Desde; //this.VerComprobantes().SingleOrDefault().Comprobante_Desde;
+                    var Nuevo = Desde + (int)ComprobantesFiscales.SingleOrDefault().Cantidad_Comprobantes_Usados; //this.VerComprobantes().SingleOrDefault().Cantidad_Comprobantes_Usados;
+                    string Patron = ComprobantesFiscales.SingleOrDefault().Serie + ComprobantesFiscales.SingleOrDefault().Tipo; //this.VerComprobantes().SingleOrDefault().Serie + this.VerComprobantes().SingleOrDefault().Tipo;
                     return Patron + Nuevo.ToString().PadLeft(8, '0');
+                }
+                else
+                {
+                    if (result==1)
+                    {
+                        MessageBox.Show($"El rango de comprobantes fiscales ha vencido,\npara continuar con NCF" +
+                            $"debe configurar un nuevo rango, por el momento se activara la factura sin NCF.",
+                            "NCF Vencido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"El rango de comprobante fiscal esta desactivado, \n" +
+                            $"por el momento se activara la factura sin NCF.",
+                            "NCF Desactivado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
                 }
 
                 return "B0000000000";
@@ -133,9 +153,10 @@ namespace Sistema_de_Gestión.Modelos
 
         public void ActualizarComprobanteUsado()
         {
-            int ComprobanteUsados = (int)this.VerComprobantes().SingleOrDefault().Cantidad_Comprobantes_Usados;
-            string ModoComprobante = this.VerComprobantes().SingleOrDefault().Estatus_Comprobante;
-            int IDComprobante = (int)this.VerComprobantes().SingleOrDefault().id_Comprobante;
+            ComprobantesFiscales = VerComprobantes();
+            int ComprobanteUsados = (int)ComprobantesFiscales.SingleOrDefault().Cantidad_Comprobantes_Usados;
+            string ModoComprobante = ComprobantesFiscales.SingleOrDefault().Estatus_Comprobante;
+            int IDComprobante = (int)ComprobantesFiscales.SingleOrDefault().id_Comprobante;
 
             if (ModoComprobante != "Desactivado")
             {
@@ -170,10 +191,11 @@ namespace Sistema_de_Gestión.Modelos
                 int Desactivado = 0;
                 try
                 {
-                    var ID = this.VerComprobantes().SingleOrDefault();
-                    if (ID!=null)
+                    ComprobantesFiscales = VerComprobantes();
+                    if (ComprobantesFiscales != null)
                     {
-                        Desactivado = CF.SP_DesactivarComprobante(ID.id_Comprobante);
+                        Desactivado = CF.SP_DesactivarComprobante(ComprobantesFiscales.SingleOrDefault().id_Comprobante);
+                        VencimientoComprobante = ComprobantesFiscales.SingleOrDefault().Fecha_Vencimiento_Comprobante;
                         return Desactivado;
                     }
                     
@@ -185,6 +207,7 @@ namespace Sistema_de_Gestión.Modelos
                     MessageBox.Show("No fue posible validar vencimiento comprobantes. " + ex.Message, "Comprobantes",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
+                VencimientoComprobante = DateTime.Parse("00/00/0000");
                 return Desactivado;
             }
             

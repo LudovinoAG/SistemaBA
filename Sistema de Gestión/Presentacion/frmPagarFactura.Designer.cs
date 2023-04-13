@@ -68,7 +68,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // lblNumFactura
             // 
-            this.lblNumFactura.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lblNumFactura.BackColor = System.Drawing.Color.White;
             this.lblNumFactura.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumFactura.ForeColor = System.Drawing.Color.DimGray;
             this.lblNumFactura.Location = new System.Drawing.Point(12, 39);
@@ -79,7 +79,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // label7
             // 
-            this.label7.BackColor = System.Drawing.Color.Khaki;
+            this.label7.BackColor = System.Drawing.Color.Silver;
             this.label7.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(12, 21);
             this.label7.Name = "label7";
@@ -135,7 +135,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(369, 199);
+            this.label4.Location = new System.Drawing.Point(415, 198);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 14);
             this.label4.TabIndex = 28;
@@ -144,7 +144,7 @@ namespace Sistema_de_Gestión.Presentacion
             // txtTotalPagado
             // 
             this.txtTotalPagado.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalPagado.Location = new System.Drawing.Point(371, 214);
+            this.txtTotalPagado.Location = new System.Drawing.Point(417, 213);
             this.txtTotalPagado.Name = "txtTotalPagado";
             this.txtTotalPagado.ReadOnly = true;
             this.txtTotalPagado.Size = new System.Drawing.Size(157, 28);
@@ -278,9 +278,9 @@ namespace Sistema_de_Gestión.Presentacion
             // lblEfectivo
             // 
             this.lblEfectivo.AutoSize = true;
-            this.lblEfectivo.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lblEfectivo.BackColor = System.Drawing.Color.Transparent;
             this.lblEfectivo.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEfectivo.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblEfectivo.ForeColor = System.Drawing.Color.Black;
             this.lblEfectivo.Location = new System.Drawing.Point(20, 32);
             this.lblEfectivo.Name = "lblEfectivo";
             this.lblEfectivo.Size = new System.Drawing.Size(205, 21);
@@ -290,6 +290,7 @@ namespace Sistema_de_Gestión.Presentacion
             // cmdAplicarPago
             // 
             this.cmdAplicarPago.BackColor = System.Drawing.SystemColors.Control;
+            this.cmdAplicarPago.BackgroundImage = global::Sistema_de_Gestión.RecursosBA.BotonPagarFacturaReporte;
             this.cmdAplicarPago.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.cmdAplicarPago.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmdAplicarPago.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -299,17 +300,20 @@ namespace Sistema_de_Gestión.Presentacion
             this.cmdAplicarPago.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdAplicarPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cmdAplicarPago.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.cmdAplicarPago.Location = new System.Drawing.Point(369, 253);
+            this.cmdAplicarPago.Location = new System.Drawing.Point(415, 248);
             this.cmdAplicarPago.Name = "cmdAplicarPago";
-            this.cmdAplicarPago.Size = new System.Drawing.Size(159, 101);
+            this.cmdAplicarPago.Size = new System.Drawing.Size(159, 105);
             this.cmdAplicarPago.TabIndex = 95;
             this.cmdAplicarPago.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.cmdAplicarPago.UseVisualStyleBackColor = false;
             this.cmdAplicarPago.Click += new System.EventHandler(this.cmdAplicarPago_Click);
+            this.cmdAplicarPago.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmdAplicarPago_MouseDown);
+            this.cmdAplicarPago.MouseLeave += new System.EventHandler(this.cmdAplicarPago_MouseLeave);
+            this.cmdAplicarPago.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cmdAplicarPago_MouseMove);
             // 
             // lblTotalFactura
             // 
-            this.lblTotalFactura.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lblTotalFactura.BackColor = System.Drawing.Color.White;
             this.lblTotalFactura.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalFactura.ForeColor = System.Drawing.Color.DimGray;
             this.lblTotalFactura.Location = new System.Drawing.Point(12, 119);
@@ -320,7 +324,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // label11
             // 
-            this.label11.BackColor = System.Drawing.Color.Khaki;
+            this.label11.BackColor = System.Drawing.Color.Silver;
             this.label11.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(12, 101);
             this.label11.Name = "label11";
@@ -331,7 +335,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // lblCodigoCliente
             // 
-            this.lblCodigoCliente.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lblCodigoCliente.BackColor = System.Drawing.Color.White;
             this.lblCodigoCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigoCliente.ForeColor = System.Drawing.Color.DimGray;
             this.lblCodigoCliente.Location = new System.Drawing.Point(12, 79);
@@ -342,7 +346,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // label12
             // 
-            this.label12.BackColor = System.Drawing.Color.Khaki;
+            this.label12.BackColor = System.Drawing.Color.Silver;
             this.label12.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(12, 61);
             this.label12.Name = "label12";
@@ -399,7 +403,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // lblMontoPendiente
             // 
-            this.lblMontoPendiente.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lblMontoPendiente.BackColor = System.Drawing.Color.White;
             this.lblMontoPendiente.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMontoPendiente.ForeColor = System.Drawing.Color.DarkRed;
             this.lblMontoPendiente.Location = new System.Drawing.Point(12, 159);
@@ -410,7 +414,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // label10
             // 
-            this.label10.BackColor = System.Drawing.Color.Khaki;
+            this.label10.BackColor = System.Drawing.Color.Silver;
             this.label10.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.DarkRed;
             this.label10.Location = new System.Drawing.Point(12, 141);
@@ -426,7 +430,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Sistema_de_Gestión.RecursosBA.FondoPagoFacturaFinal;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(597, 361);
+            this.ClientSize = new System.Drawing.Size(597, 360);
             this.Controls.Add(this.lblMontoPendiente);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.lblBanco);

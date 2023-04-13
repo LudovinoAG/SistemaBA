@@ -333,7 +333,7 @@ namespace Sistema_de_Gestión.Presentacion
 
         private void cmdRegistrarPedido_Click(object sender, EventArgs e)
         {
-            if (PM.ValidarCamposFactura(this.Controls, panelChofer.Controls, this.groupBox2.Controls))
+            if (PM.ValidarCamposFactura(this.Controls, tabControl1.Controls, this.groupBox2.Controls))
             {
                 PM.EstatusPedido = 1;
                 PedidosModel.Empresa = txtCliente.Text;

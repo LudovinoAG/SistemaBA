@@ -26,5 +26,6 @@ namespace Sistema_de_Gestión.Modelos
         public Nullable<System.DateTime> FechaVencimientoFactura { get; set; }
         public Nullable<decimal> MontoPendiente { get; set; }
         public Nullable<decimal> MontoPagado { get; set; }
+        public string Usuario { get; set; }
     }
 }

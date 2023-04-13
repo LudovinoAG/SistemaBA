@@ -17,6 +17,7 @@ namespace Sistema_de_Gestión
     {
         Funciones FC = new Funciones();
         LoadingReportes frmCargarReporte;
+        FacturacionModel FM = new FacturacionModel();
 
         public frmPrincipal()
         {
@@ -35,6 +36,8 @@ namespace Sistema_de_Gestión
                 mnuPrincipalProveedores.Visible = false;
 
             }
+
+            
 
         }
 

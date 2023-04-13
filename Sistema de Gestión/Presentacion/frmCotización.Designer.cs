@@ -275,10 +275,6 @@ namespace Sistema_de_Gestión.Presentacion
             0,
             0,
             0});
-            this.UdCantidad.ValueChanged += new System.EventHandler(this.UdCantidad_ValueChanged);
-            this.UdCantidad.Click += new System.EventHandler(this.UdCantidad_Click);
-            this.UdCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UdCantidad_KeyPress);
-            this.UdCantidad.Leave += new System.EventHandler(this.UdCantidad_Leave);
             // 
             // txtNuevoSubTotal
             // 
@@ -314,8 +310,6 @@ namespace Sistema_de_Gestión.Presentacion
             this.txtCosto.TabIndex = 102;
             this.txtCosto.Tag = "Costo";
             this.txtCosto.Text = "0";
-            this.txtCosto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCosto_KeyPress);
-            this.txtCosto.Leave += new System.EventHandler(this.txtCosto_Leave);
             // 
             // label26
             // 
@@ -360,7 +354,6 @@ namespace Sistema_de_Gestión.Presentacion
             this.cboProductos.Size = new System.Drawing.Size(202, 21);
             this.cboProductos.TabIndex = 98;
             this.cboProductos.Tag = "Productos";
-            this.cboProductos.SelectedIndexChanged += new System.EventHandler(this.cboProductos_SelectedIndexChanged);
             // 
             // label23
             // 
@@ -451,7 +444,6 @@ namespace Sistema_de_Gestión.Presentacion
             this.dgvCotizacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCotizacion.Size = new System.Drawing.Size(1281, 213);
             this.dgvCotizacion.TabIndex = 93;
-            this.dgvCotizacion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCotizacion_CellContentClick);
             // 
             // Cantidad
             // 
@@ -770,7 +762,6 @@ namespace Sistema_de_Gestión.Presentacion
             this.button1.TabIndex = 105;
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             this.button1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button1_MouseDown);
             this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
             this.button1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button1_MouseMove);
@@ -783,7 +774,6 @@ namespace Sistema_de_Gestión.Presentacion
             this.cmdBuscarCliente.Size = new System.Drawing.Size(36, 23);
             this.cmdBuscarCliente.TabIndex = 85;
             this.cmdBuscarCliente.UseVisualStyleBackColor = true;
-            this.cmdBuscarCliente.Click += new System.EventHandler(this.cmdBuscarCliente_Click);
             // 
             // pbEncabezadoCotizacion
             // 
@@ -861,7 +851,6 @@ namespace Sistema_de_Gestión.Presentacion
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cotización";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.frmCotización_Load);
             ((System.ComponentModel.ISupportInitialize)(this.UdCantidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCotizacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
