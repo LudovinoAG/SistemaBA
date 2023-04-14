@@ -692,9 +692,9 @@ namespace Sistema_de_Gestión.Presentacion
             this.groupBox2.Controls.Add(this.dgvListaChoferes);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.DarkRed;
-            this.groupBox2.Location = new System.Drawing.Point(577, 526);
+            this.groupBox2.Location = new System.Drawing.Point(412, 526);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(534, 105);
+            this.groupBox2.Size = new System.Drawing.Size(699, 105);
             this.groupBox2.TabIndex = 117;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalles de conduces:";
@@ -722,12 +722,12 @@ namespace Sistema_de_Gestión.Presentacion
             this.clsCondicionPago,
             this.OrometroInicio,
             this.OrometroFinal});
-            this.dgvListaChoferes.Location = new System.Drawing.Point(7, 14);
+            this.dgvListaChoferes.Location = new System.Drawing.Point(6, 14);
             this.dgvListaChoferes.MultiSelect = false;
             this.dgvListaChoferes.Name = "dgvListaChoferes";
             this.dgvListaChoferes.ReadOnly = true;
             this.dgvListaChoferes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListaChoferes.Size = new System.Drawing.Size(521, 87);
+            this.dgvListaChoferes.Size = new System.Drawing.Size(687, 87);
             this.dgvListaChoferes.TabIndex = 1;
             // 
             // clNum

@@ -19,18 +19,15 @@ namespace Sistema_de_Gestión
         FacturacionModel FM = new FacturacionModel();
         ComprobantesFiscalesModel CF = new ComprobantesFiscalesModel();
         DiseñoInterface DI = new DiseñoInterface();
-        Loading frmCargar;
         Funciones FC = new Funciones();
         ProformaFactura PF = new ProformaFactura();
 
         public string NotasFactura { get; set; }
 
-
         public void NuevaFecha(string fecha)
         {
             txtFechaLimitePago.Text = fecha;
         }
-
 
 
         public void DetallesViajesChofer(string PRODUCTO, int CANTIDAD, string NUMFACT,int CONDUCE, string CHOFER){}
@@ -385,6 +382,8 @@ namespace Sistema_de_Gestión
 
                     RevisarParametrosFactura(groupOpt.Controls);
 
+                    
+
                     if (FM.InsertarFactura(FacturacionModel.IDTipoFactura, FacturacionModel.NCF,
                         FacturacionModel.IDCliente, FacturacionModel.EstatusFactura, FacturacionModel.SubTotalFactura,
                         FacturacionModel.DescuentoFactura, FacturacionModel.ITBISFactura, FacturacionModel.TotalFactura,
@@ -395,6 +394,9 @@ namespace Sistema_de_Gestión
 
                         MessageBox.Show($"Se ha registrado correctamente la factura al cliente [{FacturacionModel.NombreCliente}].",
                             "Facturación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        //Almacenar el ID de la factura generada
+                        FacturacionModel.IDFactura = int.Parse(txtNumFactura.Text);
 
                         if (FacturacionModel.IDTipoFactura != 1)
                         {
@@ -407,6 +409,10 @@ namespace Sistema_de_Gestión
                         {
                             NuevaFacturaSinNCF();
                         }
+                        
+                        Loading frmCargar = new Loading();
+                        frmVistaFactura frmFactura = new frmVistaFactura();
+                        FC.Ejecutar(frmFactura, frmCargar, txtCliente.Text);
 
                     }
                 }
@@ -574,5 +580,6 @@ namespace Sistema_de_Gestión
         {
             FC.SoloNumeros(e);
         }
+
     }
 }

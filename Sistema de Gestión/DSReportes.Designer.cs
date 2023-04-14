@@ -24,8 +24,6 @@ namespace Sistema_de_Gestión {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class DSReportes : global::System.Data.DataSet {
         
-        private VW_VerReportesFacturasPendientesCreditoDataTable tableVW_VerReportesFacturasPendientesCredito;
-        
         private SP_VerCotizacionDataTable tableSP_VerCotizacion;
         
         private SP_VerDetalleCotizacionDataTable tableSP_VerDetalleCotizacion;
@@ -47,6 +45,8 @@ namespace Sistema_de_Gestión {
         private SP_VerDetallesConducesDataTable tableSP_VerDetallesConduces;
         
         private SP_VerFacturaIDDataTable tableSP_VerFacturaID;
+        
+        private VW_VerReportesFacturasPendientesCreditoDataTable tableVW_VerReportesFacturasPendientesCredito;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -76,9 +76,6 @@ namespace Sistema_de_Gestión {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["VW_VerReportesFacturasPendientesCredito"] != null)) {
-                    base.Tables.Add(new VW_VerReportesFacturasPendientesCreditoDataTable(ds.Tables["VW_VerReportesFacturasPendientesCredito"]));
-                }
                 if ((ds.Tables["SP_VerCotizacion"] != null)) {
                     base.Tables.Add(new SP_VerCotizacionDataTable(ds.Tables["SP_VerCotizacion"]));
                 }
@@ -112,6 +109,9 @@ namespace Sistema_de_Gestión {
                 if ((ds.Tables["SP_VerFacturaID"] != null)) {
                     base.Tables.Add(new SP_VerFacturaIDDataTable(ds.Tables["SP_VerFacturaID"]));
                 }
+                if ((ds.Tables["VW_VerReportesFacturasPendientesCredito"] != null)) {
+                    base.Tables.Add(new VW_VerReportesFacturasPendientesCreditoDataTable(ds.Tables["VW_VerReportesFacturasPendientesCredito"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -128,16 +128,6 @@ namespace Sistema_de_Gestión {
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
             base.Tables.CollectionChanged += schemaChangedHandler;
             this.Relations.CollectionChanged += schemaChangedHandler;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public VW_VerReportesFacturasPendientesCreditoDataTable VW_VerReportesFacturasPendientesCredito {
-            get {
-                return this.tableVW_VerReportesFacturasPendientesCredito;
-            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -252,6 +242,16 @@ namespace Sistema_de_Gestión {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public VW_VerReportesFacturasPendientesCreditoDataTable VW_VerReportesFacturasPendientesCredito {
+            get {
+                return this.tableVW_VerReportesFacturasPendientesCredito;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -317,9 +317,6 @@ namespace Sistema_de_Gestión {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["VW_VerReportesFacturasPendientesCredito"] != null)) {
-                    base.Tables.Add(new VW_VerReportesFacturasPendientesCreditoDataTable(ds.Tables["VW_VerReportesFacturasPendientesCredito"]));
-                }
                 if ((ds.Tables["SP_VerCotizacion"] != null)) {
                     base.Tables.Add(new SP_VerCotizacionDataTable(ds.Tables["SP_VerCotizacion"]));
                 }
@@ -352,6 +349,9 @@ namespace Sistema_de_Gestión {
                 }
                 if ((ds.Tables["SP_VerFacturaID"] != null)) {
                     base.Tables.Add(new SP_VerFacturaIDDataTable(ds.Tables["SP_VerFacturaID"]));
+                }
+                if ((ds.Tables["VW_VerReportesFacturasPendientesCredito"] != null)) {
+                    base.Tables.Add(new VW_VerReportesFacturasPendientesCreditoDataTable(ds.Tables["VW_VerReportesFacturasPendientesCredito"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -386,12 +386,6 @@ namespace Sistema_de_Gestión {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableVW_VerReportesFacturasPendientesCredito = ((VW_VerReportesFacturasPendientesCreditoDataTable)(base.Tables["VW_VerReportesFacturasPendientesCredito"]));
-            if ((initTable == true)) {
-                if ((this.tableVW_VerReportesFacturasPendientesCredito != null)) {
-                    this.tableVW_VerReportesFacturasPendientesCredito.InitVars();
-                }
-            }
             this.tableSP_VerCotizacion = ((SP_VerCotizacionDataTable)(base.Tables["SP_VerCotizacion"]));
             if ((initTable == true)) {
                 if ((this.tableSP_VerCotizacion != null)) {
@@ -458,6 +452,12 @@ namespace Sistema_de_Gestión {
                     this.tableSP_VerFacturaID.InitVars();
                 }
             }
+            this.tableVW_VerReportesFacturasPendientesCredito = ((VW_VerReportesFacturasPendientesCreditoDataTable)(base.Tables["VW_VerReportesFacturasPendientesCredito"]));
+            if ((initTable == true)) {
+                if ((this.tableVW_VerReportesFacturasPendientesCredito != null)) {
+                    this.tableVW_VerReportesFacturasPendientesCredito.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -468,8 +468,6 @@ namespace Sistema_de_Gestión {
             this.Namespace = "http://tempuri.org/DSReportes.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableVW_VerReportesFacturasPendientesCredito = new VW_VerReportesFacturasPendientesCreditoDataTable();
-            base.Tables.Add(this.tableVW_VerReportesFacturasPendientesCredito);
             this.tableSP_VerCotizacion = new SP_VerCotizacionDataTable();
             base.Tables.Add(this.tableSP_VerCotizacion);
             this.tableSP_VerDetalleCotizacion = new SP_VerDetalleCotizacionDataTable();
@@ -492,12 +490,8 @@ namespace Sistema_de_Gestión {
             base.Tables.Add(this.tableSP_VerDetallesConduces);
             this.tableSP_VerFacturaID = new SP_VerFacturaIDDataTable();
             base.Tables.Add(this.tableSP_VerFacturaID);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeVW_VerReportesFacturasPendientesCredito() {
-            return false;
+            this.tableVW_VerReportesFacturasPendientesCredito = new VW_VerReportesFacturasPendientesCreditoDataTable();
+            base.Tables.Add(this.tableVW_VerReportesFacturasPendientesCredito);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -568,6 +562,12 @@ namespace Sistema_de_Gestión {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeVW_VerReportesFacturasPendientesCredito() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -622,9 +622,6 @@ namespace Sistema_de_Gestión {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void VW_VerReportesFacturasPendientesCreditoRowChangeEventHandler(object sender, VW_VerReportesFacturasPendientesCreditoRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void SP_VerCotizacionRowChangeEventHandler(object sender, SP_VerCotizacionRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -657,433 +654,8 @@ namespace Sistema_de_Gestión {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void SP_VerFacturaIDRowChangeEventHandler(object sender, SP_VerFacturaIDRowChangeEvent e);
         
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class VW_VerReportesFacturasPendientesCreditoDataTable : global::System.Data.TypedTableBase<VW_VerReportesFacturasPendientesCreditoRow> {
-            
-            private global::System.Data.DataColumn columnNumFactura;
-            
-            private global::System.Data.DataColumn columnNCF;
-            
-            private global::System.Data.DataColumn columnEmpresa;
-            
-            private global::System.Data.DataColumn columnContacto;
-            
-            private global::System.Data.DataColumn columnRNC;
-            
-            private global::System.Data.DataColumn columnCedula;
-            
-            private global::System.Data.DataColumn columnTelefono;
-            
-            private global::System.Data.DataColumn columnTotalFactura;
-            
-            private global::System.Data.DataColumn columnFechaFactura;
-            
-            private global::System.Data.DataColumn columnFechaVencimientoFactura;
-            
-            private global::System.Data.DataColumn columnMontoPendiente;
-            
-            private global::System.Data.DataColumn columnMontoPagado;
-            
-            private global::System.Data.DataColumn columnUsuario;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public VW_VerReportesFacturasPendientesCreditoDataTable() {
-                this.TableName = "VW_VerReportesFacturasPendientesCredito";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal VW_VerReportesFacturasPendientesCreditoDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected VW_VerReportesFacturasPendientesCreditoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn NumFacturaColumn {
-                get {
-                    return this.columnNumFactura;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn NCFColumn {
-                get {
-                    return this.columnNCF;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn EmpresaColumn {
-                get {
-                    return this.columnEmpresa;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ContactoColumn {
-                get {
-                    return this.columnContacto;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn RNCColumn {
-                get {
-                    return this.columnRNC;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn CedulaColumn {
-                get {
-                    return this.columnCedula;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn TelefonoColumn {
-                get {
-                    return this.columnTelefono;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn TotalFacturaColumn {
-                get {
-                    return this.columnTotalFactura;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn FechaFacturaColumn {
-                get {
-                    return this.columnFechaFactura;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn FechaVencimientoFacturaColumn {
-                get {
-                    return this.columnFechaVencimientoFactura;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn MontoPendienteColumn {
-                get {
-                    return this.columnMontoPendiente;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn MontoPagadoColumn {
-                get {
-                    return this.columnMontoPagado;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn UsuarioColumn {
-                get {
-                    return this.columnUsuario;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public VW_VerReportesFacturasPendientesCreditoRow this[int index] {
-                get {
-                    return ((VW_VerReportesFacturasPendientesCreditoRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event VW_VerReportesFacturasPendientesCreditoRowChangeEventHandler VW_VerReportesFacturasPendientesCreditoRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event VW_VerReportesFacturasPendientesCreditoRowChangeEventHandler VW_VerReportesFacturasPendientesCreditoRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event VW_VerReportesFacturasPendientesCreditoRowChangeEventHandler VW_VerReportesFacturasPendientesCreditoRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event VW_VerReportesFacturasPendientesCreditoRowChangeEventHandler VW_VerReportesFacturasPendientesCreditoRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddVW_VerReportesFacturasPendientesCreditoRow(VW_VerReportesFacturasPendientesCreditoRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public VW_VerReportesFacturasPendientesCreditoRow AddVW_VerReportesFacturasPendientesCreditoRow(string NumFactura, string NCF, string Empresa, string Contacto, string RNC, string Cedula, string Telefono, decimal TotalFactura, System.DateTime FechaFactura, System.DateTime FechaVencimientoFactura, decimal MontoPendiente, decimal MontoPagado, string Usuario) {
-                VW_VerReportesFacturasPendientesCreditoRow rowVW_VerReportesFacturasPendientesCreditoRow = ((VW_VerReportesFacturasPendientesCreditoRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        NumFactura,
-                        NCF,
-                        Empresa,
-                        Contacto,
-                        RNC,
-                        Cedula,
-                        Telefono,
-                        TotalFactura,
-                        FechaFactura,
-                        FechaVencimientoFactura,
-                        MontoPendiente,
-                        MontoPagado,
-                        Usuario};
-                rowVW_VerReportesFacturasPendientesCreditoRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowVW_VerReportesFacturasPendientesCreditoRow);
-                return rowVW_VerReportesFacturasPendientesCreditoRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                VW_VerReportesFacturasPendientesCreditoDataTable cln = ((VW_VerReportesFacturasPendientesCreditoDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new VW_VerReportesFacturasPendientesCreditoDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal void InitVars() {
-                this.columnNumFactura = base.Columns["NumFactura"];
-                this.columnNCF = base.Columns["NCF"];
-                this.columnEmpresa = base.Columns["Empresa"];
-                this.columnContacto = base.Columns["Contacto"];
-                this.columnRNC = base.Columns["RNC"];
-                this.columnCedula = base.Columns["Cedula"];
-                this.columnTelefono = base.Columns["Telefono"];
-                this.columnTotalFactura = base.Columns["TotalFactura"];
-                this.columnFechaFactura = base.Columns["FechaFactura"];
-                this.columnFechaVencimientoFactura = base.Columns["FechaVencimientoFactura"];
-                this.columnMontoPendiente = base.Columns["MontoPendiente"];
-                this.columnMontoPagado = base.Columns["MontoPagado"];
-                this.columnUsuario = base.Columns["Usuario"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            private void InitClass() {
-                this.columnNumFactura = new global::System.Data.DataColumn("NumFactura", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNumFactura);
-                this.columnNCF = new global::System.Data.DataColumn("NCF", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNCF);
-                this.columnEmpresa = new global::System.Data.DataColumn("Empresa", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEmpresa);
-                this.columnContacto = new global::System.Data.DataColumn("Contacto", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnContacto);
-                this.columnRNC = new global::System.Data.DataColumn("RNC", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRNC);
-                this.columnCedula = new global::System.Data.DataColumn("Cedula", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCedula);
-                this.columnTelefono = new global::System.Data.DataColumn("Telefono", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTelefono);
-                this.columnTotalFactura = new global::System.Data.DataColumn("TotalFactura", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotalFactura);
-                this.columnFechaFactura = new global::System.Data.DataColumn("FechaFactura", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFechaFactura);
-                this.columnFechaVencimientoFactura = new global::System.Data.DataColumn("FechaVencimientoFactura", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFechaVencimientoFactura);
-                this.columnMontoPendiente = new global::System.Data.DataColumn("MontoPendiente", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMontoPendiente);
-                this.columnMontoPagado = new global::System.Data.DataColumn("MontoPagado", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMontoPagado);
-                this.columnUsuario = new global::System.Data.DataColumn("Usuario", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUsuario);
-                this.columnNumFactura.ReadOnly = true;
-                this.columnNumFactura.MaxLength = 4000;
-                this.columnNCF.AllowDBNull = false;
-                this.columnNCF.MaxLength = 11;
-                this.columnEmpresa.MaxLength = 60;
-                this.columnContacto.ReadOnly = true;
-                this.columnContacto.MaxLength = 31;
-                this.columnRNC.MaxLength = 12;
-                this.columnCedula.MaxLength = 13;
-                this.columnTelefono.MaxLength = 80;
-                this.columnMontoPendiente.ReadOnly = true;
-                this.columnUsuario.AllowDBNull = false;
-                this.columnUsuario.MaxLength = 50;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public VW_VerReportesFacturasPendientesCreditoRow NewVW_VerReportesFacturasPendientesCreditoRow() {
-                return ((VW_VerReportesFacturasPendientesCreditoRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new VW_VerReportesFacturasPendientesCreditoRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(VW_VerReportesFacturasPendientesCreditoRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.VW_VerReportesFacturasPendientesCreditoRowChanged != null)) {
-                    this.VW_VerReportesFacturasPendientesCreditoRowChanged(this, new VW_VerReportesFacturasPendientesCreditoRowChangeEvent(((VW_VerReportesFacturasPendientesCreditoRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.VW_VerReportesFacturasPendientesCreditoRowChanging != null)) {
-                    this.VW_VerReportesFacturasPendientesCreditoRowChanging(this, new VW_VerReportesFacturasPendientesCreditoRowChangeEvent(((VW_VerReportesFacturasPendientesCreditoRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.VW_VerReportesFacturasPendientesCreditoRowDeleted != null)) {
-                    this.VW_VerReportesFacturasPendientesCreditoRowDeleted(this, new VW_VerReportesFacturasPendientesCreditoRowChangeEvent(((VW_VerReportesFacturasPendientesCreditoRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.VW_VerReportesFacturasPendientesCreditoRowDeleting != null)) {
-                    this.VW_VerReportesFacturasPendientesCreditoRowDeleting(this, new VW_VerReportesFacturasPendientesCreditoRowChangeEvent(((VW_VerReportesFacturasPendientesCreditoRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveVW_VerReportesFacturasPendientesCreditoRow(VW_VerReportesFacturasPendientesCreditoRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DSReportes ds = new DSReportes();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "VW_VerReportesFacturasPendientesCreditoDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void VW_VerReportesFacturasPendientesCreditoRowChangeEventHandler(object sender, VW_VerReportesFacturasPendientesCreditoRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -5683,358 +5255,400 @@ namespace Sistema_de_Gestión {
         }
         
         /// <summary>
-        ///Represents strongly named DataRow class.
+        ///Represents the strongly named DataTable class.
         ///</summary>
-        public partial class VW_VerReportesFacturasPendientesCreditoRow : global::System.Data.DataRow {
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class VW_VerReportesFacturasPendientesCreditoDataTable : global::System.Data.TypedTableBase<VW_VerReportesFacturasPendientesCreditoRow> {
             
-            private VW_VerReportesFacturasPendientesCreditoDataTable tableVW_VerReportesFacturasPendientesCredito;
+            private global::System.Data.DataColumn columnNumFactura;
+            
+            private global::System.Data.DataColumn columnNCF;
+            
+            private global::System.Data.DataColumn columnEmpresa;
+            
+            private global::System.Data.DataColumn columnContacto;
+            
+            private global::System.Data.DataColumn columnRNC;
+            
+            private global::System.Data.DataColumn columnTelefonos;
+            
+            private global::System.Data.DataColumn columnTotalFactura;
+            
+            private global::System.Data.DataColumn columnMontoPagado;
+            
+            private global::System.Data.DataColumn columnMontoPendiente;
+            
+            private global::System.Data.DataColumn columnFechaFactura;
+            
+            private global::System.Data.DataColumn columnFechaVencimientoFactura;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal VW_VerReportesFacturasPendientesCreditoRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableVW_VerReportesFacturasPendientesCredito = ((VW_VerReportesFacturasPendientesCreditoDataTable)(this.Table));
+            public VW_VerReportesFacturasPendientesCreditoDataTable() {
+                this.TableName = "VW_VerReportesFacturasPendientesCredito";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string NumFactura {
+            internal VW_VerReportesFacturasPendientesCreditoDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected VW_VerReportesFacturasPendientesCreditoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NumFacturaColumn {
                 get {
+                    return this.columnNumFactura;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NCFColumn {
+                get {
+                    return this.columnNCF;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn EmpresaColumn {
+                get {
+                    return this.columnEmpresa;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ContactoColumn {
+                get {
+                    return this.columnContacto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn RNCColumn {
+                get {
+                    return this.columnRNC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TelefonosColumn {
+                get {
+                    return this.columnTelefonos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TotalFacturaColumn {
+                get {
+                    return this.columnTotalFactura;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MontoPagadoColumn {
+                get {
+                    return this.columnMontoPagado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MontoPendienteColumn {
+                get {
+                    return this.columnMontoPendiente;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FechaFacturaColumn {
+                get {
+                    return this.columnFechaFactura;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FechaVencimientoFacturaColumn {
+                get {
+                    return this.columnFechaVencimientoFactura;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public VW_VerReportesFacturasPendientesCreditoRow this[int index] {
+                get {
+                    return ((VW_VerReportesFacturasPendientesCreditoRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event VW_VerReportesFacturasPendientesCreditoRowChangeEventHandler VW_VerReportesFacturasPendientesCreditoRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event VW_VerReportesFacturasPendientesCreditoRowChangeEventHandler VW_VerReportesFacturasPendientesCreditoRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event VW_VerReportesFacturasPendientesCreditoRowChangeEventHandler VW_VerReportesFacturasPendientesCreditoRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event VW_VerReportesFacturasPendientesCreditoRowChangeEventHandler VW_VerReportesFacturasPendientesCreditoRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddVW_VerReportesFacturasPendientesCreditoRow(VW_VerReportesFacturasPendientesCreditoRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public VW_VerReportesFacturasPendientesCreditoRow AddVW_VerReportesFacturasPendientesCreditoRow(string NumFactura, string NCF, string Empresa, string Contacto, string RNC, string Telefonos, double TotalFactura, double MontoPagado, double MontoPendiente, System.DateTime FechaFactura, System.DateTime FechaVencimientoFactura) {
+                VW_VerReportesFacturasPendientesCreditoRow rowVW_VerReportesFacturasPendientesCreditoRow = ((VW_VerReportesFacturasPendientesCreditoRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        NumFactura,
+                        NCF,
+                        Empresa,
+                        Contacto,
+                        RNC,
+                        Telefonos,
+                        TotalFactura,
+                        MontoPagado,
+                        MontoPendiente,
+                        FechaFactura,
+                        FechaVencimientoFactura};
+                rowVW_VerReportesFacturasPendientesCreditoRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowVW_VerReportesFacturasPendientesCreditoRow);
+                return rowVW_VerReportesFacturasPendientesCreditoRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                VW_VerReportesFacturasPendientesCreditoDataTable cln = ((VW_VerReportesFacturasPendientesCreditoDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new VW_VerReportesFacturasPendientesCreditoDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnNumFactura = base.Columns["NumFactura"];
+                this.columnNCF = base.Columns["NCF"];
+                this.columnEmpresa = base.Columns["Empresa"];
+                this.columnContacto = base.Columns["Contacto"];
+                this.columnRNC = base.Columns["RNC"];
+                this.columnTelefonos = base.Columns["Telefonos"];
+                this.columnTotalFactura = base.Columns["TotalFactura"];
+                this.columnMontoPagado = base.Columns["MontoPagado"];
+                this.columnMontoPendiente = base.Columns["MontoPendiente"];
+                this.columnFechaFactura = base.Columns["FechaFactura"];
+                this.columnFechaVencimientoFactura = base.Columns["FechaVencimientoFactura"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnNumFactura = new global::System.Data.DataColumn("NumFactura", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNumFactura);
+                this.columnNCF = new global::System.Data.DataColumn("NCF", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNCF);
+                this.columnEmpresa = new global::System.Data.DataColumn("Empresa", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmpresa);
+                this.columnContacto = new global::System.Data.DataColumn("Contacto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnContacto);
+                this.columnRNC = new global::System.Data.DataColumn("RNC", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRNC);
+                this.columnTelefonos = new global::System.Data.DataColumn("Telefonos", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTelefonos);
+                this.columnTotalFactura = new global::System.Data.DataColumn("TotalFactura", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalFactura);
+                this.columnMontoPagado = new global::System.Data.DataColumn("MontoPagado", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMontoPagado);
+                this.columnMontoPendiente = new global::System.Data.DataColumn("MontoPendiente", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMontoPendiente);
+                this.columnFechaFactura = new global::System.Data.DataColumn("FechaFactura", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaFactura);
+                this.columnFechaVencimientoFactura = new global::System.Data.DataColumn("FechaVencimientoFactura", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaVencimientoFactura);
+                this.columnNumFactura.ReadOnly = true;
+                this.columnNumFactura.MaxLength = 4000;
+                this.columnNCF.MaxLength = 11;
+                this.columnEmpresa.MaxLength = 60;
+                this.columnContacto.ReadOnly = true;
+                this.columnContacto.MaxLength = 31;
+                this.columnRNC.MaxLength = 12;
+                this.columnTelefonos.ReadOnly = true;
+                this.columnTelefonos.MaxLength = 27;
+                this.columnMontoPagado.ReadOnly = true;
+                this.columnMontoPendiente.ReadOnly = true;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public VW_VerReportesFacturasPendientesCreditoRow NewVW_VerReportesFacturasPendientesCreditoRow() {
+                return ((VW_VerReportesFacturasPendientesCreditoRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new VW_VerReportesFacturasPendientesCreditoRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(VW_VerReportesFacturasPendientesCreditoRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.VW_VerReportesFacturasPendientesCreditoRowChanged != null)) {
+                    this.VW_VerReportesFacturasPendientesCreditoRowChanged(this, new VW_VerReportesFacturasPendientesCreditoRowChangeEvent(((VW_VerReportesFacturasPendientesCreditoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.VW_VerReportesFacturasPendientesCreditoRowChanging != null)) {
+                    this.VW_VerReportesFacturasPendientesCreditoRowChanging(this, new VW_VerReportesFacturasPendientesCreditoRowChangeEvent(((VW_VerReportesFacturasPendientesCreditoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.VW_VerReportesFacturasPendientesCreditoRowDeleted != null)) {
+                    this.VW_VerReportesFacturasPendientesCreditoRowDeleted(this, new VW_VerReportesFacturasPendientesCreditoRowChangeEvent(((VW_VerReportesFacturasPendientesCreditoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.VW_VerReportesFacturasPendientesCreditoRowDeleting != null)) {
+                    this.VW_VerReportesFacturasPendientesCreditoRowDeleting(this, new VW_VerReportesFacturasPendientesCreditoRowChangeEvent(((VW_VerReportesFacturasPendientesCreditoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveVW_VerReportesFacturasPendientesCreditoRow(VW_VerReportesFacturasPendientesCreditoRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DSReportes ds = new DSReportes();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "VW_VerReportesFacturasPendientesCreditoDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
                     try {
-                        return ((string)(this[this.tableVW_VerReportesFacturasPendientesCredito.NumFacturaColumn]));
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NumFactura\' de la tabla \'VW_VerReportesFacturasPendientes" +
-                                "Credito\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableVW_VerReportesFacturasPendientesCredito.NumFacturaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string NCF {
-                get {
-                    return ((string)(this[this.tableVW_VerReportesFacturasPendientesCredito.NCFColumn]));
-                }
-                set {
-                    this[this.tableVW_VerReportesFacturasPendientesCredito.NCFColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Empresa {
-                get {
-                    try {
-                        return ((string)(this[this.tableVW_VerReportesFacturasPendientesCredito.EmpresaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Empresa\' de la tabla \'VW_VerReportesFacturasPendientesCre" +
-                                "dito\' es DBNull.", e);
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
                     }
                 }
-                set {
-                    this[this.tableVW_VerReportesFacturasPendientesCredito.EmpresaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Contacto {
-                get {
-                    try {
-                        return ((string)(this[this.tableVW_VerReportesFacturasPendientesCredito.ContactoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Contacto\' de la tabla \'VW_VerReportesFacturasPendientesCr" +
-                                "edito\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableVW_VerReportesFacturasPendientesCredito.ContactoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string RNC {
-                get {
-                    try {
-                        return ((string)(this[this.tableVW_VerReportesFacturasPendientesCredito.RNCColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RNC\' de la tabla \'VW_VerReportesFacturasPendientesCredito" +
-                                "\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableVW_VerReportesFacturasPendientesCredito.RNCColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Cedula {
-                get {
-                    try {
-                        return ((string)(this[this.tableVW_VerReportesFacturasPendientesCredito.CedulaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Cedula\' de la tabla \'VW_VerReportesFacturasPendientesCred" +
-                                "ito\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableVW_VerReportesFacturasPendientesCredito.CedulaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Telefono {
-                get {
-                    try {
-                        return ((string)(this[this.tableVW_VerReportesFacturasPendientesCredito.TelefonoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Telefono\' de la tabla \'VW_VerReportesFacturasPendientesCr" +
-                                "edito\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableVW_VerReportesFacturasPendientesCredito.TelefonoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal TotalFactura {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableVW_VerReportesFacturasPendientesCredito.TotalFacturaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TotalFactura\' de la tabla \'VW_VerReportesFacturasPendient" +
-                                "esCredito\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableVW_VerReportesFacturasPendientesCredito.TotalFacturaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime FechaFactura {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableVW_VerReportesFacturasPendientesCredito.FechaFacturaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaFactura\' de la tabla \'VW_VerReportesFacturasPendient" +
-                                "esCredito\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableVW_VerReportesFacturasPendientesCredito.FechaFacturaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime FechaVencimientoFactura {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableVW_VerReportesFacturasPendientesCredito.FechaVencimientoFacturaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaVencimientoFactura\' de la tabla \'VW_VerReportesFactu" +
-                                "rasPendientesCredito\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableVW_VerReportesFacturasPendientesCredito.FechaVencimientoFacturaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal MontoPendiente {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableVW_VerReportesFacturasPendientesCredito.MontoPendienteColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MontoPendiente\' de la tabla \'VW_VerReportesFacturasPendie" +
-                                "ntesCredito\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableVW_VerReportesFacturasPendientesCredito.MontoPendienteColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal MontoPagado {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableVW_VerReportesFacturasPendientesCredito.MontoPagadoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MontoPagado\' de la tabla \'VW_VerReportesFacturasPendiente" +
-                                "sCredito\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableVW_VerReportesFacturasPendientesCredito.MontoPagadoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Usuario {
-                get {
-                    return ((string)(this[this.tableVW_VerReportesFacturasPendientesCredito.UsuarioColumn]));
-                }
-                set {
-                    this[this.tableVW_VerReportesFacturasPendientesCredito.UsuarioColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsNumFacturaNull() {
-                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.NumFacturaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetNumFacturaNull() {
-                this[this.tableVW_VerReportesFacturasPendientesCredito.NumFacturaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsEmpresaNull() {
-                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.EmpresaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetEmpresaNull() {
-                this[this.tableVW_VerReportesFacturasPendientesCredito.EmpresaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsContactoNull() {
-                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.ContactoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetContactoNull() {
-                this[this.tableVW_VerReportesFacturasPendientesCredito.ContactoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsRNCNull() {
-                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.RNCColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetRNCNull() {
-                this[this.tableVW_VerReportesFacturasPendientesCredito.RNCColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsCedulaNull() {
-                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.CedulaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetCedulaNull() {
-                this[this.tableVW_VerReportesFacturasPendientesCredito.CedulaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsTelefonoNull() {
-                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.TelefonoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetTelefonoNull() {
-                this[this.tableVW_VerReportesFacturasPendientesCredito.TelefonoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsTotalFacturaNull() {
-                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.TotalFacturaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetTotalFacturaNull() {
-                this[this.tableVW_VerReportesFacturasPendientesCredito.TotalFacturaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsFechaFacturaNull() {
-                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.FechaFacturaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetFechaFacturaNull() {
-                this[this.tableVW_VerReportesFacturasPendientesCredito.FechaFacturaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsFechaVencimientoFacturaNull() {
-                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.FechaVencimientoFacturaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetFechaVencimientoFacturaNull() {
-                this[this.tableVW_VerReportesFacturasPendientesCredito.FechaVencimientoFacturaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsMontoPendienteNull() {
-                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.MontoPendienteColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetMontoPendienteNull() {
-                this[this.tableVW_VerReportesFacturasPendientesCredito.MontoPendienteColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsMontoPagadoNull() {
-                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.MontoPagadoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetMontoPagadoNull() {
-                this[this.tableVW_VerReportesFacturasPendientesCredito.MontoPagadoColumn] = global::System.Convert.DBNull;
+                xs.Add(dsSchema);
+                return type;
             }
         }
         
@@ -9416,36 +9030,336 @@ namespace Sistema_de_Gestión {
         }
         
         /// <summary>
-        ///Row event argument class
+        ///Represents strongly named DataRow class.
         ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class VW_VerReportesFacturasPendientesCreditoRowChangeEvent : global::System.EventArgs {
+        public partial class VW_VerReportesFacturasPendientesCreditoRow : global::System.Data.DataRow {
             
-            private VW_VerReportesFacturasPendientesCreditoRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
+            private VW_VerReportesFacturasPendientesCreditoDataTable tableVW_VerReportesFacturasPendientesCredito;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public VW_VerReportesFacturasPendientesCreditoRowChangeEvent(VW_VerReportesFacturasPendientesCreditoRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
+            internal VW_VerReportesFacturasPendientesCreditoRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableVW_VerReportesFacturasPendientesCredito = ((VW_VerReportesFacturasPendientesCreditoDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public VW_VerReportesFacturasPendientesCreditoRow Row {
+            public string NumFactura {
                 get {
-                    return this.eventRow;
+                    try {
+                        return ((string)(this[this.tableVW_VerReportesFacturasPendientesCredito.NumFacturaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NumFactura\' de la tabla \'VW_VerReportesFacturasPendientes" +
+                                "Credito\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVW_VerReportesFacturasPendientesCredito.NumFacturaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataRowAction Action {
+            public string NCF {
                 get {
-                    return this.eventAction;
+                    try {
+                        return ((string)(this[this.tableVW_VerReportesFacturasPendientesCredito.NCFColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NCF\' de la tabla \'VW_VerReportesFacturasPendientesCredito" +
+                                "\' es DBNull.", e);
+                    }
                 }
+                set {
+                    this[this.tableVW_VerReportesFacturasPendientesCredito.NCFColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Empresa {
+                get {
+                    try {
+                        return ((string)(this[this.tableVW_VerReportesFacturasPendientesCredito.EmpresaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Empresa\' de la tabla \'VW_VerReportesFacturasPendientesCre" +
+                                "dito\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVW_VerReportesFacturasPendientesCredito.EmpresaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Contacto {
+                get {
+                    try {
+                        return ((string)(this[this.tableVW_VerReportesFacturasPendientesCredito.ContactoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Contacto\' de la tabla \'VW_VerReportesFacturasPendientesCr" +
+                                "edito\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVW_VerReportesFacturasPendientesCredito.ContactoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string RNC {
+                get {
+                    try {
+                        return ((string)(this[this.tableVW_VerReportesFacturasPendientesCredito.RNCColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RNC\' de la tabla \'VW_VerReportesFacturasPendientesCredito" +
+                                "\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVW_VerReportesFacturasPendientesCredito.RNCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Telefonos {
+                get {
+                    try {
+                        return ((string)(this[this.tableVW_VerReportesFacturasPendientesCredito.TelefonosColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Telefonos\' de la tabla \'VW_VerReportesFacturasPendientesC" +
+                                "redito\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVW_VerReportesFacturasPendientesCredito.TelefonosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double TotalFactura {
+                get {
+                    try {
+                        return ((double)(this[this.tableVW_VerReportesFacturasPendientesCredito.TotalFacturaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TotalFactura\' de la tabla \'VW_VerReportesFacturasPendient" +
+                                "esCredito\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVW_VerReportesFacturasPendientesCredito.TotalFacturaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double MontoPagado {
+                get {
+                    try {
+                        return ((double)(this[this.tableVW_VerReportesFacturasPendientesCredito.MontoPagadoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MontoPagado\' de la tabla \'VW_VerReportesFacturasPendiente" +
+                                "sCredito\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVW_VerReportesFacturasPendientesCredito.MontoPagadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double MontoPendiente {
+                get {
+                    try {
+                        return ((double)(this[this.tableVW_VerReportesFacturasPendientesCredito.MontoPendienteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MontoPendiente\' de la tabla \'VW_VerReportesFacturasPendie" +
+                                "ntesCredito\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVW_VerReportesFacturasPendientesCredito.MontoPendienteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime FechaFactura {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableVW_VerReportesFacturasPendientesCredito.FechaFacturaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaFactura\' de la tabla \'VW_VerReportesFacturasPendient" +
+                                "esCredito\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVW_VerReportesFacturasPendientesCredito.FechaFacturaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime FechaVencimientoFactura {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableVW_VerReportesFacturasPendientesCredito.FechaVencimientoFacturaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaVencimientoFactura\' de la tabla \'VW_VerReportesFactu" +
+                                "rasPendientesCredito\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVW_VerReportesFacturasPendientesCredito.FechaVencimientoFacturaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNumFacturaNull() {
+                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.NumFacturaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNumFacturaNull() {
+                this[this.tableVW_VerReportesFacturasPendientesCredito.NumFacturaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNCFNull() {
+                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.NCFColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNCFNull() {
+                this[this.tableVW_VerReportesFacturasPendientesCredito.NCFColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsEmpresaNull() {
+                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.EmpresaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetEmpresaNull() {
+                this[this.tableVW_VerReportesFacturasPendientesCredito.EmpresaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsContactoNull() {
+                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.ContactoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetContactoNull() {
+                this[this.tableVW_VerReportesFacturasPendientesCredito.ContactoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsRNCNull() {
+                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.RNCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetRNCNull() {
+                this[this.tableVW_VerReportesFacturasPendientesCredito.RNCColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTelefonosNull() {
+                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.TelefonosColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTelefonosNull() {
+                this[this.tableVW_VerReportesFacturasPendientesCredito.TelefonosColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTotalFacturaNull() {
+                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.TotalFacturaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTotalFacturaNull() {
+                this[this.tableVW_VerReportesFacturasPendientesCredito.TotalFacturaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsMontoPagadoNull() {
+                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.MontoPagadoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetMontoPagadoNull() {
+                this[this.tableVW_VerReportesFacturasPendientesCredito.MontoPagadoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsMontoPendienteNull() {
+                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.MontoPendienteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetMontoPendienteNull() {
+                this[this.tableVW_VerReportesFacturasPendientesCredito.MontoPendienteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsFechaFacturaNull() {
+                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.FechaFacturaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetFechaFacturaNull() {
+                this[this.tableVW_VerReportesFacturasPendientesCredito.FechaFacturaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsFechaVencimientoFacturaNull() {
+                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.FechaVencimientoFacturaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetFechaVencimientoFacturaNull() {
+                this[this.tableVW_VerReportesFacturasPendientesCredito.FechaVencimientoFacturaColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -9822,191 +9736,44 @@ namespace Sistema_de_Gestión {
                 }
             }
         }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class VW_VerReportesFacturasPendientesCreditoRowChangeEvent : global::System.EventArgs {
+            
+            private VW_VerReportesFacturasPendientesCreditoRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public VW_VerReportesFacturasPendientesCreditoRowChangeEvent(VW_VerReportesFacturasPendientesCreditoRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public VW_VerReportesFacturasPendientesCreditoRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
     }
 }
 namespace Sistema_de_Gestión.DSReportesTableAdapters {
     
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class VW_VerReportesFacturasPendientesCreditoTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public VW_VerReportesFacturasPendientesCreditoTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "VW_VerReportesFacturasPendientesCredito";
-            tableMapping.ColumnMappings.Add("NumFactura", "NumFactura");
-            tableMapping.ColumnMappings.Add("NCF", "NCF");
-            tableMapping.ColumnMappings.Add("Empresa", "Empresa");
-            tableMapping.ColumnMappings.Add("Contacto", "Contacto");
-            tableMapping.ColumnMappings.Add("RNC", "RNC");
-            tableMapping.ColumnMappings.Add("Cedula", "Cedula");
-            tableMapping.ColumnMappings.Add("Telefono", "Telefono");
-            tableMapping.ColumnMappings.Add("TotalFactura", "TotalFactura");
-            tableMapping.ColumnMappings.Add("FechaFactura", "FechaFactura");
-            tableMapping.ColumnMappings.Add("FechaVencimientoFactura", "FechaVencimientoFactura");
-            tableMapping.ColumnMappings.Add("MontoPendiente", "MontoPendiente");
-            tableMapping.ColumnMappings.Add("MontoPagado", "MontoPagado");
-            tableMapping.ColumnMappings.Add("Usuario", "Usuario");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Sistema_de_Gestión.Properties.Settings.Default.BoteAgregadosReportesConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT NumFactura, NCF, Empresa, Contacto, RNC, Cedula, Telefono, TotalFactura, F" +
-                "echaFactura, FechaVencimientoFactura, MontoPendiente, MontoPagado, Usuario FROM " +
-                "VW_VerReportesFacturasPendientesCredito";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DSReportes.VW_VerReportesFacturasPendientesCreditoDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DSReportes.VW_VerReportesFacturasPendientesCreditoDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            DSReportes.VW_VerReportesFacturasPendientesCreditoDataTable dataTable = new DSReportes.VW_VerReportesFacturasPendientesCreditoDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-    }
     
     /// <summary>
     ///Represents the connection and commands used to retrieve and save data.
@@ -12373,6 +12140,183 @@ namespace Sistema_de_Gestión.DSReportesTableAdapters {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             DSReportes.SP_VerFacturaIDDataTable dataTable = new DSReportes.SP_VerFacturaIDDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class VW_VerReportesFacturasPendientesCreditoTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public VW_VerReportesFacturasPendientesCreditoTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "VW_VerReportesFacturasPendientesCredito";
+            tableMapping.ColumnMappings.Add("NumFactura", "NumFactura");
+            tableMapping.ColumnMappings.Add("NCF", "NCF");
+            tableMapping.ColumnMappings.Add("Empresa", "Empresa");
+            tableMapping.ColumnMappings.Add("Contacto", "Contacto");
+            tableMapping.ColumnMappings.Add("RNC", "RNC");
+            tableMapping.ColumnMappings.Add("Telefonos", "Telefonos");
+            tableMapping.ColumnMappings.Add("TotalFactura", "TotalFactura");
+            tableMapping.ColumnMappings.Add("MontoPagado", "MontoPagado");
+            tableMapping.ColumnMappings.Add("MontoPendiente", "MontoPendiente");
+            tableMapping.ColumnMappings.Add("FechaFactura", "FechaFactura");
+            tableMapping.ColumnMappings.Add("FechaVencimientoFactura", "FechaVencimientoFactura");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::Sistema_de_Gestión.Properties.Settings.Default.BoteAgregadosReportesConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT * FROM VW_VerReportesFacturasPendientesCredito";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DSReportes.VW_VerReportesFacturasPendientesCreditoDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DSReportes.VW_VerReportesFacturasPendientesCreditoDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            DSReportes.VW_VerReportesFacturasPendientesCreditoDataTable dataTable = new DSReportes.VW_VerReportesFacturasPendientesCreditoDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

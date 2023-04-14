@@ -7,34 +7,6 @@
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="BoteAgregadosReportesConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="BoteAgregadosReportesConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Sistema_de_Gestión.Properties.Settings.GlobalReference.Default.BoteAgregadosReportesConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VW_VerReportesFacturasPendientesCreditoTableAdapter" GeneratorDataComponentClassName="VW_VerReportesFacturasPendientesCreditoTableAdapter" Name="VW_VerReportesFacturasPendientesCredito" UserDataComponentName="VW_VerReportesFacturasPendientesCreditoTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="BoteAgregadosReportesConnectionString (Settings)" DbObjectName="BoteAgregados.dbo.VW_VerReportesFacturasPendientesCredito" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT NumFactura, NCF, Empresa, Contacto, RNC, Cedula, Telefono, TotalFactura, FechaFactura, FechaVencimientoFactura, MontoPendiente, MontoPagado, Usuario FROM VW_VerReportesFacturasPendientesCredito</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="NumFactura" DataSetColumn="NumFactura" />
-              <Mapping SourceColumn="NCF" DataSetColumn="NCF" />
-              <Mapping SourceColumn="Empresa" DataSetColumn="Empresa" />
-              <Mapping SourceColumn="Contacto" DataSetColumn="Contacto" />
-              <Mapping SourceColumn="RNC" DataSetColumn="RNC" />
-              <Mapping SourceColumn="Cedula" DataSetColumn="Cedula" />
-              <Mapping SourceColumn="Telefono" DataSetColumn="Telefono" />
-              <Mapping SourceColumn="TotalFactura" DataSetColumn="TotalFactura" />
-              <Mapping SourceColumn="FechaFactura" DataSetColumn="FechaFactura" />
-              <Mapping SourceColumn="FechaVencimientoFactura" DataSetColumn="FechaVencimientoFactura" />
-              <Mapping SourceColumn="MontoPendiente" DataSetColumn="MontoPendiente" />
-              <Mapping SourceColumn="MontoPagado" DataSetColumn="MontoPagado" />
-              <Mapping SourceColumn="Usuario" DataSetColumn="Usuario" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_VerCotizacionTableAdapter" GeneratorDataComponentClassName="SP_VerCotizacionTableAdapter" Name="SP_VerCotizacion" UserDataComponentName="SP_VerCotizacionTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="BoteAgregadosReportesConnectionString (Settings)" DbObjectName="BoteAgregados.dbo.SP_VerCotizacion" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
@@ -383,6 +355,32 @@
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VW_VerReportesFacturasPendientesCreditoTableAdapter" GeneratorDataComponentClassName="VW_VerReportesFacturasPendientesCreditoTableAdapter" Name="VW_VerReportesFacturasPendientesCredito" UserDataComponentName="VW_VerReportesFacturasPendientesCreditoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BoteAgregadosReportesConnectionString (Settings)" DbObjectName="BoteAgregados.dbo.VW_VerReportesFacturasPendientesCredito" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT * FROM VW_VerReportesFacturasPendientesCredito</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="NumFactura" DataSetColumn="NumFactura" />
+              <Mapping SourceColumn="NCF" DataSetColumn="NCF" />
+              <Mapping SourceColumn="Empresa" DataSetColumn="Empresa" />
+              <Mapping SourceColumn="Contacto" DataSetColumn="Contacto" />
+              <Mapping SourceColumn="RNC" DataSetColumn="RNC" />
+              <Mapping SourceColumn="Telefonos" DataSetColumn="Telefonos" />
+              <Mapping SourceColumn="TotalFactura" DataSetColumn="TotalFactura" />
+              <Mapping SourceColumn="MontoPagado" DataSetColumn="MontoPagado" />
+              <Mapping SourceColumn="MontoPendiente" DataSetColumn="MontoPendiente" />
+              <Mapping SourceColumn="FechaFactura" DataSetColumn="FechaFactura" />
+              <Mapping SourceColumn="FechaVencimientoFactura" DataSetColumn="FechaVencimientoFactura" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -391,73 +389,6 @@
   <xs:element name="DSReportes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSReportes" msprop:Generator_UserDSName="DSReportes">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="VW_VerReportesFacturasPendientesCredito" msprop:Generator_TableClassName="VW_VerReportesFacturasPendientesCreditoDataTable" msprop:Generator_TableVarName="tableVW_VerReportesFacturasPendientesCredito" msprop:Generator_TablePropName="VW_VerReportesFacturasPendientesCredito" msprop:Generator_RowDeletingName="VW_VerReportesFacturasPendientesCreditoRowDeleting" msprop:Generator_RowChangingName="VW_VerReportesFacturasPendientesCreditoRowChanging" msprop:Generator_RowEvHandlerName="VW_VerReportesFacturasPendientesCreditoRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_VerReportesFacturasPendientesCreditoRowDeleted" msprop:Generator_UserTableName="VW_VerReportesFacturasPendientesCredito" msprop:Generator_RowChangedName="VW_VerReportesFacturasPendientesCreditoRowChanged" msprop:Generator_RowEvArgName="VW_VerReportesFacturasPendientesCreditoRowChangeEvent" msprop:Generator_RowClassName="VW_VerReportesFacturasPendientesCreditoRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="NumFactura" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNumFactura" msprop:Generator_ColumnPropNameInRow="NumFactura" msprop:Generator_ColumnPropNameInTable="NumFacturaColumn" msprop:Generator_UserColumnName="NumFactura" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="4000" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="NCF" msprop:Generator_ColumnVarNameInTable="columnNCF" msprop:Generator_ColumnPropNameInRow="NCF" msprop:Generator_ColumnPropNameInTable="NCFColumn" msprop:Generator_UserColumnName="NCF">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="11" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Empresa" msprop:Generator_ColumnVarNameInTable="columnEmpresa" msprop:Generator_ColumnPropNameInRow="Empresa" msprop:Generator_ColumnPropNameInTable="EmpresaColumn" msprop:Generator_UserColumnName="Empresa" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="60" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Contacto" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnContacto" msprop:Generator_ColumnPropNameInRow="Contacto" msprop:Generator_ColumnPropNameInTable="ContactoColumn" msprop:Generator_UserColumnName="Contacto" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="31" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="RNC" msprop:Generator_ColumnVarNameInTable="columnRNC" msprop:Generator_ColumnPropNameInRow="RNC" msprop:Generator_ColumnPropNameInTable="RNCColumn" msprop:Generator_UserColumnName="RNC" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="12" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Cedula" msprop:Generator_ColumnVarNameInTable="columnCedula" msprop:Generator_ColumnPropNameInRow="Cedula" msprop:Generator_ColumnPropNameInTable="CedulaColumn" msprop:Generator_UserColumnName="Cedula" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="13" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Telefono" msprop:Generator_ColumnVarNameInTable="columnTelefono" msprop:Generator_ColumnPropNameInRow="Telefono" msprop:Generator_ColumnPropNameInTable="TelefonoColumn" msprop:Generator_UserColumnName="Telefono" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="80" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="TotalFactura" msprop:Generator_ColumnVarNameInTable="columnTotalFactura" msprop:Generator_ColumnPropNameInRow="TotalFactura" msprop:Generator_ColumnPropNameInTable="TotalFacturaColumn" msprop:Generator_UserColumnName="TotalFactura" type="xs:decimal" minOccurs="0" />
-              <xs:element name="FechaFactura" msprop:Generator_ColumnVarNameInTable="columnFechaFactura" msprop:Generator_ColumnPropNameInRow="FechaFactura" msprop:Generator_ColumnPropNameInTable="FechaFacturaColumn" msprop:Generator_UserColumnName="FechaFactura" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="FechaVencimientoFactura" msprop:Generator_ColumnVarNameInTable="columnFechaVencimientoFactura" msprop:Generator_ColumnPropNameInRow="FechaVencimientoFactura" msprop:Generator_ColumnPropNameInTable="FechaVencimientoFacturaColumn" msprop:Generator_UserColumnName="FechaVencimientoFactura" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="MontoPendiente" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMontoPendiente" msprop:Generator_ColumnPropNameInRow="MontoPendiente" msprop:Generator_ColumnPropNameInTable="MontoPendienteColumn" msprop:Generator_UserColumnName="MontoPendiente" type="xs:decimal" minOccurs="0" />
-              <xs:element name="MontoPagado" msprop:Generator_ColumnVarNameInTable="columnMontoPagado" msprop:Generator_ColumnPropNameInRow="MontoPagado" msprop:Generator_ColumnPropNameInTable="MontoPagadoColumn" msprop:Generator_UserColumnName="MontoPagado" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Usuario" msprop:Generator_ColumnVarNameInTable="columnUsuario" msprop:Generator_ColumnPropNameInRow="Usuario" msprop:Generator_ColumnPropNameInTable="UsuarioColumn" msprop:Generator_UserColumnName="Usuario">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
         <xs:element name="SP_VerCotizacion" msprop:Generator_TableClassName="SP_VerCotizacionDataTable" msprop:Generator_TableVarName="tableSP_VerCotizacion" msprop:Generator_RowChangedName="SP_VerCotizacionRowChanged" msprop:Generator_TablePropName="SP_VerCotizacion" msprop:Generator_RowDeletingName="SP_VerCotizacionRowDeleting" msprop:Generator_RowChangingName="SP_VerCotizacionRowChanging" msprop:Generator_RowEvHandlerName="SP_VerCotizacionRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerCotizacionRowDeleted" msprop:Generator_RowClassName="SP_VerCotizacionRow" msprop:Generator_UserTableName="SP_VerCotizacion" msprop:Generator_RowEvArgName="SP_VerCotizacionRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
@@ -1071,6 +1002,59 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="VigenciaNCF" msprop:Generator_ColumnVarNameInTable="columnVigenciaNCF" msprop:Generator_ColumnPropNameInRow="VigenciaNCF" msprop:Generator_ColumnPropNameInTable="VigenciaNCFColumn" msprop:Generator_UserColumnName="VigenciaNCF" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="VW_VerReportesFacturasPendientesCredito" msprop:Generator_TableClassName="VW_VerReportesFacturasPendientesCreditoDataTable" msprop:Generator_TableVarName="tableVW_VerReportesFacturasPendientesCredito" msprop:Generator_TablePropName="VW_VerReportesFacturasPendientesCredito" msprop:Generator_RowDeletingName="VW_VerReportesFacturasPendientesCreditoRowDeleting" msprop:Generator_RowChangingName="VW_VerReportesFacturasPendientesCreditoRowChanging" msprop:Generator_RowEvHandlerName="VW_VerReportesFacturasPendientesCreditoRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_VerReportesFacturasPendientesCreditoRowDeleted" msprop:Generator_UserTableName="VW_VerReportesFacturasPendientesCredito" msprop:Generator_RowChangedName="VW_VerReportesFacturasPendientesCreditoRowChanged" msprop:Generator_RowEvArgName="VW_VerReportesFacturasPendientesCreditoRowChangeEvent" msprop:Generator_RowClassName="VW_VerReportesFacturasPendientesCreditoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NumFactura" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNumFactura" msprop:Generator_ColumnPropNameInRow="NumFactura" msprop:Generator_ColumnPropNameInTable="NumFacturaColumn" msprop:Generator_UserColumnName="NumFactura" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NCF" msprop:Generator_ColumnVarNameInTable="columnNCF" msprop:Generator_ColumnPropNameInRow="NCF" msprop:Generator_ColumnPropNameInTable="NCFColumn" msprop:Generator_UserColumnName="NCF" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Empresa" msprop:Generator_ColumnVarNameInTable="columnEmpresa" msprop:Generator_ColumnPropNameInRow="Empresa" msprop:Generator_ColumnPropNameInTable="EmpresaColumn" msprop:Generator_UserColumnName="Empresa" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Contacto" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnContacto" msprop:Generator_ColumnPropNameInRow="Contacto" msprop:Generator_ColumnPropNameInTable="ContactoColumn" msprop:Generator_UserColumnName="Contacto" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="31" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RNC" msprop:Generator_ColumnVarNameInTable="columnRNC" msprop:Generator_ColumnPropNameInRow="RNC" msprop:Generator_ColumnPropNameInTable="RNCColumn" msprop:Generator_UserColumnName="RNC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Telefonos" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTelefonos" msprop:Generator_ColumnPropNameInRow="Telefonos" msprop:Generator_ColumnPropNameInTable="TelefonosColumn" msprop:Generator_UserColumnName="Telefonos" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="27" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TotalFactura" msprop:Generator_ColumnVarNameInTable="columnTotalFactura" msprop:Generator_ColumnPropNameInRow="TotalFactura" msprop:Generator_ColumnPropNameInTable="TotalFacturaColumn" msprop:Generator_UserColumnName="TotalFactura" type="xs:double" minOccurs="0" />
+              <xs:element name="MontoPagado" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMontoPagado" msprop:Generator_ColumnPropNameInRow="MontoPagado" msprop:Generator_ColumnPropNameInTable="MontoPagadoColumn" msprop:Generator_UserColumnName="MontoPagado" type="xs:double" minOccurs="0" />
+              <xs:element name="MontoPendiente" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMontoPendiente" msprop:Generator_ColumnPropNameInRow="MontoPendiente" msprop:Generator_ColumnPropNameInTable="MontoPendienteColumn" msprop:Generator_UserColumnName="MontoPendiente" type="xs:double" minOccurs="0" />
+              <xs:element name="FechaFactura" msprop:Generator_ColumnVarNameInTable="columnFechaFactura" msprop:Generator_ColumnPropNameInRow="FechaFactura" msprop:Generator_ColumnPropNameInTable="FechaFacturaColumn" msprop:Generator_UserColumnName="FechaFactura" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FechaVencimientoFactura" msprop:Generator_ColumnVarNameInTable="columnFechaVencimientoFactura" msprop:Generator_ColumnPropNameInRow="FechaVencimientoFactura" msprop:Generator_ColumnPropNameInTable="FechaVencimientoFacturaColumn" msprop:Generator_UserColumnName="FechaVencimientoFactura" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
