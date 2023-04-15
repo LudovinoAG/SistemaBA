@@ -22,6 +22,8 @@ namespace Sistema_de_Gestión.Presentacion
         static public string FacturaNumero_Pagar {get;set;}
         static public string Cliente_Pagar { get; set; }
         static public decimal TotalFactura_Pagar { get; set; }
+
+        public static string TipoFacturaReporte { get; set; }
         public frmReportesFacturas()
         {
             InitializeComponent();
@@ -144,6 +146,7 @@ namespace Sistema_de_Gestión.Presentacion
                     otask.Start();
                     frmVistaFactura VistaFactura = new frmVistaFactura();
                     FacturacionModel.IDFactura = int.Parse(dgvReporteFacturas.SelectedRows[0].Cells["NumFactura"].Value.ToString());
+                    TipoFacturaReporte = dgvReporteFacturas.SelectedRows[0].Cells["TipoFactura"].Value.ToString();
                     VistaFactura.Show();
                     await otask;
                     Cerrar();

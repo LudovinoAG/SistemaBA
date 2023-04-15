@@ -50,6 +50,17 @@ namespace Sistema_de_Gestión.Presentacion
             crvFactura1.SetParameterValue("Pm-SP_VerDetallesConduces;1.id_Factura", FacturacionModel.IDFactura);
             crystalReportViewer1.ReportSource = crvFactura1;
 
+            if (frmReportesFacturas.TipoFacturaReporte == "Consumidor Final")
+            {
+                crvFactura1.Section1.ReportObjects["Text1"].Top = 960;
+                crvFactura1.Section1.ReportObjects["NumFactura1"].Top = 960;
+            }
+            else
+            {
+                crvFactura1.Section1.ReportObjects["NumFactura1"].Top = 240;
+                crvFactura1.Section1.ReportObjects["Text1"].Top = 240;
+            }
+
         }
     }
 }
