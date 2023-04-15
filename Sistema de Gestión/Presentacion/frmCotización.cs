@@ -14,13 +14,17 @@ namespace Sistema_de_Gestión.Presentacion
 {
     public partial class frmCotización : Form
     {
-        FacturacionModel FM = new FacturacionModel();
         Cotizaciones CT = new Cotizaciones();
+        PedidosModel PM = new PedidosModel();
         LoadingCotizacion frmCargar;
         DiseñoInterface DI = new DiseñoInterface();
         public frmCotización()
         {
             InitializeComponent();
+            CargarMedidas();
+            CargarProductos();
+            Cotizaciones.ITBISCotizacion = 0.18;
+
         }
 
       
@@ -28,10 +32,10 @@ namespace Sistema_de_Gestión.Presentacion
         {
 
                 DateTime Hora =  DateTime.Now.ToLocalTime();
-                DateTime Fecha = DateTime.Now.Date;
+                DateTime Fecha = DateTime.Now;
 
-            if (CT.InsertarCotizacion(FacturacionModel.IDCliente, decimal.Parse(txtDesc.Text), decimal.Parse(txtSubTotal.Text),
-                decimal.Parse(txtITBIS.Text), decimal.Parse(TxtTotalGeneral.Text), Fecha, Hora, EntrarLogin.IDActual,
+            if (CT.InsertarCotizacion(Cotizaciones.IDCliente, double.Parse(txtDesc.Text), double.Parse(txtSubTotal.Text),
+                double.Parse(txtITBIS.Text), double.Parse(TxtTotalGeneral.Text), Fecha, Hora, EntrarLogin.IDActual,
                 dgvCotizacion))
             {
                 MessageBox.Show($"Se ha registrado la cotización {txtNumCotizacion.Text} correctamente.",
@@ -165,6 +169,161 @@ namespace Sistema_de_Gestión.Presentacion
             //Abrir dialogo para buscar cotizacion por codigo
             frmBuscarCotizacion BC = new frmBuscarCotizacion();
             BC.ShowDialog();
+        }
+
+        private void cmdBuscarCliente_Click(object sender, EventArgs e)
+        {
+            Task Clientes = BuscarCliente(txtCodigoCliente.Text);
+
+                cmdBuscarCliente.Enabled = false;
+                txtCodigoCliente.Text = "Buscando...";
+
+            
+        }
+
+        private async Task BuscarCliente(string CodCliente)
+        {
+            await Task.Run(() =>
+            {
+                string NewCode = $"C{CodCliente.ToString().PadLeft(6, '0')}";
+                CT.SPBuscarCliente(NewCode);
+
+            });
+            if (CT.BuscarCliente.Count!=0)
+            {
+                TxtRNC.Text = CT.BuscarCliente.SingleOrDefault().RNC;
+                txtCliente.Text = CT.BuscarCliente.SingleOrDefault().Cliente;
+                txtCorreo.Text = CT.BuscarCliente.SingleOrDefault().Correo;
+                txtDirección.Text = CT.BuscarCliente.SingleOrDefault().Dirección;
+                txtTelefonos.Text = CT.BuscarCliente.SingleOrDefault().Telefonos;
+                txtContactos.Text = CT.BuscarCliente.SingleOrDefault().Contactos;
+                txtCodigoCliente.Text = CT.BuscarCliente.SingleOrDefault().ID_Cliente.ToString().PadLeft(6, '0');
+                cmdBuscarCliente.Enabled = true;
+            }
+            else
+            {
+                txtCodigoCliente.Text = CodCliente;
+                txtCodigoCliente.Focus();
+                cmdBuscarCliente.Enabled = true;
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CT.AgregarProductoCotizacion((int)UdCantidad.Value, (int)cboProductos.SelectedValue, cboMedida.Text,
+                (int)cboMedida.SelectedValue, cboProductos.Text, txtDescripcion.Text, decimal.Parse(txtCosto.Text),
+                decimal.Parse(txtNuevoSubTotal.Text), dgvCotizacion);
+            //Sumar SubTotalGeneral Cotizacion
+            CalcularTotalGeneral(dgvCotizacion);
+            //Borrar los valores de los campos
+            ResetCamposCotizacion();
+        }
+        
+        private void ResetCamposCotizacion()
+        {
+            UdCantidad.Value = 1;
+            cboProductos.SelectedIndex = 0;
+            cboMedida.SelectedIndex = 0;
+            cboProductos.SelectedIndex = 0;
+
+
+        }
+
+        private void CargarMedidas()
+        {
+            CT.BuscarMedidas();
+            cboMedida.ValueMember = "ID";
+            cboMedida.DisplayMember = "Medida";
+            cboMedida.DataSource = CT.LoadMedidas.ToList();
+        }
+
+        private void CargarProductos()
+        {
+            CT.BuscarProductos();
+            cboProductos.ValueMember = "ID";
+            cboProductos.DisplayMember = "Producto";
+            cboProductos.DataSource = CT.LoadProductos.ToList();
+        }
+
+        private void CalcularSubTotal()
+        {
+            decimal SubTotal = (decimal.Parse(txtCosto.Text) * decimal.Parse(UdCantidad.Value.ToString()));
+            txtNuevoSubTotal.Text = SubTotal.ToString("N");
+        }
+
+        private void cboProductos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            txtDescripcion.Text = CT.LoadProductos.SingleOrDefault(n => n.ID == (int)cboProductos.SelectedValue).Descripcion;
+            decimal Costo = CT.LoadProductos.SingleOrDefault(n => n.ID == (int)cboProductos.SelectedValue).Precio;
+            decimal SubTotal = PM.CalcularSubtotal(cboMedida.SelectedIndex, UdCantidad.Value, Costo);
+
+            txtCosto.Text = string.Format("{0:N}", Costo);
+            txtNuevoSubTotal.Text = string.Format("{0:N}", SubTotal);
+        }
+
+        private void UdCantidad_ValueChanged(object sender, EventArgs e)
+        {
+            CalcularSubTotal();
+        }
+
+        private void CKITBIS_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CKITBIS.Checked)
+            {
+                Cotizaciones.ITBISCotizacion = 0.18;
+               
+            }
+            else
+            {
+                Cotizaciones.ITBISCotizacion = 0;
+                txtITBIS.Text = "0.00";
+            }
+
+            CalcularTotalGeneral(dgvCotizacion);
+        }
+
+        private void dgvCotizacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvCotizacion.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+
+                dgvCotizacion.Rows.RemoveAt(e.RowIndex);
+                CalcularTotalGeneral(dgvCotizacion);
+            }
+        }
+
+        private void CalcularTotalGeneral(DataGridView dgvCotizacion)
+        {
+            double ITBIS = 0;
+            Cotizaciones.SubTotalCotizacion = 0;
+            if (dgvCotizacion.Rows.Count!=0)
+            {
+                for (int i = 0; i < dgvCotizacion.Rows.Count; i++)
+                {
+                    Cotizaciones.SubTotalCotizacion += double.Parse(dgvCotizacion.Rows[i].Cells[7].Value.ToString());
+                }
+
+                ITBIS = (Cotizaciones.SubTotalCotizacion * Cotizaciones.ITBISCotizacion);
+                Cotizaciones.TotalGeneralCotizacion = (Cotizaciones.SubTotalCotizacion - double.Parse(txtDesc.Text)) + ITBIS;
+            }
+            else
+            {
+                Cotizaciones.SubTotalCotizacion = 0;
+                Cotizaciones.TotalGeneralCotizacion = 0;
+
+            }
+
+            txtITBIS.Text = ITBIS.ToString();
+            txtSubTotal.Text = Cotizaciones.SubTotalCotizacion.ToString();
+            TxtTotalGeneral.Text = Cotizaciones.TotalGeneralCotizacion.ToString();
+
+        }
+
+        private void frmCotización_Load(object sender, EventArgs e)
+        {
+            txtNumCotizacion.Text = CT.CargarNuevaCotizacion().ToString().PadLeft(6, '0');
         }
     }
 }

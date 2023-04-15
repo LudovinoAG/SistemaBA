@@ -29,48 +29,11 @@ namespace Sistema_de_Gestión.Modelos
     
         public virtual DbSet<VW_VerUltimoNumeroCotizacion> VW_VerUltimoNumeroCotizacion { get; set; }
     
-        public virtual int SP_InsertarCotizacion(Nullable<int> idCliente, Nullable<decimal> descuento, Nullable<decimal> subTotalCotizacion, Nullable<decimal> iTBIS, Nullable<decimal> totalCotizacion, Nullable<System.DateTime> fechaCotizacion, Nullable<System.DateTime> horaCotizacion, Nullable<int> iDUsuario)
-        {
-            var idClienteParameter = idCliente.HasValue ?
-                new ObjectParameter("idCliente", idCliente) :
-                new ObjectParameter("idCliente", typeof(int));
-    
-            var descuentoParameter = descuento.HasValue ?
-                new ObjectParameter("Descuento", descuento) :
-                new ObjectParameter("Descuento", typeof(decimal));
-    
-            var subTotalCotizacionParameter = subTotalCotizacion.HasValue ?
-                new ObjectParameter("SubTotalCotizacion", subTotalCotizacion) :
-                new ObjectParameter("SubTotalCotizacion", typeof(decimal));
-    
-            var iTBISParameter = iTBIS.HasValue ?
-                new ObjectParameter("ITBIS", iTBIS) :
-                new ObjectParameter("ITBIS", typeof(decimal));
-    
-            var totalCotizacionParameter = totalCotizacion.HasValue ?
-                new ObjectParameter("TotalCotizacion", totalCotizacion) :
-                new ObjectParameter("TotalCotizacion", typeof(decimal));
-    
-            var fechaCotizacionParameter = fechaCotizacion.HasValue ?
-                new ObjectParameter("FechaCotizacion", fechaCotizacion) :
-                new ObjectParameter("FechaCotizacion", typeof(System.DateTime));
-    
-            var horaCotizacionParameter = horaCotizacion.HasValue ?
-                new ObjectParameter("HoraCotizacion", horaCotizacion) :
-                new ObjectParameter("HoraCotizacion", typeof(System.DateTime));
-    
-            var iDUsuarioParameter = iDUsuario.HasValue ?
-                new ObjectParameter("IDUsuario", iDUsuario) :
-                new ObjectParameter("IDUsuario", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarCotizacion", idClienteParameter, descuentoParameter, subTotalCotizacionParameter, iTBISParameter, totalCotizacionParameter, fechaCotizacionParameter, horaCotizacionParameter, iDUsuarioParameter);
-        }
-    
-        public virtual int SP_InsertarDetallesCotizacion(Nullable<int> cantidad, Nullable<int> idMedida, Nullable<int> idProducto, string desProducto, Nullable<decimal> costo, Nullable<decimal> subTotalProducto)
+        public virtual int SP_InsertarDetallesCotizacion(Nullable<decimal> cantidad, Nullable<int> idMedida, Nullable<int> idProducto, string desProducto, Nullable<decimal> costo, Nullable<decimal> subTotalProducto)
         {
             var cantidadParameter = cantidad.HasValue ?
                 new ObjectParameter("Cantidad", cantidad) :
-                new ObjectParameter("Cantidad", typeof(int));
+                new ObjectParameter("Cantidad", typeof(decimal));
     
             var idMedidaParameter = idMedida.HasValue ?
                 new ObjectParameter("idMedida", idMedida) :
@@ -93,6 +56,43 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("SubTotalProducto", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarDetallesCotizacion", cantidadParameter, idMedidaParameter, idProductoParameter, desProductoParameter, costoParameter, subTotalProductoParameter);
+        }
+    
+        public virtual int SP_InsertarCotizacion(Nullable<int> idCliente, Nullable<double> descuento, Nullable<double> subTotalCotizacion, Nullable<double> iTBIS, Nullable<double> totalCotizacion, Nullable<System.DateTime> fechaCotizacion, Nullable<System.DateTime> horaCotizacion, Nullable<int> iDUsuario)
+        {
+            var idClienteParameter = idCliente.HasValue ?
+                new ObjectParameter("idCliente", idCliente) :
+                new ObjectParameter("idCliente", typeof(int));
+    
+            var descuentoParameter = descuento.HasValue ?
+                new ObjectParameter("Descuento", descuento) :
+                new ObjectParameter("Descuento", typeof(double));
+    
+            var subTotalCotizacionParameter = subTotalCotizacion.HasValue ?
+                new ObjectParameter("SubTotalCotizacion", subTotalCotizacion) :
+                new ObjectParameter("SubTotalCotizacion", typeof(double));
+    
+            var iTBISParameter = iTBIS.HasValue ?
+                new ObjectParameter("ITBIS", iTBIS) :
+                new ObjectParameter("ITBIS", typeof(double));
+    
+            var totalCotizacionParameter = totalCotizacion.HasValue ?
+                new ObjectParameter("TotalCotizacion", totalCotizacion) :
+                new ObjectParameter("TotalCotizacion", typeof(double));
+    
+            var fechaCotizacionParameter = fechaCotizacion.HasValue ?
+                new ObjectParameter("FechaCotizacion", fechaCotizacion) :
+                new ObjectParameter("FechaCotizacion", typeof(System.DateTime));
+    
+            var horaCotizacionParameter = horaCotizacion.HasValue ?
+                new ObjectParameter("HoraCotizacion", horaCotizacion) :
+                new ObjectParameter("HoraCotizacion", typeof(System.DateTime));
+    
+            var iDUsuarioParameter = iDUsuario.HasValue ?
+                new ObjectParameter("IDUsuario", iDUsuario) :
+                new ObjectParameter("IDUsuario", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarCotizacion", idClienteParameter, descuentoParameter, subTotalCotizacionParameter, iTBISParameter, totalCotizacionParameter, fechaCotizacionParameter, horaCotizacionParameter, iDUsuarioParameter);
         }
     }
 }

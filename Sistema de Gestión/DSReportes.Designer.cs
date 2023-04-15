@@ -5283,6 +5283,8 @@ namespace Sistema_de_Gestión {
             
             private global::System.Data.DataColumn columnFechaVencimientoFactura;
             
+            private global::System.Data.DataColumn columnFechaPago;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public VW_VerReportesFacturasPendientesCreditoDataTable() {
@@ -5406,6 +5408,14 @@ namespace Sistema_de_Gestión {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FechaPagoColumn {
+                get {
+                    return this.columnFechaPago;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5441,7 +5451,7 @@ namespace Sistema_de_Gestión {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public VW_VerReportesFacturasPendientesCreditoRow AddVW_VerReportesFacturasPendientesCreditoRow(string NumFactura, string NCF, string Empresa, string Contacto, string RNC, string Telefonos, double TotalFactura, double MontoPagado, double MontoPendiente, System.DateTime FechaFactura, System.DateTime FechaVencimientoFactura) {
+            public VW_VerReportesFacturasPendientesCreditoRow AddVW_VerReportesFacturasPendientesCreditoRow(string NumFactura, string NCF, string Empresa, string Contacto, string RNC, string Telefonos, double TotalFactura, double MontoPagado, double MontoPendiente, System.DateTime FechaFactura, System.DateTime FechaVencimientoFactura, System.DateTime FechaPago) {
                 VW_VerReportesFacturasPendientesCreditoRow rowVW_VerReportesFacturasPendientesCreditoRow = ((VW_VerReportesFacturasPendientesCreditoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NumFactura,
@@ -5454,7 +5464,8 @@ namespace Sistema_de_Gestión {
                         MontoPagado,
                         MontoPendiente,
                         FechaFactura,
-                        FechaVencimientoFactura};
+                        FechaVencimientoFactura,
+                        FechaPago};
                 rowVW_VerReportesFacturasPendientesCreditoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowVW_VerReportesFacturasPendientesCreditoRow);
                 return rowVW_VerReportesFacturasPendientesCreditoRow;
@@ -5488,6 +5499,7 @@ namespace Sistema_de_Gestión {
                 this.columnMontoPendiente = base.Columns["MontoPendiente"];
                 this.columnFechaFactura = base.Columns["FechaFactura"];
                 this.columnFechaVencimientoFactura = base.Columns["FechaVencimientoFactura"];
+                this.columnFechaPago = base.Columns["FechaPago"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5515,6 +5527,8 @@ namespace Sistema_de_Gestión {
                 base.Columns.Add(this.columnFechaFactura);
                 this.columnFechaVencimientoFactura = new global::System.Data.DataColumn("FechaVencimientoFactura", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaVencimientoFactura);
+                this.columnFechaPago = new global::System.Data.DataColumn("FechaPago", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaPago);
                 this.columnNumFactura.ReadOnly = true;
                 this.columnNumFactura.MaxLength = 4000;
                 this.columnNCF.MaxLength = 11;
@@ -9232,6 +9246,23 @@ namespace Sistema_de_Gestión {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime FechaPago {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableVW_VerReportesFacturasPendientesCredito.FechaPagoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaPago\' de la tabla \'VW_VerReportesFacturasPendientesC" +
+                                "redito\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVW_VerReportesFacturasPendientesCredito.FechaPagoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNumFacturaNull() {
                 return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.NumFacturaColumn);
             }
@@ -9360,6 +9391,18 @@ namespace Sistema_de_Gestión {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetFechaVencimientoFacturaNull() {
                 this[this.tableVW_VerReportesFacturasPendientesCredito.FechaVencimientoFacturaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsFechaPagoNull() {
+                return this.IsNull(this.tableVW_VerReportesFacturasPendientesCredito.FechaPagoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetFechaPagoNull() {
+                this[this.tableVW_VerReportesFacturasPendientesCredito.FechaPagoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -12277,6 +12320,7 @@ namespace Sistema_de_Gestión.DSReportesTableAdapters {
             tableMapping.ColumnMappings.Add("MontoPendiente", "MontoPendiente");
             tableMapping.ColumnMappings.Add("FechaFactura", "FechaFactura");
             tableMapping.ColumnMappings.Add("FechaVencimientoFactura", "FechaVencimientoFactura");
+            tableMapping.ColumnMappings.Add("FechaPago", "FechaPago");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

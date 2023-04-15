@@ -70,7 +70,7 @@ namespace Sistema_de_Gestión.Modelos
                 using (BAReportesEntities FE = new BAReportesEntities())
                 {
                     //Traer las ultimas 5 facturas recientes
-                    VerFactura = FE.VW_VerFacturas.Take(5).ToList();
+                    VerFactura = FE.VW_VerFacturas.Take(10).OrderByDescending(t=> t.Fecha).ToList();
                     return VerFactura;
                 }
             }
@@ -88,5 +88,24 @@ namespace Sistema_de_Gestión.Modelos
             cboFiltros.Items.AddRange(Filtros);
             cboFiltros.SelectedIndex = 0;
         }
+
+        public DataGridViewColumnCollection FormatoColumnasFacturas(DataGridViewColumnCollection ColumnasFacturas)
+        {
+            ColumnasFacturas["EstatusFactura"].HeaderText = "Estatus Factura";
+            ColumnasFacturas["SubTotal"].HeaderText = "Sub-Total";
+            ColumnasFacturas["TotalFactura"].HeaderText = "Total Factura";
+            ColumnasFacturas["MontoPagado"].HeaderText = "Monto Pagado";
+            ColumnasFacturas["MontoPendiente"].HeaderText = "Monto Pendiente";
+            ColumnasFacturas["MetodoPago"].HeaderText = "Metodo Pago";
+
+            ColumnasFacturas["SubTotal"].DefaultCellStyle.Format = "C";
+            ColumnasFacturas["TotalFactura"].DefaultCellStyle.Format = "C";
+            ColumnasFacturas["MontoPagado"].DefaultCellStyle.Format = "C";
+            ColumnasFacturas["MontoPendiente"].DefaultCellStyle.Format = "C";
+            ColumnasFacturas["Descuento"].DefaultCellStyle.Format = "C";
+            ColumnasFacturas["ITBIS"].DefaultCellStyle.Format = "C";
+
+            return ColumnasFacturas;
+        } 
     }
 }

@@ -210,6 +210,7 @@ namespace Sistema_de_Gestión.Presentacion
         private void frmReportesFacturas_Load(object sender, EventArgs e)
         {
             dgvReporteFacturas.DataSource = RM.LoadTopFacturas().ToList();
+            RM.FormatoColumnasFacturas(dgvReporteFacturas.Columns);
         }
 
         private void CmdPagarFactura_Click(object sender, EventArgs e)

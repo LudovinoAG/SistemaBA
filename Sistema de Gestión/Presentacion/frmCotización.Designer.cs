@@ -29,10 +29,10 @@ namespace Sistema_de_Gestión.Presentacion
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCotización));
             this.txtNumCotizacion = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -255,9 +255,15 @@ namespace Sistema_de_Gestión.Presentacion
             // UdCantidad
             // 
             this.UdCantidad.BackColor = System.Drawing.Color.Khaki;
+            this.UdCantidad.DecimalPlaces = 2;
+            this.UdCantidad.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.UdCantidad.Location = new System.Drawing.Point(133, 295);
             this.UdCantidad.Maximum = new decimal(new int[] {
-            500,
+            9999,
             0,
             0,
             0});
@@ -265,16 +271,17 @@ namespace Sistema_de_Gestión.Presentacion
             1,
             0,
             0,
-            0});
+            131072});
             this.UdCantidad.Name = "UdCantidad";
             this.UdCantidad.Size = new System.Drawing.Size(55, 20);
             this.UdCantidad.TabIndex = 106;
             this.UdCantidad.Tag = "Cantidad";
             this.UdCantidad.Value = new decimal(new int[] {
-            1,
+            100,
             0,
             0,
-            0});
+            131072});
+            this.UdCantidad.ValueChanged += new System.EventHandler(this.UdCantidad_ValueChanged);
             // 
             // txtNuevoSubTotal
             // 
@@ -354,6 +361,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.cboProductos.Size = new System.Drawing.Size(202, 21);
             this.cboProductos.TabIndex = 98;
             this.cboProductos.Tag = "Productos";
+            this.cboProductos.SelectedIndexChanged += new System.EventHandler(this.cboProductos_SelectedIndexChanged);
             // 
             // label23
             // 
@@ -407,14 +415,14 @@ namespace Sistema_de_Gestión.Presentacion
             this.dgvCotizacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCotizacion.BackgroundColor = System.Drawing.Color.White;
             this.dgvCotizacion.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCotizacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCotizacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvCotizacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCotizacion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cantidad,
@@ -426,24 +434,25 @@ namespace Sistema_de_Gestión.Presentacion
             this.Costo,
             this.SubTotal,
             this.Accion});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Khaki;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCotizacion.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCotizacion.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvCotizacion.Location = new System.Drawing.Point(70, 324);
             this.dgvCotizacion.MultiSelect = false;
             this.dgvCotizacion.Name = "dgvCotizacion";
             this.dgvCotizacion.ReadOnly = true;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            this.dgvCotizacion.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            this.dgvCotizacion.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvCotizacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCotizacion.Size = new System.Drawing.Size(1281, 213);
             this.dgvCotizacion.TabIndex = 93;
+            this.dgvCotizacion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCotizacion_CellContentClick);
             // 
             // Cantidad
             // 
@@ -527,10 +536,10 @@ namespace Sistema_de_Gestión.Presentacion
             // Accion
             // 
             this.Accion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.DarkRed;
-            this.Accion.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.DarkRed;
+            this.Accion.DefaultCellStyle = dataGridViewCellStyle6;
             this.Accion.HeaderText = "Fila";
             this.Accion.MinimumWidth = 100;
             this.Accion.Name = "Accion";
@@ -593,6 +602,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.CKITBIS.Size = new System.Drawing.Size(15, 14);
             this.CKITBIS.TabIndex = 125;
             this.CKITBIS.UseVisualStyleBackColor = true;
+            this.CKITBIS.CheckedChanged += new System.EventHandler(this.CKITBIS_CheckedChanged);
             // 
             // TxtTotalGeneral
             // 
@@ -762,6 +772,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.button1.TabIndex = 105;
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             this.button1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button1_MouseDown);
             this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
             this.button1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button1_MouseMove);
@@ -774,6 +785,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.cmdBuscarCliente.Size = new System.Drawing.Size(36, 23);
             this.cmdBuscarCliente.TabIndex = 85;
             this.cmdBuscarCliente.UseVisualStyleBackColor = true;
+            this.cmdBuscarCliente.Click += new System.EventHandler(this.cmdBuscarCliente_Click);
             // 
             // pbEncabezadoCotizacion
             // 
@@ -851,6 +863,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cotización";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmCotización_Load);
             ((System.ComponentModel.ISupportInitialize)(this.UdCantidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCotizacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

@@ -33,6 +33,7 @@ namespace Sistema_de_Gestión
             //Application.Run(new frmPedidos());
             //Application.Run(new frmRedaccionesClientes());
             //Application.Run(new frmVerProforma());
+            //Application.Run(new frmCotización());
 
 
         }

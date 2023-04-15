@@ -16,16 +16,16 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroCotizaci
         </EntityType>
         <Function Name="SP_InsertarCotizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idCliente" Type="int" Mode="In" />
-          <Parameter Name="Descuento" Type="money" Mode="In" />
-          <Parameter Name="SubTotalCotizacion" Type="money" Mode="In" />
-          <Parameter Name="ITBIS" Type="money" Mode="In" />
-          <Parameter Name="TotalCotizacion" Type="money" Mode="In" />
-          <Parameter Name="FechaCotizacion" Type="date" Mode="In" />
+          <Parameter Name="Descuento" Type="float" Mode="In" />
+          <Parameter Name="SubTotalCotizacion" Type="float" Mode="In" />
+          <Parameter Name="ITBIS" Type="float" Mode="In" />
+          <Parameter Name="TotalCotizacion" Type="float" Mode="In" />
+          <Parameter Name="FechaCotizacion" Type="datetime" Mode="In" />
           <Parameter Name="HoraCotizacion" Type="datetime" Mode="In" />
           <Parameter Name="IDUsuario" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_InsertarDetallesCotizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Cantidad" Type="int" Mode="In" />
+          <Parameter Name="Cantidad" Type="decimal" Mode="In" />
           <Parameter Name="idMedida" Type="int" Mode="In" />
           <Parameter Name="idProducto" Type="int" Mode="In" />
           <Parameter Name="DesProducto" Type="varchar" Mode="In" />
@@ -45,18 +45,8 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroCotizaci
     <edmx:ConceptualModels>
       <Schema Namespace="BACotizacionesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BACotizacionesEntities" annotation:LazyLoadingEnabled="true" >
-          <FunctionImport Name="SP_InsertarCotizacion">
-            <Parameter Name="idCliente" Mode="In" Type="Int32" />
-            <Parameter Name="Descuento" Mode="In" Type="Decimal" />
-            <Parameter Name="SubTotalCotizacion" Mode="In" Type="Decimal" />
-            <Parameter Name="ITBIS" Mode="In" Type="Decimal" />
-            <Parameter Name="TotalCotizacion" Mode="In" Type="Decimal" />
-            <Parameter Name="FechaCotizacion" Mode="In" Type="DateTime" />
-            <Parameter Name="HoraCotizacion" Mode="In" Type="DateTime" />
-            <Parameter Name="IDUsuario" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_InsertarDetallesCotizacion">
-            <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad" Mode="In" Type="Decimal" />
             <Parameter Name="idMedida" Mode="In" Type="Int32" />
             <Parameter Name="idProducto" Mode="In" Type="Int32" />
             <Parameter Name="DesProducto" Mode="In" Type="String" />
@@ -64,6 +54,16 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroCotizaci
             <Parameter Name="SubTotalProducto" Mode="In" Type="Decimal" />
           </FunctionImport>
           <EntitySet Name="VW_VerUltimoNumeroCotizacion" EntityType="BACotizacionesModel.VW_VerUltimoNumeroCotizacion" />
+          <FunctionImport Name="SP_InsertarCotizacion">
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+            <Parameter Name="Descuento" Mode="In" Type="Double" />
+            <Parameter Name="SubTotalCotizacion" Mode="In" Type="Double" />
+            <Parameter Name="ITBIS" Mode="In" Type="Double" />
+            <Parameter Name="TotalCotizacion" Mode="In" Type="Double" />
+            <Parameter Name="FechaCotizacion" Mode="In" Type="DateTime" />
+            <Parameter Name="HoraCotizacion" Mode="In" Type="DateTime" />
+            <Parameter Name="IDUsuario" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="VW_VerUltimoNumeroCotizacion">
           <Key>
@@ -78,7 +78,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroCotizaci
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BACotizacionesModelStoreContainer" CdmEntityContainer="BACotizacionesEntities" >
-          <FunctionImportMapping FunctionImportName="SP_InsertarCotizacion" FunctionName="BACotizacionesModel.Store.SP_InsertarCotizacion" />
           <FunctionImportMapping FunctionImportName="SP_InsertarDetallesCotizacion" FunctionName="BACotizacionesModel.Store.SP_InsertarDetallesCotizacion" />
           <EntitySetMapping Name="VW_VerUltimoNumeroCotizacion">
             <EntityTypeMapping TypeName="BACotizacionesModel.VW_VerUltimoNumeroCotizacion">
@@ -88,6 +87,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroCotizaci
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_InsertarCotizacion" FunctionName="BACotizacionesModel.Store.SP_InsertarCotizacion" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

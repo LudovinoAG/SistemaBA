@@ -27,7 +27,7 @@ namespace Sistema_de_Gestión.Modelos
         public string EstatusFactura { get; set; }
         public Nullable<double> SubTotal { get; set; }
         public Nullable<double> TotalFactura { get; set; }
-        public Nullable<double> MontoPagado { get; set; }
+        public double MontoPagado { get; set; }
         public Nullable<double> MontoPendiente { get; set; }
         public string MetodoPago { get; set; }
         public Nullable<double> Descuento { get; set; }

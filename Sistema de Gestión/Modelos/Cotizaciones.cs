@@ -10,12 +10,47 @@ namespace Sistema_de_Gestión.Modelos
 {
     class Cotizaciones
     {
+        public static double SubTotalCotizacion { get; set; }
+        public static double TotalGeneralCotizacion { get; set; }
+        public static double ITBISCotizacion { get; set; }
 
+        public static int IDCliente { get; set; }
 
+        public List<SP_BuscarClienteCodigo_Result> BuscarCliente { get; set; }
+
+        public List<SP_BuscarClienteCodigo_Result> SPBuscarCliente(string CodCliente)
+        {
+            try
+            {
+                using(BAFacturacionEntities FE = new BAFacturacionEntities())
+                {
+                    BuscarCliente = FE.SP_BuscarClienteCodigo(CodCliente).ToList();
+                    if (BuscarCliente.Count!=0)
+                    {
+                        IDCliente = BuscarCliente.SingleOrDefault().ID_Cliente;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"No se ha encontrado el cliente [C{CodCliente.PadLeft(6,'0')}]", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+
+                    
+                    return BuscarCliente;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show($"No fue posible buscar el cliente indicado en el sistema","Aviso",
+                    MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return BuscarCliente;
+            }
+        }
 
         public void AgregarProductoCotizacion(int cantidad, int IDProducto, string medida, int IDMedida, string producto, string descripcion, decimal costo,
            decimal subtotal, DataGridView dgvCotizacion)
         {
+   
             if (IDProducto!=1)
             {
                 int NuevoRegistro = dgvCotizacion.Rows.Add();
@@ -27,20 +62,19 @@ namespace Sistema_de_Gestión.Modelos
                 dgvCotizacion.Rows[NuevoRegistro].Cells["Descripción"].Value = descripcion;
                 dgvCotizacion.Rows[NuevoRegistro].Cells["Costo"].Value = string.Format("{0:N}", costo);
                 dgvCotizacion.Rows[NuevoRegistro].Cells["SubTotal"].Value = string.Format("{0:N}", subtotal);
+                SubTotalCotizacion += (double)subtotal;
             }
             else
             {
                 MessageBox.Show("Debe indicar un producto válido", "Agregar Producto",MessageBoxButtons.OK, 
                     MessageBoxIcon.Exclamation);
             }
-         
-
+            
 
         }
 
-
-        public bool InsertarCotizacion(int idCliente, decimal Descuento, decimal SubTotalCotiza, decimal ITBIS,
-            decimal TotalCotizacion, DateTime FechaCotizacion, DateTime HoraCotizacion, int idUsuario,
+        public bool InsertarCotizacion(int idCliente, double Descuento, double SubTotalCotiza, double ITBIS,
+            double TotalCotizacion, DateTime FechaCotizacion, DateTime HoraCotizacion, int idUsuario,
             DataGridView dgvCotizacion)
         {
             try
@@ -75,7 +109,6 @@ namespace Sistema_de_Gestión.Modelos
             return true;
         }
 
-
         public void LimpiarCotizacion(Control.ControlCollection Controles, DataGridView Cotizacion,CheckBox ITBIS)
         {
             var TextBoxClientes = Controles.OfType<TextBox>().Where(t=> t.TabIndex >=1 && t.TabIndex <=7);
@@ -102,7 +135,6 @@ namespace Sistema_de_Gestión.Modelos
             ITBIS.Checked = true;
 
         }
-
 
         public int CargarNuevaCotizacion()
         {
@@ -134,6 +166,48 @@ namespace Sistema_de_Gestión.Modelos
                 return Ultimo;
             }
         }
+
+        public List<VW_ListarMedidas> LoadMedidas { get; set; }
+
+        public List<VW_ProductosFactura> LoadProductos { get; set; }
+
+        public List<VW_ListarMedidas> BuscarMedidas()
+        {
+            try
+            {
+                using(BAPedidosEntities PE = new BAPedidosEntities())
+                {
+                    LoadMedidas = PE.VW_ListarMedidas.ToList();
+                    return LoadMedidas;
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("No fue posible cargar las medidas." + Ex.Message, "Avsio",
+                    MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return LoadMedidas;
+            }
+        }
+
+        public List<VW_ProductosFactura> BuscarProductos()
+        {
+            try
+            {
+                using (BAFacturacionEntities PE = new BAFacturacionEntities())
+                {
+                    LoadProductos = PE.VW_ProductosFactura.ToList();
+                    return LoadProductos;
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("No fue posible cargar los productos." + Ex.Message, "Avsio",
+                    MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return LoadProductos;
+            }
+        }
+
+
 
     }
 }
