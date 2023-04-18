@@ -209,7 +209,7 @@ namespace Sistema_de_Gestión.Presentacion
 
         private void cmdAgregarInfoChofer_Click(object sender, EventArgs e)
         {
-            if (cboChofer.SelectedIndex != 0)
+            if (cboChofer.SelectedIndex != -1)
             {
                 if (cboVehiculos.SelectedIndex != 0)
                 {

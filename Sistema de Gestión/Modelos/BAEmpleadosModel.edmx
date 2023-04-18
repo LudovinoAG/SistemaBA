@@ -465,7 +465,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaTipoSangre' no tie
             <Parameter Name="FotoEmpleado" Mode="In" Type="Binary" />
           </FunctionImport>
           <FunctionImport Name="SP_EliminarEmpleado">
-            <Parameter Name="idEmpleados" Mode="In" Type="Int32" />
+          <Parameter Name="idEmpleados" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="VW_ListaCategoriaLicencia">

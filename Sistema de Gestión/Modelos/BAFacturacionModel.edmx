@@ -329,7 +329,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           </FunctionImport>
           <EntitySet Name="VW_EmpleadosFactura" EntityType="BAFacturacionModel.VW_EmpleadosFactura" />
           <FunctionImport Name="SP_VerFacturaID" ReturnType="Collection(BAFacturacionModel.SP_VerFacturaID_Result)">
-            <Parameter Name="NumFactura" Mode="In" Type="Int32" />
+          <Parameter Name="NumFactura" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="VW_ListarVehiculos">

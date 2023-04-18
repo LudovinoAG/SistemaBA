@@ -26,11 +26,22 @@ namespace Sistema_de_Gestión.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LG01\\SQLEXPRESS;Initial Catalog=BoteAgregados;Integrated Security=Tru" +
-            "e;MultipleActiveResultSets=True;Application Name=EntityFramework")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SERVERBA;Initial Catalog=BoteAgregados;Integrated Security=True;Multi" +
+            "pleActiveResultSets=True;Application Name=EntityFramework")]
         public string BoteAgregadosReportesConnectionString {
             get {
                 return ((string)(this["BoteAgregadosReportesConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SERVERBA,1434;Initial Catalog=BoteAgregados;Persist Security Info=Tru" +
+            "e;User ID=Admin;Password=Botes2023")]
+        public string BoteAgregadosServerBAConnectionString {
+            get {
+                return ((string)(this["BoteAgregadosServerBAConnectionString"]));
             }
         }
     }

@@ -49,7 +49,7 @@ namespace Sistema_de_Gestión.Modelos
                     TotalVehiculos = lstNuevoListado.Count;
                     VehiculosActivos = lstNuevoListado.Where(t => t.Estatus == "ACTIVO").Count();
                     VehiculosInactivos = lstNuevoListado.Where(t => t.Estatus == "INACTIVO").Count();
-                    return lstNuevoListado.ToList();
+                    return lstNuevoListado.OrderBy(t=> t.ID).ToList();
                 }
                 catch (Exception Ex)
                 {

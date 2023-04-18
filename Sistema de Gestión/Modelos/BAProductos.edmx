@@ -117,7 +117,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaGeneralProductos' 
           </FunctionImport>
           <EntitySet Name="VW_ListaEstatusProductos" EntityType="BAProductosModel.VW_ListaEstatusProductos" />
           <FunctionImport Name="SP_EliminarProducto">
-            <Parameter Name="id_Producto" Mode="In" Type="Int32" />
+          <Parameter Name="id_Producto" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="VW_ListaEstatusProductos">
