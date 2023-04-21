@@ -100,6 +100,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Parameter Name="idCount" Type="int" Mode="In" />
           <Parameter Name="OrometroInicio" Type="decimal" Mode="In" />
           <Parameter Name="OrometroFinal" Type="decimal" Mode="In" />
+          <Parameter Name="FechaConduce" Type="date" Mode="In" />
         </Function>
         <Function Name="SP_InsertarDetalleProforma" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_Cliente" Type="int" Mode="In" />
@@ -242,6 +243,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
             <Parameter Name="idCount" Mode="In" Type="Int32" />
             <Parameter Name="OrometroInicio" Mode="In" Type="Decimal" />
             <Parameter Name="OrometroFinal" Mode="In" Type="Decimal" />
+            <Parameter Name="FechaConduce" Mode="In" Type="DateTime" />
           </FunctionImport>
           <EntitySet Name="VW_VerUltimoID_Detalles_Pedidos" EntityType="BAPedidosModel.VW_VerUltimoID_Detalles_Pedidos" />
           <FunctionImport Name="SP_InsertarDetalleProforma">

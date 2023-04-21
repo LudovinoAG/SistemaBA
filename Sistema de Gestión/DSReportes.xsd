@@ -2,15 +2,16 @@
 <xs:schema id="DSReportes" targetNamespace="http://tempuri.org/DSReportes.xsd" xmlns:mstns="http://tempuri.org/DSReportes.xsd" xmlns="http://tempuri.org/DSReportes.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="2" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="BoteAgregadosReportesConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="BoteAgregadosReportesConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Sistema_de_Gestión.Properties.Settings.GlobalReference.Default.BoteAgregadosReportesConnectionString" Provider="System.Data.SqlClient" />
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="BoteAgregadosServerBAConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="BoteAgregadosServerBAConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Sistema_de_Gestión.Properties.Settings.GlobalReference.Default.BoteAgregadosServerBAConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="BoteAgregadoLocal" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="BoteAgregadoLocal (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Sistema_de_Gestión.Properties.Settings.GlobalReference.Default.BoteAgregadoLocal" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_VerDetalleFacturaTableAdapter" GeneratorDataComponentClassName="SP_VerDetalleFacturaTableAdapter" Name="SP_VerDetalleFactura" UserDataComponentName="SP_VerDetalleFacturaTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="BoteAgregadosReportesConnectionString (Settings)" DbObjectName="BoteAgregados.dbo.SP_VerDetalleFactura" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="BoteAgregadoLocal (Settings)" DbObjectName="BoteAgregados.dbo.SP_VerDetalleFactura" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.SP_VerDetalleFactura</CommandText>
@@ -96,7 +97,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_VerDetalleCotizacionTableAdapter" GeneratorDataComponentClassName="SP_VerDetalleCotizacionTableAdapter" Name="SP_VerDetalleCotizacion" UserDataComponentName="SP_VerDetalleCotizacionTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="BoteAgregadosServerBAConnectionString (Settings)" DbObjectName="BoteAgregados.dbo.SP_VerDetalleCotizacion" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="BoteAgregadoLocal (Settings)" DbObjectName="BoteAgregados.dbo.SP_VerDetalleCotizacion" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.SP_VerDetalleCotizacion</CommandText>
@@ -118,69 +119,9 @@
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_VerDetalleRedaccionTableAdapter" GeneratorDataComponentClassName="SP_VerDetalleRedaccionTableAdapter" Name="SP_VerDetalleRedaccion" UserDataComponentName="SP_VerDetalleRedaccionTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="BoteAgregadosServerBAConnectionString (Settings)" DbObjectName="BoteAgregados.dbo.SP_VerDetalleRedaccion" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
-                <SelectCommand>
-                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
-                    <CommandText>dbo.SP_VerDetalleRedaccion</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ID_Cliente" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ID_Pedido" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="varchar" DbType="AnsiString" Direction="Input" ParameterName="@ModoReporte" Precision="0" ProviderType="VarChar" Scale="0" Size="15" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@EstatusPedido" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="date" DbType="Date" Direction="Input" ParameterName="@FechaInicio" Precision="10" ProviderType="Date" Scale="0" Size="3" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="date" DbType="Date" Direction="Input" ParameterName="@FechaFin" Precision="10" ProviderType="Date" Scale="0" Size="3" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="Placa" DataSetColumn="Placa" />
-              <Mapping SourceColumn="Capacidad" DataSetColumn="Capacidad" />
-              <Mapping SourceColumn="Servicios" DataSetColumn="Servicios" />
-              <Mapping SourceColumn="Conduce" DataSetColumn="Conduce" />
-              <Mapping SourceColumn="OrometroInicio" DataSetColumn="OrometroInicio" />
-              <Mapping SourceColumn="OrometroFinal" DataSetColumn="OrometroFinal" />
-              <Mapping SourceColumn="Cantidad" DataSetColumn="Cantidad" />
-              <Mapping SourceColumn="Medida" DataSetColumn="Medida" />
-              <Mapping SourceColumn="Producto" DataSetColumn="Producto" />
-              <Mapping SourceColumn="Descripcion" DataSetColumn="Descripcion" />
-              <Mapping SourceColumn="Precio" DataSetColumn="Precio" />
-              <Mapping SourceColumn="SubTotal" DataSetColumn="SubTotal" />
-              <Mapping SourceColumn="Estatus" DataSetColumn="Estatus" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_VerDetallesConducesTableAdapter" GeneratorDataComponentClassName="SP_VerDetallesConducesTableAdapter" Name="SP_VerDetallesConduces" UserDataComponentName="SP_VerDetallesConducesTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="BoteAgregadosServerBAConnectionString (Settings)" DbObjectName="BoteAgregados.dbo.SP_VerDetallesConduces" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
-                <SelectCommand>
-                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
-                    <CommandText>dbo.SP_VerDetallesConduces</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@NumFacturaConduce" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="id_Factura" DataSetColumn="id_Factura" />
-              <Mapping SourceColumn="Chofer" DataSetColumn="Chofer" />
-              <Mapping SourceColumn="Conduce" DataSetColumn="Conduce" />
-              <Mapping SourceColumn="Vehiculo" DataSetColumn="Vehiculo" />
-              <Mapping SourceColumn="Placa" DataSetColumn="Placa" />
-              <Mapping SourceColumn="Servicios" DataSetColumn="Servicios" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_VerFacturaProformaDetallesTableAdapter" GeneratorDataComponentClassName="SP_VerFacturaProformaDetallesTableAdapter" Name="SP_VerFacturaProformaDetalles" UserDataComponentName="SP_VerFacturaProformaDetallesTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="BoteAgregadosServerBAConnectionString (Settings)" DbObjectName="BoteAgregados.dbo.SP_VerFacturaProformaDetalles" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="BoteAgregadoLocal (Settings)" DbObjectName="BoteAgregados.dbo.SP_VerFacturaProformaDetalles" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.SP_VerFacturaProformaDetalles</CommandText>
@@ -204,7 +145,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_VerFacturaIDTableAdapter" GeneratorDataComponentClassName="SP_VerFacturaIDTableAdapter" Name="SP_VerFacturaID" UserDataComponentName="SP_VerFacturaIDTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="BoteAgregadosServerBAConnectionString (Settings)" DbObjectName="BoteAgregados.dbo.SP_VerFacturaID" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="BoteAgregadoLocal (Settings)" DbObjectName="BoteAgregados.dbo.SP_VerFacturaID" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.SP_VerFacturaID</CommandText>
@@ -245,7 +186,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_ViewQueryPreformTableAdapter" GeneratorDataComponentClassName="SP_ViewQueryPreformTableAdapter" Name="SP_ViewQueryPreform" UserDataComponentName="SP_ViewQueryPreformTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="BoteAgregadosServerBAConnectionString (Settings)" DbObjectName="BoteAgregados.dbo.SP_ViewQueryPreform" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="BoteAgregadoLocal (Settings)" DbObjectName="BoteAgregados.dbo.SP_ViewQueryPreform" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.SP_ViewQueryPreform</CommandText>
@@ -291,7 +232,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_VerConducesPedidosTableAdapter" GeneratorDataComponentClassName="SP_VerConducesPedidosTableAdapter" Name="SP_VerConducesPedidos" UserDataComponentName="SP_VerConducesPedidosTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="BoteAgregadosServerBAConnectionString (Settings)" DbObjectName="BoteAgregados.dbo.SP_VerConducesPedidos" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="BoteAgregadoLocal (Settings)" DbObjectName="BoteAgregados.dbo.SP_VerConducesPedidos" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.SP_VerConducesPedidos</CommandText>
@@ -316,7 +257,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_VerConducesProformaTableAdapter" GeneratorDataComponentClassName="SP_VerConducesProformaTableAdapter" Name="SP_VerConducesProforma" UserDataComponentName="SP_VerConducesProformaTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="BoteAgregadosServerBAConnectionString (Settings)" DbObjectName="BoteAgregados.dbo.SP_VerConducesProforma" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="BoteAgregadoLocal (Settings)" DbObjectName="BoteAgregados.dbo.SP_VerConducesProforma" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.SP_VerConducesProforma</CommandText>
@@ -340,12 +281,13 @@
               <Mapping SourceColumn="Matricula" DataSetColumn="Matricula" />
               <Mapping SourceColumn="Capacidad" DataSetColumn="Capacidad" />
               <Mapping SourceColumn="Viajes" DataSetColumn="Viajes" />
+              <Mapping SourceColumn="FechaConduce" DataSetColumn="FechaConduce" />
             </Mappings>
             <Sources />
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_VisualizarRedaccionClienteTableAdapter" GeneratorDataComponentClassName="SP_VisualizarRedaccionClienteTableAdapter" Name="SP_VisualizarRedaccionCliente" UserDataComponentName="SP_VisualizarRedaccionClienteTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="BoteAgregadosServerBAConnectionString (Settings)" DbObjectName="BoteAgregados.dbo.SP_VisualizarRedaccionCliente" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="BoteAgregadoLocal (Settings)" DbObjectName="BoteAgregados.dbo.SP_VisualizarRedaccionCliente" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.SP_VisualizarRedaccionCliente</CommandText>
@@ -379,6 +321,68 @@
               <Mapping SourceColumn="CapacidadTotal" DataSetColumn="CapacidadTotal" />
               <Mapping SourceColumn="Precio" DataSetColumn="Precio" />
               <Mapping SourceColumn="Total" DataSetColumn="Total" />
+              <Mapping SourceColumn="Estatus" DataSetColumn="Estatus" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_VerDetallesConducesTableAdapter" GeneratorDataComponentClassName="SP_VerDetallesConducesTableAdapter" Name="SP_VerDetallesConduces" UserDataComponentName="SP_VerDetallesConducesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BoteAgregadoLocal (Settings)" DbObjectName="BoteAgregados.dbo.SP_VerDetallesConduces" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.SP_VerDetallesConduces</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@NumFacturaConduce" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id_Factura" DataSetColumn="id_Factura" />
+              <Mapping SourceColumn="Chofer" DataSetColumn="Chofer" />
+              <Mapping SourceColumn="Conduce" DataSetColumn="Conduce" />
+              <Mapping SourceColumn="Vehiculo" DataSetColumn="Vehiculo" />
+              <Mapping SourceColumn="Placa" DataSetColumn="Placa" />
+              <Mapping SourceColumn="Servicios" DataSetColumn="Servicios" />
+              <Mapping SourceColumn="FechaConduce" DataSetColumn="FechaConduce" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_VerDetalleRedaccionTableAdapter" GeneratorDataComponentClassName="SP_VerDetalleRedaccionTableAdapter" Name="SP_VerDetalleRedaccion" UserDataComponentName="SP_VerDetalleRedaccionTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BoteAgregadosServerBAConnectionString (Settings)" DbObjectName="BoteAgregados.dbo.SP_VerDetalleRedaccion" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.SP_VerDetalleRedaccion</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ID_Cliente" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ID_Pedido" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="varchar" DbType="AnsiString" Direction="Input" ParameterName="@ModoReporte" Precision="0" ProviderType="VarChar" Scale="0" Size="15" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@EstatusPedido" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="date" DbType="Date" Direction="Input" ParameterName="@FechaInicio" Precision="10" ProviderType="Date" Scale="0" Size="3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="date" DbType="Date" Direction="Input" ParameterName="@FechaFin" Precision="10" ProviderType="Date" Scale="0" Size="3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Placa" DataSetColumn="Placa" />
+              <Mapping SourceColumn="Capacidad" DataSetColumn="Capacidad" />
+              <Mapping SourceColumn="Servicios" DataSetColumn="Servicios" />
+              <Mapping SourceColumn="Conduce" DataSetColumn="Conduce" />
+              <Mapping SourceColumn="OrometroInicio" DataSetColumn="OrometroInicio" />
+              <Mapping SourceColumn="OrometroFinal" DataSetColumn="OrometroFinal" />
+              <Mapping SourceColumn="Cantidad" DataSetColumn="Cantidad" />
+              <Mapping SourceColumn="Medida" DataSetColumn="Medida" />
+              <Mapping SourceColumn="Producto" DataSetColumn="Producto" />
+              <Mapping SourceColumn="Descripcion" DataSetColumn="Descripcion" />
+              <Mapping SourceColumn="Precio" DataSetColumn="Precio" />
+              <Mapping SourceColumn="SubTotal" DataSetColumn="SubTotal" />
+              <Mapping SourceColumn="FechaConduce" DataSetColumn="FechaConduce" />
               <Mapping SourceColumn="Estatus" DataSetColumn="Estatus" />
             </Mappings>
             <Sources />
@@ -585,85 +589,6 @@
               </xs:element>
               <xs:element name="Precio" msprop:Generator_ColumnVarNameInTable="columnPrecio" msprop:Generator_ColumnPropNameInRow="Precio" msprop:Generator_ColumnPropNameInTable="PrecioColumn" msprop:Generator_UserColumnName="Precio" type="xs:decimal" minOccurs="0" />
               <xs:element name="SubTotalCotiza" msprop:Generator_ColumnVarNameInTable="columnSubTotalCotiza" msprop:Generator_ColumnPropNameInRow="SubTotalCotiza" msprop:Generator_ColumnPropNameInTable="SubTotalCotizaColumn" msprop:Generator_UserColumnName="SubTotalCotiza" type="xs:decimal" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="SP_VerDetalleRedaccion" msprop:Generator_TableClassName="SP_VerDetalleRedaccionDataTable" msprop:Generator_TableVarName="tableSP_VerDetalleRedaccion" msprop:Generator_TablePropName="SP_VerDetalleRedaccion" msprop:Generator_RowDeletingName="SP_VerDetalleRedaccionRowDeleting" msprop:Generator_RowChangingName="SP_VerDetalleRedaccionRowChanging" msprop:Generator_RowEvHandlerName="SP_VerDetalleRedaccionRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerDetalleRedaccionRowDeleted" msprop:Generator_UserTableName="SP_VerDetalleRedaccion" msprop:Generator_RowChangedName="SP_VerDetalleRedaccionRowChanged" msprop:Generator_RowEvArgName="SP_VerDetalleRedaccionRowChangeEvent" msprop:Generator_RowClassName="SP_VerDetalleRedaccionRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Placa" msprop:Generator_ColumnVarNameInTable="columnPlaca" msprop:Generator_ColumnPropNameInRow="Placa" msprop:Generator_ColumnPropNameInTable="PlacaColumn" msprop:Generator_UserColumnName="Placa">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="18" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Capacidad" msprop:Generator_ColumnVarNameInTable="columnCapacidad" msprop:Generator_ColumnPropNameInRow="Capacidad" msprop:Generator_ColumnPropNameInTable="CapacidadColumn" msprop:Generator_UserColumnName="Capacidad" type="xs:int" minOccurs="0" />
-              <xs:element name="Servicios" msprop:Generator_ColumnVarNameInTable="columnServicios" msprop:Generator_ColumnPropNameInRow="Servicios" msprop:Generator_ColumnPropNameInTable="ServiciosColumn" msprop:Generator_UserColumnName="Servicios" type="xs:int" minOccurs="0" />
-              <xs:element name="Conduce" msprop:Generator_ColumnVarNameInTable="columnConduce" msprop:Generator_ColumnPropNameInRow="Conduce" msprop:Generator_ColumnPropNameInTable="ConduceColumn" msprop:Generator_UserColumnName="Conduce" type="xs:int" minOccurs="0" />
-              <xs:element name="OrometroInicio" msprop:Generator_ColumnVarNameInTable="columnOrometroInicio" msprop:Generator_ColumnPropNameInRow="OrometroInicio" msprop:Generator_ColumnPropNameInTable="OrometroInicioColumn" msprop:Generator_UserColumnName="OrometroInicio" type="xs:decimal" minOccurs="0" />
-              <xs:element name="OrometroFinal" msprop:Generator_ColumnVarNameInTable="columnOrometroFinal" msprop:Generator_ColumnPropNameInRow="OrometroFinal" msprop:Generator_ColumnPropNameInTable="OrometroFinalColumn" msprop:Generator_UserColumnName="OrometroFinal" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_UserColumnName="Cantidad" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Medida" msprop:Generator_ColumnVarNameInTable="columnMedida" msprop:Generator_ColumnPropNameInRow="Medida" msprop:Generator_ColumnPropNameInTable="MedidaColumn" msprop:Generator_UserColumnName="Medida">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="15" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Producto" msprop:Generator_ColumnVarNameInTable="columnProducto" msprop:Generator_ColumnPropNameInRow="Producto" msprop:Generator_ColumnPropNameInTable="ProductoColumn" msprop:Generator_UserColumnName="Producto">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" msprop:Generator_UserColumnName="Descripcion" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="800" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Precio" msprop:Generator_ColumnVarNameInTable="columnPrecio" msprop:Generator_ColumnPropNameInRow="Precio" msprop:Generator_ColumnPropNameInTable="PrecioColumn" msprop:Generator_UserColumnName="Precio" type="xs:decimal" minOccurs="0" />
-              <xs:element name="SubTotal" msprop:Generator_ColumnVarNameInTable="columnSubTotal" msprop:Generator_ColumnPropNameInRow="SubTotal" msprop:Generator_ColumnPropNameInTable="SubTotalColumn" msprop:Generator_UserColumnName="SubTotal" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" msprop:Generator_UserColumnName="Estatus" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="60" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="SP_VerDetallesConduces" msprop:Generator_TableClassName="SP_VerDetallesConducesDataTable" msprop:Generator_TableVarName="tableSP_VerDetallesConduces" msprop:Generator_TablePropName="SP_VerDetallesConduces" msprop:Generator_RowDeletingName="SP_VerDetallesConducesRowDeleting" msprop:Generator_RowChangingName="SP_VerDetallesConducesRowChanging" msprop:Generator_RowEvHandlerName="SP_VerDetallesConducesRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerDetallesConducesRowDeleted" msprop:Generator_UserTableName="SP_VerDetallesConduces" msprop:Generator_RowChangedName="SP_VerDetallesConducesRowChanged" msprop:Generator_RowEvArgName="SP_VerDetallesConducesRowChangeEvent" msprop:Generator_RowClassName="SP_VerDetallesConducesRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="id_Factura" msprop:Generator_ColumnVarNameInTable="columnid_Factura" msprop:Generator_ColumnPropNameInRow="id_Factura" msprop:Generator_ColumnPropNameInTable="id_FacturaColumn" msprop:Generator_UserColumnName="id_Factura" type="xs:int" minOccurs="0" />
-              <xs:element name="Chofer" msprop:Generator_ColumnVarNameInTable="columnChofer" msprop:Generator_ColumnPropNameInRow="Chofer" msprop:Generator_ColumnPropNameInTable="ChoferColumn" msprop:Generator_UserColumnName="Chofer" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Conduce" msprop:Generator_ColumnVarNameInTable="columnConduce" msprop:Generator_ColumnPropNameInRow="Conduce" msprop:Generator_ColumnPropNameInTable="ConduceColumn" msprop:Generator_UserColumnName="Conduce" type="xs:int" minOccurs="0" />
-              <xs:element name="Vehiculo" msprop:Generator_ColumnVarNameInTable="columnVehiculo" msprop:Generator_ColumnPropNameInRow="Vehiculo" msprop:Generator_ColumnPropNameInTable="VehiculoColumn" msprop:Generator_UserColumnName="Vehiculo" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Placa" msprop:Generator_ColumnVarNameInTable="columnPlaca" msprop:Generator_ColumnPropNameInRow="Placa" msprop:Generator_ColumnPropNameInTable="PlacaColumn" msprop:Generator_UserColumnName="Placa" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="15" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Servicios" msprop:Generator_ColumnVarNameInTable="columnServicios" msprop:Generator_ColumnPropNameInRow="Servicios" msprop:Generator_ColumnPropNameInTable="ServiciosColumn" msprop:Generator_UserColumnName="Servicios" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -975,6 +900,7 @@
               </xs:element>
               <xs:element name="Capacidad" msprop:Generator_ColumnVarNameInTable="columnCapacidad" msprop:Generator_ColumnPropNameInRow="Capacidad" msprop:Generator_ColumnPropNameInTable="CapacidadColumn" msprop:Generator_UserColumnName="Capacidad" type="xs:int" minOccurs="0" />
               <xs:element name="Viajes" msprop:Generator_ColumnVarNameInTable="columnViajes" msprop:Generator_ColumnPropNameInRow="Viajes" msprop:Generator_ColumnPropNameInTable="ViajesColumn" msprop:Generator_UserColumnName="Viajes" type="xs:int" minOccurs="0" />
+              <xs:element name="FechaConduce" msprop:Generator_ColumnVarNameInTable="columnFechaConduce" msprop:Generator_ColumnPropNameInRow="FechaConduce" msprop:Generator_ColumnPropNameInTable="FechaConduceColumn" msprop:Generator_UserColumnName="FechaConduce" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1051,6 +977,93 @@
               <xs:element name="CapacidadTotal" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCapacidadTotal" msprop:Generator_ColumnPropNameInRow="CapacidadTotal" msprop:Generator_ColumnPropNameInTable="CapacidadTotalColumn" msprop:Generator_UserColumnName="CapacidadTotal" type="xs:decimal" minOccurs="0" />
               <xs:element name="Precio" msprop:Generator_ColumnVarNameInTable="columnPrecio" msprop:Generator_ColumnPropNameInRow="Precio" msprop:Generator_ColumnPropNameInTable="PrecioColumn" msprop:Generator_UserColumnName="Precio" type="xs:decimal" minOccurs="0" />
               <xs:element name="Total" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" msprop:Generator_UserColumnName="Estatus" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SP_VerDetallesConduces" msprop:Generator_TableClassName="SP_VerDetallesConducesDataTable" msprop:Generator_TableVarName="tableSP_VerDetallesConduces" msprop:Generator_RowChangedName="SP_VerDetallesConducesRowChanged" msprop:Generator_TablePropName="SP_VerDetallesConduces" msprop:Generator_RowDeletingName="SP_VerDetallesConducesRowDeleting" msprop:Generator_RowChangingName="SP_VerDetallesConducesRowChanging" msprop:Generator_RowEvHandlerName="SP_VerDetallesConducesRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerDetallesConducesRowDeleted" msprop:Generator_RowClassName="SP_VerDetallesConducesRow" msprop:Generator_UserTableName="SP_VerDetallesConduces" msprop:Generator_RowEvArgName="SP_VerDetallesConducesRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_Factura" msprop:Generator_ColumnVarNameInTable="columnid_Factura" msprop:Generator_ColumnPropNameInRow="id_Factura" msprop:Generator_ColumnPropNameInTable="id_FacturaColumn" msprop:Generator_UserColumnName="id_Factura" type="xs:int" minOccurs="0" />
+              <xs:element name="Chofer" msprop:Generator_ColumnVarNameInTable="columnChofer" msprop:Generator_ColumnPropNameInRow="Chofer" msprop:Generator_ColumnPropNameInTable="ChoferColumn" msprop:Generator_UserColumnName="Chofer" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Conduce" msprop:Generator_ColumnVarNameInTable="columnConduce" msprop:Generator_ColumnPropNameInRow="Conduce" msprop:Generator_ColumnPropNameInTable="ConduceColumn" msprop:Generator_UserColumnName="Conduce" type="xs:int" minOccurs="0" />
+              <xs:element name="Vehiculo" msprop:Generator_ColumnVarNameInTable="columnVehiculo" msprop:Generator_ColumnPropNameInRow="Vehiculo" msprop:Generator_ColumnPropNameInTable="VehiculoColumn" msprop:Generator_UserColumnName="Vehiculo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Placa" msprop:Generator_ColumnVarNameInTable="columnPlaca" msprop:Generator_ColumnPropNameInRow="Placa" msprop:Generator_ColumnPropNameInTable="PlacaColumn" msprop:Generator_UserColumnName="Placa" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Servicios" msprop:Generator_ColumnVarNameInTable="columnServicios" msprop:Generator_ColumnPropNameInRow="Servicios" msprop:Generator_ColumnPropNameInTable="ServiciosColumn" msprop:Generator_UserColumnName="Servicios" type="xs:int" minOccurs="0" />
+              <xs:element name="FechaConduce" msprop:Generator_ColumnVarNameInTable="columnFechaConduce" msprop:Generator_ColumnPropNameInRow="FechaConduce" msprop:Generator_ColumnPropNameInTable="FechaConduceColumn" msprop:Generator_UserColumnName="FechaConduce" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SP_VerDetalleRedaccion" msprop:Generator_TableClassName="SP_VerDetalleRedaccionDataTable" msprop:Generator_TableVarName="tableSP_VerDetalleRedaccion" msprop:Generator_RowChangedName="SP_VerDetalleRedaccionRowChanged" msprop:Generator_TablePropName="SP_VerDetalleRedaccion" msprop:Generator_RowDeletingName="SP_VerDetalleRedaccionRowDeleting" msprop:Generator_RowChangingName="SP_VerDetalleRedaccionRowChanging" msprop:Generator_RowEvHandlerName="SP_VerDetalleRedaccionRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerDetalleRedaccionRowDeleted" msprop:Generator_RowClassName="SP_VerDetalleRedaccionRow" msprop:Generator_UserTableName="SP_VerDetalleRedaccion" msprop:Generator_RowEvArgName="SP_VerDetalleRedaccionRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Placa" msprop:Generator_ColumnVarNameInTable="columnPlaca" msprop:Generator_ColumnPropNameInRow="Placa" msprop:Generator_ColumnPropNameInTable="PlacaColumn" msprop:Generator_UserColumnName="Placa">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="18" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Capacidad" msprop:Generator_ColumnVarNameInTable="columnCapacidad" msprop:Generator_ColumnPropNameInRow="Capacidad" msprop:Generator_ColumnPropNameInTable="CapacidadColumn" msprop:Generator_UserColumnName="Capacidad" type="xs:int" minOccurs="0" />
+              <xs:element name="Servicios" msprop:Generator_ColumnVarNameInTable="columnServicios" msprop:Generator_ColumnPropNameInRow="Servicios" msprop:Generator_ColumnPropNameInTable="ServiciosColumn" msprop:Generator_UserColumnName="Servicios" type="xs:int" minOccurs="0" />
+              <xs:element name="Conduce" msprop:Generator_ColumnVarNameInTable="columnConduce" msprop:Generator_ColumnPropNameInRow="Conduce" msprop:Generator_ColumnPropNameInTable="ConduceColumn" msprop:Generator_UserColumnName="Conduce" type="xs:int" minOccurs="0" />
+              <xs:element name="OrometroInicio" msprop:Generator_ColumnVarNameInTable="columnOrometroInicio" msprop:Generator_ColumnPropNameInRow="OrometroInicio" msprop:Generator_ColumnPropNameInTable="OrometroInicioColumn" msprop:Generator_UserColumnName="OrometroInicio" type="xs:decimal" minOccurs="0" />
+              <xs:element name="OrometroFinal" msprop:Generator_ColumnVarNameInTable="columnOrometroFinal" msprop:Generator_ColumnPropNameInRow="OrometroFinal" msprop:Generator_ColumnPropNameInTable="OrometroFinalColumn" msprop:Generator_UserColumnName="OrometroFinal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_UserColumnName="Cantidad" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Medida" msprop:Generator_ColumnVarNameInTable="columnMedida" msprop:Generator_ColumnPropNameInRow="Medida" msprop:Generator_ColumnPropNameInTable="MedidaColumn" msprop:Generator_UserColumnName="Medida">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Producto" msprop:Generator_ColumnVarNameInTable="columnProducto" msprop:Generator_ColumnPropNameInRow="Producto" msprop:Generator_ColumnPropNameInTable="ProductoColumn" msprop:Generator_UserColumnName="Producto">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" msprop:Generator_UserColumnName="Descripcion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="800" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Precio" msprop:Generator_ColumnVarNameInTable="columnPrecio" msprop:Generator_ColumnPropNameInRow="Precio" msprop:Generator_ColumnPropNameInTable="PrecioColumn" msprop:Generator_UserColumnName="Precio" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SubTotal" msprop:Generator_ColumnVarNameInTable="columnSubTotal" msprop:Generator_ColumnPropNameInRow="SubTotal" msprop:Generator_ColumnPropNameInTable="SubTotalColumn" msprop:Generator_UserColumnName="SubTotal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FechaConduce" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnFechaConduce" msprop:Generator_ColumnPropNameInRow="FechaConduce" msprop:Generator_ColumnPropNameInTable="FechaConduceColumn" msprop:Generator_UserColumnName="FechaConduce" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" msprop:Generator_UserColumnName="Estatus" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">

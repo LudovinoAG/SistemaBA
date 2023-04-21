@@ -29,10 +29,10 @@ namespace Sistema_de_Gestión.Presentacion
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPedidos));
             this.txtNumPedido = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -77,34 +77,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvListaChoferes = new System.Windows.Forms.DataGridView();
-            this.clNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clChofer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clConduce = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clVehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clsPlaca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clsCondicionPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrometroInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrometroFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvChoferes = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Conduce = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Chofer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_Factura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_Medida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clCantidadChofer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clsCapacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDConduce = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Placa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CondicionPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clOrometroInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clOrometroFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -127,12 +100,14 @@ namespace Sistema_de_Gestión.Presentacion
             this.rdbEfectivo = new System.Windows.Forms.RadioButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpMateriales = new System.Windows.Forms.TabPage();
+            this.cmdAgregarInfoChofer = new System.Windows.Forms.Button();
+            this.label33 = new System.Windows.Forms.Label();
+            this.dtpFechaConduce = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.UDViajes = new System.Windows.Forms.NumericUpDown();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtCapacidad = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmdAgregarInfoChofer = new System.Windows.Forms.Button();
             this.txtConduce = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.txtFlota = new System.Windows.Forms.TextBox();
@@ -158,6 +133,37 @@ namespace Sistema_de_Gestión.Presentacion
             this.label25 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.cboChoferAlquiler = new System.Windows.Forms.ComboBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.dtpFechaConduceAlquiler = new System.Windows.Forms.DateTimePicker();
+            this.clNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clChofer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clConduce = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clVehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clsPlaca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clsCondicionPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrometroInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrometroFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaConduce = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Conduce = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Chofer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_Factura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_Medida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clCantidadChofer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clsCapacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDConduce = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Placa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CondicionPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clOrometroInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clOrometroFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cFechaConduce = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.UdCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -509,14 +515,14 @@ namespace Sistema_de_Gestión.Presentacion
             this.dgvFactura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFactura.BackgroundColor = System.Drawing.Color.White;
             this.dgvFactura.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFactura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cantidad,
@@ -528,21 +534,21 @@ namespace Sistema_de_Gestión.Presentacion
             this.Costo,
             this.SubTotal,
             this.Accion});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Khaki;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFactura.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFactura.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvFactura.Location = new System.Drawing.Point(76, 304);
             this.dgvFactura.MultiSelect = false;
             this.dgvFactura.Name = "dgvFactura";
             this.dgvFactura.ReadOnly = true;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            this.dgvFactura.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
+            this.dgvFactura.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFactura.Size = new System.Drawing.Size(1288, 213);
             this.dgvFactura.TabIndex = 93;
@@ -630,10 +636,10 @@ namespace Sistema_de_Gestión.Presentacion
             // Accion
             // 
             this.Accion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.DarkRed;
-            this.Accion.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.DarkRed;
+            this.Accion.DefaultCellStyle = dataGridViewCellStyle14;
             this.Accion.HeaderText = "Fila";
             this.Accion.MinimumWidth = 100;
             this.Accion.Name = "Accion";
@@ -721,7 +727,8 @@ namespace Sistema_de_Gestión.Presentacion
             this.clsPlaca,
             this.clsCondicionPago,
             this.OrometroInicio,
-            this.OrometroFinal});
+            this.OrometroFinal,
+            this.FechaConduce});
             this.dgvListaChoferes.Location = new System.Drawing.Point(6, 14);
             this.dgvListaChoferes.MultiSelect = false;
             this.dgvListaChoferes.Name = "dgvListaChoferes";
@@ -729,104 +736,6 @@ namespace Sistema_de_Gestión.Presentacion
             this.dgvListaChoferes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaChoferes.Size = new System.Drawing.Size(687, 87);
             this.dgvListaChoferes.TabIndex = 1;
-            // 
-            // clNum
-            // 
-            this.clNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.clNum.HeaderText = "#";
-            this.clNum.MaxInputLength = 250;
-            this.clNum.MinimumWidth = 50;
-            this.clNum.Name = "clNum";
-            this.clNum.ReadOnly = true;
-            this.clNum.Width = 50;
-            // 
-            // clChofer
-            // 
-            this.clChofer.HeaderText = "Chofer";
-            this.clChofer.Name = "clChofer";
-            this.clChofer.ReadOnly = true;
-            this.clChofer.Width = 67;
-            // 
-            // clConduce
-            // 
-            this.clConduce.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.clConduce.HeaderText = "Conduce";
-            this.clConduce.MaxInputLength = 8;
-            this.clConduce.Name = "clConduce";
-            this.clConduce.ReadOnly = true;
-            this.clConduce.Width = 78;
-            // 
-            // clVehiculo
-            // 
-            this.clVehiculo.HeaderText = "Vehiculo";
-            this.clVehiculo.Name = "clVehiculo";
-            this.clVehiculo.ReadOnly = true;
-            this.clVehiculo.Width = 77;
-            // 
-            // clProducto
-            // 
-            this.clProducto.HeaderText = "Producto";
-            this.clProducto.Name = "clProducto";
-            this.clProducto.ReadOnly = true;
-            this.clProducto.Width = 80;
-            // 
-            // clFactura
-            // 
-            this.clFactura.HeaderText = "Pedido";
-            this.clFactura.Name = "clFactura";
-            this.clFactura.ReadOnly = true;
-            this.clFactura.Width = 69;
-            // 
-            // clMedida
-            // 
-            this.clMedida.HeaderText = "Medida";
-            this.clMedida.Name = "clMedida";
-            this.clMedida.ReadOnly = true;
-            this.clMedida.Width = 72;
-            // 
-            // clCantidad
-            // 
-            this.clCantidad.HeaderText = "Cantidad";
-            this.clCantidad.Name = "clCantidad";
-            this.clCantidad.ReadOnly = true;
-            this.clCantidad.Width = 79;
-            // 
-            // Capacidad
-            // 
-            this.Capacidad.HeaderText = "Capacidad";
-            this.Capacidad.MaxInputLength = 5;
-            this.Capacidad.Name = "Capacidad";
-            this.Capacidad.ReadOnly = true;
-            this.Capacidad.Width = 86;
-            // 
-            // clsPlaca
-            // 
-            this.clsPlaca.HeaderText = "Placa";
-            this.clsPlaca.MaxInputLength = 10;
-            this.clsPlaca.Name = "clsPlaca";
-            this.clsPlaca.ReadOnly = true;
-            this.clsPlaca.Width = 59;
-            // 
-            // clsCondicionPago
-            // 
-            this.clsCondicionPago.HeaderText = "CondicionPago";
-            this.clsCondicionPago.Name = "clsCondicionPago";
-            this.clsCondicionPago.ReadOnly = true;
-            this.clsCondicionPago.Width = 112;
-            // 
-            // OrometroInicio
-            // 
-            this.OrometroInicio.HeaderText = "OrometroInicio";
-            this.OrometroInicio.Name = "OrometroInicio";
-            this.OrometroInicio.ReadOnly = true;
-            this.OrometroInicio.Width = 110;
-            // 
-            // OrometroFinal
-            // 
-            this.OrometroFinal.HeaderText = "OrometroFinal";
-            this.OrometroFinal.Name = "OrometroFinal";
-            this.OrometroFinal.ReadOnly = true;
-            this.OrometroFinal.Width = 107;
             // 
             // dgvChoferes
             // 
@@ -850,7 +759,8 @@ namespace Sistema_de_Gestión.Presentacion
             this.Placa,
             this.CondicionPago,
             this.clOrometroInicio,
-            this.clOrometroFinal});
+            this.clOrometroFinal,
+            this.cFechaConduce});
             this.dgvChoferes.Location = new System.Drawing.Point(584, 627);
             this.dgvChoferes.MultiSelect = false;
             this.dgvChoferes.Name = "dgvChoferes";
@@ -859,103 +769,6 @@ namespace Sistema_de_Gestión.Presentacion
             this.dgvChoferes.Size = new System.Drawing.Size(521, 52);
             this.dgvChoferes.TabIndex = 0;
             this.dgvChoferes.Visible = false;
-            // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ID.HeaderText = "ID";
-            this.ID.MaxInputLength = 250;
-            this.ID.MinimumWidth = 50;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 50;
-            // 
-            // Conduce
-            // 
-            this.Conduce.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Conduce.HeaderText = "Conduce";
-            this.Conduce.MaxInputLength = 8;
-            this.Conduce.Name = "Conduce";
-            this.Conduce.ReadOnly = true;
-            this.Conduce.Width = 75;
-            // 
-            // Chofer
-            // 
-            this.Chofer.HeaderText = "Chofer";
-            this.Chofer.Name = "Chofer";
-            this.Chofer.ReadOnly = true;
-            this.Chofer.Width = 61;
-            // 
-            // Vehiculo
-            // 
-            this.Vehiculo.HeaderText = "Vehiculo";
-            this.Vehiculo.Name = "Vehiculo";
-            this.Vehiculo.ReadOnly = true;
-            this.Vehiculo.Width = 69;
-            // 
-            // id_Producto
-            // 
-            this.id_Producto.HeaderText = "Producto";
-            this.id_Producto.Name = "id_Producto";
-            this.id_Producto.ReadOnly = true;
-            // 
-            // id_Factura
-            // 
-            this.id_Factura.HeaderText = "Factura";
-            this.id_Factura.Name = "id_Factura";
-            this.id_Factura.ReadOnly = true;
-            // 
-            // id_Medida
-            // 
-            this.id_Medida.HeaderText = "Medida";
-            this.id_Medida.Name = "id_Medida";
-            this.id_Medida.ReadOnly = true;
-            // 
-            // clCantidadChofer
-            // 
-            this.clCantidadChofer.HeaderText = "Cantidad";
-            this.clCantidadChofer.MaxInputLength = 15;
-            this.clCantidadChofer.Name = "clCantidadChofer";
-            this.clCantidadChofer.ReadOnly = true;
-            // 
-            // clsCapacidad
-            // 
-            this.clsCapacidad.HeaderText = "Capacidad";
-            this.clsCapacidad.MaxInputLength = 6;
-            this.clsCapacidad.Name = "clsCapacidad";
-            this.clsCapacidad.ReadOnly = true;
-            // 
-            // IDConduce
-            // 
-            this.IDConduce.HeaderText = "IDConduce";
-            this.IDConduce.MaxInputLength = 5;
-            this.IDConduce.Name = "IDConduce";
-            this.IDConduce.ReadOnly = true;
-            // 
-            // Placa
-            // 
-            this.Placa.HeaderText = "Placa";
-            this.Placa.MaxInputLength = 10;
-            this.Placa.Name = "Placa";
-            this.Placa.ReadOnly = true;
-            // 
-            // CondicionPago
-            // 
-            this.CondicionPago.HeaderText = "CondicicionPago";
-            this.CondicionPago.Name = "CondicionPago";
-            this.CondicionPago.ReadOnly = true;
-            // 
-            // clOrometroInicio
-            // 
-            this.clOrometroInicio.HeaderText = "Orometro Inicio";
-            this.clOrometroInicio.Name = "clOrometroInicio";
-            this.clOrometroInicio.ReadOnly = true;
-            // 
-            // clOrometroFinal
-            // 
-            this.clOrometroFinal.HeaderText = "Orometro Final";
-            this.clOrometroFinal.Name = "clOrometroFinal";
-            this.clOrometroFinal.ReadOnly = true;
             // 
             // label6
             // 
@@ -1155,9 +968,10 @@ namespace Sistema_de_Gestión.Presentacion
             this.groupOpt.Controls.Add(this.rdbCredito);
             this.groupOpt.Controls.Add(this.rdbCheque);
             this.groupOpt.Controls.Add(this.rdbEfectivo);
-            this.groupOpt.Location = new System.Drawing.Point(1026, 142);
+            this.groupOpt.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupOpt.Location = new System.Drawing.Point(1166, 142);
             this.groupOpt.Name = "groupOpt";
-            this.groupOpt.Size = new System.Drawing.Size(338, 62);
+            this.groupOpt.Size = new System.Drawing.Size(198, 68);
             this.groupOpt.TabIndex = 129;
             this.groupOpt.TabStop = false;
             this.groupOpt.Text = "Condición de Pago:";
@@ -1165,9 +979,9 @@ namespace Sistema_de_Gestión.Presentacion
             // rbTransferencia
             // 
             this.rbTransferencia.AutoSize = true;
-            this.rbTransferencia.Location = new System.Drawing.Point(165, 25);
+            this.rbTransferencia.Location = new System.Drawing.Point(17, 41);
             this.rbTransferencia.Name = "rbTransferencia";
-            this.rbTransferencia.Size = new System.Drawing.Size(90, 17);
+            this.rbTransferencia.Size = new System.Drawing.Size(93, 18);
             this.rbTransferencia.TabIndex = 3;
             this.rbTransferencia.Text = "Transferencia";
             this.rbTransferencia.UseVisualStyleBackColor = true;
@@ -1176,9 +990,9 @@ namespace Sistema_de_Gestión.Presentacion
             // rdbCredito
             // 
             this.rdbCredito.AutoSize = true;
-            this.rdbCredito.Location = new System.Drawing.Point(267, 25);
+            this.rdbCredito.Location = new System.Drawing.Point(119, 41);
             this.rdbCredito.Name = "rdbCredito";
-            this.rdbCredito.Size = new System.Drawing.Size(58, 17);
+            this.rdbCredito.Size = new System.Drawing.Size(63, 18);
             this.rdbCredito.TabIndex = 2;
             this.rdbCredito.Text = "Credito";
             this.rdbCredito.UseVisualStyleBackColor = true;
@@ -1187,9 +1001,9 @@ namespace Sistema_de_Gestión.Presentacion
             // rdbCheque
             // 
             this.rdbCheque.AutoSize = true;
-            this.rdbCheque.Location = new System.Drawing.Point(92, 25);
+            this.rdbCheque.Location = new System.Drawing.Point(119, 19);
             this.rdbCheque.Name = "rdbCheque";
-            this.rdbCheque.Size = new System.Drawing.Size(62, 17);
+            this.rdbCheque.Size = new System.Drawing.Size(65, 18);
             this.rdbCheque.TabIndex = 1;
             this.rdbCheque.Text = "Cheque";
             this.rdbCheque.UseVisualStyleBackColor = true;
@@ -1198,9 +1012,9 @@ namespace Sistema_de_Gestión.Presentacion
             // rdbEfectivo
             // 
             this.rdbEfectivo.AutoSize = true;
-            this.rdbEfectivo.Location = new System.Drawing.Point(17, 25);
+            this.rdbEfectivo.Location = new System.Drawing.Point(17, 19);
             this.rdbEfectivo.Name = "rdbEfectivo";
-            this.rdbEfectivo.Size = new System.Drawing.Size(64, 17);
+            this.rdbEfectivo.Size = new System.Drawing.Size(65, 18);
             this.rdbEfectivo.TabIndex = 0;
             this.rdbEfectivo.Text = "Efectivo";
             this.rdbEfectivo.UseVisualStyleBackColor = true;
@@ -1213,18 +1027,20 @@ namespace Sistema_de_Gestión.Presentacion
             this.tabControl1.Location = new System.Drawing.Point(439, 139);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(535, 129);
+            this.tabControl1.Size = new System.Drawing.Size(638, 129);
             this.tabControl1.TabIndex = 130;
             this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
             // 
             // tpMateriales
             // 
+            this.tpMateriales.Controls.Add(this.cmdAgregarInfoChofer);
+            this.tpMateriales.Controls.Add(this.label33);
+            this.tpMateriales.Controls.Add(this.dtpFechaConduce);
             this.tpMateriales.Controls.Add(this.label10);
             this.tpMateriales.Controls.Add(this.UDViajes);
             this.tpMateriales.Controls.Add(this.pictureBox1);
             this.tpMateriales.Controls.Add(this.txtCapacidad);
             this.tpMateriales.Controls.Add(this.label2);
-            this.tpMateriales.Controls.Add(this.cmdAgregarInfoChofer);
             this.tpMateriales.Controls.Add(this.txtConduce);
             this.tpMateriales.Controls.Add(this.label28);
             this.tpMateriales.Controls.Add(this.txtFlota);
@@ -1238,10 +1054,46 @@ namespace Sistema_de_Gestión.Presentacion
             this.tpMateriales.Location = new System.Drawing.Point(4, 22);
             this.tpMateriales.Name = "tpMateriales";
             this.tpMateriales.Padding = new System.Windows.Forms.Padding(3);
-            this.tpMateriales.Size = new System.Drawing.Size(527, 103);
+            this.tpMateriales.Size = new System.Drawing.Size(630, 103);
             this.tpMateriales.TabIndex = 0;
             this.tpMateriales.Text = "Conduce Materiales";
             this.tpMateriales.UseVisualStyleBackColor = true;
+            // 
+            // cmdAgregarInfoChofer
+            // 
+            this.cmdAgregarInfoChofer.BackgroundImage = global::Sistema_de_Gestión.RecursosBA.BotonAgregarConduce;
+            this.cmdAgregarInfoChofer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.cmdAgregarInfoChofer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdAgregarInfoChofer.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdAgregarInfoChofer.ForeColor = System.Drawing.Color.Navy;
+            this.cmdAgregarInfoChofer.Location = new System.Drawing.Point(475, 24);
+            this.cmdAgregarInfoChofer.Name = "cmdAgregarInfoChofer";
+            this.cmdAgregarInfoChofer.Size = new System.Drawing.Size(149, 69);
+            this.cmdAgregarInfoChofer.TabIndex = 127;
+            this.cmdAgregarInfoChofer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.cmdAgregarInfoChofer.UseVisualStyleBackColor = true;
+            this.cmdAgregarInfoChofer.Click += new System.EventHandler(this.cmdAgregarInfoChofer_Click);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(368, 60);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(86, 13);
+            this.label33.TabIndex = 126;
+            this.label33.Text = "Fecha Conduce:";
+            // 
+            // dtpFechaConduce
+            // 
+            this.dtpFechaConduce.CalendarFont = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaConduce.CustomFormat = "dd/MM/yyyy";
+            this.dtpFechaConduce.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaConduce.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaConduce.Location = new System.Drawing.Point(371, 75);
+            this.dtpFechaConduce.Name = "dtpFechaConduce";
+            this.dtpFechaConduce.Size = new System.Drawing.Size(97, 21);
+            this.dtpFechaConduce.TabIndex = 0;
+            this.dtpFechaConduce.Value = new System.DateTime(2023, 4, 18, 0, 0, 0, 0);
             // 
             // label10
             // 
@@ -1308,21 +1160,6 @@ namespace Sistema_de_Gestión.Presentacion
             this.label2.TabIndex = 121;
             this.label2.Text = "Capacidad:";
             // 
-            // cmdAgregarInfoChofer
-            // 
-            this.cmdAgregarInfoChofer.BackgroundImage = global::Sistema_de_Gestión.RecursosBA.BotonAgregarConduce;
-            this.cmdAgregarInfoChofer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cmdAgregarInfoChofer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmdAgregarInfoChofer.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdAgregarInfoChofer.ForeColor = System.Drawing.Color.Navy;
-            this.cmdAgregarInfoChofer.Location = new System.Drawing.Point(372, 28);
-            this.cmdAgregarInfoChofer.Name = "cmdAgregarInfoChofer";
-            this.cmdAgregarInfoChofer.Size = new System.Drawing.Size(149, 69);
-            this.cmdAgregarInfoChofer.TabIndex = 120;
-            this.cmdAgregarInfoChofer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.cmdAgregarInfoChofer.UseVisualStyleBackColor = true;
-            this.cmdAgregarInfoChofer.Click += new System.EventHandler(this.cmdAgregarInfoChofer_Click);
-            // 
             // txtConduce
             // 
             this.txtConduce.Location = new System.Drawing.Point(174, 5);
@@ -1346,7 +1183,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // txtFlota
             // 
-            this.txtFlota.Location = new System.Drawing.Point(424, 5);
+            this.txtFlota.Location = new System.Drawing.Point(372, 23);
             this.txtFlota.MaxLength = 15;
             this.txtFlota.Name = "txtFlota";
             this.txtFlota.Size = new System.Drawing.Size(96, 20);
@@ -1424,6 +1261,8 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // tpAlquiler
             // 
+            this.tpAlquiler.Controls.Add(this.label34);
+            this.tpAlquiler.Controls.Add(this.dtpFechaConduceAlquiler);
             this.tpAlquiler.Controls.Add(this.label32);
             this.tpAlquiler.Controls.Add(this.cboVehiculoAlquiler);
             this.tpAlquiler.Controls.Add(this.label31);
@@ -1441,7 +1280,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.tpAlquiler.Location = new System.Drawing.Point(4, 22);
             this.tpAlquiler.Name = "tpAlquiler";
             this.tpAlquiler.Padding = new System.Windows.Forms.Padding(3);
-            this.tpAlquiler.Size = new System.Drawing.Size(527, 103);
+            this.tpAlquiler.Size = new System.Drawing.Size(630, 103);
             this.tpAlquiler.TabIndex = 1;
             this.tpAlquiler.Text = "Conduce Alquiler";
             this.tpAlquiler.UseVisualStyleBackColor = true;
@@ -1469,7 +1308,7 @@ namespace Sistema_de_Gestión.Presentacion
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(436, 8);
+            this.label31.Location = new System.Drawing.Point(430, 9);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(32, 13);
             this.label31.TabIndex = 137;
@@ -1477,9 +1316,9 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // txtOrometroFinal
             // 
-            this.txtOrometroFinal.Location = new System.Drawing.Point(471, 5);
+            this.txtOrometroFinal.Location = new System.Drawing.Point(463, 6);
             this.txtOrometroFinal.Name = "txtOrometroFinal";
-            this.txtOrometroFinal.Size = new System.Drawing.Size(52, 20);
+            this.txtOrometroFinal.Size = new System.Drawing.Size(66, 20);
             this.txtOrometroFinal.TabIndex = 136;
             this.txtOrometroFinal.Text = "0";
             this.txtOrometroFinal.TextChanged += new System.EventHandler(this.txtOrometroFinal_TextChanged);
@@ -1487,7 +1326,7 @@ namespace Sistema_de_Gestión.Presentacion
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(291, 8);
+            this.label29.Location = new System.Drawing.Point(277, 8);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(81, 13);
             this.label29.TabIndex = 135;
@@ -1495,9 +1334,9 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // txtOrometroInicio
             // 
-            this.txtOrometroInicio.Location = new System.Drawing.Point(375, 5);
+            this.txtOrometroInicio.Location = new System.Drawing.Point(359, 6);
             this.txtOrometroInicio.Name = "txtOrometroInicio";
-            this.txtOrometroInicio.Size = new System.Drawing.Size(54, 20);
+            this.txtOrometroInicio.Size = new System.Drawing.Size(66, 20);
             this.txtOrometroInicio.TabIndex = 134;
             this.txtOrometroInicio.Text = "0";
             // 
@@ -1518,7 +1357,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.cmdAgregarConduceAlquiler.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmdAgregarConduceAlquiler.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdAgregarConduceAlquiler.ForeColor = System.Drawing.Color.Navy;
-            this.cmdAgregarConduceAlquiler.Location = new System.Drawing.Point(374, 30);
+            this.cmdAgregarConduceAlquiler.Location = new System.Drawing.Point(474, 30);
             this.cmdAgregarConduceAlquiler.Name = "cmdAgregarConduceAlquiler";
             this.cmdAgregarConduceAlquiler.Size = new System.Drawing.Size(149, 69);
             this.cmdAgregarConduceAlquiler.TabIndex = 132;
@@ -1586,6 +1425,237 @@ namespace Sistema_de_Gestión.Presentacion
             this.cboChoferAlquiler.TabIndex = 124;
             this.cboChoferAlquiler.Tag = "Chofer";
             this.cboChoferAlquiler.SelectedIndexChanged += new System.EventHandler(this.cboChoferAlquiler_SelectedIndexChanged);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(355, 58);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(86, 13);
+            this.label34.TabIndex = 141;
+            this.label34.Text = "Fecha Conduce:";
+            // 
+            // dtpFechaConduceAlquiler
+            // 
+            this.dtpFechaConduceAlquiler.CalendarFont = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaConduceAlquiler.CustomFormat = "dd/MM/yyyy";
+            this.dtpFechaConduceAlquiler.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaConduceAlquiler.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaConduceAlquiler.Location = new System.Drawing.Point(358, 73);
+            this.dtpFechaConduceAlquiler.Name = "dtpFechaConduceAlquiler";
+            this.dtpFechaConduceAlquiler.Size = new System.Drawing.Size(97, 21);
+            this.dtpFechaConduceAlquiler.TabIndex = 140;
+            this.dtpFechaConduceAlquiler.Value = new System.DateTime(2023, 4, 18, 0, 0, 0, 0);
+            // 
+            // clNum
+            // 
+            this.clNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.clNum.HeaderText = "#";
+            this.clNum.MaxInputLength = 250;
+            this.clNum.MinimumWidth = 50;
+            this.clNum.Name = "clNum";
+            this.clNum.ReadOnly = true;
+            this.clNum.Width = 50;
+            // 
+            // clChofer
+            // 
+            this.clChofer.HeaderText = "Chofer";
+            this.clChofer.Name = "clChofer";
+            this.clChofer.ReadOnly = true;
+            this.clChofer.Width = 67;
+            // 
+            // clConduce
+            // 
+            this.clConduce.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.clConduce.HeaderText = "Conduce";
+            this.clConduce.MaxInputLength = 8;
+            this.clConduce.Name = "clConduce";
+            this.clConduce.ReadOnly = true;
+            this.clConduce.Width = 78;
+            // 
+            // clVehiculo
+            // 
+            this.clVehiculo.HeaderText = "Vehiculo";
+            this.clVehiculo.Name = "clVehiculo";
+            this.clVehiculo.ReadOnly = true;
+            this.clVehiculo.Width = 77;
+            // 
+            // clProducto
+            // 
+            this.clProducto.HeaderText = "Producto";
+            this.clProducto.Name = "clProducto";
+            this.clProducto.ReadOnly = true;
+            this.clProducto.Width = 80;
+            // 
+            // clFactura
+            // 
+            this.clFactura.HeaderText = "Pedido";
+            this.clFactura.Name = "clFactura";
+            this.clFactura.ReadOnly = true;
+            this.clFactura.Width = 69;
+            // 
+            // clMedida
+            // 
+            this.clMedida.HeaderText = "Medida";
+            this.clMedida.Name = "clMedida";
+            this.clMedida.ReadOnly = true;
+            this.clMedida.Width = 72;
+            // 
+            // clCantidad
+            // 
+            this.clCantidad.HeaderText = "Cantidad";
+            this.clCantidad.Name = "clCantidad";
+            this.clCantidad.ReadOnly = true;
+            this.clCantidad.Width = 79;
+            // 
+            // Capacidad
+            // 
+            this.Capacidad.HeaderText = "Capacidad";
+            this.Capacidad.MaxInputLength = 5;
+            this.Capacidad.Name = "Capacidad";
+            this.Capacidad.ReadOnly = true;
+            this.Capacidad.Width = 86;
+            // 
+            // clsPlaca
+            // 
+            this.clsPlaca.HeaderText = "Placa";
+            this.clsPlaca.MaxInputLength = 10;
+            this.clsPlaca.Name = "clsPlaca";
+            this.clsPlaca.ReadOnly = true;
+            this.clsPlaca.Width = 59;
+            // 
+            // clsCondicionPago
+            // 
+            this.clsCondicionPago.HeaderText = "CondicionPago";
+            this.clsCondicionPago.Name = "clsCondicionPago";
+            this.clsCondicionPago.ReadOnly = true;
+            this.clsCondicionPago.Width = 112;
+            // 
+            // OrometroInicio
+            // 
+            this.OrometroInicio.HeaderText = "OrometroInicio";
+            this.OrometroInicio.Name = "OrometroInicio";
+            this.OrometroInicio.ReadOnly = true;
+            this.OrometroInicio.Width = 110;
+            // 
+            // OrometroFinal
+            // 
+            this.OrometroFinal.HeaderText = "OrometroFinal";
+            this.OrometroFinal.Name = "OrometroFinal";
+            this.OrometroFinal.ReadOnly = true;
+            this.OrometroFinal.Width = 107;
+            // 
+            // FechaConduce
+            // 
+            this.FechaConduce.HeaderText = "Fecha Conduce";
+            this.FechaConduce.MaxInputLength = 10;
+            this.FechaConduce.Name = "FechaConduce";
+            this.FechaConduce.ReadOnly = true;
+            this.FechaConduce.Width = 102;
+            // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ID.HeaderText = "ID";
+            this.ID.MaxInputLength = 250;
+            this.ID.MinimumWidth = 50;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 50;
+            // 
+            // Conduce
+            // 
+            this.Conduce.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Conduce.HeaderText = "Conduce";
+            this.Conduce.MaxInputLength = 8;
+            this.Conduce.Name = "Conduce";
+            this.Conduce.ReadOnly = true;
+            this.Conduce.Width = 75;
+            // 
+            // Chofer
+            // 
+            this.Chofer.HeaderText = "Chofer";
+            this.Chofer.Name = "Chofer";
+            this.Chofer.ReadOnly = true;
+            this.Chofer.Width = 61;
+            // 
+            // Vehiculo
+            // 
+            this.Vehiculo.HeaderText = "Vehiculo";
+            this.Vehiculo.Name = "Vehiculo";
+            this.Vehiculo.ReadOnly = true;
+            this.Vehiculo.Width = 69;
+            // 
+            // id_Producto
+            // 
+            this.id_Producto.HeaderText = "Producto";
+            this.id_Producto.Name = "id_Producto";
+            this.id_Producto.ReadOnly = true;
+            // 
+            // id_Factura
+            // 
+            this.id_Factura.HeaderText = "Factura";
+            this.id_Factura.Name = "id_Factura";
+            this.id_Factura.ReadOnly = true;
+            // 
+            // id_Medida
+            // 
+            this.id_Medida.HeaderText = "Medida";
+            this.id_Medida.Name = "id_Medida";
+            this.id_Medida.ReadOnly = true;
+            // 
+            // clCantidadChofer
+            // 
+            this.clCantidadChofer.HeaderText = "Cantidad";
+            this.clCantidadChofer.MaxInputLength = 15;
+            this.clCantidadChofer.Name = "clCantidadChofer";
+            this.clCantidadChofer.ReadOnly = true;
+            // 
+            // clsCapacidad
+            // 
+            this.clsCapacidad.HeaderText = "Capacidad";
+            this.clsCapacidad.MaxInputLength = 6;
+            this.clsCapacidad.Name = "clsCapacidad";
+            this.clsCapacidad.ReadOnly = true;
+            // 
+            // IDConduce
+            // 
+            this.IDConduce.HeaderText = "IDConduce";
+            this.IDConduce.MaxInputLength = 5;
+            this.IDConduce.Name = "IDConduce";
+            this.IDConduce.ReadOnly = true;
+            // 
+            // Placa
+            // 
+            this.Placa.HeaderText = "Placa";
+            this.Placa.MaxInputLength = 10;
+            this.Placa.Name = "Placa";
+            this.Placa.ReadOnly = true;
+            // 
+            // CondicionPago
+            // 
+            this.CondicionPago.HeaderText = "CondicicionPago";
+            this.CondicionPago.Name = "CondicionPago";
+            this.CondicionPago.ReadOnly = true;
+            // 
+            // clOrometroInicio
+            // 
+            this.clOrometroInicio.HeaderText = "Orometro Inicio";
+            this.clOrometroInicio.Name = "clOrometroInicio";
+            this.clOrometroInicio.ReadOnly = true;
+            // 
+            // clOrometroFinal
+            // 
+            this.clOrometroFinal.HeaderText = "Orometro Final";
+            this.clOrometroFinal.Name = "clOrometroFinal";
+            this.clOrometroFinal.ReadOnly = true;
+            // 
+            // cFechaConduce
+            // 
+            this.cFechaConduce.HeaderText = "FechaConduce";
+            this.cFechaConduce.MaxInputLength = 10;
+            this.cFechaConduce.Name = "cFechaConduce";
+            this.cFechaConduce.ReadOnly = true;
             // 
             // frmPedidos
             // 
@@ -1745,22 +1815,7 @@ namespace Sistema_de_Gestión.Presentacion
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtPlaca;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Conduce;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Chofer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Vehiculo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_Producto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_Factura;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_Medida;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clCantidadChofer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clsCapacidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDConduce;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Placa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CondicionPago;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clOrometroInicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clOrometroFinal;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button cmdAgregarInfoChofer;
         private System.Windows.Forms.TextBox txtConduce;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox txtFlota;
@@ -1783,6 +1838,11 @@ namespace Sistema_de_Gestión.Presentacion
         private System.Windows.Forms.TextBox txtOrometroInicio;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.ComboBox cboVehiculoAlquiler;
+        private System.Windows.Forms.DateTimePicker dtpFechaConduce;
+        private System.Windows.Forms.Button cmdAgregarInfoChofer;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.DateTimePicker dtpFechaConduceAlquiler;
         private System.Windows.Forms.DataGridViewTextBoxColumn clNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn clChofer;
         private System.Windows.Forms.DataGridViewTextBoxColumn clConduce;
@@ -1796,5 +1856,21 @@ namespace Sistema_de_Gestión.Presentacion
         private System.Windows.Forms.DataGridViewTextBoxColumn clsCondicionPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrometroInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrometroFinal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaConduce;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Conduce;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Chofer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Vehiculo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_Producto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_Factura;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_Medida;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clCantidadChofer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clsCapacidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDConduce;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Placa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CondicionPago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clOrometroInicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clOrometroFinal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cFechaConduce;
     }
 }

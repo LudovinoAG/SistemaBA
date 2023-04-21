@@ -68,7 +68,7 @@ namespace Sistema_de_Gestión.Modelos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarConduces", nomEmpleadoParameter, num_ConduceParameter, nomVehiculoParameter, placaParameter, cantidadViajesParameter);
         }
     
-        public virtual int SP_InsertarConducesPedidos(Nullable<int> id_Cliente, Nullable<int> id_Empleado, Nullable<int> num_Conduce, Nullable<int> id_producto, Nullable<int> id_vehiculo, Nullable<int> id_medida, Nullable<int> cantidadViajes, Nullable<int> idCount, Nullable<decimal> orometroInicio, Nullable<decimal> orometroFinal)
+        public virtual int SP_InsertarConducesPedidos(Nullable<int> id_Cliente, Nullable<int> id_Empleado, Nullable<int> num_Conduce, Nullable<int> id_producto, Nullable<int> id_vehiculo, Nullable<int> id_medida, Nullable<int> cantidadViajes, Nullable<int> idCount, Nullable<decimal> orometroInicio, Nullable<decimal> orometroFinal, Nullable<System.DateTime> fechaConduce)
         {
             var id_ClienteParameter = id_Cliente.HasValue ?
                 new ObjectParameter("id_Cliente", id_Cliente) :
@@ -110,7 +110,11 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("OrometroFinal", orometroFinal) :
                 new ObjectParameter("OrometroFinal", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarConducesPedidos", id_ClienteParameter, id_EmpleadoParameter, num_ConduceParameter, id_productoParameter, id_vehiculoParameter, id_medidaParameter, cantidadViajesParameter, idCountParameter, orometroInicioParameter, orometroFinalParameter);
+            var fechaConduceParameter = fechaConduce.HasValue ?
+                new ObjectParameter("FechaConduce", fechaConduce) :
+                new ObjectParameter("FechaConduce", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarConducesPedidos", id_ClienteParameter, id_EmpleadoParameter, num_ConduceParameter, id_productoParameter, id_vehiculoParameter, id_medidaParameter, cantidadViajesParameter, idCountParameter, orometroInicioParameter, orometroFinalParameter, fechaConduceParameter);
         }
     
         public virtual int SP_InsertarDetalleProforma(Nullable<int> id_Cliente, Nullable<int> id_producto, Nullable<int> id_medida, Nullable<double> cantidad, Nullable<decimal> costo, Nullable<decimal> subtotal)

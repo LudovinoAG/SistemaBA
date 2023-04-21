@@ -128,6 +128,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           <Parameter Name="NomVehiculo" Type="varchar" Mode="In" />
           <Parameter Name="Placa" Type="varchar" Mode="In" />
           <Parameter Name="CantidadViajes" Type="int" Mode="In" />
+          <Parameter Name="FechaConduce" Type="date" Mode="In" />
         </Function>
         <Function Name="SP_InsertarDetallesFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NombreProducto" Type="varchar" Mode="In" />
@@ -250,6 +251,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
             <Parameter Name="NomVehiculo" Mode="In" Type="String" />
             <Parameter Name="Placa" Mode="In" Type="String" />
             <Parameter Name="CantidadViajes" Mode="In" Type="Int32" />
+            <Parameter Name="FechaConduce" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="SP_VerDetallesConduces" ReturnType="Collection(BAFacturacionModel.SP_VerDetallesConduces_Result)">
           <Parameter Name="NumFacturaConduce" Mode="In" Type="Int32" />
@@ -313,15 +315,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
             <Parameter Name="Precio" Mode="In" Type="Decimal" />
             <Parameter Name="SubTotalProducto" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="SP_BuscarConducesFactura" ReturnType="Collection(BAFacturacionModel.SP_BuscarConducesFactura_Result)">
-            <Parameter Name="ID_Cliente" Mode="In" Type="Int32" />
-            <Parameter Name="id_Pedido" Mode="In" Type="Int32" />
-            <Parameter Name="ModoReporte" Mode="In" Type="String" />
-            <Parameter Name="id_EstatusPedido" Mode="In" Type="Int32" />
-            <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
-            <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
-            <Parameter Name="Conduce" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_CambiarEstadoPedido">
             <Parameter Name="IDCliente" Mode="In" Type="Int32" />
             <Parameter Name="IDPedido" Mode="In" Type="Int32" />
@@ -330,6 +323,15 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           <EntitySet Name="VW_EmpleadosFactura" EntityType="BAFacturacionModel.VW_EmpleadosFactura" />
           <FunctionImport Name="SP_VerFacturaID" ReturnType="Collection(BAFacturacionModel.SP_VerFacturaID_Result)">
           <Parameter Name="NumFactura" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_BuscarConducesFactura" ReturnType="Collection(BAFacturacionModel.SP_BuscarConducesFactura_Result)">
+            <Parameter Name="ID_Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="id_Pedido" Mode="In" Type="Int32" />
+            <Parameter Name="ModoReporte" Mode="In" Type="String" />
+            <Parameter Name="id_EstatusPedido" Mode="In" Type="Int32" />
+            <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
+            <Parameter Name="Conduce" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="VW_ListarVehiculos">
@@ -427,16 +429,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           <Property Type="String" Name="Correo" Nullable="true" MaxLength="60" />
           <Property Type="Int32" Name="TipoCliente" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="SP_BuscarConducesFactura_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Chofer" Nullable="false" MaxLength="31" />
-          <Property Type="Int32" Name="NumeroConduce" Nullable="true" />
-          <Property Type="String" Name="Vehiculo" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="Placa" Nullable="false" MaxLength="18" />
-          <Property Type="Int32" Name="Capacidad" Nullable="true" />
-          <Property Type="Int32" Name="Viajes" Nullable="true" />
-          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
-        </ComplexType>
         <EntityType Name="VW_EmpleadosFactura">
           <Key>
             <PropertyRef Name="ID" />
@@ -470,6 +462,17 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           <Property Type="String" Name="Nota" Nullable="true" MaxLength="255" />
           <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
           <Property Type="DateTime" Name="VigenciaNCF" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_BuscarConducesFactura_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="DateTime" Name="FechaConduce" Nullable="true" />
+          <Property Type="String" Name="Chofer" Nullable="false" MaxLength="31" />
+          <Property Type="Int32" Name="NumeroConduce" Nullable="true" />
+          <Property Type="String" Name="Vehiculo" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Placa" Nullable="false" MaxLength="18" />
+          <Property Type="Int32" Name="Capacidad" Nullable="true" />
+          <Property Type="Int32" Name="Viajes" Nullable="true" />
+          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -592,20 +595,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_InsertarFactura" FunctionName="BAFacturacionModel.Store.SP_InsertarFactura" />
           <FunctionImportMapping FunctionImportName="SP_InsertarDetallesFactura" FunctionName="BAFacturacionModel.Store.SP_InsertarDetallesFactura" />
-          <FunctionImportMapping FunctionImportName="SP_BuscarConducesFactura" FunctionName="BAFacturacionModel.Store.SP_BuscarConducesFactura">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BAFacturacionModel.SP_BuscarConducesFactura_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Chofer" ColumnName="Chofer" />
-                <ScalarProperty Name="NumeroConduce" ColumnName="NumeroConduce" />
-                <ScalarProperty Name="Vehiculo" ColumnName="Vehiculo" />
-                <ScalarProperty Name="Placa" ColumnName="Placa" />
-                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
-                <ScalarProperty Name="Viajes" ColumnName="Viajes" />
-                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_CambiarEstadoPedido" FunctionName="BAFacturacionModel.Store.SP_CambiarEstadoPedido" />
           <EntitySetMapping Name="VW_EmpleadosFactura">
             <EntityTypeMapping TypeName="BAFacturacionModel.VW_EmpleadosFactura">
@@ -642,6 +631,21 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
                 <ScalarProperty Name="Nota" ColumnName="Nota" />
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="VigenciaNCF" ColumnName="VigenciaNCF" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_BuscarConducesFactura" FunctionName="BAFacturacionModel.Store.SP_BuscarConducesFactura">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BAFacturacionModel.SP_BuscarConducesFactura_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FechaConduce" ColumnName="FechaConduce" />
+                <ScalarProperty Name="Chofer" ColumnName="Chofer" />
+                <ScalarProperty Name="NumeroConduce" ColumnName="NumeroConduce" />
+                <ScalarProperty Name="Vehiculo" ColumnName="Vehiculo" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+                <ScalarProperty Name="Viajes" ColumnName="Viajes" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

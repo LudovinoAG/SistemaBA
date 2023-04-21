@@ -14,6 +14,7 @@ namespace Sistema_de_Gestión.Modelos
     public partial class SP_BuscarConducesFactura_Result
     {
         public int ID { get; set; }
+        public Nullable<System.DateTime> FechaConduce { get; set; }
         public string Chofer { get; set; }
         public Nullable<int> NumeroConduce { get; set; }
         public string Vehiculo { get; set; }

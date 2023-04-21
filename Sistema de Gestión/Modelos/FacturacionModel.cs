@@ -175,8 +175,9 @@ namespace Sistema_de_Gestión.Modelos
                         string NombreVehiculo = FilaConduces.Cells["Vehiculo"].Value.ToString();
                         string Placa = FilaConduces.Cells["Placa"].Value.ToString();
                         int CantidadViajes = (int)FilaConduces.Cells["Viajes"].Value;
+                        DateTime FechaConduce = (DateTime)FilaConduces.Cells["FechaConduce"].Value;
 
-                        FM.SP_InsertarConduces(NombreEmpleado, NumConduce, NombreVehiculo, Placa, CantidadViajes);
+                        FM.SP_InsertarConduces(NombreEmpleado, NumConduce, NombreVehiculo, Placa, CantidadViajes, FechaConduce);
 
                     }
 

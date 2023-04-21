@@ -72,7 +72,7 @@ namespace Sistema_de_Gestión.Modelos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarConduce", id_ConduceParameter, id_FacturaParameter, id_EmpleadoParameter, num_ConduceParameter, id_ProductoParameter, id_VehiculoParameter, id_MedidaParameter, cantidadViajesParameter);
         }
     
-        public virtual int SP_InsertarConduces(string nomEmpleado, Nullable<int> num_Conduce, string nomVehiculo, string placa, Nullable<int> cantidadViajes)
+        public virtual int SP_InsertarConduces(string nomEmpleado, Nullable<int> num_Conduce, string nomVehiculo, string placa, Nullable<int> cantidadViajes, Nullable<System.DateTime> fechaConduce)
         {
             var nomEmpleadoParameter = nomEmpleado != null ?
                 new ObjectParameter("NomEmpleado", nomEmpleado) :
@@ -94,7 +94,11 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("CantidadViajes", cantidadViajes) :
                 new ObjectParameter("CantidadViajes", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarConduces", nomEmpleadoParameter, num_ConduceParameter, nomVehiculoParameter, placaParameter, cantidadViajesParameter);
+            var fechaConduceParameter = fechaConduce.HasValue ?
+                new ObjectParameter("FechaConduce", fechaConduce) :
+                new ObjectParameter("FechaConduce", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarConduces", nomEmpleadoParameter, num_ConduceParameter, nomVehiculoParameter, placaParameter, cantidadViajesParameter, fechaConduceParameter);
         }
     
         public virtual ObjectResult<SP_VerDetallesConduces_Result> SP_VerDetallesConduces(Nullable<int> numFacturaConduce)
@@ -309,6 +313,32 @@ namespace Sistema_de_Gestión.Modelos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarDetallesFactura", nombreProductoParameter, cantidadProductosParameter, nombreMedidaParameter, descripcionParameter, precioParameter, subTotalProductoParameter);
         }
     
+        public virtual int SP_CambiarEstadoPedido(Nullable<int> iDCliente, Nullable<int> iDPedido, Nullable<int> newStatus)
+        {
+            var iDClienteParameter = iDCliente.HasValue ?
+                new ObjectParameter("IDCliente", iDCliente) :
+                new ObjectParameter("IDCliente", typeof(int));
+    
+            var iDPedidoParameter = iDPedido.HasValue ?
+                new ObjectParameter("IDPedido", iDPedido) :
+                new ObjectParameter("IDPedido", typeof(int));
+    
+            var newStatusParameter = newStatus.HasValue ?
+                new ObjectParameter("NewStatus", newStatus) :
+                new ObjectParameter("NewStatus", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_CambiarEstadoPedido", iDClienteParameter, iDPedidoParameter, newStatusParameter);
+        }
+    
+        public virtual ObjectResult<SP_VerFacturaID_Result> SP_VerFacturaID(Nullable<int> numFactura)
+        {
+            var numFacturaParameter = numFactura.HasValue ?
+                new ObjectParameter("NumFactura", numFactura) :
+                new ObjectParameter("NumFactura", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_VerFacturaID_Result>("SP_VerFacturaID", numFacturaParameter);
+        }
+    
         public virtual ObjectResult<SP_BuscarConducesFactura_Result> SP_BuscarConducesFactura(Nullable<int> iD_Cliente, Nullable<int> id_Pedido, string modoReporte, Nullable<int> id_EstatusPedido, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFin, Nullable<int> conduce)
         {
             var iD_ClienteParameter = iD_Cliente.HasValue ?
@@ -340,32 +370,6 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("Conduce", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_BuscarConducesFactura_Result>("SP_BuscarConducesFactura", iD_ClienteParameter, id_PedidoParameter, modoReporteParameter, id_EstatusPedidoParameter, fechaInicioParameter, fechaFinParameter, conduceParameter);
-        }
-    
-        public virtual int SP_CambiarEstadoPedido(Nullable<int> iDCliente, Nullable<int> iDPedido, Nullable<int> newStatus)
-        {
-            var iDClienteParameter = iDCliente.HasValue ?
-                new ObjectParameter("IDCliente", iDCliente) :
-                new ObjectParameter("IDCliente", typeof(int));
-    
-            var iDPedidoParameter = iDPedido.HasValue ?
-                new ObjectParameter("IDPedido", iDPedido) :
-                new ObjectParameter("IDPedido", typeof(int));
-    
-            var newStatusParameter = newStatus.HasValue ?
-                new ObjectParameter("NewStatus", newStatus) :
-                new ObjectParameter("NewStatus", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_CambiarEstadoPedido", iDClienteParameter, iDPedidoParameter, newStatusParameter);
-        }
-    
-        public virtual ObjectResult<SP_VerFacturaID_Result> SP_VerFacturaID(Nullable<int> numFactura)
-        {
-            var numFacturaParameter = numFactura.HasValue ?
-                new ObjectParameter("NumFactura", numFactura) :
-                new ObjectParameter("NumFactura", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_VerFacturaID_Result>("SP_VerFacturaID", numFacturaParameter);
         }
     }
 }

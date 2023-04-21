@@ -48,6 +48,8 @@ namespace Sistema_de_Gestión.Modelos
         public static string Correo { get; set; }
         public static string Condiciones { get; set; }
 
+        public DateTime FechaConduce { get; set; }
+
 
         public void AgregarProducto(decimal cantidad, int IDProducto, string medida, int IDMedida, 
             string producto, string descripcion, decimal costo, decimal subtotal, DataGridView dgvFacturar)
@@ -109,7 +111,7 @@ namespace Sistema_de_Gestión.Modelos
 
         public void AgregarChoferFactura(DataGridView dgvChoferes, int IDFila, int Conduce, int Chofer,
           int Vehiculo, int Producto, int Medida, int Factura, int CantidadViaje, int Capacidad, string Placa,
-          decimal OrometroInicio, decimal OrometroFinal)
+          decimal OrometroInicio, decimal OrometroFinal, DateTime FechaConduce)
         {
             //Tabla de informacion referencial
             int entradachoferes = dgvChoferes.Rows.Add();
@@ -125,6 +127,7 @@ namespace Sistema_de_Gestión.Modelos
             dgvChoferes.Rows[entradachoferes].Cells["Placa"].Value = Placa;
             dgvChoferes.Rows[entradachoferes].Cells["clOrometroInicio"].Value = OrometroInicio;
             dgvChoferes.Rows[entradachoferes].Cells["clOrometroFinal"].Value = OrometroFinal;
+            dgvChoferes.Rows[entradachoferes].Cells["cFechaConduce"].Value = FechaConduce;
 
 
         }
@@ -135,6 +138,7 @@ namespace Sistema_de_Gestión.Modelos
             var cboVehiculo = controles.OfType<ComboBox>().ToList();
             var txtConduce = controles.OfType<TextBox>().ToList();
             var UDViajes = controles.OfType<NumericUpDown>().Where(t => t.Name == "UDViajes").SingleOrDefault();
+            var DatePick = controles.OfType<DateTimePicker>().ToList();
 
             if (CboChofer!=null)
             {
@@ -166,6 +170,13 @@ namespace Sistema_de_Gestión.Modelos
                 }
             }
 
+            if (DatePick!=null)
+            {
+                foreach (var item in DatePick)
+                {
+                    item.Value = DateTime.Now;
+                }
+            }
             
 
 
@@ -257,9 +268,10 @@ namespace Sistema_de_Gestión.Modelos
                                     int CantidadViajesPedido = (int)dgvChoferes.Rows[c].Cells["clCantidadChofer"].Value;
                                     decimal OrometroInicio = (decimal)dgvChoferes.Rows[c].Cells["clOrometroInicio"].Value;
                                     decimal OrometroFinal = (decimal)dgvChoferes.Rows[c].Cells["clOrometroFinal"].Value;
+                                    DateTime FechaConduce = (DateTime)dgvChoferes.Rows[c].Cells["cFechaConduce"].Value;
 
-                                    PM.SP_InsertarConducesPedidos(IDCliente, IDEmpleado, NumConduce, IDProducto, IDVehiculo, IDMedida,
-                                        CantidadViajesPedido, RegConduces, OrometroInicio, OrometroFinal);
+                                PM.SP_InsertarConducesPedidos(IDCliente, IDEmpleado, NumConduce, IDProducto, IDVehiculo, IDMedida,
+                                    CantidadViajesPedido, RegConduces, OrometroInicio, OrometroFinal, FechaConduce);
 
                                     using(BARedaccionesEntities RM = new BARedaccionesEntities())
                                     {

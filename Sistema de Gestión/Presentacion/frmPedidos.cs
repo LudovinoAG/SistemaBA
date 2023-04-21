@@ -211,7 +211,7 @@ namespace Sistema_de_Gestión.Presentacion
         {
             if (cboChofer.SelectedIndex != -1)
             {
-                if (cboVehiculos.SelectedIndex != 0)
+                if (cboVehiculos.SelectedIndex != -1)
                 {
                     if (dgvFactura.Rows.Count != 0)
                     {
@@ -232,10 +232,11 @@ namespace Sistema_de_Gestión.Presentacion
                                 PM.capacidad = int.Parse(txtCapacidad.Text);
                                 PM.OrometroInicio = decimal.Parse(txtOrometroInicio.Text);
                                 PM.OrometroFinal = decimal.Parse(txtOrometroFinal.Text);
+                                PM.FechaConduce = dtpFechaConduce.Value;
 
                                 PM.AgregarChoferFactura(dgvChoferes, Fila, PM.Conduce, PM.IDChofer, PM.IDVehiculo,
                                     PM.IDProducto, PM.IDMedida, PM.IDFactura, PedidosModel.CantidadChofer, PM.capacidad,
-                                    PedidosModel.Placa, PM.OrometroInicio, PM.OrometroFinal);
+                                    PedidosModel.Placa, PM.OrometroInicio, PM.OrometroFinal, PM.FechaConduce);
 
                                 int NuevaEntrada = dgvListaChoferes.Rows.Add();
                                 dgvListaChoferes.Rows[NuevaEntrada].Cells["clChofer"].Value = cboChofer.Text;
@@ -249,8 +250,7 @@ namespace Sistema_de_Gestión.Presentacion
                                 dgvListaChoferes.Rows[NuevaEntrada].Cells["clCantidad"].Value = PedidosModel.CantidadChofer;
                                 dgvListaChoferes.Rows[NuevaEntrada].Cells["Capacidad"].Value = txtCapacidad.Text;
                                 dgvListaChoferes.Rows[NuevaEntrada].Cells["clsPlaca"].Value = PedidosModel.Placa;
-
-
+                                dgvListaChoferes.Rows[NuevaEntrada].Cells["FechaConduce"].Value = PM.FechaConduce;
 
                                 //Agregar conduce a la descripcion del producto seleccionado
                                 dgvFactura.SelectedRows[0].Cells["Descripción"].Value += ", CON.#" + txtConduce.Text;
@@ -477,7 +477,7 @@ namespace Sistema_de_Gestión.Presentacion
 
         private void cmdAgregarConduceAlquiler_Click(object sender, EventArgs e)
         {
-            if (cboChoferAlquiler.SelectedIndex!=0)
+            if (cboChoferAlquiler.SelectedIndex!=-1)
             {
                 if (dgvFactura.RowCount != 0)
                 {
@@ -493,10 +493,11 @@ namespace Sistema_de_Gestión.Presentacion
                         PM.capacidad = int.Parse(txtCapacidad.Text);
                         PM.OrometroInicio = decimal.Parse(txtOrometroInicio.Text);
                         PM.OrometroFinal = decimal.Parse(txtOrometroFinal.Text);
+                        PM.FechaConduce = dtpFechaConduceAlquiler.Value;
 
                         PM.AgregarChoferFactura(dgvChoferes, Fila, PM.Conduce, PM.IDChofer, PM.IDVehiculo,
                             PM.IDProducto, PM.IDMedida, PM.IDFactura, 1, 0,
-                            "-", PM.OrometroInicio, PM.OrometroFinal);
+                            "-", PM.OrometroInicio, PM.OrometroFinal, PM.FechaConduce);
 
                         int NuevaEntrada = dgvListaChoferes.Rows.Add();
                         dgvListaChoferes.Rows[NuevaEntrada].Cells["clChofer"].Value = cboChoferAlquiler.Text;
@@ -512,7 +513,8 @@ namespace Sistema_de_Gestión.Presentacion
                         dgvListaChoferes.Rows[NuevaEntrada].Cells["clsPlaca"].Value = "-";
                         dgvListaChoferes.Rows[NuevaEntrada].Cells["OrometroInicio"].Value = PM.OrometroInicio;
                         dgvListaChoferes.Rows[NuevaEntrada].Cells["OrometroFinal"].Value = PM.OrometroFinal;
-
+                        dgvListaChoferes.Rows[NuevaEntrada].Cells["FechaConduce"].Value = PM.FechaConduce;
+                        
                         //Agregar conduce a la descripcion del producto seleccionado
                         dgvFactura.SelectedRows[0].Cells["Descripción"].Value += ", CON.#" + txtConduceAlquiler.Text;
                         //decimal CapacidadTotalVendida = (decimal)dgvFactura.SelectedRows[0].Cells["Cantidad"].Value * UDViajes.Value;
@@ -593,5 +595,6 @@ namespace Sistema_de_Gestión.Presentacion
 
             LoadProductosFactura();
         }
+
     }
 }
