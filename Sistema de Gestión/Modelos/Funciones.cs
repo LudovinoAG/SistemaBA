@@ -194,23 +194,28 @@ namespace Sistema_de_Gestión.Modelos
 
                         else if (CboClientes.SelectedIndex!=1)
                         {
-
-
-                            if (MaskRNC.MaskFull)
+                            if (item.Name!="txtSegundoNombre" && item.Name!="txtSegundoApellido" && item.Name!="txtWeb" 
+                                && item.Name!="txtZipCode" && item.Name!="txtPuntoReferencia" && item.Name!="txtExtension" &&
+                                item.Name!="txtObservacion")
                             {
-                                if (string.IsNullOrEmpty(item.Text))
+                                if (MaskRNC.MaskFull)
                                 {
-                                    MessageBox.Show("El campo [" + item.Tag + "] no puede estar vacio.", "Sistema de Gestión",
+                                    if (string.IsNullOrEmpty(item.Text))
+                                    {
+                                        MessageBox.Show("El campo [" + item.Tag + "] no puede estar vacio.", "Sistema de Gestión",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                        return false;
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("El campo [" + MaskRNC.Tag + "] debe contener todos los digitos requeridos.", "Sistema de Gestión",
                                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                     return false;
                                 }
                             }
-                            else
-                            {
-                                MessageBox.Show("El campo [" + MaskRNC.Tag + "] debe contener todos los digitos requeridos.", "Sistema de Gestión",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                return false;
-                            }
+
+                          
 
                             foreach (var itemCBO in ListasCBO)
                             {
@@ -225,7 +230,7 @@ namespace Sistema_de_Gestión.Modelos
                        
                         else
                         {
-                            if ((item.Name!="txtEmpresa") && (item.Name!= "txtRNC") && (item.Name!="txtProyecto"))
+                            if ((item.Name!="txtEmpresa") && (item.Name!= "txtRNC") && (item.Name!="txtProyecto") && (item.Name!="txtSegundoNombre"))
                             {
                                 if (MaskCedula.MaskFull)
                                 {
@@ -259,7 +264,8 @@ namespace Sistema_de_Gestión.Modelos
                     foreach (var item in CamposTXT)
                     {
                         if ((item.Name!="txtMotivoEstatus") && (item.Name!= "txtCondicionMedica") && 
-                            (item.Name != "txtObservacion"))
+                            (item.Name!= "txtObservacion") && (item.Name!="txtSegundoNombre") && 
+                            (item.Name!="txtSegundoApellido"))
                         {
                             if (string.IsNullOrEmpty(item.Text))
                             {

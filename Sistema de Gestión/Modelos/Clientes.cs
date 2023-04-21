@@ -135,7 +135,7 @@ namespace Sistema_de_Gestión.Modelos
                         PrimerApellido, SegundoApellido, TipoCliente, TelefonoPrincipal, Extension, TelefonoSecundario,
                         Calle, Numero, PuntoReferencia, Ciudad, CodigoPostal, Correo, Web, Observacion);
 
-                    MessageBox.Show("Se ha insertado el Cliente correctamente", "Nuevo Cliente",
+                    MessageBox.Show($"Se ha insertado el Cliente correctamente [{Empresa}].", "Nuevo Cliente",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
