@@ -532,7 +532,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // dtpFechaFin
             // 
-            this.dtpFechaFin.CustomFormat = "yyyy/mm/dd";
+            this.dtpFechaFin.CustomFormat = "yyyy/MM/dd";
             this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechaFin.Location = new System.Drawing.Point(46, 86);
             this.dtpFechaFin.Name = "dtpFechaFin";
@@ -542,7 +542,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // dtpFechaInicio
             // 
-            this.dtpFechaInicio.CustomFormat = "yyyy/mm/dd";
+            this.dtpFechaInicio.CustomFormat = "yyyy/MM/dd";
             this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechaInicio.Location = new System.Drawing.Point(46, 60);
             this.dtpFechaInicio.Name = "dtpFechaInicio";

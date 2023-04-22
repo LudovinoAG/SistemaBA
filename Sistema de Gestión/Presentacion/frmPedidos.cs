@@ -158,9 +158,11 @@ namespace Sistema_de_Gestión.Presentacion
             txtDescripcion.Text = Resultado.SingleOrDefault(n => n.ID == (int)cboProductos.SelectedValue).Descripcion;
             decimal Costo = Resultado.SingleOrDefault(n => n.ID == (int)cboProductos.SelectedValue).Precio;
             decimal SubTotal = PM.CalcularSubtotal(cboMedida.SelectedIndex, UdCantidad.Value, Costo);
+            decimal ITBISProducto = UdCantidad.Value * (decimal)Resultado.SingleOrDefault(n => n.ID == (int)cboProductos.SelectedValue).ITBIS;
 
             txtCosto.Text = string.Format("{0:N}", Costo);
             txtNuevoSubTotal.Text = string.Format("{0:N}", SubTotal);
+            txtITBISProducto.Text = string.Format("{0:N}", ITBISProducto);
         }
 
         private void UdCantidad_Click(object sender, EventArgs e)
@@ -168,9 +170,12 @@ namespace Sistema_de_Gestión.Presentacion
             var Resultado = PM.ProductosFactura().ToList();
             decimal Costo = Resultado.SingleOrDefault(n => n.ID == (int)cboProductos.SelectedValue).Precio;
             decimal SubTotal = PM.CalcularSubtotal(cboMedida.SelectedIndex, UdCantidad.Value, Costo);
+            decimal ITBISProducto = UdCantidad.Value * (decimal)Resultado.SingleOrDefault(n => n.ID == (int)cboProductos.SelectedValue).ITBIS;
+
 
             txtCosto.Text = string.Format("{0:N}", Costo);
             txtNuevoSubTotal.Text = string.Format("{0:N}", SubTotal);
+            txtITBISProducto.Text = string.Format("{0:N}", ITBISProducto);
         }
 
         private void UdCantidad_ValueChanged(object sender, EventArgs e)
@@ -195,15 +200,15 @@ namespace Sistema_de_Gestión.Presentacion
         {
             PM.AgregarProducto(UdCantidad.Value, (int)cboProductos.SelectedValue, cboMedida.Text,
                (int)cboMedida.SelectedValue, cboProductos.Text, txtDescripcion.Text, decimal.Parse(txtCosto.Text),
-               decimal.Parse(txtNuevoSubTotal.Text), dgvFactura);
+               decimal.Parse(txtNuevoSubTotal.Text),decimal.Parse(txtITBISProducto.Text), dgvFactura);
 
             //Limpiar Entradas
-            UdCantidad.Value = UdCantidad.Minimum;
+            UdCantidad.Value = UdCantidad.Value = 1.00m;
             cboMedida.SelectedIndex = 0;
             cboProductos.SelectedIndex = 0;
 
             PM.DESC = decimal.Parse(txtDesc.Text);
-            PM.ITBIS = decimal.Parse(txtITBIS.Text);
+            PM.ITBISPro = decimal.Parse(txtITBIS.Text);
             PM.ActualizarTotales(dgvFactura, txtSubTotal, TxtTotalGeneral, txtITBIS, CKITBIS);
         }
 
@@ -217,8 +222,7 @@ namespace Sistema_de_Gestión.Presentacion
                     {
                         if (!string.IsNullOrEmpty(txtConduce.Text) && txtConduce.Text.Length == 5)
                         {
-                            if (!PM.ConduceExiste(int.Parse(txtConduce.Text),dgvChoferes))
-                            {
+                           
                                 PedidosModel.CantidadChofer = (int)UDViajes.Value;
                                 PedidosModel.Placa = txtPlaca.Text;
 
@@ -263,12 +267,6 @@ namespace Sistema_de_Gestión.Presentacion
                                 PM.DESC = decimal.Parse(txtDesc.Text);
                                 PM.ITBIS = decimal.Parse(txtITBIS.Text);
                                 PM.ActualizarTotales(dgvFactura, txtSubTotal, TxtTotalGeneral, txtITBIS, CKITBIS);
-                            }
-                            else
-                            {
-                                txtConduce.SelectAll();
-                                txtConduce.Focus();
-                            }
                            
                         }
                         else
@@ -325,7 +323,9 @@ namespace Sistema_de_Gestión.Presentacion
                 dgvFactura.Rows.RemoveAt(e.RowIndex);
                 PM.TotalGeneral = 0.00m;
                 PM.ITBIS = 0.00m;
-
+                NuevoSubTotal = 0.00m;
+                CapacidadTotalVendida = 0.00m;
+                PM.SumaSubTotales = 0.00M;
                 PM.ActualizarTotales(dgvFactura, txtSubTotal, TxtTotalGeneral, txtITBIS, CKITBIS);
 
             }
@@ -351,8 +351,9 @@ namespace Sistema_de_Gestión.Presentacion
                         MessageBoxIcon.Information);
 
                     PM.LimpiarPedido(this.Controls, dgvChoferes, dgvFactura, dgvListaChoferes, CKITBIS);
-          
 
+                    NuevoSubTotal = 0.00m;
+                    CapacidadTotalVendida = 0.00m;
                     CargarNuevoPedido();
                 }
             }
@@ -413,6 +414,7 @@ namespace Sistema_de_Gestión.Presentacion
             PM.CalcularSubtotal(cboMedida.SelectedIndex, UdCantidad.Value, decimal.Parse(txtCosto.Text));
             txtNuevoSubTotal.Text = string.Format("{0:N}", PM.SubTotal);
             txtCosto.Text = string.Format("{0:N}", PM.Costo);
+            txtITBISProducto.Text = string.Format("{0:N}", PM.ITBISPro);
         }
 
         private void txtCosto_KeyPress(object sender, KeyPressEventArgs e)
@@ -422,6 +424,7 @@ namespace Sistema_de_Gestión.Presentacion
                 PM.CalcularSubtotal(cboMedida.SelectedIndex, UdCantidad.Value, decimal.Parse(txtCosto.Text));
                 txtNuevoSubTotal.Text = string.Format("{0:N}", PM.SubTotal);
                 txtCosto.Text = string.Format("{0:N}", PM.Costo);
+                txtITBISProducto.Text = string.Format("{0:N}", PM.ITBISPro);
             }
         }
 
@@ -433,7 +436,7 @@ namespace Sistema_de_Gestión.Presentacion
         private void txtDesc_Leave(object sender, EventArgs e)
         {
             PM.DESC = decimal.Parse(txtDesc.Text);
-            PM.ITBIS = decimal.Parse(txtITBIS.Text);
+            PM.ITBISPro = decimal.Parse(txtITBIS.Text);
             PM.ActualizarTotales(dgvFactura, txtSubTotal, TxtTotalGeneral, txtITBIS, CKITBIS);
         }
 
@@ -594,6 +597,19 @@ namespace Sistema_de_Gestión.Presentacion
             }
 
             LoadProductosFactura();
+        }
+
+        private void txtPlaca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar==13)
+            {
+                if (txtPlaca.Text!="")
+                {
+                    PM.VehiculosFactura(txtPlaca.Text);
+                    cboVehiculos.SelectedValue = PM.IDBuscadoMatricula;
+                }
+
+            }
         }
 
     }

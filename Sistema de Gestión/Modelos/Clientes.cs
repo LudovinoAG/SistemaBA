@@ -104,7 +104,7 @@ namespace Sistema_de_Gestión.Modelos
 
                     //Cargar el dataGridView
                     dgvClientes.DataSource = null;
-                    dgvClientes.DataSource = lstNuevoListado.OrderBy(t=> t.ID).ToList();
+                    dgvClientes.DataSource = lstNuevoListado.OrderBy(t=> t.Empresa).ToList();
 
 
 

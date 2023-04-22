@@ -283,7 +283,8 @@ namespace Sistema_de_Gestión.Presentacion
         {
             if (e.RowIndex != -1)
             {
-                int NumFactura = (int)dgvReporteFacturas.SelectedRows[0].Cells["NumFactura"].Value;
+
+                int NumFactura = int.Parse(dgvReporteFacturas.SelectedRows[0].Cells["NumFactura"].Value.ToString());
                 ReportesModel.NumFacturaReporte = NumFactura;
 
                 lblSeleccionado.Text = $"Factura seleccionada {NumFactura.ToString().PadLeft(6, '0')}";

@@ -12,6 +12,8 @@ namespace Sistema_de_Gestión.Modelos
 
         public decimal SubTotal { get; set; }
         public decimal Costo { get; set; }
+
+        public decimal ITBISPro { get; set; }
         public decimal CapacidadTotal { get; set; }
 
         public int capacidad { get; set; }
@@ -48,11 +50,13 @@ namespace Sistema_de_Gestión.Modelos
         public static string Correo { get; set; }
         public static string Condiciones { get; set; }
 
+        public int IDBuscadoMatricula { get; set; }
+
         public DateTime FechaConduce { get; set; }
 
 
         public void AgregarProducto(decimal cantidad, int IDProducto, string medida, int IDMedida, 
-            string producto, string descripcion, decimal costo, decimal subtotal, DataGridView dgvFacturar)
+            string producto, string descripcion, decimal costo, decimal subtotal, decimal ITBISProducto, DataGridView dgvFacturar)
         {
             int NuevoRegistro = dgvFacturar.Rows.Add();
             dgvFacturar.Rows[NuevoRegistro].Cells["Cantidad"].Value = cantidad;
@@ -60,7 +64,8 @@ namespace Sistema_de_Gestión.Modelos
             dgvFacturar.Rows[NuevoRegistro].Cells["Medida"].Value = medida;
             dgvFacturar.Rows[NuevoRegistro].Cells["IDMedida"].Value = IDMedida;
             dgvFacturar.Rows[NuevoRegistro].Cells["Producto"].Value = producto;
-                
+            dgvFacturar.Rows[NuevoRegistro].Cells["ITBISProducto"].Value = ITBISProducto;
+
             if (IDMedida==2)
             {
                 dgvFacturar.Rows[NuevoRegistro].Cells["Descripción"].Value = ($"Alquiler de {descripcion}");
@@ -80,6 +85,7 @@ namespace Sistema_de_Gestión.Modelos
            CheckBox CKITBIS)
         {
             this.SumaSubTotales = 0;
+            this.ITBISPro = 0;
             if (CKITBIS.CheckState == CheckState.Checked)
             {
                 for (var i = 0; i < dgvFactura.Rows.Count; i++)
@@ -87,8 +93,8 @@ namespace Sistema_de_Gestión.Modelos
 
                     //string[] Valor = dgvFactura.Rows[i].Cells["SubTotal"].Value.ToString().Split('$');
                     this.SumaSubTotales += Convert.ToDecimal(dgvFactura.Rows[i].Cells["SubTotal"].Value);
-                    this.ITBIS = (this.SumaSubTotales - this.DESC) * 18 / 100;
-                    this.TotalGeneral = (this.SumaSubTotales - this.DESC) + this.ITBIS;
+                    this.ITBISPro += Convert.ToDecimal(dgvFactura.Rows[i].Cells["ITBISProducto"].Value);
+                    this.TotalGeneral = (this.SumaSubTotales - this.DESC) + this.ITBISPro;
                 }
             }
             else
@@ -98,15 +104,15 @@ namespace Sistema_de_Gestión.Modelos
 
                     //string[] Valor = dgvFactura.Rows[i].Cells["SubTotal"].Value.ToString().Split('$');
                     this.SumaSubTotales += Convert.ToDecimal(dgvFactura.Rows[i].Cells["SubTotal"].Value);
-                    this.ITBIS = 0.00m;
-                    this.TotalGeneral = (this.SumaSubTotales - this.DESC) + this.ITBIS;
+                    this.ITBISPro = 0.00m;
+                    this.TotalGeneral = (this.SumaSubTotales - this.DESC) + this.ITBISPro;
                 }
             }
 
 
             Subtotales.Text = string.Format("{0:N}", this.SumaSubTotales);
             TotalGeneral.Text = string.Format("{0:N}", this.TotalGeneral);
-            ITBIS.Text = string.Format("{0:N}", this.ITBIS);
+            ITBIS.Text = string.Format("{0:N}", this.ITBISPro);
         }
 
         public void AgregarChoferFactura(DataGridView dgvChoferes, int IDFila, int Conduce, int Chofer,
@@ -248,8 +254,9 @@ namespace Sistema_de_Gestión.Modelos
                             string PedidoDescripcion = dgvFactura.Rows[i].Cells["Descripción"].Value.ToString();
                             decimal PrecioPedido = decimal.Parse(dgvFactura.Rows[i].Cells["Costo"].Value.ToString());
                             decimal SubTotalFilas = decimal.Parse(dgvFactura.Rows[i].Cells["SubTotal"].Value.ToString());
+                            decimal ITBISProducto = decimal.Parse(dgvFactura.Rows[i].Cells["ITBISProducto"].Value.ToString());
 
-                            for (int c = 0; c < totalConduces; c++)
+                        for (int c = 0; c < totalConduces; c++)
                             {
 
                                 if ((dgvFactura.Rows[i].Index)+1 == (int)dgvChoferes.Rows[c].Cells["ID"].Value)
@@ -258,7 +265,7 @@ namespace Sistema_de_Gestión.Modelos
                                     int RegConduces = c + 1;
 
                                     PM.SP_InsertarDetallesPedido(RegPedidos, IDCliente, IDProducto, IDMedida, CantidadProducto,
-                                        PrecioPedido, SubTotalFilas, PedidoDescripcion, RegConduces);
+                                        PrecioPedido, SubTotalFilas, PedidoDescripcion, RegConduces, ITBISProducto);
 
                                     int IDEmpleado = (int)dgvChoferes.Rows[c].Cells["Chofer"].Value;
                                     int NumConduce = (int)dgvChoferes.Rows[c].Cells["Conduce"].Value;
@@ -292,6 +299,9 @@ namespace Sistema_de_Gestión.Modelos
                             }
 
                         }
+
+                    this.TotalGeneral = 0;
+                    this.SumaSubTotales = 0;
 
                 }
 
@@ -419,6 +429,33 @@ namespace Sistema_de_Gestión.Modelos
             }
         }
 
+        public List<VW_ListarVehiculos> VehiculosFactura(string Matricula)
+        {
+            if (Matricula!="")
+            {
+                using (BAPedidosEntities PM = new BAPedidosEntities())
+                {
+                    try
+                    {
+                        IDBuscadoMatricula = PM.VW_ListarVehiculos.Where(t => t.Matricula == Matricula).SingleOrDefault().ID;
+                        return PM.VW_ListarVehiculos.ToList();
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show($"No fue posible encontrar el vehiculo por la placa [{Matricula}]." + ex.Message);
+                        return null;
+                    }
+                }
+            }
+            else
+            {
+                return null;
+            }
+           
+        }
+
         public List<VW_EmpleadosFactura> EmpleadosFactura()
         {
             using (BAPedidosEntities PM = new BAPedidosEntities())
@@ -499,6 +536,7 @@ namespace Sistema_de_Gestión.Modelos
                 this.Costo = costo;
                 this.SubTotal = 0;
                 this.SubTotal = this.Costo * this.Cantidad;
+                this.ITBISPro = this.Costo * 0.18m;
 
                 return this.SubTotal;
 

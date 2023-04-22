@@ -30,9 +30,9 @@ namespace Sistema_de_Gestión.Modelos
         public virtual DbSet<VW_VerUltimoNumeroPedido> VW_VerUltimoNumeroPedido { get; set; }
         public virtual DbSet<VW_ListarVehiculos> VW_ListarVehiculos { get; set; }
         public virtual DbSet<VW_ListarMedidas> VW_ListarMedidas { get; set; }
-        public virtual DbSet<VW_ProductosFactura> VW_ProductosFactura { get; set; }
         public virtual DbSet<VW_VerUltimoID_Detalles_Pedidos> VW_VerUltimoID_Detalles_Pedidos { get; set; }
         public virtual DbSet<VW_EmpleadosFactura> VW_EmpleadosFactura { get; set; }
+        public virtual DbSet<VW_ProductosFactura> VW_ProductosFactura { get; set; }
     
         public virtual ObjectResult<SP_BuscarClienteCodigo_Result> SP_BuscarClienteCodigo(string codigo_Cliente)
         {
@@ -43,7 +43,7 @@ namespace Sistema_de_Gestión.Modelos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_BuscarClienteCodigo_Result>("SP_BuscarClienteCodigo", codigo_ClienteParameter);
         }
     
-        public virtual int SP_InsertarConduces(string nomEmpleado, Nullable<int> num_Conduce, string nomVehiculo, string placa, Nullable<int> cantidadViajes)
+        public virtual int SP_InsertarConduces(string nomEmpleado, Nullable<int> num_Conduce, string nomVehiculo, string placa, Nullable<int> cantidadViajes, Nullable<System.DateTime> fechaConduce)
         {
             var nomEmpleadoParameter = nomEmpleado != null ?
                 new ObjectParameter("NomEmpleado", nomEmpleado) :
@@ -65,7 +65,11 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("CantidadViajes", cantidadViajes) :
                 new ObjectParameter("CantidadViajes", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarConduces", nomEmpleadoParameter, num_ConduceParameter, nomVehiculoParameter, placaParameter, cantidadViajesParameter);
+            var fechaConduceParameter = fechaConduce.HasValue ?
+                new ObjectParameter("FechaConduce", fechaConduce) :
+                new ObjectParameter("FechaConduce", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarConduces", nomEmpleadoParameter, num_ConduceParameter, nomVehiculoParameter, placaParameter, cantidadViajesParameter, fechaConduceParameter);
         }
     
         public virtual int SP_InsertarConducesPedidos(Nullable<int> id_Cliente, Nullable<int> id_Empleado, Nullable<int> num_Conduce, Nullable<int> id_producto, Nullable<int> id_vehiculo, Nullable<int> id_medida, Nullable<int> cantidadViajes, Nullable<int> idCount, Nullable<decimal> orometroInicio, Nullable<decimal> orometroFinal, Nullable<System.DateTime> fechaConduce)
@@ -242,7 +246,7 @@ namespace Sistema_de_Gestión.Modelos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_BuscarClienteProforma_Result>("SP_BuscarClienteProforma", codigoClienteParameter);
         }
     
-        public virtual int SP_InsertarDetallesPedido(Nullable<int> detalles, Nullable<int> idCliente, Nullable<int> idProducto, Nullable<int> id_Medida, Nullable<decimal> cantidad, Nullable<decimal> precio, Nullable<decimal> subtotal, string descripcion, Nullable<int> conduce)
+        public virtual int SP_InsertarDetallesPedido(Nullable<int> detalles, Nullable<int> idCliente, Nullable<int> idProducto, Nullable<int> id_Medida, Nullable<decimal> cantidad, Nullable<decimal> precio, Nullable<decimal> subtotal, string descripcion, Nullable<int> conduce, Nullable<decimal> iTBIS)
         {
             var detallesParameter = detalles.HasValue ?
                 new ObjectParameter("detalles", detalles) :
@@ -280,7 +284,11 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("conduce", conduce) :
                 new ObjectParameter("conduce", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarDetallesPedido", detallesParameter, idClienteParameter, idProductoParameter, id_MedidaParameter, cantidadParameter, precioParameter, subtotalParameter, descripcionParameter, conduceParameter);
+            var iTBISParameter = iTBIS.HasValue ?
+                new ObjectParameter("ITBIS", iTBIS) :
+                new ObjectParameter("ITBIS", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarDetallesPedido", detallesParameter, idClienteParameter, idProductoParameter, id_MedidaParameter, cantidadParameter, precioParameter, subtotalParameter, descripcionParameter, conduceParameter, iTBISParameter);
         }
     
         public virtual ObjectResult<SP_ViewQueryPreform_Result> SP_ViewQueryPreform(Nullable<int> id_Cliente, Nullable<int> id_Pedido, string modoReporte, Nullable<int> id_EstatusPedido, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFin)

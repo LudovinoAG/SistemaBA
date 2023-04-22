@@ -19,5 +19,6 @@ namespace Sistema_de_Gestión.Modelos
         public string Producto { get; set; }
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
+        public Nullable<decimal> ITBIS { get; set; }
     }
 }

@@ -22,5 +22,6 @@ namespace Sistema_de_Gestión.Modelos
         public string Categoria { get; set; }
         public string Proveedor { get; set; }
         public string Estado { get; set; }
+        public Nullable<decimal> ITBIS { get; set; }
     }
 }

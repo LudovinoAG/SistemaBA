@@ -387,6 +387,44 @@
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VW_ListaGeneralClientesTableAdapter" GeneratorDataComponentClassName="VW_ListaGeneralClientesTableAdapter" Name="VW_ListaGeneralClientes" UserDataComponentName="VW_ListaGeneralClientesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BoteAgregadoLocal (Settings)" DbObjectName="BoteAgregados.dbo.VW_ListaGeneralClientes" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT * FROM VW_ListaGeneralClientes</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CODIGO" DataSetColumn="CODIGO" />
+              <Mapping SourceColumn="EMPRESA" DataSetColumn="EMPRESA" />
+              <Mapping SourceColumn="CONTACTO" DataSetColumn="CONTACTO" />
+              <Mapping SourceColumn="TELEFONOS" DataSetColumn="TELEFONOS" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VW_ListaGeneralProductosReportesTableAdapter" GeneratorDataComponentClassName="VW_ListaGeneralProductosReportesTableAdapter" Name="VW_ListaGeneralProductosReportes" UserDataComponentName="VW_ListaGeneralProductosReportesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BoteAgregadoLocal (Settings)" DbObjectName="BoteAgregados.dbo.VW_ListaGeneralProductosReportes" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT * FROM VW_ListaGeneralProductosReportes</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CODIGO" DataSetColumn="CODIGO" />
+              <Mapping SourceColumn="PRODUCTO" DataSetColumn="PRODUCTO" />
+              <Mapping SourceColumn="DESCRIPCIÓN" DataSetColumn="DESCRIPCIÓN" />
+              <Mapping SourceColumn="CATEGORIA" DataSetColumn="CATEGORIA" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -395,7 +433,7 @@
   <xs:element name="DSReportes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSReportes" msprop:Generator_UserDSName="DSReportes">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="SP_VerDetalleFactura" msprop:Generator_TableClassName="SP_VerDetalleFacturaDataTable" msprop:Generator_TableVarName="tableSP_VerDetalleFactura" msprop:Generator_TablePropName="SP_VerDetalleFactura" msprop:Generator_RowDeletingName="SP_VerDetalleFacturaRowDeleting" msprop:Generator_RowChangingName="SP_VerDetalleFacturaRowChanging" msprop:Generator_RowEvHandlerName="SP_VerDetalleFacturaRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerDetalleFacturaRowDeleted" msprop:Generator_UserTableName="SP_VerDetalleFactura" msprop:Generator_RowChangedName="SP_VerDetalleFacturaRowChanged" msprop:Generator_RowEvArgName="SP_VerDetalleFacturaRowChangeEvent" msprop:Generator_RowClassName="SP_VerDetalleFacturaRow">
+        <xs:element name="SP_VerDetalleFactura" msprop:Generator_TableClassName="SP_VerDetalleFacturaDataTable" msprop:Generator_TableVarName="tableSP_VerDetalleFactura" msprop:Generator_RowChangedName="SP_VerDetalleFacturaRowChanged" msprop:Generator_TablePropName="SP_VerDetalleFactura" msprop:Generator_RowDeletingName="SP_VerDetalleFacturaRowDeleting" msprop:Generator_RowChangingName="SP_VerDetalleFacturaRowChanging" msprop:Generator_RowEvHandlerName="SP_VerDetalleFacturaRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerDetalleFacturaRowDeleted" msprop:Generator_RowClassName="SP_VerDetalleFacturaRow" msprop:Generator_UserTableName="SP_VerDetalleFactura" msprop:Generator_RowEvArgName="SP_VerDetalleFacturaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_UserColumnName="Cantidad" type="xs:decimal" />
@@ -425,7 +463,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="VW_VerReportesFacturasPendientesCredito" msprop:Generator_TableClassName="VW_VerReportesFacturasPendientesCreditoDataTable" msprop:Generator_TableVarName="tableVW_VerReportesFacturasPendientesCredito" msprop:Generator_TablePropName="VW_VerReportesFacturasPendientesCredito" msprop:Generator_RowDeletingName="VW_VerReportesFacturasPendientesCreditoRowDeleting" msprop:Generator_RowChangingName="VW_VerReportesFacturasPendientesCreditoRowChanging" msprop:Generator_RowEvHandlerName="VW_VerReportesFacturasPendientesCreditoRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_VerReportesFacturasPendientesCreditoRowDeleted" msprop:Generator_UserTableName="VW_VerReportesFacturasPendientesCredito" msprop:Generator_RowChangedName="VW_VerReportesFacturasPendientesCreditoRowChanged" msprop:Generator_RowEvArgName="VW_VerReportesFacturasPendientesCreditoRowChangeEvent" msprop:Generator_RowClassName="VW_VerReportesFacturasPendientesCreditoRow">
+        <xs:element name="VW_VerReportesFacturasPendientesCredito" msprop:Generator_TableClassName="VW_VerReportesFacturasPendientesCreditoDataTable" msprop:Generator_TableVarName="tableVW_VerReportesFacturasPendientesCredito" msprop:Generator_RowChangedName="VW_VerReportesFacturasPendientesCreditoRowChanged" msprop:Generator_TablePropName="VW_VerReportesFacturasPendientesCredito" msprop:Generator_RowDeletingName="VW_VerReportesFacturasPendientesCreditoRowDeleting" msprop:Generator_RowChangingName="VW_VerReportesFacturasPendientesCreditoRowChanging" msprop:Generator_RowEvHandlerName="VW_VerReportesFacturasPendientesCreditoRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_VerReportesFacturasPendientesCreditoRowDeleted" msprop:Generator_RowClassName="VW_VerReportesFacturasPendientesCreditoRow" msprop:Generator_UserTableName="VW_VerReportesFacturasPendientesCredito" msprop:Generator_RowEvArgName="VW_VerReportesFacturasPendientesCreditoRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="NumFactura" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNumFactura" msprop:Generator_ColumnPropNameInRow="NumFactura" msprop:Generator_ColumnPropNameInTable="NumFacturaColumn" msprop:Generator_UserColumnName="NumFactura" minOccurs="0">
@@ -479,7 +517,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_VerCotizacion" msprop:Generator_TableClassName="SP_VerCotizacionDataTable" msprop:Generator_TableVarName="tableSP_VerCotizacion" msprop:Generator_TablePropName="SP_VerCotizacion" msprop:Generator_RowDeletingName="SP_VerCotizacionRowDeleting" msprop:Generator_RowChangingName="SP_VerCotizacionRowChanging" msprop:Generator_RowEvHandlerName="SP_VerCotizacionRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerCotizacionRowDeleted" msprop:Generator_UserTableName="SP_VerCotizacion" msprop:Generator_RowChangedName="SP_VerCotizacionRowChanged" msprop:Generator_RowEvArgName="SP_VerCotizacionRowChangeEvent" msprop:Generator_RowClassName="SP_VerCotizacionRow">
+        <xs:element name="SP_VerCotizacion" msprop:Generator_TableClassName="SP_VerCotizacionDataTable" msprop:Generator_TableVarName="tableSP_VerCotizacion" msprop:Generator_RowChangedName="SP_VerCotizacionRowChanged" msprop:Generator_TablePropName="SP_VerCotizacion" msprop:Generator_RowDeletingName="SP_VerCotizacionRowDeleting" msprop:Generator_RowChangingName="SP_VerCotizacionRowChanging" msprop:Generator_RowEvHandlerName="SP_VerCotizacionRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerCotizacionRowDeleted" msprop:Generator_RowClassName="SP_VerCotizacionRow" msprop:Generator_UserTableName="SP_VerCotizacion" msprop:Generator_RowEvArgName="SP_VerCotizacionRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_Cotizacion" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_Cotizacion" msprop:Generator_ColumnPropNameInRow="id_Cotizacion" msprop:Generator_ColumnPropNameInTable="id_CotizacionColumn" msprop:Generator_UserColumnName="id_Cotizacion" type="xs:int" />
@@ -562,7 +600,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_VerDetalleCotizacion" msprop:Generator_TableClassName="SP_VerDetalleCotizacionDataTable" msprop:Generator_TableVarName="tableSP_VerDetalleCotizacion" msprop:Generator_TablePropName="SP_VerDetalleCotizacion" msprop:Generator_RowDeletingName="SP_VerDetalleCotizacionRowDeleting" msprop:Generator_RowChangingName="SP_VerDetalleCotizacionRowChanging" msprop:Generator_RowEvHandlerName="SP_VerDetalleCotizacionRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerDetalleCotizacionRowDeleted" msprop:Generator_UserTableName="SP_VerDetalleCotizacion" msprop:Generator_RowChangedName="SP_VerDetalleCotizacionRowChanged" msprop:Generator_RowEvArgName="SP_VerDetalleCotizacionRowChangeEvent" msprop:Generator_RowClassName="SP_VerDetalleCotizacionRow">
+        <xs:element name="SP_VerDetalleCotizacion" msprop:Generator_TableClassName="SP_VerDetalleCotizacionDataTable" msprop:Generator_TableVarName="tableSP_VerDetalleCotizacion" msprop:Generator_RowChangedName="SP_VerDetalleCotizacionRowChanged" msprop:Generator_TablePropName="SP_VerDetalleCotizacion" msprop:Generator_RowDeletingName="SP_VerDetalleCotizacionRowDeleting" msprop:Generator_RowChangingName="SP_VerDetalleCotizacionRowChanging" msprop:Generator_RowEvHandlerName="SP_VerDetalleCotizacionRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerDetalleCotizacionRowDeleted" msprop:Generator_RowClassName="SP_VerDetalleCotizacionRow" msprop:Generator_UserTableName="SP_VerDetalleCotizacion" msprop:Generator_RowEvArgName="SP_VerDetalleCotizacionRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_UserColumnName="Cantidad" type="xs:decimal" minOccurs="0" />
@@ -592,7 +630,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_VerFacturaProformaDetalles" msprop:Generator_TableClassName="SP_VerFacturaProformaDetallesDataTable" msprop:Generator_TableVarName="tableSP_VerFacturaProformaDetalles" msprop:Generator_TablePropName="SP_VerFacturaProformaDetalles" msprop:Generator_RowDeletingName="SP_VerFacturaProformaDetallesRowDeleting" msprop:Generator_RowChangingName="SP_VerFacturaProformaDetallesRowChanging" msprop:Generator_RowEvHandlerName="SP_VerFacturaProformaDetallesRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerFacturaProformaDetallesRowDeleted" msprop:Generator_UserTableName="SP_VerFacturaProformaDetalles" msprop:Generator_RowChangedName="SP_VerFacturaProformaDetallesRowChanged" msprop:Generator_RowEvArgName="SP_VerFacturaProformaDetallesRowChangeEvent" msprop:Generator_RowClassName="SP_VerFacturaProformaDetallesRow">
+        <xs:element name="SP_VerFacturaProformaDetalles" msprop:Generator_TableClassName="SP_VerFacturaProformaDetallesDataTable" msprop:Generator_TableVarName="tableSP_VerFacturaProformaDetalles" msprop:Generator_RowChangedName="SP_VerFacturaProformaDetallesRowChanged" msprop:Generator_TablePropName="SP_VerFacturaProformaDetalles" msprop:Generator_RowDeletingName="SP_VerFacturaProformaDetallesRowDeleting" msprop:Generator_RowChangingName="SP_VerFacturaProformaDetallesRowChanging" msprop:Generator_RowEvHandlerName="SP_VerFacturaProformaDetallesRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerFacturaProformaDetallesRowDeleted" msprop:Generator_RowClassName="SP_VerFacturaProformaDetallesRow" msprop:Generator_UserTableName="SP_VerFacturaProformaDetalles" msprop:Generator_RowEvArgName="SP_VerFacturaProformaDetallesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_UserColumnName="Cantidad" type="xs:decimal" minOccurs="0" />
@@ -622,7 +660,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_VerFacturaID" msprop:Generator_TableClassName="SP_VerFacturaIDDataTable" msprop:Generator_TableVarName="tableSP_VerFacturaID" msprop:Generator_TablePropName="SP_VerFacturaID" msprop:Generator_RowDeletingName="SP_VerFacturaIDRowDeleting" msprop:Generator_RowChangingName="SP_VerFacturaIDRowChanging" msprop:Generator_RowEvHandlerName="SP_VerFacturaIDRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerFacturaIDRowDeleted" msprop:Generator_UserTableName="SP_VerFacturaID" msprop:Generator_RowChangedName="SP_VerFacturaIDRowChanged" msprop:Generator_RowEvArgName="SP_VerFacturaIDRowChangeEvent" msprop:Generator_RowClassName="SP_VerFacturaIDRow">
+        <xs:element name="SP_VerFacturaID" msprop:Generator_TableClassName="SP_VerFacturaIDDataTable" msprop:Generator_TableVarName="tableSP_VerFacturaID" msprop:Generator_RowChangedName="SP_VerFacturaIDRowChanged" msprop:Generator_TablePropName="SP_VerFacturaID" msprop:Generator_RowDeletingName="SP_VerFacturaIDRowDeleting" msprop:Generator_RowChangingName="SP_VerFacturaIDRowChanging" msprop:Generator_RowEvHandlerName="SP_VerFacturaIDRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerFacturaIDRowDeleted" msprop:Generator_RowClassName="SP_VerFacturaIDRow" msprop:Generator_UserTableName="SP_VerFacturaID" msprop:Generator_RowEvArgName="SP_VerFacturaIDRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:dateTime" minOccurs="0" />
@@ -729,7 +767,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_ViewQueryPreform" msprop:Generator_TableClassName="SP_ViewQueryPreformDataTable" msprop:Generator_TableVarName="tableSP_ViewQueryPreform" msprop:Generator_TablePropName="SP_ViewQueryPreform" msprop:Generator_RowDeletingName="SP_ViewQueryPreformRowDeleting" msprop:Generator_RowChangingName="SP_ViewQueryPreformRowChanging" msprop:Generator_RowEvHandlerName="SP_ViewQueryPreformRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_ViewQueryPreformRowDeleted" msprop:Generator_UserTableName="SP_ViewQueryPreform" msprop:Generator_RowChangedName="SP_ViewQueryPreformRowChanged" msprop:Generator_RowEvArgName="SP_ViewQueryPreformRowChangeEvent" msprop:Generator_RowClassName="SP_ViewQueryPreformRow">
+        <xs:element name="SP_ViewQueryPreform" msprop:Generator_TableClassName="SP_ViewQueryPreformDataTable" msprop:Generator_TableVarName="tableSP_ViewQueryPreform" msprop:Generator_RowChangedName="SP_ViewQueryPreformRowChanged" msprop:Generator_TablePropName="SP_ViewQueryPreform" msprop:Generator_RowDeletingName="SP_ViewQueryPreformRowDeleting" msprop:Generator_RowChangingName="SP_ViewQueryPreformRowChanging" msprop:Generator_RowEvHandlerName="SP_ViewQueryPreformRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_ViewQueryPreformRowDeleted" msprop:Generator_RowClassName="SP_ViewQueryPreformRow" msprop:Generator_UserTableName="SP_ViewQueryPreform" msprop:Generator_RowEvArgName="SP_ViewQueryPreformRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="NumPedido" msprop:Generator_ColumnVarNameInTable="columnNumPedido" msprop:Generator_ColumnPropNameInRow="NumPedido" msprop:Generator_ColumnPropNameInTable="NumPedidoColumn" msprop:Generator_UserColumnName="NumPedido" type="xs:int" />
@@ -836,7 +874,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_VerConducesPedidos" msprop:Generator_TableClassName="SP_VerConducesPedidosDataTable" msprop:Generator_TableVarName="tableSP_VerConducesPedidos" msprop:Generator_TablePropName="SP_VerConducesPedidos" msprop:Generator_RowDeletingName="SP_VerConducesPedidosRowDeleting" msprop:Generator_RowChangingName="SP_VerConducesPedidosRowChanging" msprop:Generator_RowEvHandlerName="SP_VerConducesPedidosRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerConducesPedidosRowDeleted" msprop:Generator_UserTableName="SP_VerConducesPedidos" msprop:Generator_RowChangedName="SP_VerConducesPedidosRowChanged" msprop:Generator_RowEvArgName="SP_VerConducesPedidosRowChangeEvent" msprop:Generator_RowClassName="SP_VerConducesPedidosRow">
+        <xs:element name="SP_VerConducesPedidos" msprop:Generator_TableClassName="SP_VerConducesPedidosDataTable" msprop:Generator_TableVarName="tableSP_VerConducesPedidos" msprop:Generator_RowChangedName="SP_VerConducesPedidosRowChanged" msprop:Generator_TablePropName="SP_VerConducesPedidos" msprop:Generator_RowDeletingName="SP_VerConducesPedidosRowDeleting" msprop:Generator_RowChangingName="SP_VerConducesPedidosRowChanging" msprop:Generator_RowEvHandlerName="SP_VerConducesPedidosRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerConducesPedidosRowDeleted" msprop:Generator_RowClassName="SP_VerConducesPedidosRow" msprop:Generator_UserTableName="SP_VerConducesPedidos" msprop:Generator_RowEvArgName="SP_VerConducesPedidosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Chofer" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnChofer" msprop:Generator_ColumnPropNameInRow="Chofer" msprop:Generator_ColumnPropNameInTable="ChoferColumn" msprop:Generator_UserColumnName="Chofer" minOccurs="0">
@@ -873,7 +911,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_VerConducesProforma" msprop:Generator_TableClassName="SP_VerConducesProformaDataTable" msprop:Generator_TableVarName="tableSP_VerConducesProforma" msprop:Generator_TablePropName="SP_VerConducesProforma" msprop:Generator_RowDeletingName="SP_VerConducesProformaRowDeleting" msprop:Generator_RowChangingName="SP_VerConducesProformaRowChanging" msprop:Generator_RowEvHandlerName="SP_VerConducesProformaRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerConducesProformaRowDeleted" msprop:Generator_UserTableName="SP_VerConducesProforma" msprop:Generator_RowChangedName="SP_VerConducesProformaRowChanged" msprop:Generator_RowEvArgName="SP_VerConducesProformaRowChangeEvent" msprop:Generator_RowClassName="SP_VerConducesProformaRow">
+        <xs:element name="SP_VerConducesProforma" msprop:Generator_TableClassName="SP_VerConducesProformaDataTable" msprop:Generator_TableVarName="tableSP_VerConducesProforma" msprop:Generator_RowChangedName="SP_VerConducesProformaRowChanged" msprop:Generator_TablePropName="SP_VerConducesProforma" msprop:Generator_RowDeletingName="SP_VerConducesProformaRowDeleting" msprop:Generator_RowChangingName="SP_VerConducesProformaRowChanging" msprop:Generator_RowEvHandlerName="SP_VerConducesProformaRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerConducesProformaRowDeleted" msprop:Generator_RowClassName="SP_VerConducesProformaRow" msprop:Generator_UserTableName="SP_VerConducesProforma" msprop:Generator_RowEvArgName="SP_VerConducesProformaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Chofer" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnChofer" msprop:Generator_ColumnPropNameInRow="Chofer" msprop:Generator_ColumnPropNameInTable="ChoferColumn" msprop:Generator_UserColumnName="Chofer" minOccurs="0">
@@ -904,7 +942,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_VisualizarRedaccionCliente" msprop:Generator_TableClassName="SP_VisualizarRedaccionClienteDataTable" msprop:Generator_TableVarName="tableSP_VisualizarRedaccionCliente" msprop:Generator_TablePropName="SP_VisualizarRedaccionCliente" msprop:Generator_RowDeletingName="SP_VisualizarRedaccionClienteRowDeleting" msprop:Generator_RowChangingName="SP_VisualizarRedaccionClienteRowChanging" msprop:Generator_RowEvHandlerName="SP_VisualizarRedaccionClienteRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VisualizarRedaccionClienteRowDeleted" msprop:Generator_UserTableName="SP_VisualizarRedaccionCliente" msprop:Generator_RowChangedName="SP_VisualizarRedaccionClienteRowChanged" msprop:Generator_RowEvArgName="SP_VisualizarRedaccionClienteRowChangeEvent" msprop:Generator_RowClassName="SP_VisualizarRedaccionClienteRow">
+        <xs:element name="SP_VisualizarRedaccionCliente" msprop:Generator_TableClassName="SP_VisualizarRedaccionClienteDataTable" msprop:Generator_TableVarName="tableSP_VisualizarRedaccionCliente" msprop:Generator_RowChangedName="SP_VisualizarRedaccionClienteRowChanged" msprop:Generator_TablePropName="SP_VisualizarRedaccionCliente" msprop:Generator_RowDeletingName="SP_VisualizarRedaccionClienteRowDeleting" msprop:Generator_RowChangingName="SP_VisualizarRedaccionClienteRowChanging" msprop:Generator_RowEvHandlerName="SP_VisualizarRedaccionClienteRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VisualizarRedaccionClienteRowDeleted" msprop:Generator_RowClassName="SP_VisualizarRedaccionClienteRow" msprop:Generator_UserTableName="SP_VisualizarRedaccionCliente" msprop:Generator_RowEvArgName="SP_VisualizarRedaccionClienteRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Empresa" msprop:Generator_ColumnVarNameInTable="columnEmpresa" msprop:Generator_ColumnPropNameInRow="Empresa" msprop:Generator_ColumnPropNameInTable="EmpresaColumn" msprop:Generator_UserColumnName="Empresa" minOccurs="0">
@@ -987,7 +1025,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_VerDetallesConduces" msprop:Generator_TableClassName="SP_VerDetallesConducesDataTable" msprop:Generator_TableVarName="tableSP_VerDetallesConduces" msprop:Generator_RowChangedName="SP_VerDetallesConducesRowChanged" msprop:Generator_TablePropName="SP_VerDetallesConduces" msprop:Generator_RowDeletingName="SP_VerDetallesConducesRowDeleting" msprop:Generator_RowChangingName="SP_VerDetallesConducesRowChanging" msprop:Generator_RowEvHandlerName="SP_VerDetallesConducesRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerDetallesConducesRowDeleted" msprop:Generator_RowClassName="SP_VerDetallesConducesRow" msprop:Generator_UserTableName="SP_VerDetallesConduces" msprop:Generator_RowEvArgName="SP_VerDetallesConducesRowChangeEvent">
+        <xs:element name="SP_VerDetallesConduces" msprop:Generator_TableClassName="SP_VerDetallesConducesDataTable" msprop:Generator_TableVarName="tableSP_VerDetallesConduces" msprop:Generator_TablePropName="SP_VerDetallesConduces" msprop:Generator_RowDeletingName="SP_VerDetallesConducesRowDeleting" msprop:Generator_RowChangingName="SP_VerDetallesConducesRowChanging" msprop:Generator_RowEvHandlerName="SP_VerDetallesConducesRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerDetallesConducesRowDeleted" msprop:Generator_UserTableName="SP_VerDetallesConduces" msprop:Generator_RowChangedName="SP_VerDetallesConducesRowChanged" msprop:Generator_RowEvArgName="SP_VerDetallesConducesRowChangeEvent" msprop:Generator_RowClassName="SP_VerDetallesConducesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_Factura" msprop:Generator_ColumnVarNameInTable="columnid_Factura" msprop:Generator_ColumnPropNameInRow="id_Factura" msprop:Generator_ColumnPropNameInTable="id_FacturaColumn" msprop:Generator_UserColumnName="id_Factura" type="xs:int" minOccurs="0" />
@@ -1018,7 +1056,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_VerDetalleRedaccion" msprop:Generator_TableClassName="SP_VerDetalleRedaccionDataTable" msprop:Generator_TableVarName="tableSP_VerDetalleRedaccion" msprop:Generator_RowChangedName="SP_VerDetalleRedaccionRowChanged" msprop:Generator_TablePropName="SP_VerDetalleRedaccion" msprop:Generator_RowDeletingName="SP_VerDetalleRedaccionRowDeleting" msprop:Generator_RowChangingName="SP_VerDetalleRedaccionRowChanging" msprop:Generator_RowEvHandlerName="SP_VerDetalleRedaccionRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerDetalleRedaccionRowDeleted" msprop:Generator_RowClassName="SP_VerDetalleRedaccionRow" msprop:Generator_UserTableName="SP_VerDetalleRedaccion" msprop:Generator_RowEvArgName="SP_VerDetalleRedaccionRowChangeEvent">
+        <xs:element name="SP_VerDetalleRedaccion" msprop:Generator_TableClassName="SP_VerDetalleRedaccionDataTable" msprop:Generator_TableVarName="tableSP_VerDetalleRedaccion" msprop:Generator_TablePropName="SP_VerDetalleRedaccion" msprop:Generator_RowDeletingName="SP_VerDetalleRedaccionRowDeleting" msprop:Generator_RowChangingName="SP_VerDetalleRedaccionRowChanging" msprop:Generator_RowEvHandlerName="SP_VerDetalleRedaccionRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_VerDetalleRedaccionRowDeleted" msprop:Generator_UserTableName="SP_VerDetalleRedaccion" msprop:Generator_RowChangedName="SP_VerDetalleRedaccionRowChanged" msprop:Generator_RowEvArgName="SP_VerDetalleRedaccionRowChangeEvent" msprop:Generator_RowClassName="SP_VerDetalleRedaccionRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Placa" msprop:Generator_ColumnVarNameInTable="columnPlaca" msprop:Generator_ColumnPropNameInRow="Placa" msprop:Generator_ColumnPropNameInTable="PlacaColumn" msprop:Generator_UserColumnName="Placa">
@@ -1068,6 +1106,74 @@
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="VW_ListaGeneralClientes" msprop:Generator_TableClassName="VW_ListaGeneralClientesDataTable" msprop:Generator_TableVarName="tableVW_ListaGeneralClientes" msprop:Generator_TablePropName="VW_ListaGeneralClientes" msprop:Generator_RowDeletingName="VW_ListaGeneralClientesRowDeleting" msprop:Generator_RowChangingName="VW_ListaGeneralClientesRowChanging" msprop:Generator_RowEvHandlerName="VW_ListaGeneralClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_ListaGeneralClientesRowDeleted" msprop:Generator_UserTableName="VW_ListaGeneralClientes" msprop:Generator_RowChangedName="VW_ListaGeneralClientesRowChanged" msprop:Generator_RowEvArgName="VW_ListaGeneralClientesRowChangeEvent" msprop:Generator_RowClassName="VW_ListaGeneralClientesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CODIGO" msprop:Generator_ColumnVarNameInTable="columnCODIGO" msprop:Generator_ColumnPropNameInRow="CODIGO" msprop:Generator_ColumnPropNameInTable="CODIGOColumn" msprop:Generator_UserColumnName="CODIGO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="7" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EMPRESA" msprop:Generator_ColumnVarNameInTable="columnEMPRESA" msprop:Generator_ColumnPropNameInRow="EMPRESA" msprop:Generator_ColumnPropNameInTable="EMPRESAColumn" msprop:Generator_UserColumnName="EMPRESA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CONTACTO" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCONTACTO" msprop:Generator_ColumnPropNameInRow="CONTACTO" msprop:Generator_ColumnPropNameInTable="CONTACTOColumn" msprop:Generator_UserColumnName="CONTACTO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="31" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TELEFONOS" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTELEFONOS" msprop:Generator_ColumnPropNameInRow="TELEFONOS" msprop:Generator_ColumnPropNameInTable="TELEFONOSColumn" msprop:Generator_UserColumnName="TELEFONOS" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="27" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="VW_ListaGeneralProductosReportes" msprop:Generator_TableClassName="VW_ListaGeneralProductosReportesDataTable" msprop:Generator_TableVarName="tableVW_ListaGeneralProductosReportes" msprop:Generator_TablePropName="VW_ListaGeneralProductosReportes" msprop:Generator_RowDeletingName="VW_ListaGeneralProductosReportesRowDeleting" msprop:Generator_RowChangingName="VW_ListaGeneralProductosReportesRowChanging" msprop:Generator_RowEvHandlerName="VW_ListaGeneralProductosReportesRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_ListaGeneralProductosReportesRowDeleted" msprop:Generator_UserTableName="VW_ListaGeneralProductosReportes" msprop:Generator_RowChangedName="VW_ListaGeneralProductosReportesRowChanged" msprop:Generator_RowEvArgName="VW_ListaGeneralProductosReportesRowChangeEvent" msprop:Generator_RowClassName="VW_ListaGeneralProductosReportesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CODIGO" msprop:Generator_ColumnVarNameInTable="columnCODIGO" msprop:Generator_ColumnPropNameInRow="CODIGO" msprop:Generator_ColumnPropNameInTable="CODIGOColumn" msprop:Generator_UserColumnName="CODIGO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="7" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PRODUCTO" msprop:Generator_ColumnVarNameInTable="columnPRODUCTO" msprop:Generator_ColumnPropNameInRow="PRODUCTO" msprop:Generator_ColumnPropNameInTable="PRODUCTOColumn" msprop:Generator_UserColumnName="PRODUCTO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DESCRIPCIÓN" msprop:Generator_ColumnVarNameInTable="columnDESCRIPCIÓN" msprop:Generator_ColumnPropNameInRow="DESCRIPCIÓN" msprop:Generator_ColumnPropNameInTable="DESCRIPCIÓNColumn" msprop:Generator_UserColumnName="DESCRIPCIÓN">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CATEGORIA" msprop:Generator_ColumnVarNameInTable="columnCATEGORIA" msprop:Generator_ColumnPropNameInRow="CATEGORIA" msprop:Generator_ColumnPropNameInTable="CATEGORIAColumn" msprop:Generator_UserColumnName="CATEGORIA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

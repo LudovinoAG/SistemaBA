@@ -27,7 +27,7 @@
     <MinimumRequiredVersion>1.0.0.1</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>28</ApplicationRevision>
+    <ApplicationRevision>32</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -115,6 +115,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CRVCotizacion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CRVListadoClientes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRVListadoClientes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CRVListadoProductos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRVListadoProductos.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CRVProforma.cs">
@@ -339,7 +351,7 @@
     <Compile Include="Modelos\RedaccionesModel.cs" />
     <Compile Include="Modelos\ReportesModel.cs" />
     <Compile Include="Modelos\SP_BuscarClienteCodigo_Result.cs">
-      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\SP_BuscarClienteFacturar_Result.cs">
       <DependentUpon>BAFacturacionModel.tt</DependentUpon>
@@ -388,7 +400,7 @@
     </Compile>
     <Compile Include="Modelos\VehiculosModel.cs" />
     <Compile Include="Modelos\VW_EmpleadosFactura.cs">
-      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ListaCategoriaLicencia.cs">
       <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
@@ -433,13 +445,13 @@
       <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ListarMedidas.cs">
-      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ListarMetodos.cs">
       <DependentUpon>BAFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ListarVehiculos.cs">
-      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ListaSeguroMedico.cs">
       <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
@@ -460,7 +472,7 @@
       <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ProductosFactura.cs">
-      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_VerComprobantesFiscales.cs">
       <DependentUpon>BAConprobantesFiscalesModel.tt</DependentUpon>
@@ -546,6 +558,18 @@
     </Compile>
     <Compile Include="Presentacion\frmDialogoVencimientoFactura.Designer.cs">
       <DependentUpon>frmDialogoVencimientoFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmListadoGeneralClientescs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmListadoGeneralClientescs.Designer.cs">
+      <DependentUpon>frmListadoGeneralClientescs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmListadoProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmListadoProductos.Designer.cs">
+      <DependentUpon>frmListadoProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\frmMantenimientoCategorias.cs">
       <SubType>Form</SubType>
@@ -719,6 +743,14 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CRVCotizacion.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="CRVListadoClientes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRVListadoClientes.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRVListadoProductos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRVListadoProductos.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CRVProforma.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CRVProforma.cs</LastGenOutput>
@@ -757,6 +789,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmDialogoVencimientoFactura.resx">
       <DependentUpon>frmDialogoVencimientoFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmListadoGeneralClientescs.resx">
+      <DependentUpon>frmListadoGeneralClientescs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmListadoProductos.resx">
+      <DependentUpon>frmListadoProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmMantenimientoCategorias.resx">
       <DependentUpon>frmMantenimientoCategorias.cs</DependentUpon>

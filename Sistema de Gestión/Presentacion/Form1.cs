@@ -258,5 +258,37 @@ namespace Sistema_de_Gestión
                 frmVerProforma.WindowState = FormWindowState.Normal;
             }
         }
+
+        private async void listadoGeneralToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!FC.ValidarVentanaAbierta("frmListadoGeneralClientes"))
+            {
+                //Abrir formulario de Configuraciones
+                Mostrar();
+                Task otask = new Task(Cargando);
+                otask.Start();
+                frmListadoGeneralClientes frmReportes = new frmListadoGeneralClientes();
+                frmReportes.MdiParent = this;
+                frmReportes.Show();
+                await otask;
+                Cerrar();
+            }
+        }
+
+        private async void listadoGeneralToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (!FC.ValidarVentanaAbierta("frmListadoProductos"))
+            {
+                //Abrir formulario de Configuraciones
+                Mostrar();
+                Task otask = new Task(Cargando);
+                otask.Start();
+                frmListadoProductos frmReportes = new frmListadoProductos();
+                frmReportes.MdiParent = this;
+                frmReportes.Show();
+                await otask;
+                Cerrar();
+            }
+        }
     }
 }

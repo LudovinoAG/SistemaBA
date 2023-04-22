@@ -114,7 +114,7 @@ namespace Sistema_de_Gestión.Presentacion
 
                     //Insertar los productos
                     BAProductos.InsertarProductos(cboCategoria.SelectedIndex, cboProveedor.SelectedIndex,
-                       txtProducto.Text, txtDescripcion.Text, decimal.Parse(txtPrecio.Text), cboEstatus.SelectedIndex);
+                       txtProducto.Text, txtDescripcion.Text, decimal.Parse(txtPrecio.Text), cboEstatus.SelectedIndex, decimal.Parse(txtITBISProducto.Text));
 
                     //Limpiar y resetear los campos de formulario
                     BAProductos.LimpiarCampos(Controls);
@@ -143,10 +143,12 @@ namespace Sistema_de_Gestión.Presentacion
             txtProducto.Text = dgvProductos[0].Cells["Producto"].Value.ToString();
             txtDescripcion.Text = dgvProductos[0].Cells["Descripción"].Value.ToString();
             txtPrecio.Text = dgvProductos[0].Cells["Precio"].Value.ToString();
+            txtITBISProducto.Text = dgvProductos[0].Cells["ITBIS"].Value.ToString();
 
             cboCategoria.SelectedItem = dgvProductos[0].Cells["Categoria"].Value.ToString();
             cboProveedor.SelectedItem = dgvProductos[0].Cells["Proveedor"].Value.ToString();
             cboEstatus.SelectedItem = dgvProductos[0].Cells["Estado"].Value.ToString();
+
 
             LblID.Text = dgvProductos[0].Cells["ID"].Value.ToString();
         }
@@ -166,7 +168,7 @@ namespace Sistema_de_Gestión.Presentacion
                 {
                     BAProductos.ActualizarProducto(int.Parse(LblID.Text), txtProducto.Text, txtDescripcion.Text,
                         decimal.Parse(txtPrecio.Text), cboCategoria.SelectedIndex, cboProveedor.SelectedIndex,
-                        cboEstatus.SelectedIndex);
+                        cboEstatus.SelectedIndex,decimal.Parse(txtITBISProducto.Text));
                     LoadProductos(cboFiltrar.Text, txtBuscar.Text);
 
                     BAProductos.LimpiarCampos(Controls);

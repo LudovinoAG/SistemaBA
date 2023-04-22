@@ -94,7 +94,7 @@ namespace Sistema_de_Gestión.Modelos
 
                     //Cargar el dataGridView
                     dgvEmpleados.DataSource = null;
-                    dgvEmpleados.DataSource = lstNuevoListado.OrderBy(t=> t.ID).ToList();
+                    dgvEmpleados.DataSource = lstNuevoListado.OrderBy(t=> t.Primer_Nombre).ToList();
 
                     dgvEmpleados.Columns["Foto"].Visible = false;
 
