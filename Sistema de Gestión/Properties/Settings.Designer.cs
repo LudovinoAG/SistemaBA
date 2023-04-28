@@ -48,8 +48,8 @@ namespace Sistema_de_Gestión.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LG01\\SQLEXPRESS;Initial Catalog=BoteAgregados;Persist Security Info=T" +
-            "rue;User ID=Admin;Password=Botes2023")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SERVERBA,1434;Initial Catalog=BoteAgregados;Persist Security Info=Tru" +
+            "e;User ID=Admin;Password=Botes2023")]
         public string BoteAgregadoLocal {
             get {
                 return ((string)(this["BoteAgregadoLocal"]));

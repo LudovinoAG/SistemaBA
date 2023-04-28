@@ -65,6 +65,7 @@ namespace Sistema_de_Gestión.Modelos
             dgvFacturar.Rows[NuevoRegistro].Cells["IDMedida"].Value = IDMedida;
             dgvFacturar.Rows[NuevoRegistro].Cells["Producto"].Value = producto;
             dgvFacturar.Rows[NuevoRegistro].Cells["ITBISProducto"].Value = ITBISProducto;
+            dgvFacturar.Rows[NuevoRegistro].Cells["CNum"].Value = NuevoRegistro;
 
             if (IDMedida==2)
             {
@@ -268,7 +269,7 @@ namespace Sistema_de_Gestión.Modelos
                                         PrecioPedido, SubTotalFilas, PedidoDescripcion, RegConduces, ITBISProducto);
 
                                     int IDEmpleado = (int)dgvChoferes.Rows[c].Cells["Chofer"].Value;
-                                    int NumConduce = (int)dgvChoferes.Rows[c].Cells["Conduce"].Value;
+                                    int NumConduce = (int)dgvListaChoferes.Rows[c].Cells["clConduce"].Value;
                                     IDProducto = (int)dgvChoferes.Rows[c].Cells["id_Producto"].Value;
                                     int IDVehiculo = (int)dgvChoferes.Rows[c].Cells["Vehiculo"].Value;
                                     IDMedida = (int)dgvChoferes.Rows[c].Cells["id_Medida"].Value;
@@ -536,7 +537,7 @@ namespace Sistema_de_Gestión.Modelos
                 this.Costo = costo;
                 this.SubTotal = 0;
                 this.SubTotal = this.Costo * this.Cantidad;
-                this.ITBISPro = this.Costo * 0.18m;
+                this.ITBISPro = this.SubTotal * 0.18m;
 
                 return this.SubTotal;
 

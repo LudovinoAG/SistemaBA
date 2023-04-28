@@ -79,7 +79,7 @@ namespace Sistema_de_Gestión.Presentacion
 
             cboProductos.DisplayMember = "Producto";
             cboProductos.ValueMember = "ID";
-            cboProductos.DataSource = Resultado;
+            cboProductos.DataSource = Resultado.ToList();
 
         }
 

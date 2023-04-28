@@ -49,7 +49,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ProductosFactura' no ti
             <PropertyRef Name="Descripcion" />
             <PropertyRef Name="Precio" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Codigo" Type="varchar" MaxLength="7" Nullable="false" />
           <Property Name="Producto" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="60" Nullable="false" />

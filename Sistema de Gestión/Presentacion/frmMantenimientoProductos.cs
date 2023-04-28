@@ -25,10 +25,27 @@ namespace Sistema_de_Gestión.Presentacion
             LoadProductos("","");
             BAProductos.ListarEstatusProductos(cboEstatus);
             BAProductos.LoadFiltros(cboFiltrar);
-            BACategorias.ListarCategorias(cboCategoria);
-            BAProveedores.CargarProveedores(cboProveedor);
+            ListarCategoriasProductos();
+            ListarProveedoresProductos();
             BAProductos.Modo = "Insertando";
         }
+
+
+        private void ListarCategoriasProductos()
+        {
+            cboCategoria.DisplayMember = "Nom_Categoria";
+            cboCategoria.ValueMember = "id_CategoriaProducto";
+            cboCategoria.DataSource = BACategorias.ListarCategorias().ToList();
+
+        }
+
+        private void ListarProveedoresProductos()
+        {
+            cboCategoria.DisplayMember = "Nom_Proveedor";
+            cboCategoria.ValueMember = "id_Proveedor";
+            cboCategoria.DataSource = BAProveedores.CargarProveedores().ToList();
+        }
+
 
         private void frmMantenimientoProductos_Load(object sender, EventArgs e)
         {
@@ -113,7 +130,7 @@ namespace Sistema_de_Gestión.Presentacion
                 {
 
                     //Insertar los productos
-                    BAProductos.InsertarProductos(cboCategoria.SelectedIndex, cboProveedor.SelectedIndex,
+                    BAProductos.InsertarProductos((int)cboCategoria.SelectedValue, (int)cboProveedor.SelectedValue,
                        txtProducto.Text, txtDescripcion.Text, decimal.Parse(txtPrecio.Text), cboEstatus.SelectedIndex, decimal.Parse(txtITBISProducto.Text));
 
                     //Limpiar y resetear los campos de formulario

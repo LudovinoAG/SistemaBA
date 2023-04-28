@@ -29,11 +29,11 @@ namespace Sistema_de_Gestión.Presentacion
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPedidos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtNumPedido = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtFechaPedido = new System.Windows.Forms.TextBox();
@@ -167,6 +167,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Accion = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ITBISProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.UdCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -518,14 +519,14 @@ namespace Sistema_de_Gestión.Presentacion
             this.dgvFactura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFactura.BackgroundColor = System.Drawing.Color.White;
             this.dgvFactura.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFactura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cantidad,
@@ -537,22 +538,23 @@ namespace Sistema_de_Gestión.Presentacion
             this.Costo,
             this.SubTotal,
             this.Accion,
-            this.ITBISProducto});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Khaki;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFactura.DefaultCellStyle = dataGridViewCellStyle11;
+            this.ITBISProducto,
+            this.CNum});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFactura.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvFactura.Location = new System.Drawing.Point(76, 304);
             this.dgvFactura.MultiSelect = false;
             this.dgvFactura.Name = "dgvFactura";
             this.dgvFactura.ReadOnly = true;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            this.dgvFactura.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            this.dgvFactura.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFactura.Size = new System.Drawing.Size(1288, 213);
             this.dgvFactura.TabIndex = 93;
@@ -1409,7 +1411,7 @@ namespace Sistema_de_Gestión.Presentacion
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(355, 58);
+            this.label34.Location = new System.Drawing.Point(370, 59);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(86, 13);
             this.label34.TabIndex = 141;
@@ -1421,7 +1423,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.dtpFechaConduceAlquiler.CustomFormat = "dd/MM/yyyy";
             this.dtpFechaConduceAlquiler.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaConduceAlquiler.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaConduceAlquiler.Location = new System.Drawing.Point(358, 73);
+            this.dtpFechaConduceAlquiler.Location = new System.Drawing.Point(373, 74);
             this.dtpFechaConduceAlquiler.Name = "dtpFechaConduceAlquiler";
             this.dtpFechaConduceAlquiler.Size = new System.Drawing.Size(97, 21);
             this.dtpFechaConduceAlquiler.TabIndex = 140;
@@ -1431,7 +1433,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(123, 78);
+            this.label32.Location = new System.Drawing.Point(117, 78);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(51, 13);
             this.label32.TabIndex = 139;
@@ -1440,17 +1442,18 @@ namespace Sistema_de_Gestión.Presentacion
             // cboVehiculoAlquiler
             // 
             this.cboVehiculoAlquiler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboVehiculoAlquiler.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboVehiculoAlquiler.FormattingEnabled = true;
-            this.cboVehiculoAlquiler.Location = new System.Drawing.Point(176, 75);
+            this.cboVehiculoAlquiler.Location = new System.Drawing.Point(168, 75);
             this.cboVehiculoAlquiler.Name = "cboVehiculoAlquiler";
-            this.cboVehiculoAlquiler.Size = new System.Drawing.Size(169, 21);
+            this.cboVehiculoAlquiler.Size = new System.Drawing.Size(198, 22);
             this.cboVehiculoAlquiler.TabIndex = 138;
             this.cboVehiculoAlquiler.Tag = "Vehiculo";
             // 
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(430, 9);
+            this.label31.Location = new System.Drawing.Point(524, 9);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(32, 13);
             this.label31.TabIndex = 137;
@@ -1458,7 +1461,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // txtOrometroFinal
             // 
-            this.txtOrometroFinal.Location = new System.Drawing.Point(463, 6);
+            this.txtOrometroFinal.Location = new System.Drawing.Point(557, 6);
             this.txtOrometroFinal.Name = "txtOrometroFinal";
             this.txtOrometroFinal.Size = new System.Drawing.Size(66, 20);
             this.txtOrometroFinal.TabIndex = 136;
@@ -1468,7 +1471,7 @@ namespace Sistema_de_Gestión.Presentacion
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(277, 8);
+            this.label29.Location = new System.Drawing.Point(371, 8);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(81, 13);
             this.label29.TabIndex = 135;
@@ -1476,7 +1479,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // txtOrometroInicio
             // 
-            this.txtOrometroInicio.Location = new System.Drawing.Point(359, 6);
+            this.txtOrometroInicio.Location = new System.Drawing.Point(453, 6);
             this.txtOrometroInicio.Name = "txtOrometroInicio";
             this.txtOrometroInicio.Size = new System.Drawing.Size(66, 20);
             this.txtOrometroInicio.TabIndex = 134;
@@ -1509,7 +1512,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // txtConduceAlquiler
             // 
-            this.txtConduceAlquiler.Location = new System.Drawing.Point(176, 5);
+            this.txtConduceAlquiler.Location = new System.Drawing.Point(168, 5);
             this.txtConduceAlquiler.MaxLength = 5;
             this.txtConduceAlquiler.Name = "txtConduceAlquiler";
             this.txtConduceAlquiler.Size = new System.Drawing.Size(96, 20);
@@ -1522,7 +1525,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold);
             this.label15.ForeColor = System.Drawing.Color.DarkRed;
-            this.label15.Location = new System.Drawing.Point(109, 8);
+            this.label15.Location = new System.Drawing.Point(103, 8);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(65, 16);
             this.label15.TabIndex = 130;
@@ -1530,7 +1533,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // txtFlotaAlquiler
             // 
-            this.txtFlotaAlquiler.Location = new System.Drawing.Point(176, 52);
+            this.txtFlotaAlquiler.Location = new System.Drawing.Point(168, 52);
             this.txtFlotaAlquiler.MaxLength = 15;
             this.txtFlotaAlquiler.Name = "txtFlotaAlquiler";
             this.txtFlotaAlquiler.ReadOnly = true;
@@ -1541,7 +1544,7 @@ namespace Sistema_de_Gestión.Presentacion
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(120, 55);
+            this.label25.Location = new System.Drawing.Point(114, 55);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(54, 13);
             this.label25.TabIndex = 128;
@@ -1551,7 +1554,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(119, 31);
+            this.label30.Location = new System.Drawing.Point(113, 31);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(53, 16);
             this.label30.TabIndex = 126;
@@ -1560,10 +1563,11 @@ namespace Sistema_de_Gestión.Presentacion
             // cboChoferAlquiler
             // 
             this.cboChoferAlquiler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboChoferAlquiler.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboChoferAlquiler.FormattingEnabled = true;
-            this.cboChoferAlquiler.Location = new System.Drawing.Point(176, 28);
+            this.cboChoferAlquiler.Location = new System.Drawing.Point(168, 28);
             this.cboChoferAlquiler.Name = "cboChoferAlquiler";
-            this.cboChoferAlquiler.Size = new System.Drawing.Size(169, 21);
+            this.cboChoferAlquiler.Size = new System.Drawing.Size(198, 22);
             this.cboChoferAlquiler.TabIndex = 124;
             this.cboChoferAlquiler.Tag = "Chofer";
             this.cboChoferAlquiler.SelectedIndexChanged += new System.EventHandler(this.cboChoferAlquiler_SelectedIndexChanged);
@@ -1673,10 +1677,10 @@ namespace Sistema_de_Gestión.Presentacion
             // Accion
             // 
             this.Accion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.DarkRed;
-            this.Accion.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.DarkRed;
+            this.Accion.DefaultCellStyle = dataGridViewCellStyle2;
             this.Accion.HeaderText = "Fila";
             this.Accion.MinimumWidth = 100;
             this.Accion.Name = "Accion";
@@ -1692,6 +1696,14 @@ namespace Sistema_de_Gestión.Presentacion
             this.ITBISProducto.Name = "ITBISProducto";
             this.ITBISProducto.ReadOnly = true;
             this.ITBISProducto.Visible = false;
+            // 
+            // CNum
+            // 
+            this.CNum.HeaderText = "Num";
+            this.CNum.MaxInputLength = 100;
+            this.CNum.Name = "CNum";
+            this.CNum.ReadOnly = true;
+            this.CNum.Visible = false;
             // 
             // frmPedidos
             // 
@@ -1913,5 +1925,6 @@ namespace Sistema_de_Gestión.Presentacion
         private System.Windows.Forms.DataGridViewTextBoxColumn SubTotal;
         private System.Windows.Forms.DataGridViewButtonColumn Accion;
         private System.Windows.Forms.DataGridViewTextBoxColumn ITBISProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CNum;
     }
 }
