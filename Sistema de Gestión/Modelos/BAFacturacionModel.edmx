@@ -73,6 +73,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ProductosFactura' no ti
           <Property Name="Producto" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="Precio" Type="money" Nullable="false" />
+          <Property Name="ITBIS" Type="money" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -129,6 +130,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           <Parameter Name="Placa" Type="varchar" Mode="In" />
           <Parameter Name="CantidadViajes" Type="int" Mode="In" />
           <Parameter Name="FechaConduce" Type="date" Mode="In" />
+          <Parameter Name="Capacidad" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_InsertarDetallesFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NombreProducto" Type="varchar" Mode="In" />
@@ -217,7 +219,8 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
     [VW_ProductosFactura].[Codigo] AS [Codigo], 
     [VW_ProductosFactura].[Producto] AS [Producto], 
     [VW_ProductosFactura].[Descripcion] AS [Descripcion], 
-    [VW_ProductosFactura].[Precio] AS [Precio]
+    [VW_ProductosFactura].[Precio] AS [Precio], 
+    [VW_ProductosFactura].[ITBIS] AS [ITBIS]
     FROM [dbo].[VW_ProductosFactura] AS [VW_ProductosFactura]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="VW_VerUltimoNumeroFactura" EntityType="Self.VW_VerUltimoNumeroFactura" store:Type="Views" store:Schema="dbo">
@@ -252,6 +255,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
             <Parameter Name="Placa" Mode="In" Type="String" />
             <Parameter Name="CantidadViajes" Mode="In" Type="Int32" />
             <Parameter Name="FechaConduce" Mode="In" Type="DateTime" />
+            <Parameter Name="Capacidad" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_VerDetallesConduces" ReturnType="Collection(BAFacturacionModel.SP_VerDetallesConduces_Result)">
           <Parameter Name="NumFacturaConduce" Mode="In" Type="Int32" />
@@ -276,15 +280,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           </FunctionImport>
           <FunctionImport Name="SP_VerMontoPendienteFactura" ReturnType="Collection(Decimal)">
           <Parameter Name="idFactura" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_BuscarPedidosClienteFacturar" ReturnType="Collection(BAFacturacionModel.SP_BuscarPedidosClienteFacturar_Result)">
-            <Parameter Name="ID_Cliente" Mode="In" Type="Int32" />
-            <Parameter Name="id_Pedido" Mode="In" Type="Int32" />
-            <Parameter Name="ModoReporte" Mode="In" Type="String" />
-            <Parameter Name="id_EstatusPedido" Mode="In" Type="Int32" />
-            <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
-            <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
-            <Parameter Name="Conduce" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_BuscarClienteFacturar" ReturnType="Collection(BAFacturacionModel.SP_BuscarClienteFacturar_Result)">
           <Parameter Name="ID_Cliente" Mode="In" Type="Int32" />
@@ -333,6 +328,15 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
             <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
             <Parameter Name="Conduce" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="SP_BuscarPedidosClienteFacturar" ReturnType="Collection(BAFacturacionModel.SP_BuscarPedidosClienteFacturar_Result)">
+            <Parameter Name="ID_Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="id_Pedido" Mode="In" Type="Int32" />
+            <Parameter Name="ModoReporte" Mode="In" Type="String" />
+            <Parameter Name="id_EstatusPedido" Mode="In" Type="Int32" />
+            <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
+            <Parameter Name="Conduce" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="VW_ListarVehiculos">
           <Key>
@@ -366,6 +370,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           <Property Name="Producto" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="Precio" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ITBIS" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
         <ComplexType Name="SP_VerDetallesConduces_Result">
           <Property Type="String" Name="Chofer" Nullable="false" MaxLength="31" />
@@ -408,17 +413,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MODO" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
-        <ComplexType Name="SP_BuscarPedidosClienteFacturar_Result">
-          <Property Type="Int32" Name="NumPedido" Nullable="false" />
-          <Property Type="DateTime" Name="FechaPedido" Nullable="true" />
-          <Property Type="Int32" Name="Conduce" Nullable="true" />
-          <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="5" Scale="2" />
-          <Property Type="String" Name="Medida" Nullable="false" MaxLength="15" />
-          <Property Type="String" Name="Producto" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="800" />
-          <Property Type="Decimal" Name="Costo" Nullable="true" Precision="19" />
-          <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
-        </ComplexType>
         <ComplexType Name="SP_BuscarClienteFacturar_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Empresa" Nullable="true" MaxLength="60" />
@@ -464,14 +458,31 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           <Property Type="DateTime" Name="VigenciaNCF" Nullable="true" />
         </ComplexType>
         <ComplexType Name="SP_BuscarConducesFactura_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="DateTime" Name="FechaConduce" Nullable="true" />
+          <Property Type="Int32" Name="ID" Nullable="true" />
           <Property Type="String" Name="Chofer" Nullable="false" MaxLength="31" />
           <Property Type="Int32" Name="NumeroConduce" Nullable="true" />
-          <Property Type="String" Name="Vehiculo" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="Placa" Nullable="false" MaxLength="18" />
+          <Property Type="String" Name="Vehiculo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Placa" Nullable="true" MaxLength="18" />
           <Property Type="Int32" Name="Capacidad" Nullable="true" />
           <Property Type="Int32" Name="Viajes" Nullable="true" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="800" />
+          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
+        </ComplexType>
+        <ComplexType Name="SP_BuscarPedidosClienteFacturar_Result">
+          <Property Type="Int32" Name="NumPedido" Nullable="true" />
+          <Property Type="DateTime" Name="FechaPedido" Nullable="true" />
+          <Property Type="DateTime" Name="FechaConduce" Nullable="true" />
+          <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="OrometroInicio" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="OrometroFinal" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="Medida" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Producto" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="Precio" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Descuento" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="ITBIS" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TotalPedido" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Condicion" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
         </ComplexType>
       </Schema>
@@ -501,6 +512,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           <EntitySetMapping Name="VW_ProductosFactura">
             <EntityTypeMapping TypeName="BAFacturacionModel.VW_ProductosFactura">
               <MappingFragment StoreEntitySet="VW_ProductosFactura">
+                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
                 <ScalarProperty Name="Precio" ColumnName="Precio" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Producto" ColumnName="Producto" />
@@ -564,21 +576,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_RealizarPagoFactura" FunctionName="BAFacturacionModel.Store.SP_RealizarPagoFactura" />
           <FunctionImportMapping FunctionImportName="SP_VerMontoPendienteFactura" FunctionName="BAFacturacionModel.Store.SP_VerMontoPendienteFactura" />
-          <FunctionImportMapping FunctionImportName="SP_BuscarPedidosClienteFacturar" FunctionName="BAFacturacionModel.Store.SP_BuscarPedidosClienteFacturar">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BAFacturacionModel.SP_BuscarPedidosClienteFacturar_Result">
-                <ScalarProperty Name="NumPedido" ColumnName="NumPedido" />
-                <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
-                <ScalarProperty Name="Conduce" ColumnName="Conduce" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Medida" ColumnName="Medida" />
-                <ScalarProperty Name="Producto" ColumnName="Producto" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Costo" ColumnName="Costo" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_BuscarClienteFacturar" FunctionName="BAFacturacionModel.Store.SP_BuscarClienteFacturar">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BAFacturacionModel.SP_BuscarClienteFacturar_Result">
@@ -638,13 +635,34 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
             <ResultMapping>
               <ComplexTypeMapping TypeName="BAFacturacionModel.SP_BuscarConducesFactura_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="FechaConduce" ColumnName="FechaConduce" />
                 <ScalarProperty Name="Chofer" ColumnName="Chofer" />
                 <ScalarProperty Name="NumeroConduce" ColumnName="NumeroConduce" />
                 <ScalarProperty Name="Vehiculo" ColumnName="Vehiculo" />
                 <ScalarProperty Name="Placa" ColumnName="Placa" />
                 <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
                 <ScalarProperty Name="Viajes" ColumnName="Viajes" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_BuscarPedidosClienteFacturar" FunctionName="BAFacturacionModel.Store.SP_BuscarPedidosClienteFacturar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BAFacturacionModel.SP_BuscarPedidosClienteFacturar_Result">
+                <ScalarProperty Name="NumPedido" ColumnName="NumPedido" />
+                <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
+                <ScalarProperty Name="FechaConduce" ColumnName="FechaConduce" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="OrometroInicio" ColumnName="OrometroInicio" />
+                <ScalarProperty Name="OrometroFinal" ColumnName="OrometroFinal" />
+                <ScalarProperty Name="Medida" ColumnName="Medida" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
+                <ScalarProperty Name="TotalPedido" ColumnName="TotalPedido" />
+                <ScalarProperty Name="Condicion" ColumnName="Condicion" />
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
               </ComplexTypeMapping>
             </ResultMapping>

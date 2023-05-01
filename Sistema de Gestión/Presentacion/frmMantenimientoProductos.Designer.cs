@@ -301,7 +301,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.txtDescripcion.BackColor = System.Drawing.Color.Khaki;
             this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescripcion.Location = new System.Drawing.Point(904, 159);
-            this.txtDescripcion.MaxLength = 350;
+            this.txtDescripcion.MaxLength = 500;
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(218, 38);
@@ -357,7 +357,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.txtProducto.BackColor = System.Drawing.Color.Khaki;
             this.txtProducto.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProducto.Location = new System.Drawing.Point(904, 130);
-            this.txtProducto.MaxLength = 100;
+            this.txtProducto.MaxLength = 255;
             this.txtProducto.Name = "txtProducto";
             this.txtProducto.Size = new System.Drawing.Size(218, 24);
             this.txtProducto.TabIndex = 2;

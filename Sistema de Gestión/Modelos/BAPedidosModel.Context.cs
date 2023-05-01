@@ -320,6 +320,15 @@ namespace Sistema_de_Gestión.Modelos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ViewQueryPreform_Result>("SP_ViewQueryPreform", id_ClienteParameter, id_PedidoParameter, modoReporteParameter, id_EstatusPedidoParameter, fechaInicioParameter, fechaFinParameter);
         }
     
+        public virtual ObjectResult<Nullable<int>> SearchConduce(Nullable<int> cONDUCE)
+        {
+            var cONDUCEParameter = cONDUCE.HasValue ?
+                new ObjectParameter("CONDUCE", cONDUCE) :
+                new ObjectParameter("CONDUCE", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SearchConduce", cONDUCEParameter);
+        }
+    
         public virtual ObjectResult<SP_ProformaBuscarConducesPorPedido_Result> SP_ProformaBuscarConducesPorPedido(Nullable<int> iD_Cliente, Nullable<int> id_Pedido, string modoReporte, Nullable<int> id_EstatusPedido, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFin)
         {
             var iD_ClienteParameter = iD_Cliente.HasValue ?
@@ -376,15 +385,6 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("FechaFin", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ProformaBuscarPedidosPendientesCliente_Result>("SP_ProformaBuscarPedidosPendientesCliente", id_ClienteParameter, id_PedidoParameter, modoReporteParameter, id_EstatusPedidoParameter, fechaInicioParameter, fechaFinParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> SearchConduce(Nullable<int> cONDUCE)
-        {
-            var cONDUCEParameter = cONDUCE.HasValue ?
-                new ObjectParameter("CONDUCE", cONDUCE) :
-                new ObjectParameter("CONDUCE", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SearchConduce", cONDUCEParameter);
         }
     }
 }

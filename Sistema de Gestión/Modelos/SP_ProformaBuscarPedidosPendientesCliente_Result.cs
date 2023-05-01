@@ -13,14 +13,14 @@ namespace Sistema_de_Gestión.Modelos
     
     public partial class SP_ProformaBuscarPedidosPendientesCliente_Result
     {
-        public int NumPedido { get; set; }
+        public Nullable<int> NumPedido { get; set; }
         public Nullable<System.DateTime> FechaPedido { get; set; }
+        public Nullable<System.DateTime> FechaConduce { get; set; }
         public Nullable<decimal> Cantidad { get; set; }
         public Nullable<decimal> OrometroInicio { get; set; }
         public Nullable<decimal> OrometroFinal { get; set; }
         public string Medida { get; set; }
         public string Producto { get; set; }
-        public string Descripcion { get; set; }
         public Nullable<decimal> Precio { get; set; }
         public Nullable<decimal> SubTotal { get; set; }
         public Nullable<decimal> Descuento { get; set; }

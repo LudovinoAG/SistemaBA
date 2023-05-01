@@ -13,13 +13,14 @@ namespace Sistema_de_Gestión.Modelos
     
     public partial class SP_ProformaBuscarConducesPorPedido_Result
     {
-        public int ID { get; set; }
+        public Nullable<int> ID { get; set; }
         public string Chofer { get; set; }
         public Nullable<int> NumeroConduce { get; set; }
         public string Vehiculo { get; set; }
         public string Placa { get; set; }
         public Nullable<int> Capacidad { get; set; }
         public Nullable<int> Viajes { get; set; }
+        public string Descripcion { get; set; }
         public string Estatus { get; set; }
     }
 }

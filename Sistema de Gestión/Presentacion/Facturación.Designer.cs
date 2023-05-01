@@ -695,6 +695,7 @@ namespace Sistema_de_Gestión
             this.dgvPedidosFacturar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPedidosFacturar.Size = new System.Drawing.Size(703, 183);
             this.dgvPedidosFacturar.TabIndex = 94;
+            this.dgvPedidosFacturar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedidosFacturar_CellClick);
             // 
             // CKITBIS
             // 

@@ -216,7 +216,7 @@ namespace Sistema_de_Gestión.Modelos
         }
         public void CargarCantidadVista(ComboBox cboViews)
         {
-            object[] RegistroMostrar = new object[] { 5, 10, 15, 20, 25, 30, 50, 100 };
+            object[] RegistroMostrar = new object[] { 5, 10, 15, 20, 25, 30, 50, 100,1000,5000,10000 };
             cboViews.Items.AddRange(RegistroMostrar);
             cboViews.SelectedIndex = 0;
         }

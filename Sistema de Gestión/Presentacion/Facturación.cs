@@ -581,5 +581,25 @@ namespace Sistema_de_Gestión
             FC.SoloNumeros(e);
         }
 
+        private void dgvPedidosFacturar_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvPedidosFacturar.RowCount != 0)
+            {
+                int PedidoSeleccionado = (int)dgvPedidosFacturar.SelectedRows[0].Cells["NumPedido"].Value;
+
+                FM.BuscarConducesFactura(FacturacionModel.IDCliente, PedidoSeleccionado,
+                    FacturacionModel.ModoReporte, FacturacionModel.EstatusPedido,
+                    FacturacionModel.FechaInicio, FacturacionModel.FechaFin, FacturacionModel.NumConduce);
+
+
+                dgvConducesFactura.DataSource = null;
+                dgvConducesFactura.DataSource = FM.ConducesFacturar.ToList();
+                dgvConducesFactura.ClearSelection();
+
+
+                //Formatear columnas detalles
+                //FormatearColumnasDetalles();
+            }
+        }
     }
 }

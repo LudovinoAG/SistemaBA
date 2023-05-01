@@ -174,10 +174,11 @@ namespace Sistema_de_Gestión.Modelos
                         int NumConduce = (int)FilaConduces.Cells["NumeroConduce"].Value;
                         string NombreVehiculo = FilaConduces.Cells["Vehiculo"].Value.ToString();
                         string Placa = FilaConduces.Cells["Placa"].Value.ToString();
+                        int Capacidad = (int)FilaConduces.Cells["Capacidad"].Value;
                         int CantidadViajes = (int)FilaConduces.Cells["Viajes"].Value;
                         DateTime FechaConduce = (DateTime)FilaConduces.Cells["FechaConduce"].Value;
 
-                        FM.SP_InsertarConduces(NombreEmpleado, NumConduce, NombreVehiculo, Placa, CantidadViajes, FechaConduce);
+                        FM.SP_InsertarConduces(NombreEmpleado, NumConduce, NombreVehiculo, Placa, CantidadViajes, FechaConduce, Capacidad);
 
                     }
 
@@ -386,8 +387,9 @@ namespace Sistema_de_Gestión.Modelos
         public void FormatPedidosFacturar(DataGridViewColumnCollection dgvPedidos, 
             DataGridViewColumnCollection dgvConduce)
         {
-            dgvPedidos["Costo"].DefaultCellStyle.Format = "C";
+            dgvPedidos["Precio"].DefaultCellStyle.Format = "C";
             dgvPedidos["SubTotal"].DefaultCellStyle.Format = "C";
+            dgvPedidos["TotalPedido"].DefaultCellStyle.Format = "C";
             dgvPedidos["SubTotal"].HeaderText = "Sub-Total";
             dgvPedidos["FechaPedido"].HeaderText = "Fecha Pedido";
             dgvPedidos["NumPedido"].HeaderText = "Num. Pedido";
