@@ -54,7 +54,6 @@ namespace Sistema_de_Gestión.Modelos
 
         public DateTime FechaConduce { get; set; }
 
-
         public void AgregarProducto(decimal cantidad, int IDProducto, string medida, int IDMedida, 
             string producto, string descripcion, decimal costo, decimal subtotal, decimal ITBISProducto, DataGridView dgvFacturar)
         {
@@ -269,7 +268,7 @@ namespace Sistema_de_Gestión.Modelos
                                         PrecioPedido, SubTotalFilas, PedidoDescripcion, RegConduces, ITBISProducto);
 
                                     int IDEmpleado = (int)dgvChoferes.Rows[c].Cells["Chofer"].Value;
-                                    int NumConduce = (int)dgvListaChoferes.Rows[c].Cells["clConduce"].Value;
+                                    int NumConduce = Convert.ToInt32(dgvListaChoferes.Rows[c].Cells["clConduce"].Value);
                                     IDProducto = (int)dgvChoferes.Rows[c].Cells["id_Producto"].Value;
                                     int IDVehiculo = (int)dgvChoferes.Rows[c].Cells["Vehiculo"].Value;
                                     IDMedida = (int)dgvChoferes.Rows[c].Cells["id_Medida"].Value;

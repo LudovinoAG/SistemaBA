@@ -25,9 +25,9 @@
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\10.0.0.76\BAServer\</UpdateUrl>
     <MinimumRequiredVersion>1.0.0.1</MinimumRequiredVersion>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>42</ApplicationRevision>
+    <ApplicationRevision>47</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -139,6 +139,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CRVRedacciones.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CRVReporteConducesRegistrados.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRVReporteConducesRegistrados.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CRVReporteFacturasCredito.cs">
@@ -376,6 +382,9 @@
     </Compile>
     <Compile Include="Modelos\SP_ProformaBuscarPedidosPendientesCliente_Result.cs">
       <DependentUpon>BAPedidosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_ReporteConducesRegistrados_Result.cs">
+      <DependentUpon>BAReportesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\SP_VerConducesPedidos_Result.cs">
       <DependentUpon>BARedaccionesModel.tt</DependentUpon>
@@ -637,6 +646,12 @@
     <Compile Include="Presentacion\frmPedidos.Designer.cs">
       <DependentUpon>frmPedidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\frmReporteConducesRegistradoClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmReporteConducesRegistradoClientes.Designer.cs">
+      <DependentUpon>frmReporteConducesRegistradoClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\frmReporteFacturasPendientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -690,6 +705,12 @@
     </Compile>
     <Compile Include="Presentacion\frmVistaRedacciones.Designer.cs">
       <DependentUpon>frmVistaRedacciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmVistaRegistroConduces.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmVistaRegistroConduces.Designer.cs">
+      <DependentUpon>frmVistaRegistroConduces.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Loading.cs">
       <SubType>Form</SubType>
@@ -765,6 +786,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CRVRedacciones.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="CRVReporteConducesRegistrados.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRVReporteConducesRegistrados.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CRVReporteFacturasCredito.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CRVReporteFacturasCredito.cs</LastGenOutput>
@@ -835,6 +860,9 @@
     <EmbeddedResource Include="Presentacion\frmPedidos.resx">
       <DependentUpon>frmPedidos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmReporteConducesRegistradoClientes.resx">
+      <DependentUpon>frmReporteConducesRegistradoClientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmReporteFacturasPendientes.resx">
       <DependentUpon>frmReporteFacturasPendientes.cs</DependentUpon>
     </EmbeddedResource>
@@ -861,6 +889,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmVistaRedacciones.resx">
       <DependentUpon>frmVistaRedacciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmVistaRegistroConduces.resx">
+      <DependentUpon>frmVistaRegistroConduces.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Loading.resx">
       <DependentUpon>Loading.cs</DependentUpon>
@@ -1136,6 +1167,9 @@
       <DependentUpon>BAVehiculosModel.edmx</DependentUpon>
       <LastGenOutput>BAVehiculosModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\BotonVerConducesOver.jpg" />
+    <None Include="Resources\BotonVerConducesClick.jpg" />
+    <None Include="Resources\BotonVerConduces.jpg" />
     <None Include="Resources\icons8-editar-100.png" />
     <None Include="Resources\BotonVerRedaccionOver.jpg" />
     <None Include="Resources\BotonVerRedaccionClick.jpg" />

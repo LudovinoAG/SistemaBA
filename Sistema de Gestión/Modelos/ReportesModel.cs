@@ -10,11 +10,56 @@ namespace Sistema_de_Gestión.Modelos
 {
     class ReportesModel
     {
+        public int Cliente { get; set; }
+        public string ModoReporte { get; set; }
+        public DateTime FechaInicio { get; set; }
+        public DateTime FechaFin { get; set; }
+
         public static int NumFacturaReporte { get; set; }
 
         public List<VW_VerFacturas> VerFactura { get; set; }
 
         public List<SP_VerFacturaID_Result> VerFacturaID { get; set; }
+
+        public List<SP_BuscarClienteCodigo_Result> Clientes { get; set; }
+
+        public List<SP_ReporteConducesRegistrados_Result> ConducesRegistrados { get; set; }
+
+        public List<SP_BuscarClienteCodigo_Result> BuscarClientes(string codigoCliente)
+        {
+            try
+            {
+                using (BAFacturacionEntities BC = new BAFacturacionEntities())
+                {
+                    Clientes = BC.SP_BuscarClienteCodigo(codigoCliente).ToList();
+                    return Clientes;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No fue posible buscar el cliente indicado","Aviso",MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+                return Clientes;
+            }
+        }
+
+        public List<SP_ReporteConducesRegistrados_Result> VerConducesRegistrados(int Cliente, string ModoReporte, DateTime FechaInicio, DateTime FechaFin)
+        {
+            try
+            {
+                using (BAReportesEntities RE = new BAReportesEntities())
+                {
+                    ConducesRegistrados = RE.SP_ReporteConducesRegistrados(Cliente, ModoReporte, FechaInicio, FechaFin).ToList();
+                    return ConducesRegistrados.ToList();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No fue posible buscar los conduces registrados","Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return ConducesRegistrados.ToList();
+            }
+        }
 
         public void BuscarFactura(DataGridView dgvReporteFacturas, int NumFactura)
         {
@@ -107,5 +152,11 @@ namespace Sistema_de_Gestión.Modelos
 
             return ColumnasFacturas;
         } 
+
+        public DataGridViewColumnCollection FormatoColumnasConduces(DataGridViewColumnCollection ColumnaConduces)
+        {
+            ColumnaConduces["SubTotal"].DefaultCellStyle.Format = "C2";
+            return ColumnaConduces;
+        }
     }
 }

@@ -41,9 +41,9 @@ namespace Sistema_de_Gestión.Presentacion
 
         private void ListarProveedoresProductos()
         {
-            cboCategoria.DisplayMember = "Nom_Proveedor";
-            cboCategoria.ValueMember = "id_Proveedor";
-            cboCategoria.DataSource = BAProveedores.CargarProveedores().ToList();
+            cboProveedor.DisplayMember = "Nom_Proveedor";
+            cboProveedor.ValueMember = "id_Proveedor";
+            cboProveedor.DataSource = BAProveedores.CargarProveedores().ToList();
         }
 
 

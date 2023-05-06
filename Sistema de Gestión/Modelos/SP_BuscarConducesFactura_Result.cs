@@ -21,6 +21,8 @@ namespace Sistema_de_Gestión.Modelos
         public Nullable<int> Capacidad { get; set; }
         public Nullable<int> Viajes { get; set; }
         public string Descripcion { get; set; }
+        public Nullable<decimal> SubTotal { get; set; }
+        public Nullable<decimal> ITBIS { get; set; }
         public string Estatus { get; set; }
     }
 }

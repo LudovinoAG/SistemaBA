@@ -560,7 +560,23 @@ namespace Sistema_de_Gestión.Modelos
                     break;
 
 
-                    
+                case "cmdVerConduces":
+                    if (Evento == 1)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonVerConducesOver;
+                    }
+                    else if (Evento == 2)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonVerConducesClick;
+                    }
+                    else
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonVerConduces;
+                    }
+                    break;
+
+
+
 
 
 

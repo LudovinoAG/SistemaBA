@@ -62,6 +62,12 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerReportesFacturasPend
           <Property Name="FechaPago" Type="datetime" />
           <Property Name="FechaVencimientoFactura" Type="date" />
         </EntityType>
+        <Function Name="SP_ReporteConducesRegistrados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cliente" Type="int" Mode="In" />
+          <Parameter Name="ModoReporte" Type="varchar" Mode="In" />
+          <Parameter Name="FechaInicioConduce" Type="date" Mode="In" />
+          <Parameter Name="FechaFinConduce" Type="date" Mode="In" />
+        </Function>
         <EntityContainer Name="BAReportesModelStoreContainer">
           <EntitySet Name="VW_VerFacturas" EntityType="Self.VW_VerFacturas" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -114,6 +120,12 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerReportesFacturasPend
         <EntityContainer Name="BAReportesEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="VW_VerReportesFacturasPendientesCredito" EntityType="BAReportesModel.VW_VerReportesFacturasPendientesCredito" />
           <EntitySet Name="VW_VerFacturas" EntityType="BAReportesModel.VW_VerFacturas" />
+          <FunctionImport Name="SP_ReporteConducesRegistrados" ReturnType="Collection(BAReportesModel.SP_ReporteConducesRegistrados_Result)">
+            <Parameter Name="Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="ModoReporte" Mode="In" Type="String" />
+            <Parameter Name="FechaInicioConduce" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFinConduce" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="VW_VerReportesFacturasPendientesCredito">
           <Key>
@@ -167,6 +179,20 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerReportesFacturasPend
           <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VigenciaNCF" Type="DateTime" Precision="0" />
         </EntityType>
+        <ComplexType Name="SP_ReporteConducesRegistrados_Result">
+          <Property Type="DateTime" Name="FechaConduce" Nullable="true" />
+          <Property Type="Int32" Name="NumPedido" Nullable="true" />
+          <Property Type="String" Name="Empresa" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="Chofer" Nullable="false" MaxLength="31" />
+          <Property Type="Int32" Name="Conduce" Nullable="true" />
+          <Property Type="String" Name="Producto" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="String" Name="Medidas" Nullable="false" MaxLength="15" />
+          <Property Type="Int32" Name="Viajes" Nullable="true" />
+          <Property Type="String" Name="Vehiculo" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Capacidad" Nullable="true" />
+          <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -220,6 +246,24 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerReportesFacturasPend
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_ReporteConducesRegistrados" FunctionName="BAReportesModel.Store.SP_ReporteConducesRegistrados">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BAReportesModel.SP_ReporteConducesRegistrados_Result">
+                <ScalarProperty Name="FechaConduce" ColumnName="FechaConduce" />
+                <ScalarProperty Name="NumPedido" ColumnName="NumPedido" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Chofer" ColumnName="Chofer" />
+                <ScalarProperty Name="Conduce" ColumnName="Conduce" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Medidas" ColumnName="Medidas" />
+                <ScalarProperty Name="Viajes" ColumnName="Viajes" />
+                <ScalarProperty Name="Vehiculo" ColumnName="Vehiculo" />
+                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

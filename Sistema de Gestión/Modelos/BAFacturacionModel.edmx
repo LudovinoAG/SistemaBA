@@ -68,7 +68,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ProductosFactura' no ti
             <PropertyRef Name="Descripcion" />
             <PropertyRef Name="Precio" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Codigo" Type="varchar" MaxLength="7" Nullable="false" />
           <Property Name="Producto" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="60" Nullable="false" />
@@ -130,7 +130,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           <Parameter Name="Placa" Type="varchar" Mode="In" />
           <Parameter Name="CantidadViajes" Type="int" Mode="In" />
           <Parameter Name="FechaConduce" Type="date" Mode="In" />
-          <Parameter Name="Capacidad" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_InsertarDetallesFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NombreProducto" Type="varchar" Mode="In" />
@@ -255,7 +254,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
             <Parameter Name="Placa" Mode="In" Type="String" />
             <Parameter Name="CantidadViajes" Mode="In" Type="Int32" />
             <Parameter Name="FechaConduce" Mode="In" Type="DateTime" />
-            <Parameter Name="Capacidad" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_VerDetallesConduces" ReturnType="Collection(BAFacturacionModel.SP_VerDetallesConduces_Result)">
           <Parameter Name="NumFacturaConduce" Mode="In" Type="Int32" />
@@ -466,6 +464,8 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           <Property Type="Int32" Name="Capacidad" Nullable="true" />
           <Property Type="Int32" Name="Viajes" Nullable="true" />
           <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="800" />
+          <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="ITBIS" Nullable="true" Precision="19" />
           <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
         </ComplexType>
         <ComplexType Name="SP_BuscarPedidosClienteFacturar_Result">
@@ -642,6 +642,8 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
                 <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
                 <ScalarProperty Name="Viajes" ColumnName="Viajes" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
               </ComplexTypeMapping>
             </ResultMapping>

@@ -35,6 +35,7 @@ namespace Sistema_de_Gestión
             //Application.Run(new frmVerProforma());
             //Application.Run(new frmCotización());
             //Application.Run(new frmMantenimientoPedidos());
+            //Application.Run(new frmReporteConducesRegistradoClientes());
 
 
         }

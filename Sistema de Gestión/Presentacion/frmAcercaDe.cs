@@ -26,6 +26,7 @@ namespace Sistema_de_Gestión.Presentacion
 
         private void LoadInfoApp()
         {
+
             lblProducto.Text = Application.ProductName;
             lblVersion.Text = Application.ProductVersion;
             LblAutor.Text = Application.CompanyName;

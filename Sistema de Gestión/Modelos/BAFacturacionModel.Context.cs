@@ -72,7 +72,7 @@ namespace Sistema_de_Gestión.Modelos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarConduce", id_ConduceParameter, id_FacturaParameter, id_EmpleadoParameter, num_ConduceParameter, id_ProductoParameter, id_VehiculoParameter, id_MedidaParameter, cantidadViajesParameter);
         }
     
-        public virtual int SP_InsertarConduces(string nomEmpleado, Nullable<int> num_Conduce, string nomVehiculo, string placa, Nullable<int> cantidadViajes, Nullable<System.DateTime> fechaConduce, Nullable<int> capacidad)
+        public virtual int SP_InsertarConduces(string nomEmpleado, Nullable<int> num_Conduce, string nomVehiculo, string placa, Nullable<int> cantidadViajes, Nullable<System.DateTime> fechaConduce)
         {
             var nomEmpleadoParameter = nomEmpleado != null ?
                 new ObjectParameter("NomEmpleado", nomEmpleado) :
@@ -98,11 +98,7 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("FechaConduce", fechaConduce) :
                 new ObjectParameter("FechaConduce", typeof(System.DateTime));
     
-            var capacidadParameter = capacidad.HasValue ?
-                new ObjectParameter("Capacidad", capacidad) :
-                new ObjectParameter("Capacidad", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarConduces", nomEmpleadoParameter, num_ConduceParameter, nomVehiculoParameter, placaParameter, cantidadViajesParameter, fechaConduceParameter, capacidadParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarConduces", nomEmpleadoParameter, num_ConduceParameter, nomVehiculoParameter, placaParameter, cantidadViajesParameter, fechaConduceParameter);
         }
     
         public virtual ObjectResult<SP_VerDetallesConduces_Result> SP_VerDetallesConduces(Nullable<int> numFacturaConduce)

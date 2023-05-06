@@ -883,6 +883,36 @@ namespace Sistema_de_Gestión {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BotonVerConduces {
+            get {
+                object obj = ResourceManager.GetObject("BotonVerConduces", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonVerConducesClick {
+            get {
+                object obj = ResourceManager.GetObject("BotonVerConducesClick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonVerConducesOver {
+            get {
+                object obj = ResourceManager.GetObject("BotonVerConducesOver", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BotonVerFacturaReporte {
             get {
                 object obj = ResourceManager.GetObject("BotonVerFacturaReporte", resourceCulture);

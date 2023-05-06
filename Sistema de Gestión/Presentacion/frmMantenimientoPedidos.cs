@@ -188,7 +188,6 @@ namespace Sistema_de_Gestión.Presentacion
             FacturacionModel.ModoReporte = cboModoReporte.Text;
         }
 
-
         private bool ValidarCriterios()
         {
             if (txtCodigoCliente.Text != "")
@@ -251,7 +250,6 @@ namespace Sistema_de_Gestión.Presentacion
             return true;
         }
 
-
         private void cboCriterioConduces_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboCriterioConduces.SelectedIndex == 0)
@@ -268,37 +266,39 @@ namespace Sistema_de_Gestión.Presentacion
 
         private void dgvPedidosFacturar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Obtener el valor de las columnas y asignarlas a los controles
-            //Detalles de Pedidos a facturar
-            int indexP = cboProducto.FindStringExact(dgvPedidosFacturar.Rows[e.RowIndex].Cells["Producto"].Value.ToString());
-            cboProducto.SelectedIndex = indexP;
-
-            int indexM = cboMedidas.FindStringExact(dgvPedidosFacturar.Rows[e.RowIndex].Cells["Medida"].Value.ToString());
-            cboMedidas.SelectedIndex = indexM;
-
-            nUpDownCantidad.Value = (decimal)dgvPedidosFacturar.Rows[e.RowIndex].Cells["Cantidad"].Value;
-            dtpFechaConduce.Value = (DateTime)dgvPedidosFacturar.Rows[e.RowIndex].Cells["FechaConduce"].Value;
-            txtPrecio.Text = dgvPedidosFacturar.Rows[e.RowIndex].Cells["Precio"].Value.ToString();
-            txtITBIS.Text = dgvPedidosFacturar.Rows[e.RowIndex].Cells["ITBIS"].Value.ToString();
-            txtSubTotal.Text = dgvPedidosFacturar.Rows[e.RowIndex].Cells["SubTotal"].Value.ToString();
-            txtTotal.Text = dgvPedidosFacturar.Rows[e.RowIndex].Cells["TotalPedido"].Value.ToString();
-
-            //Seleccionar el mismo conduce ubicado en la lista de conduces asociados
-            //string SelConduce = dgvPedidosFacturar.Rows[e.RowIndex].Cells["NumeroConduce"].Value.ToString();
-
-            /*for(var i = 0; i < dgvConducesFactura.RowCount; i++)
-            {
-                var Found = dgvConducesFactura.Rows[i].Cells["NumeroConduce"].Value.ToString().Equals(SelConduce);
-                if (Found)
-                {
-                    dgvConducesFactura.Rows[i].Cells["NumeroConduce"].Selected = true;
-                    break;
-                }
-            }*/
-
+       
             if (dgvPedidosFacturar.RowCount != 0)
             {
+                //Obtener el valor de las columnas y asignarlas a los controles
+                //Reset Campos conduces
+                ResetCamposConduces();
+                //Seleccionar la primera fila de la lista de conduces asociados
+                dgvConducesFactura.Rows[0].Selected = true;
+                //Detalles de Pedidos a facturar
+                int indexP = cboProducto.FindStringExact(dgvPedidosFacturar.Rows[e.RowIndex].Cells["Producto"].Value.ToString());
+                cboProducto.SelectedIndex = indexP;
+
+                int indexM = cboMedidas.FindStringExact(dgvPedidosFacturar.Rows[e.RowIndex].Cells["Medida"].Value.ToString());
+                cboMedidas.SelectedIndex = indexM;
+
+                nUpDownCantidad.Value = (decimal)dgvPedidosFacturar.Rows[e.RowIndex].Cells["Cantidad"].Value;
+                dtpFechaConduce.Value = (DateTime)dgvPedidosFacturar.Rows[e.RowIndex].Cells["FechaConduce"].Value;
+
+                decimal precio = (decimal)dgvPedidosFacturar.Rows[e.RowIndex].Cells["Precio"].Value;
+                txtPrecio.Text = precio.ToString("N");
+
+                decimal ITBIS = (decimal)dgvPedidosFacturar.Rows[e.RowIndex].Cells["ITBIS"].Value;
+                txtITBIS.Text = ITBIS.ToString("N");
+
+                decimal SubTotal = (decimal)dgvPedidosFacturar.Rows[e.RowIndex].Cells["SubTotal"].Value;
+                txtSubTotal.Text = SubTotal.ToString("N");
+
+                decimal Total = (decimal)dgvPedidosFacturar.Rows[e.RowIndex].Cells["TotalPedido"].Value;
+                txtTotal.Text = Total.ToString("N");
+
                 int PedidoSeleccionado = (int)dgvPedidosFacturar.SelectedRows[0].Cells["NumPedido"].Value;
+
+                txtPedidoSeleccionado.Text = PedidoSeleccionado.ToString();
 
                 FM.BuscarConducesFactura(FacturacionModel.IDCliente, PedidoSeleccionado,
                     FacturacionModel.ModoReporte, FacturacionModel.EstatusPedido,
@@ -330,7 +330,31 @@ namespace Sistema_de_Gestión.Presentacion
             cboVehiculos.SelectedIndex = indexV;
 
             nUpDownViajes.Value = (int)dgvConducesFactura.Rows[e.RowIndex].Cells["Viajes"].Value;
+            decimal Subtotal = (decimal)dgvConducesFactura.Rows[e.RowIndex].Cells["SubTotal"].Value;
+            txtSubTotalConduce.Text = Subtotal.ToString("N");
 
+            decimal ITBIS = (decimal)dgvConducesFactura.Rows[e.RowIndex].Cells["ITBIS"].Value;
+            txtITBISConduce.Text = ITBIS.ToString("N");
+
+            int ConduceSeleccionado = (int)dgvConducesFactura.SelectedRows[0].Cells["NumeroConduce"].Value;
+            txtConduceSeleccionado.Text = ConduceSeleccionado.ToString();
+
+        }
+
+
+        private void ResetCamposConduces()
+        {
+            txtDescripcion.Text = "";
+            txtNumConduce.Text = "";
+            cboChoferes.SelectedIndex = 0;
+            cboVehiculos.SelectedIndex = 0;
+            nUpDownViajes.Value = 1;
+            txtSubTotalConduce.Text = "0.00";
+            txtITBISConduce.Text = "0.00";
+        }
+
+        private void cmdGuardar_Click(object sender, EventArgs e)
+        {
 
         }
     }

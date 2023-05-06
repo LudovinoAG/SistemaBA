@@ -290,5 +290,16 @@ namespace Sistema_de_Gestión
                 Cerrar();
             }
         }
+
+        private void registrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!FC.ValidarVentanaAbierta("frmReporteConducesRegistradoClientes"))
+            {
+                frmReporteConducesRegistradoClientes frmVerConduces = new frmReporteConducesRegistradoClientes();
+                frmVerConduces.MdiParent = this;
+                frmVerConduces.Show();
+                frmVerConduces.WindowState = FormWindowState.Normal;
+            }
+        }
     }
 }
