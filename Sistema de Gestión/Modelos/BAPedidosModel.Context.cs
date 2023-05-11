@@ -43,7 +43,7 @@ namespace Sistema_de_Gestión.Modelos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_BuscarClienteCodigo_Result>("SP_BuscarClienteCodigo", codigo_ClienteParameter);
         }
     
-        public virtual int SP_InsertarConduces(string nomEmpleado, Nullable<int> num_Conduce, string nomVehiculo, string placa, Nullable<int> cantidadViajes, Nullable<System.DateTime> fechaConduce)
+        public virtual int SP_InsertarConduces(string nomEmpleado, Nullable<int> num_Conduce, string nomVehiculo, string placa, Nullable<int> cantidadViajes, Nullable<System.DateTime> fechaConduce, Nullable<int> capacidad)
         {
             var nomEmpleadoParameter = nomEmpleado != null ?
                 new ObjectParameter("NomEmpleado", nomEmpleado) :
@@ -69,7 +69,11 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("FechaConduce", fechaConduce) :
                 new ObjectParameter("FechaConduce", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarConduces", nomEmpleadoParameter, num_ConduceParameter, nomVehiculoParameter, placaParameter, cantidadViajesParameter, fechaConduceParameter);
+            var capacidadParameter = capacidad.HasValue ?
+                new ObjectParameter("Capacidad", capacidad) :
+                new ObjectParameter("Capacidad", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarConduces", nomEmpleadoParameter, num_ConduceParameter, nomVehiculoParameter, placaParameter, cantidadViajesParameter, fechaConduceParameter, capacidadParameter);
         }
     
         public virtual int SP_InsertarConducesPedidos(Nullable<int> id_Cliente, Nullable<int> id_Empleado, Nullable<int> num_Conduce, Nullable<int> id_producto, Nullable<int> id_vehiculo, Nullable<int> id_medida, Nullable<int> cantidadViajes, Nullable<int> idCount, Nullable<decimal> orometroInicio, Nullable<decimal> orometroFinal, Nullable<System.DateTime> fechaConduce)
@@ -329,35 +333,6 @@ namespace Sistema_de_Gestión.Modelos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SearchConduce", cONDUCEParameter);
         }
     
-        public virtual ObjectResult<SP_ProformaBuscarConducesPorPedido_Result> SP_ProformaBuscarConducesPorPedido(Nullable<int> iD_Cliente, Nullable<int> id_Pedido, string modoReporte, Nullable<int> id_EstatusPedido, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFin)
-        {
-            var iD_ClienteParameter = iD_Cliente.HasValue ?
-                new ObjectParameter("ID_Cliente", iD_Cliente) :
-                new ObjectParameter("ID_Cliente", typeof(int));
-    
-            var id_PedidoParameter = id_Pedido.HasValue ?
-                new ObjectParameter("id_Pedido", id_Pedido) :
-                new ObjectParameter("id_Pedido", typeof(int));
-    
-            var modoReporteParameter = modoReporte != null ?
-                new ObjectParameter("ModoReporte", modoReporte) :
-                new ObjectParameter("ModoReporte", typeof(string));
-    
-            var id_EstatusPedidoParameter = id_EstatusPedido.HasValue ?
-                new ObjectParameter("id_EstatusPedido", id_EstatusPedido) :
-                new ObjectParameter("id_EstatusPedido", typeof(int));
-    
-            var fechaInicioParameter = fechaInicio.HasValue ?
-                new ObjectParameter("FechaInicio", fechaInicio) :
-                new ObjectParameter("FechaInicio", typeof(System.DateTime));
-    
-            var fechaFinParameter = fechaFin.HasValue ?
-                new ObjectParameter("FechaFin", fechaFin) :
-                new ObjectParameter("FechaFin", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ProformaBuscarConducesPorPedido_Result>("SP_ProformaBuscarConducesPorPedido", iD_ClienteParameter, id_PedidoParameter, modoReporteParameter, id_EstatusPedidoParameter, fechaInicioParameter, fechaFinParameter);
-        }
-    
         public virtual ObjectResult<SP_ProformaBuscarPedidosPendientesCliente_Result> SP_ProformaBuscarPedidosPendientesCliente(Nullable<int> id_Cliente, Nullable<int> id_Pedido, string modoReporte, Nullable<int> id_EstatusPedido, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFin)
         {
             var id_ClienteParameter = id_Cliente.HasValue ?
@@ -385,6 +360,125 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("FechaFin", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ProformaBuscarPedidosPendientesCliente_Result>("SP_ProformaBuscarPedidosPendientesCliente", id_ClienteParameter, id_PedidoParameter, modoReporteParameter, id_EstatusPedidoParameter, fechaInicioParameter, fechaFinParameter);
+        }
+    
+        public virtual int SP_DeleteInfoPedidos(Nullable<int> idPedidos, Nullable<int> idCliente, Nullable<int> idConduce, Nullable<int> idDetallesPedido)
+        {
+            var idPedidosParameter = idPedidos.HasValue ?
+                new ObjectParameter("idPedidos", idPedidos) :
+                new ObjectParameter("idPedidos", typeof(int));
+    
+            var idClienteParameter = idCliente.HasValue ?
+                new ObjectParameter("idCliente", idCliente) :
+                new ObjectParameter("idCliente", typeof(int));
+    
+            var idConduceParameter = idConduce.HasValue ?
+                new ObjectParameter("idConduce", idConduce) :
+                new ObjectParameter("idConduce", typeof(int));
+    
+            var idDetallesPedidoParameter = idDetallesPedido.HasValue ?
+                new ObjectParameter("idDetallesPedido", idDetallesPedido) :
+                new ObjectParameter("idDetallesPedido", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_DeleteInfoPedidos", idPedidosParameter, idClienteParameter, idConduceParameter, idDetallesPedidoParameter);
+        }
+    
+        public virtual int SP_ActualizarPedidos(Nullable<int> idPedidos, Nullable<int> idCliente, Nullable<int> idConduce, Nullable<int> idDetallesPedido, Nullable<int> conduce, Nullable<decimal> cantidad, Nullable<int> medidas, Nullable<int> producto, string descripcion, Nullable<decimal> costo, Nullable<decimal> subTotal, Nullable<decimal> iTBIS, Nullable<System.DateTime> fechaConduce, Nullable<int> chofer, Nullable<int> vehiculo, Nullable<int> viajes)
+        {
+            var idPedidosParameter = idPedidos.HasValue ?
+                new ObjectParameter("idPedidos", idPedidos) :
+                new ObjectParameter("idPedidos", typeof(int));
+    
+            var idClienteParameter = idCliente.HasValue ?
+                new ObjectParameter("idCliente", idCliente) :
+                new ObjectParameter("idCliente", typeof(int));
+    
+            var idConduceParameter = idConduce.HasValue ?
+                new ObjectParameter("idConduce", idConduce) :
+                new ObjectParameter("idConduce", typeof(int));
+    
+            var idDetallesPedidoParameter = idDetallesPedido.HasValue ?
+                new ObjectParameter("idDetallesPedido", idDetallesPedido) :
+                new ObjectParameter("idDetallesPedido", typeof(int));
+    
+            var conduceParameter = conduce.HasValue ?
+                new ObjectParameter("Conduce", conduce) :
+                new ObjectParameter("Conduce", typeof(int));
+    
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("Cantidad", cantidad) :
+                new ObjectParameter("Cantidad", typeof(decimal));
+    
+            var medidasParameter = medidas.HasValue ?
+                new ObjectParameter("Medidas", medidas) :
+                new ObjectParameter("Medidas", typeof(int));
+    
+            var productoParameter = producto.HasValue ?
+                new ObjectParameter("Producto", producto) :
+                new ObjectParameter("Producto", typeof(int));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var costoParameter = costo.HasValue ?
+                new ObjectParameter("Costo", costo) :
+                new ObjectParameter("Costo", typeof(decimal));
+    
+            var subTotalParameter = subTotal.HasValue ?
+                new ObjectParameter("SubTotal", subTotal) :
+                new ObjectParameter("SubTotal", typeof(decimal));
+    
+            var iTBISParameter = iTBIS.HasValue ?
+                new ObjectParameter("ITBIS", iTBIS) :
+                new ObjectParameter("ITBIS", typeof(decimal));
+    
+            var fechaConduceParameter = fechaConduce.HasValue ?
+                new ObjectParameter("FechaConduce", fechaConduce) :
+                new ObjectParameter("FechaConduce", typeof(System.DateTime));
+    
+            var choferParameter = chofer.HasValue ?
+                new ObjectParameter("Chofer", chofer) :
+                new ObjectParameter("Chofer", typeof(int));
+    
+            var vehiculoParameter = vehiculo.HasValue ?
+                new ObjectParameter("Vehiculo", vehiculo) :
+                new ObjectParameter("Vehiculo", typeof(int));
+    
+            var viajesParameter = viajes.HasValue ?
+                new ObjectParameter("Viajes", viajes) :
+                new ObjectParameter("Viajes", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ActualizarPedidos", idPedidosParameter, idClienteParameter, idConduceParameter, idDetallesPedidoParameter, conduceParameter, cantidadParameter, medidasParameter, productoParameter, descripcionParameter, costoParameter, subTotalParameter, iTBISParameter, fechaConduceParameter, choferParameter, vehiculoParameter, viajesParameter);
+        }
+    
+        public virtual ObjectResult<SP_ProformaBuscarConducesPorPedido_Result> SP_ProformaBuscarConducesPorPedido(Nullable<int> iD_Cliente, Nullable<int> id_Pedido, string modoReporte, Nullable<int> id_EstatusPedido, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFin)
+        {
+            var iD_ClienteParameter = iD_Cliente.HasValue ?
+                new ObjectParameter("ID_Cliente", iD_Cliente) :
+                new ObjectParameter("ID_Cliente", typeof(int));
+    
+            var id_PedidoParameter = id_Pedido.HasValue ?
+                new ObjectParameter("id_Pedido", id_Pedido) :
+                new ObjectParameter("id_Pedido", typeof(int));
+    
+            var modoReporteParameter = modoReporte != null ?
+                new ObjectParameter("ModoReporte", modoReporte) :
+                new ObjectParameter("ModoReporte", typeof(string));
+    
+            var id_EstatusPedidoParameter = id_EstatusPedido.HasValue ?
+                new ObjectParameter("id_EstatusPedido", id_EstatusPedido) :
+                new ObjectParameter("id_EstatusPedido", typeof(int));
+    
+            var fechaInicioParameter = fechaInicio.HasValue ?
+                new ObjectParameter("FechaInicio", fechaInicio) :
+                new ObjectParameter("FechaInicio", typeof(System.DateTime));
+    
+            var fechaFinParameter = fechaFin.HasValue ?
+                new ObjectParameter("FechaFin", fechaFin) :
+                new ObjectParameter("FechaFin", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ProformaBuscarConducesPorPedido_Result>("SP_ProformaBuscarConducesPorPedido", iD_ClienteParameter, id_PedidoParameter, modoReporteParameter, id_EstatusPedidoParameter, fechaInicioParameter, fechaFinParameter);
         }
     }
 }

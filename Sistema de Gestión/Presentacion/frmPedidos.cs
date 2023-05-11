@@ -79,7 +79,7 @@ namespace Sistema_de_Gestión.Presentacion
 
             cboProductos.DisplayMember = "Producto";
             cboProductos.ValueMember = "ID";
-            cboProductos.DataSource = Resultado.ToList();
+            cboProductos.DataSource = Resultado.OrderBy(T=> T.Producto).ToList();
 
         }
 
@@ -233,7 +233,7 @@ namespace Sistema_de_Gestión.Presentacion
                                 PM.IDFactura = int.Parse(txtNumPedido.Text);
                                 PM.IDMedida = (int)dgvFactura.SelectedRows[0].Cells["IDMedida"].Value;
                                 PM.IDVehiculo = (int)cboVehiculos.SelectedValue;
-                                PM.capacidad = int.Parse(txtCapacidad.Text);
+                                PM.capacidad = decimal.Parse(txtCapacidad.Text);
                                 PM.OrometroInicio = decimal.Parse(txtOrometroInicio.Text);
                                 PM.OrometroFinal = decimal.Parse(txtOrometroFinal.Text);
                                 PM.FechaConduce = dtpFechaConduce.Value;
@@ -493,7 +493,7 @@ namespace Sistema_de_Gestión.Presentacion
                         PM.IDFactura = int.Parse(txtNumPedido.Text);
                         PM.IDMedida = (int)dgvFactura.SelectedRows[0].Cells["IDMedida"].Value;
                         PM.IDVehiculo = (int)cboVehiculoAlquiler.SelectedValue;
-                        PM.capacidad = int.Parse(txtCapacidad.Text);
+                        PM.capacidad = decimal.Parse(txtCapacidad.Text);
                         PM.OrometroInicio = decimal.Parse(txtOrometroInicio.Text);
                         PM.OrometroFinal = decimal.Parse(txtOrometroFinal.Text);
                         PM.FechaConduce = dtpFechaConduceAlquiler.Value;

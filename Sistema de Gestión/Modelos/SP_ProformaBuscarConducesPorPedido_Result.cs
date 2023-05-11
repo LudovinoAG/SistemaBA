@@ -15,7 +15,7 @@ namespace Sistema_de_Gestión.Modelos
     {
         public Nullable<int> ID { get; set; }
         public string Chofer { get; set; }
-        public Nullable<int> NumeroConduce { get; set; }
+        public Nullable<int> Conduce { get; set; }
         public string Vehiculo { get; set; }
         public string Placa { get; set; }
         public Nullable<int> Capacidad { get; set; }

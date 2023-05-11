@@ -77,11 +77,35 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
         <Function Name="SearchConduce" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CONDUCE" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_ActualizarPedidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPedidos" Type="int" Mode="In" />
+          <Parameter Name="idCliente" Type="int" Mode="In" />
+          <Parameter Name="idConduce" Type="int" Mode="In" />
+          <Parameter Name="idDetallesPedido" Type="int" Mode="In" />
+          <Parameter Name="Conduce" Type="int" Mode="In" />
+          <Parameter Name="Cantidad" Type="decimal" Mode="In" />
+          <Parameter Name="Medidas" Type="int" Mode="In" />
+          <Parameter Name="Producto" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Costo" Type="money" Mode="In" />
+          <Parameter Name="SubTotal" Type="money" Mode="In" />
+          <Parameter Name="ITBIS" Type="money" Mode="In" />
+          <Parameter Name="FechaConduce" Type="date" Mode="In" />
+          <Parameter Name="Chofer" Type="int" Mode="In" />
+          <Parameter Name="Vehiculo" Type="int" Mode="In" />
+          <Parameter Name="Viajes" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_BuscarClienteCodigo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Codigo_Cliente" Type="varchar" Mode="In" />
         </Function>
         <Function Name="SP_BuscarClienteProforma" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CodigoCliente" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_DeleteInfoPedidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPedidos" Type="int" Mode="In" />
+          <Parameter Name="idCliente" Type="int" Mode="In" />
+          <Parameter Name="idConduce" Type="int" Mode="In" />
+          <Parameter Name="idDetallesPedido" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_InsertarConduces" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NomEmpleado" Type="varchar" Mode="In" />
@@ -90,6 +114,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Parameter Name="Placa" Type="varchar" Mode="In" />
           <Parameter Name="CantidadViajes" Type="int" Mode="In" />
           <Parameter Name="FechaConduce" Type="date" Mode="In" />
+          <Parameter Name="Capacidad" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_InsertarConducesPedidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_Cliente" Type="int" Mode="In" />
@@ -235,6 +260,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
             <Parameter Name="Placa" Mode="In" Type="String" />
             <Parameter Name="CantidadViajes" Mode="In" Type="Int32" />
             <Parameter Name="FechaConduce" Mode="In" Type="DateTime" />
+            <Parameter Name="Capacidad" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_InsertarConducesPedidos">
             <Parameter Name="id_Cliente" Mode="In" Type="Int32" />
@@ -310,16 +336,40 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           </FunctionImport>
           <EntitySet Name="VW_EmpleadosFactura" EntityType="BAPedidosModel.VW_EmpleadosFactura" />
           <EntitySet Name="VW_ProductosFactura" EntityType="BAPedidosModel.VW_ProductosFactura" />
-          <FunctionImport Name="SP_ProformaBuscarConducesPorPedido" ReturnType="Collection(BAPedidosModel.SP_ProformaBuscarConducesPorPedido_Result)">
-            <Parameter Name="ID_Cliente" Mode="In" Type="Int32" />
+          <FunctionImport Name="SP_ProformaBuscarPedidosPendientesCliente" ReturnType="Collection(BAPedidosModel.SP_ProformaBuscarPedidosPendientesCliente_Result)">
+            <Parameter Name="id_Cliente" Mode="In" Type="Int32" />
             <Parameter Name="id_Pedido" Mode="In" Type="Int32" />
             <Parameter Name="ModoReporte" Mode="In" Type="String" />
             <Parameter Name="id_EstatusPedido" Mode="In" Type="Int32" />
             <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
             <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="SP_ProformaBuscarPedidosPendientesCliente" ReturnType="Collection(BAPedidosModel.SP_ProformaBuscarPedidosPendientesCliente_Result)">
-            <Parameter Name="id_Cliente" Mode="In" Type="Int32" />
+          <FunctionImport Name="SP_DeleteInfoPedidos">
+            <Parameter Name="idPedidos" Mode="In" Type="Int32" />
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+            <Parameter Name="idConduce" Mode="In" Type="Int32" />
+            <Parameter Name="idDetallesPedido" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ActualizarPedidos">
+            <Parameter Name="idPedidos" Mode="In" Type="Int32" />
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+            <Parameter Name="idConduce" Mode="In" Type="Int32" />
+            <Parameter Name="idDetallesPedido" Mode="In" Type="Int32" />
+            <Parameter Name="Conduce" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad" Mode="In" Type="Decimal" />
+            <Parameter Name="Medidas" Mode="In" Type="Int32" />
+            <Parameter Name="Producto" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Costo" Mode="In" Type="Decimal" />
+            <Parameter Name="SubTotal" Mode="In" Type="Decimal" />
+            <Parameter Name="ITBIS" Mode="In" Type="Decimal" />
+            <Parameter Name="FechaConduce" Mode="In" Type="DateTime" />
+            <Parameter Name="Chofer" Mode="In" Type="Int32" />
+            <Parameter Name="Vehiculo" Mode="In" Type="Int32" />
+            <Parameter Name="Viajes" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ProformaBuscarConducesPorPedido" ReturnType="Collection(BAPedidosModel.SP_ProformaBuscarConducesPorPedido_Result)">
+            <Parameter Name="ID_Cliente" Mode="In" Type="Int32" />
             <Parameter Name="id_Pedido" Mode="In" Type="Int32" />
             <Parameter Name="ModoReporte" Mode="In" Type="String" />
             <Parameter Name="id_EstatusPedido" Mode="In" Type="Int32" />
@@ -436,17 +486,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Property Name="Precio" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="ITBIS" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
-        <ComplexType Name="SP_ProformaBuscarConducesPorPedido_Result">
-          <Property Type="Int32" Name="ID" Nullable="true" />
-          <Property Type="String" Name="Chofer" Nullable="false" MaxLength="31" />
-          <Property Type="Int32" Name="NumeroConduce" Nullable="true" />
-          <Property Type="String" Name="Vehiculo" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Placa" Nullable="true" MaxLength="18" />
-          <Property Type="Int32" Name="Capacidad" Nullable="true" />
-          <Property Type="Int32" Name="Viajes" Nullable="true" />
-          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="800" />
-          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
-        </ComplexType>
         <ComplexType Name="SP_ProformaBuscarPedidosPendientesCliente_Result">
           <Property Type="Int32" Name="NumPedido" Nullable="true" />
           <Property Type="DateTime" Name="FechaPedido" Nullable="true" />
@@ -462,6 +501,17 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Property Type="Decimal" Name="ITBIS" Nullable="true" Precision="19" />
           <Property Type="Decimal" Name="TotalPedido" Nullable="true" Precision="19" />
           <Property Type="String" Name="Condicion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
+        </ComplexType>
+        <ComplexType Name="SP_ProformaBuscarConducesPorPedido_Result">
+          <Property Type="Int32" Name="ID" Nullable="true" />
+          <Property Type="String" Name="Chofer" Nullable="false" MaxLength="31" />
+          <Property Type="Int32" Name="Conduce" Nullable="true" />
+          <Property Type="String" Name="Vehiculo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Placa" Nullable="true" MaxLength="18" />
+          <Property Type="Int32" Name="Capacidad" Nullable="true" />
+          <Property Type="Int32" Name="Viajes" Nullable="true" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="800" />
           <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
         </ComplexType>
       </Schema>
@@ -600,21 +650,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SP_ProformaBuscarConducesPorPedido" FunctionName="BAPedidosModel.Store.SP_ProformaBuscarConducesPorPedido">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BAPedidosModel.SP_ProformaBuscarConducesPorPedido_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Chofer" ColumnName="Chofer" />
-                <ScalarProperty Name="NumeroConduce" ColumnName="NumeroConduce" />
-                <ScalarProperty Name="Vehiculo" ColumnName="Vehiculo" />
-                <ScalarProperty Name="Placa" ColumnName="Placa" />
-                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
-                <ScalarProperty Name="Viajes" ColumnName="Viajes" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_ProformaBuscarPedidosPendientesCliente" FunctionName="BAPedidosModel.Store.SP_ProformaBuscarPedidosPendientesCliente">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BAPedidosModel.SP_ProformaBuscarPedidosPendientesCliente_Result">
@@ -632,6 +667,23 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
                 <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
                 <ScalarProperty Name="TotalPedido" ColumnName="TotalPedido" />
                 <ScalarProperty Name="Condicion" ColumnName="Condicion" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DeleteInfoPedidos" FunctionName="BAPedidosModel.Store.SP_DeleteInfoPedidos" />
+          <FunctionImportMapping FunctionImportName="SP_ActualizarPedidos" FunctionName="BAPedidosModel.Store.SP_ActualizarPedidos" />
+          <FunctionImportMapping FunctionImportName="SP_ProformaBuscarConducesPorPedido" FunctionName="BAPedidosModel.Store.SP_ProformaBuscarConducesPorPedido">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BAPedidosModel.SP_ProformaBuscarConducesPorPedido_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Chofer" ColumnName="Chofer" />
+                <ScalarProperty Name="Conduce" ColumnName="Conduce" />
+                <ScalarProperty Name="Vehiculo" ColumnName="Vehiculo" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+                <ScalarProperty Name="Viajes" ColumnName="Viajes" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
               </ComplexTypeMapping>
             </ResultMapping>

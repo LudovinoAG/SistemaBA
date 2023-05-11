@@ -243,7 +243,7 @@ namespace Sistema_de_Gestión.Presentacion
             CT.BuscarProductos();
             cboProductos.ValueMember = "ID";
             cboProductos.DisplayMember = "Producto";
-            cboProductos.DataSource = CT.LoadProductos.ToList();
+            cboProductos.DataSource = CT.LoadProductos.OrderBy(t=> t.Producto).ToList();
         }
 
         private void CalcularSubTotal()

@@ -63,6 +63,9 @@ namespace Sistema_de_Gestión.Presentacion
 
             if (ValidarCriterios())
             {
+                cmdBuscarPedido.Enabled = false;
+                lblMsgCarga.Text = "Buscando...";
+                lblMsgCarga.BackColor = Color.DarkRed;
 
                 await Task.Run(() =>
                 {
@@ -88,7 +91,6 @@ namespace Sistema_de_Gestión.Presentacion
                             FacturacionModel.NumConduce);
                         });
 
-
                         //Llenar el DatagridView con los pedidos según criterio
                         dgvPedidosFacturar.DataSource = FM.PedidosClientesFacturar.ToList();
                         //Llenar el DatagridView con los conduces según criterio
@@ -103,7 +105,7 @@ namespace Sistema_de_Gestión.Presentacion
                         TxtRNC.Text = FacturacionModel.RNC;
 
                         //Llenar los totales
-                        txtSubTotal.Text = FacturacionModel.SubTotalFactura.ToString("C");
+                        //txtSubTotal.Text = FacturacionModel.SubTotalFactura.ToString("C");
                         FacturacionModel.ITBISFactura = (FacturacionModel.SubTotalFactura - FacturacionModel.DescuentoFactura) * 0.18;
                         //txtDesc.Text = FacturacionModel.DescuentoFactura.ToString("C");
                         //txtITBIS.Text = FacturacionModel.ITBISFactura.ToString("C");
@@ -112,6 +114,8 @@ namespace Sistema_de_Gestión.Presentacion
 
                         FM.FormatPedidosFacturar(dgvPedidosFacturar.Columns, dgvConducesFactura.Columns);
                         FM.FormatPedidosFacturar(dgvPedidosFacturar.Rows, dgvConducesFactura.Rows);
+                        //Formatear columnas detalles
+                        FormatearColumnasDetalles(dgvConducesFactura.Columns);
                     }
 
 
@@ -129,9 +133,7 @@ namespace Sistema_de_Gestión.Presentacion
         {
             //Iniciar las tarea principal
             Task Pedidos = BuscarPedidos();
-            cmdBuscarPedido.Enabled = false;
-            lblMsgCarga.Text = "Buscando...";
-            lblMsgCarga.BackColor = Color.DarkRed;
+
 
 
         }
@@ -272,30 +274,6 @@ namespace Sistema_de_Gestión.Presentacion
                 //Obtener el valor de las columnas y asignarlas a los controles
                 //Reset Campos conduces
                 ResetCamposConduces();
-                //Seleccionar la primera fila de la lista de conduces asociados
-                dgvConducesFactura.Rows[0].Selected = true;
-                //Detalles de Pedidos a facturar
-                int indexP = cboProducto.FindStringExact(dgvPedidosFacturar.Rows[e.RowIndex].Cells["Producto"].Value.ToString());
-                cboProducto.SelectedIndex = indexP;
-
-                int indexM = cboMedidas.FindStringExact(dgvPedidosFacturar.Rows[e.RowIndex].Cells["Medida"].Value.ToString());
-                cboMedidas.SelectedIndex = indexM;
-
-                nUpDownCantidad.Value = (decimal)dgvPedidosFacturar.Rows[e.RowIndex].Cells["Cantidad"].Value;
-                dtpFechaConduce.Value = (DateTime)dgvPedidosFacturar.Rows[e.RowIndex].Cells["FechaConduce"].Value;
-
-                decimal precio = (decimal)dgvPedidosFacturar.Rows[e.RowIndex].Cells["Precio"].Value;
-                txtPrecio.Text = precio.ToString("N");
-
-                decimal ITBIS = (decimal)dgvPedidosFacturar.Rows[e.RowIndex].Cells["ITBIS"].Value;
-                txtITBIS.Text = ITBIS.ToString("N");
-
-                decimal SubTotal = (decimal)dgvPedidosFacturar.Rows[e.RowIndex].Cells["SubTotal"].Value;
-                txtSubTotal.Text = SubTotal.ToString("N");
-
-                decimal Total = (decimal)dgvPedidosFacturar.Rows[e.RowIndex].Cells["TotalPedido"].Value;
-                txtTotal.Text = Total.ToString("N");
-
                 int PedidoSeleccionado = (int)dgvPedidosFacturar.SelectedRows[0].Cells["NumPedido"].Value;
 
                 txtPedidoSeleccionado.Text = PedidoSeleccionado.ToString();
@@ -310,34 +288,52 @@ namespace Sistema_de_Gestión.Presentacion
                 dgvConducesFactura.ClearSelection();
 
                 //Formatear columnas detalles
-                //FormatearColumnasDetalles();
+                FormatearColumnasDetalles(dgvConducesFactura.Columns);
+                FM.FormatPedidosFacturar(dgvPedidosFacturar.Rows, dgvConducesFactura.Rows);
             }
 
 
 
         }
 
+        private void FormatearColumnasDetalles(DataGridViewColumnCollection Columnas)
+        {
+            Columnas["ID"].HeaderText = "Registro";
+            Columnas["FechaPedido"].HeaderText = "Fecha Pedido";
+            Columnas["FechaConduce"].HeaderText = "Fecha Conduce";
+            Columnas["NumeroConduce"].HeaderText = "Conduce";
+            Columnas["Precio"].DefaultCellStyle.Format = "C2";
+            Columnas["SubTotal"].DefaultCellStyle.Format = "C2";
+            Columnas["ITBIS"].DefaultCellStyle.Format = "C2";
+
+        }
+
         private void dgvConducesFactura_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //Al seleccionar la fila llenar los campos
-            txtDescripcion.Text = dgvConducesFactura.Rows[e.RowIndex].Cells["Descripcion"].Value.ToString();
+
+            int ConduceSeleccionado = (int)dgvConducesFactura.SelectedRows[0].Cells["ID"].Value;
+            txtConduceSeleccionado.Text = ConduceSeleccionado.ToString();
+
+            dtpFechaConduce.Value = (DateTime)dgvConducesFactura.Rows[e.RowIndex].Cells["FechaConduce"].Value;
             txtNumConduce.Text = dgvConducesFactura.Rows[e.RowIndex].Cells["NumeroConduce"].Value.ToString();
-
-            int indexC = cboChoferes.FindStringExact(dgvConducesFactura.Rows[e.RowIndex].Cells["Chofer"].Value.ToString());
-            cboChoferes.SelectedIndex = indexC;
-
-            int indexV = cboVehiculos.FindStringExact(dgvConducesFactura.Rows[e.RowIndex].Cells["Vehiculo"].Value.ToString());
-            cboVehiculos.SelectedIndex = indexV;
-
+            nUpDownCantidad.Value = (decimal)dgvConducesFactura.Rows[e.RowIndex].Cells["Cantidad"].Value;
+            int indexM = cboMedidas.FindStringExact(dgvConducesFactura.Rows[e.RowIndex].Cells["Medidas"].Value.ToString());
+            cboMedidas.SelectedIndex = indexM;
+            int indexP = cboProducto.FindStringExact(dgvConducesFactura.Rows[e.RowIndex].Cells["Productos"].Value.ToString());
+            cboProducto.SelectedIndex = indexP;
+            decimal precio = (decimal)dgvConducesFactura.Rows[e.RowIndex].Cells["Precio"].Value;
+            txtPrecio.Text = precio.ToString("N");
             nUpDownViajes.Value = (int)dgvConducesFactura.Rows[e.RowIndex].Cells["Viajes"].Value;
             decimal Subtotal = (decimal)dgvConducesFactura.Rows[e.RowIndex].Cells["SubTotal"].Value;
             txtSubTotalConduce.Text = Subtotal.ToString("N");
-
             decimal ITBIS = (decimal)dgvConducesFactura.Rows[e.RowIndex].Cells["ITBIS"].Value;
             txtITBISConduce.Text = ITBIS.ToString("N");
-
-            int ConduceSeleccionado = (int)dgvConducesFactura.SelectedRows[0].Cells["NumeroConduce"].Value;
-            txtConduceSeleccionado.Text = ConduceSeleccionado.ToString();
+            int indexC = cboChoferes.FindStringExact(dgvConducesFactura.Rows[e.RowIndex].Cells["Chofer"].Value.ToString());
+            cboChoferes.SelectedIndex = indexC;
+            int indexV = cboVehiculos.FindStringExact(dgvConducesFactura.Rows[e.RowIndex].Cells["Vehiculo"].Value.ToString());
+            cboVehiculos.SelectedIndex = indexV;
+            txtDescripcion.Text = dgvConducesFactura.Rows[e.RowIndex].Cells["Descripcion"].Value.ToString();
 
         }
 
@@ -351,10 +347,133 @@ namespace Sistema_de_Gestión.Presentacion
             nUpDownViajes.Value = 1;
             txtSubTotalConduce.Text = "0.00";
             txtITBISConduce.Text = "0.00";
+            lblOldSubTotal.Text = "0.00";
+        }
+
+        private void ResetCamposPedidos()
+        {
+            txtPedidoSeleccionado.Clear();
+            txtConduceSeleccionado.Clear();
+            cboProducto.SelectedIndex = 0;
+            nUpDownCantidad.Value = 1;
+            cboMedidas.SelectedIndex = 0;
+            dtpFechaConduce.Value = DateTime.Now.Date;
+            txtPrecio.Text = "0.00";
+        }
+
+        private void ResetInfoCliente()
+        {
+            txtCliente.Clear();
+            txtContactos.Clear();
+            txtTelefonos.Clear();
+            TxtRNC.Clear();
+            txtDirección.Clear();
+            txtCorreo.Clear();
+
+            dgvPedidosFacturar.DataSource = null;
+            dgvConducesFactura.DataSource = null;
         }
 
         private void cmdGuardar_Click(object sender, EventArgs e)
         {
+            if (txtPedidoSeleccionado.Text!="" && txtConduceSeleccionado.Text!="")
+            {
+                int Pedido = int.Parse(txtPedidoSeleccionado.Text);
+                int Cliente = int.Parse(txtCodigoCliente.Text);
+                int idConduce = int.Parse(txtConduceSeleccionado.Text);
+                int idDetallesPedidos = idConduce;
+                int NumConduce = Convert.ToInt16(txtNumConduce.Text);
+                decimal Cantidad = nUpDownCantidad.Value;
+                int Medida = (int)cboMedidas.SelectedValue;
+                int Producto = (int)cboProducto.SelectedValue;
+                string Descripcion = txtDescripcion.Text;
+                decimal costo = decimal.Parse(txtPrecio.Text);
+                decimal SubTotal = decimal.Parse(txtSubTotalConduce.Text);
+                decimal itbis = decimal.Parse(txtITBISConduce.Text);
+                DateTime FechaConduce = dtpFechaConduce.Value;
+                int Chofer = (int)cboChoferes.SelectedValue;
+                int Vehiculo = (int)cboVehiculos.SelectedValue;
+                int Viajes = (int)nUpDownViajes.Value;
+
+                if (PM.ActualizarPedidos(Pedido, Cliente, idConduce, idDetallesPedidos, NumConduce, Cantidad, Medida,
+                    Producto, Descripcion, costo, SubTotal, itbis, FechaConduce, Chofer, Vehiculo, Viajes))
+                {
+                    MessageBox.Show("Se han actualizado las informaciones del pedido correctamente", "Actualizado",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    ResetCamposConduces();
+                    ResetCamposPedidos();
+                    ResetInfoCliente();
+                    cmdBuscarPedido_Click(sender, e);
+
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un conduce del listado", "Aviso", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+           
+        }
+
+        private void nUpDownViajes_ValueChanged(object sender, EventArgs e)
+        {
+
+            //decimal SubTotal = PM.CalcularSubtotal(cboMedidas.SelectedIndex, nUpDownCantidad.Value, decimal.Parse(txtPrecio.Text));
+            decimal NuevaCantidad = nUpDownCantidad.Value * nUpDownViajes.Value;
+            decimal SubTotal = decimal.Parse(txtPrecio.Text) * NuevaCantidad;
+            txtSubTotalConduce.Text = SubTotal.ToString("N");
+
+        }
+
+        private void cmdEliminar_Click(object sender, EventArgs e)
+        {
+            if (txtPedidoSeleccionado.Text != "" && txtConduceSeleccionado.Text != "")
+            {
+                int Pedido = int.Parse(txtPedidoSeleccionado.Text);
+                int Cliente = int.Parse(txtCodigoCliente.Text);
+                int idConduce = int.Parse(txtConduceSeleccionado.Text);
+                int idDetallesPedidos = idConduce;
+
+                if (PM.EliminarPedidos(Pedido, Cliente, idConduce, idDetallesPedidos))
+                {
+                    MessageBox.Show($"Se ha eliminado el conduce al cliente [{txtCliente.Text}] correctamente. " +
+                        $"\n Pedido #: {Pedido} " +
+                        $"\n Conduce #: {txtNumConduce.Text} " +
+                        $"\n Descripción: {txtDescripcion.Text}", "Eliminado",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    ResetCamposConduces();
+                    ResetCamposPedidos();
+                    ResetInfoCliente();
+                    cmdBuscarPedido_Click(sender, e);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un conduce del listado", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void txtCodigoCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar==13)
+            {
+                cmdBuscarPedido_Click(sender, e);
+            }
+        }
+
+        
+
+        private void nUpDownCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar==13)
+            {
+                decimal SubTotal = PM.CalcularSubtotal(cboMedidas.SelectedIndex, nUpDownCantidad.Value, decimal.Parse(txtPrecio.Text));
+                txtSubTotalConduce.Text = SubTotal.ToString("N");
+            }
 
         }
     }

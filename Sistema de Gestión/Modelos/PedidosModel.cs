@@ -16,7 +16,7 @@ namespace Sistema_de_Gestión.Modelos
         public decimal ITBISPro { get; set; }
         public decimal CapacidadTotal { get; set; }
 
-        public int capacidad { get; set; }
+        public decimal capacidad { get; set; }
         public decimal Cantidad { get; set; }
         public decimal SumaSubTotales { get; set; }
         public decimal ITBIS { get; set; }
@@ -116,7 +116,7 @@ namespace Sistema_de_Gestión.Modelos
         }
 
         public void AgregarChoferFactura(DataGridView dgvChoferes, int IDFila, int Conduce, int Chofer,
-          int Vehiculo, int Producto, int Medida, int Factura, int CantidadViaje, int Capacidad, string Placa,
+          int Vehiculo, int Producto, int Medida, int Factura, int CantidadViaje, decimal Capacidad, string Placa,
           decimal OrometroInicio, decimal OrometroFinal, DateTime FechaConduce)
         {
             //Tabla de informacion referencial
@@ -284,9 +284,9 @@ namespace Sistema_de_Gestión.Modelos
                                     {
                                         string Placa = dgvChoferes.Rows[c].Cells["Placa"].Value.ToString();
                                         string NameProducto = dgvListaChoferes.Rows[c].Cells["clProducto"].Value.ToString();
-                                        int Capacidad = (int)dgvChoferes.Rows[c].Cells["clsCapacidad"].Value;
+                                        decimal Capacidad = (decimal)dgvChoferes.Rows[c].Cells["clsCapacidad"].Value;
                                         string Medida = dgvListaChoferes.Rows[c].Cells["clMedida"].Value.ToString();
-                                        int m3Total = Capacidad * CantidadViajesPedido;
+                                        decimal m3Total = Capacidad * CantidadViajesPedido;
                                         //decimal Total = PrecioPedido * m3Total;
                                     
                                         RM.SP_InsertarRedaccion(Placa, NumConduce, NameProducto, 
@@ -358,6 +358,49 @@ namespace Sistema_de_Gestión.Modelos
 
             return true;
 
+        }
+
+        public bool ActualizarPedidos(int Pedido, int Cliente, int idConduce, int DetallesPedidos, int NumConduce, decimal Cantidad, int Medidas,
+            int Producto, string Descripcion, decimal Costo, decimal Subtotal, decimal ITBIS, DateTime FechaConduce, int Chofer, 
+            int Vehiculo, int Viajes)
+        {
+            try
+            {
+                using(BAPedidosEntities PE = new BAPedidosEntities())
+                {
+                    PE.SP_ActualizarPedidos(Pedido, Cliente, idConduce, DetallesPedidos, NumConduce, Cantidad, Medidas, Producto,
+                        Descripcion, Costo, Subtotal, ITBIS, FechaConduce, Chofer, Vehiculo, Viajes);
+
+                    return true;
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("No fue posible actualizar el pedido indicado " + Ex.Message, "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                return false;
+            }
+        }
+
+
+        public bool EliminarPedidos(int Pedido, int Cliente, int idConduce, int DetallesPedidos)
+        {
+            try
+            {
+                using(BAPedidosEntities PE = new BAPedidosEntities())
+                {
+                    PE.SP_DeleteInfoPedidos(Pedido, Cliente, idConduce, DetallesPedidos);
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No fue posible eliminar el pedido indicado", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                return false;
+            }
         }
 
         public int CargarNuevoPedido()

@@ -14,15 +14,21 @@ namespace Sistema_de_Gestión.Modelos
     public partial class SP_BuscarConducesFactura_Result
     {
         public Nullable<int> ID { get; set; }
+        public Nullable<System.DateTime> FechaPedido { get; set; }
+        public Nullable<System.DateTime> FechaConduce { get; set; }
         public string Chofer { get; set; }
         public Nullable<int> NumeroConduce { get; set; }
         public string Vehiculo { get; set; }
         public string Placa { get; set; }
         public Nullable<int> Capacidad { get; set; }
+        public string Productos { get; set; }
         public Nullable<int> Viajes { get; set; }
-        public string Descripcion { get; set; }
+        public Nullable<decimal> Cantidad { get; set; }
+        public string Medidas { get; set; }
+        public Nullable<decimal> Precio { get; set; }
         public Nullable<decimal> SubTotal { get; set; }
         public Nullable<decimal> ITBIS { get; set; }
+        public string Descripcion { get; set; }
         public string Estatus { get; set; }
     }
 }

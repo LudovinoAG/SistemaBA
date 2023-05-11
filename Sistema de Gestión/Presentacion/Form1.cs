@@ -226,17 +226,6 @@ namespace Sistema_de_Gestión
             }
         }
 
-        private void mnuPrincipalPedidos_Click(object sender, EventArgs e)
-        {
-            if (!FC.ValidarVentanaAbierta("frmPedidos"))
-            {
-                frmPedidos frmPedidos = new frmPedidos();
-                frmPedidos.MdiParent = this;
-                frmPedidos.Show();
-                frmPedidos.WindowState = FormWindowState.Normal;
-            }
-        }
-
         private void redaccionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!FC.ValidarVentanaAbierta("frmReportePedidos"))
@@ -299,6 +288,28 @@ namespace Sistema_de_Gestión
                 frmVerConduces.MdiParent = this;
                 frmVerConduces.Show();
                 frmVerConduces.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void mantenimientosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!FC.ValidarVentanaAbierta("frmMantenimientoPedidos"))
+            {
+                frmMantenimientoPedidos frmMantenimiento = new frmMantenimientoPedidos();
+                frmMantenimiento.MdiParent = this;
+                frmMantenimiento.Show();
+                frmMantenimiento.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void registrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!FC.ValidarVentanaAbierta("frmPedidos"))
+            {
+                frmPedidos frmPedidos = new frmPedidos();
+                frmPedidos.MdiParent = this;
+                frmPedidos.Show();
+                frmPedidos.WindowState = FormWindowState.Normal;
             }
         }
     }

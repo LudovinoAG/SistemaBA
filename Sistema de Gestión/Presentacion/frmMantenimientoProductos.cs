@@ -184,8 +184,8 @@ namespace Sistema_de_Gestión.Presentacion
                 if (BAProductos.ValidacionCampos(this.Name, Controls))
                 {
                     BAProductos.ActualizarProducto(int.Parse(LblID.Text), txtProducto.Text, txtDescripcion.Text,
-                        decimal.Parse(txtPrecio.Text), cboCategoria.SelectedIndex, cboProveedor.SelectedIndex,
-                        cboEstatus.SelectedIndex,decimal.Parse(txtITBISProducto.Text));
+                        decimal.Parse(txtPrecio.Text), (int)cboCategoria.SelectedValue, (int)cboProveedor.SelectedValue,
+                        (int)cboEstatus.SelectedIndex, decimal.Parse(txtITBISProducto.Text));
                     LoadProductos(cboFiltrar.Text, txtBuscar.Text);
 
                     BAProductos.LimpiarCampos(Controls);
