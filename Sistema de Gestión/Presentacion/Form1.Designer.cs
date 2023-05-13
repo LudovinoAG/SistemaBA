@@ -341,8 +341,12 @@ namespace Sistema_de_Gestión
             // 
             // toolVersion
             // 
+            this.toolVersion.AutoSize = false;
+            this.toolVersion.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolVersion.ForeColor = System.Drawing.Color.RoyalBlue;
             this.toolVersion.Name = "toolVersion";
-            this.toolVersion.Size = new System.Drawing.Size(84, 17);
+            this.toolVersion.Size = new System.Drawing.Size(1339, 17);
+            this.toolVersion.Spring = true;
             this.toolVersion.Text = "Version: 0.0.0.0";
             this.toolVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 

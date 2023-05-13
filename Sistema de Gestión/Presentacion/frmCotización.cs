@@ -315,9 +315,9 @@ namespace Sistema_de_Gestión.Presentacion
 
             }
 
-            txtITBIS.Text = ITBIS.ToString();
-            txtSubTotal.Text = Cotizaciones.SubTotalCotizacion.ToString();
-            TxtTotalGeneral.Text = Cotizaciones.TotalGeneralCotizacion.ToString();
+            txtITBIS.Text = ITBIS.ToString("N");
+            txtSubTotal.Text = Cotizaciones.SubTotalCotizacion.ToString("N");
+            TxtTotalGeneral.Text = Cotizaciones.TotalGeneralCotizacion.ToString("N");
 
         }
 
