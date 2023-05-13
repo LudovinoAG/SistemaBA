@@ -34,7 +34,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.label6 = new System.Windows.Forms.Label();
             this.lstComprobantes = new System.Windows.Forms.ListBox();
             this.gbRangoComprobantes = new System.Windows.Forms.GroupBox();
-            this.cmdInsertar = new System.Windows.Forms.Button();
+            this.cmdActualizar = new System.Windows.Forms.Button();
             this.lblEstatus = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbDesactivado = new System.Windows.Forms.RadioButton();
@@ -59,6 +59,8 @@ namespace Sistema_de_Gestión.Presentacion
             this.cmdGuardarUser = new System.Windows.Forms.Button();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.label14 = new System.Windows.Forms.Label();
+            this.cboEstatusUsuario = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.cboPerfiles = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -69,8 +71,6 @@ namespace Sistema_de_Gestión.Presentacion
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblMensajeConfiguracion = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cboEstatusUsuario = new System.Windows.Forms.ComboBox();
             this.tcConfiguraciones.SuspendLayout();
             this.tbpComprobanteFiscal.SuspendLayout();
             this.gbRangoComprobantes.SuspendLayout();
@@ -130,7 +130,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // gbRangoComprobantes
             // 
-            this.gbRangoComprobantes.Controls.Add(this.cmdInsertar);
+            this.gbRangoComprobantes.Controls.Add(this.cmdActualizar);
             this.gbRangoComprobantes.Controls.Add(this.lblEstatus);
             this.gbRangoComprobantes.Controls.Add(this.groupBox2);
             this.gbRangoComprobantes.Controls.Add(this.dtpFechaVencimiento);
@@ -155,19 +155,19 @@ namespace Sistema_de_Gestión.Presentacion
             this.gbRangoComprobantes.TabStop = false;
             this.gbRangoComprobantes.Text = "Rango de Comprobantes:";
             // 
-            // cmdInsertar
+            // cmdActualizar
             // 
-            this.cmdInsertar.BackgroundImage = global::Sistema_de_Gestión.RecursosBA.BotonInsertar;
-            this.cmdInsertar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmdInsertar.Location = new System.Drawing.Point(313, 128);
-            this.cmdInsertar.Name = "cmdInsertar";
-            this.cmdInsertar.Size = new System.Drawing.Size(158, 42);
-            this.cmdInsertar.TabIndex = 50;
-            this.cmdInsertar.UseVisualStyleBackColor = true;
-            this.cmdInsertar.Click += new System.EventHandler(this.cmdInsertar_Click);
-            this.cmdInsertar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmdInsertar_MouseDown);
-            this.cmdInsertar.MouseLeave += new System.EventHandler(this.cmdInsertar_MouseLeave);
-            this.cmdInsertar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cmdInsertar_MouseMove);
+            this.cmdActualizar.BackgroundImage = global::Sistema_de_Gestión.RecursosBA.BotonActualizar;
+            this.cmdActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdActualizar.Location = new System.Drawing.Point(313, 128);
+            this.cmdActualizar.Name = "cmdActualizar";
+            this.cmdActualizar.Size = new System.Drawing.Size(158, 42);
+            this.cmdActualizar.TabIndex = 51;
+            this.cmdActualizar.UseVisualStyleBackColor = true;
+            this.cmdActualizar.Click += new System.EventHandler(this.cmdActualizar_Click);
+            this.cmdActualizar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmdActualizar_MouseDown);
+            this.cmdActualizar.MouseLeave += new System.EventHandler(this.cmdActualizar_MouseLeave);
+            this.cmdActualizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cmdActualizar_MouseMove);
             // 
             // lblEstatus
             // 
@@ -445,6 +445,26 @@ namespace Sistema_de_Gestión.Presentacion
             this.label14.TabIndex = 8;
             this.label14.Text = "Mantenimiento de Usuarios";
             // 
+            // cboEstatusUsuario
+            // 
+            this.cboEstatusUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboEstatusUsuario.FormattingEnabled = true;
+            this.cboEstatusUsuario.Location = new System.Drawing.Point(60, 119);
+            this.cboEstatusUsuario.Name = "cboEstatusUsuario";
+            this.cboEstatusUsuario.Size = new System.Drawing.Size(143, 24);
+            this.cboEstatusUsuario.TabIndex = 4;
+            this.cboEstatusUsuario.Tag = "Estatus";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(11, 123);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(48, 16);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Estatus:";
+            // 
             // cboPerfiles
             // 
             this.cboPerfiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -545,26 +565,6 @@ namespace Sistema_de_Gestión.Presentacion
     " por la DGII";
             this.lblMensajeConfiguracion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(11, 123);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(48, 16);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "Estatus:";
-            // 
-            // cboEstatusUsuario
-            // 
-            this.cboEstatusUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboEstatusUsuario.FormattingEnabled = true;
-            this.cboEstatusUsuario.Location = new System.Drawing.Point(60, 119);
-            this.cboEstatusUsuario.Name = "cboEstatusUsuario";
-            this.cboEstatusUsuario.Size = new System.Drawing.Size(143, 24);
-            this.cboEstatusUsuario.TabIndex = 4;
-            this.cboEstatusUsuario.Tag = "Estatus";
-            // 
             // frmConfiguraciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -619,7 +619,6 @@ namespace Sistema_de_Gestión.Presentacion
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtSerie;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button cmdInsertar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblMensajeConfiguracion;
         private System.Windows.Forms.TabPage tbpUsuarios;
@@ -638,5 +637,6 @@ namespace Sistema_de_Gestión.Presentacion
         private System.Windows.Forms.Button cmdGuardarUser;
         private System.Windows.Forms.ComboBox cboEstatusUsuario;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button cmdActualizar;
     }
 }

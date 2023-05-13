@@ -30,6 +30,16 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerComprobantesFiscales
           <Property Name="Serie" Type="varchar" MaxLength="2" Nullable="false" />
           <Property Name="Tipo" Type="varchar" MaxLength="2" Nullable="false" />
         </EntityType>
+        <Function Name="SP_ActualizarInfoComprobanteFiscal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Desde" Type="int" Mode="In" />
+          <Parameter Name="Hasta" Type="int" Mode="In" />
+          <Parameter Name="CantidadNCF" Type="int" Mode="In" />
+          <Parameter Name="FechaVencimiento" Type="date" Mode="In" />
+          <Parameter Name="ProximoNCF" Type="int" Mode="In" />
+          <Parameter Name="Estatus" Type="varchar" Mode="In" />
+          <Parameter Name="Serie" Type="varchar" Mode="In" />
+          <Parameter Name="Tipo" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="SP_ActualizarUsoComprobante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_Comprobante" Type="int" Mode="In" />
           <Parameter Name="Cantidad_Usada" Type="int" Mode="In" />
@@ -85,6 +95,16 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerComprobantesFiscales
           <FunctionImport Name="SP_DesactivarComprobante">
           <Parameter Name="IDComprobante" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="SP_ActualizarInfoComprobanteFiscal">
+            <Parameter Name="Desde" Mode="In" Type="Int32" />
+            <Parameter Name="Hasta" Mode="In" Type="Int32" />
+            <Parameter Name="CantidadNCF" Mode="In" Type="Int32" />
+            <Parameter Name="FechaVencimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="ProximoNCF" Mode="In" Type="Int32" />
+            <Parameter Name="Estatus" Mode="In" Type="String" />
+            <Parameter Name="Serie" Mode="In" Type="String" />
+            <Parameter Name="Tipo" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="VW_VerComprobantesFiscales">
           <Key>
@@ -135,6 +155,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerComprobantesFiscales
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_DesactivarComprobante" FunctionName="BAComprobantesFiscalesModel.Store.SP_DesactivarComprobante" />
+          <FunctionImportMapping FunctionImportName="SP_ActualizarInfoComprobanteFiscal" FunctionName="BAComprobantesFiscalesModel.Store.SP_ActualizarInfoComprobanteFiscal" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
