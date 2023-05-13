@@ -276,9 +276,12 @@ namespace Sistema_de_Gestión.Modelos
                                     decimal OrometroInicio = (decimal)dgvChoferes.Rows[c].Cells["clOrometroInicio"].Value;
                                     decimal OrometroFinal = (decimal)dgvChoferes.Rows[c].Cells["clOrometroFinal"].Value;
                                     DateTime FechaConduce = (DateTime)dgvChoferes.Rows[c].Cells["cFechaConduce"].Value;
+                                    decimal CapacidadConduce = (decimal)dgvChoferes.Rows[c].Cells["clsCapacidad"].Value;
+
+                                
 
                                 PM.SP_InsertarConducesPedidos(IDCliente, IDEmpleado, NumConduce, IDProducto, IDVehiculo, IDMedida,
-                                    CantidadViajesPedido, RegConduces, OrometroInicio, OrometroFinal, FechaConduce);
+                                    CantidadViajesPedido, RegConduces, OrometroInicio, OrometroFinal, FechaConduce, CapacidadConduce);
 
                                     using(BARedaccionesEntities RM = new BARedaccionesEntities())
                                     {

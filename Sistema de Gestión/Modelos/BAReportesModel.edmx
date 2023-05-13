@@ -190,7 +190,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerReportesFacturasPend
           <Property Type="String" Name="Medidas" Nullable="false" MaxLength="15" />
           <Property Type="Int32" Name="Viajes" Nullable="true" />
           <Property Type="String" Name="Vehiculo" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="Capacidad" Nullable="true" />
+          <Property Type="Decimal" Name="Capacidad" Nullable="true" Precision="10" Scale="2" />
           <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
         </ComplexType>
       </Schema>

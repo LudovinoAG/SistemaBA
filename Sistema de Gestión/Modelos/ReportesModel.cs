@@ -57,7 +57,7 @@ namespace Sistema_de_Gestión.Modelos
             {
                 MessageBox.Show("No fue posible buscar los conduces registrados","Aviso",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return ConducesRegistrados.ToList();
+                return ConducesRegistrados;
             }
         }
 

@@ -20,7 +20,7 @@ namespace Sistema_de_Gestión.Modelos
         public Nullable<int> NumeroConduce { get; set; }
         public string Vehiculo { get; set; }
         public string Placa { get; set; }
-        public Nullable<int> Capacidad { get; set; }
+        public Nullable<decimal> Capacidad { get; set; }
         public string Productos { get; set; }
         public Nullable<int> Viajes { get; set; }
         public Nullable<decimal> Cantidad { get; set; }

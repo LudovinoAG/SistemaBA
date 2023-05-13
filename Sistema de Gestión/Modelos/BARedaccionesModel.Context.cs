@@ -28,15 +28,6 @@ namespace Sistema_de_Gestión.Modelos
         }
     
     
-        public virtual ObjectResult<SP_VerConducesPedidos_Result> SP_VerConducesPedidos(Nullable<int> iDCliente)
-        {
-            var iDClienteParameter = iDCliente.HasValue ?
-                new ObjectParameter("IDCliente", iDCliente) :
-                new ObjectParameter("IDCliente", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_VerConducesPedidos_Result>("SP_VerConducesPedidos", iDClienteParameter);
-        }
-    
         public virtual int SP_InsertarRedaccion(string placa, Nullable<int> conduce, string producto, Nullable<int> servicios, Nullable<decimal> capacidad_m3, string medida, Nullable<decimal> m3_total, Nullable<decimal> precio, Nullable<decimal> total_pedido, Nullable<int> id_cliente, Nullable<int> id_estatus)
         {
             var placaParameter = placa != null ?
@@ -95,33 +86,13 @@ namespace Sistema_de_Gestión.Modelos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_BuscarClienteRedaccion_Result>("SP_BuscarClienteRedaccion", codigoClienteParameter);
         }
     
-        public virtual ObjectResult<SP_VerRedaccionClienteID_Result> SP_VerRedaccionClienteID(Nullable<int> iDCliente, Nullable<int> id_Pedido, string modoReporte, Nullable<int> estatusPedido, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFin)
+        public virtual ObjectResult<SP_VerConducesPedidos_Result> SP_VerConducesPedidos(Nullable<int> iDCliente)
         {
             var iDClienteParameter = iDCliente.HasValue ?
                 new ObjectParameter("IDCliente", iDCliente) :
                 new ObjectParameter("IDCliente", typeof(int));
     
-            var id_PedidoParameter = id_Pedido.HasValue ?
-                new ObjectParameter("id_Pedido", id_Pedido) :
-                new ObjectParameter("id_Pedido", typeof(int));
-    
-            var modoReporteParameter = modoReporte != null ?
-                new ObjectParameter("ModoReporte", modoReporte) :
-                new ObjectParameter("ModoReporte", typeof(string));
-    
-            var estatusPedidoParameter = estatusPedido.HasValue ?
-                new ObjectParameter("EstatusPedido", estatusPedido) :
-                new ObjectParameter("EstatusPedido", typeof(int));
-    
-            var fechaInicioParameter = fechaInicio.HasValue ?
-                new ObjectParameter("FechaInicio", fechaInicio) :
-                new ObjectParameter("FechaInicio", typeof(System.DateTime));
-    
-            var fechaFinParameter = fechaFin.HasValue ?
-                new ObjectParameter("FechaFin", fechaFin) :
-                new ObjectParameter("FechaFin", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_VerRedaccionClienteID_Result>("SP_VerRedaccionClienteID", iDClienteParameter, id_PedidoParameter, modoReporteParameter, estatusPedidoParameter, fechaInicioParameter, fechaFinParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_VerConducesPedidos_Result>("SP_VerConducesPedidos", iDClienteParameter);
         }
     
         public virtual ObjectResult<SP_VerDetalleRedaccion_Result> SP_VerDetalleRedaccion(Nullable<int> iD_Cliente, Nullable<int> iD_Pedido, string modoReporte, Nullable<int> estatusPedido, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFin)
@@ -151,6 +122,35 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("FechaFin", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_VerDetalleRedaccion_Result>("SP_VerDetalleRedaccion", iD_ClienteParameter, iD_PedidoParameter, modoReporteParameter, estatusPedidoParameter, fechaInicioParameter, fechaFinParameter);
+        }
+    
+        public virtual ObjectResult<SP_VerRedaccionClienteID_Result> SP_VerRedaccionClienteID(Nullable<int> iDCliente, Nullable<int> id_Pedido, string modoReporte, Nullable<int> estatusPedido, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFin)
+        {
+            var iDClienteParameter = iDCliente.HasValue ?
+                new ObjectParameter("IDCliente", iDCliente) :
+                new ObjectParameter("IDCliente", typeof(int));
+    
+            var id_PedidoParameter = id_Pedido.HasValue ?
+                new ObjectParameter("id_Pedido", id_Pedido) :
+                new ObjectParameter("id_Pedido", typeof(int));
+    
+            var modoReporteParameter = modoReporte != null ?
+                new ObjectParameter("ModoReporte", modoReporte) :
+                new ObjectParameter("ModoReporte", typeof(string));
+    
+            var estatusPedidoParameter = estatusPedido.HasValue ?
+                new ObjectParameter("EstatusPedido", estatusPedido) :
+                new ObjectParameter("EstatusPedido", typeof(int));
+    
+            var fechaInicioParameter = fechaInicio.HasValue ?
+                new ObjectParameter("FechaInicio", fechaInicio) :
+                new ObjectParameter("FechaInicio", typeof(System.DateTime));
+    
+            var fechaFinParameter = fechaFin.HasValue ?
+                new ObjectParameter("FechaFin", fechaFin) :
+                new ObjectParameter("FechaFin", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_VerRedaccionClienteID_Result>("SP_VerRedaccionClienteID", iDClienteParameter, id_PedidoParameter, modoReporteParameter, estatusPedidoParameter, fechaInicioParameter, fechaFinParameter);
         }
     }
 }

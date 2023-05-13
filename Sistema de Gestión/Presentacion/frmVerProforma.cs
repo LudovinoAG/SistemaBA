@@ -146,12 +146,11 @@ namespace Sistema_de_Gestión.Presentacion
 
                 //Cambiar nombre de encabezado de columnas
                 dgvPedidos.Columns["NumPedido"].HeaderText = "Pedido #";
-                dgvPedidos.Columns["FechaPedido"].HeaderText = "Fecha";
                 dgvPedidos.Columns["TotalPedido"].HeaderText = "Total";
                 dgvPedidos.Columns["SubTotal"].HeaderText = "Sub-Total";
 
                 //Cambiar formato de las columna a moneda
-                dgvPedidos.Columns["Precio"].DefaultCellStyle.Format = "N";
+                //dgvConduceProforma.Columns["Precio"].DefaultCellStyle.Format = "N";
                 dgvPedidos.Columns["SubTotal"].DefaultCellStyle.Format = "N";
                 dgvPedidos.Columns["Descuento"].DefaultCellStyle.Format = "N";
                 dgvPedidos.Columns["ITBIS"].DefaultCellStyle.Format = "N";

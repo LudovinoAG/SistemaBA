@@ -46,9 +46,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="BARedaccionesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BARedaccionesEntities" annotation:LazyLoadingEnabled="true" >
-          <FunctionImport Name="SP_VerConducesPedidos" ReturnType="Collection(BARedaccionesModel.SP_VerConducesPedidos_Result)">
-          <Parameter Name="IDCliente" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_InsertarRedaccion">
             <Parameter Name="placa" Mode="In" Type="String" />
             <Parameter Name="conduce" Mode="In" Type="Int32" />
@@ -65,13 +62,8 @@
           <FunctionImport Name="SP_BuscarClienteRedaccion" ReturnType="Collection(BARedaccionesModel.SP_BuscarClienteRedaccion_Result)">
           <Parameter Name="CodigoCliente" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SP_VerRedaccionClienteID" ReturnType="Collection(BARedaccionesModel.SP_VerRedaccionClienteID_Result)">
+          <FunctionImport Name="SP_VerConducesPedidos" ReturnType="Collection(BARedaccionesModel.SP_VerConducesPedidos_Result)">
             <Parameter Name="IDCliente" Mode="In" Type="Int32" />
-            <Parameter Name="id_Pedido" Mode="In" Type="Int32" />
-            <Parameter Name="ModoReporte" Mode="In" Type="String" />
-            <Parameter Name="EstatusPedido" Mode="In" Type="Int32" />
-            <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
-            <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="SP_VerDetalleRedaccion" ReturnType="Collection(BARedaccionesModel.SP_VerDetalleRedaccion_Result)">
             <Parameter Name="ID_Cliente" Mode="In" Type="Int32" />
@@ -81,16 +73,15 @@
             <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
             <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="SP_VerRedaccionClienteID" ReturnType="Collection(BARedaccionesModel.SP_VerRedaccionClienteID_Result)">
+            <Parameter Name="IDCliente" Mode="In" Type="Int32" />
+            <Parameter Name="id_Pedido" Mode="In" Type="Int32" />
+            <Parameter Name="ModoReporte" Mode="In" Type="String" />
+            <Parameter Name="EstatusPedido" Mode="In" Type="Int32" />
+            <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="SP_VerConducesPedidos_Result">
-          <Property Type="String" Name="Chofer" Nullable="false" MaxLength="31" />
-          <Property Type="Int32" Name="Num_Conduce" Nullable="true" />
-          <Property Type="String" Name="Producto" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="Vehiculo" Nullable="false" MaxLength="71" />
-          <Property Type="String" Name="Matricula" Nullable="false" MaxLength="18" />
-          <Property Type="Int32" Name="Capacidad" Nullable="true" />
-          <Property Type="Int32" Name="Viajes" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="SP_BuscarClienteRedaccion_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Empresa" Nullable="true" MaxLength="60" />
@@ -99,27 +90,41 @@
           <Property Type="String" Name="NombreContacto" Nullable="false" MaxLength="31" />
           <Property Type="String" Name="TelefonoContactos" Nullable="false" MaxLength="27" />
         </ComplexType>
+        <ComplexType Name="SP_VerConducesPedidos_Result">
+          <Property Type="String" Name="Chofer" Nullable="false" MaxLength="31" />
+          <Property Type="Int32" Name="Num_Conduce" Nullable="true" />
+          <Property Type="String" Name="Producto" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Vehiculo" Nullable="false" MaxLength="71" />
+          <Property Type="String" Name="Matricula" Nullable="false" MaxLength="18" />
+          <Property Type="Int32" Name="Capacidad" Nullable="true" />
+          <Property Type="Int32" Name="Viajes" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_VerDetalleRedaccion_Result">
+          <Property Type="Int32" Name="id_Pedidos" Nullable="false" />
+          <Property Type="String" Name="Placa" Nullable="true" MaxLength="18" />
+          <Property Type="Decimal" Name="Capacidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Int32" Name="Servicios" Nullable="true" />
+          <Property Type="Int32" Name="Conduce" Nullable="true" />
+          <Property Type="Decimal" Name="OrometroInicio" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="OrometroFinal" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="String" Name="Medida" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Producto" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="800" />
+          <Property Type="Decimal" Name="Precio" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+          <Property Type="String" Name="FechaConduce" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
+        </ComplexType>
         <ComplexType Name="SP_VerRedaccionClienteID_Result">
-          <Property Type="Int32" Name="Num_Pedido" Nullable="false" />
+          <Property Type="Int32" Name="Num_Pedido" Nullable="true" />
           <Property Type="String" Name="FechaPedido" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="FechaConduce" Nullable="true" MaxLength="4000" />
           <Property Type="String" Name="Mes" Nullable="true" MaxLength="4000" />
           <Property Type="Decimal" Name="Sub_Total" Nullable="true" Precision="19" />
           <Property Type="Decimal" Name="ITBIS" Nullable="true" Precision="19" />
           <Property Type="Decimal" Name="Descuento" Nullable="true" Precision="19" />
           <Property Type="Decimal" Name="TotalPedido" Nullable="true" Precision="19" />
-          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
-        </ComplexType>
-        <ComplexType Name="SP_VerDetalleRedaccion_Result">
-          <Property Type="String" Name="Placa" Nullable="false" MaxLength="18" />
-          <Property Type="Int32" Name="Capacidad" Nullable="true" />
-          <Property Type="Int32" Name="Servicios" Nullable="true" />
-          <Property Type="Int32" Name="Conduce" Nullable="true" />
-          <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="5" Scale="2" />
-          <Property Type="String" Name="Medida" Nullable="false" MaxLength="15" />
-          <Property Type="String" Name="Producto" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="800" />
-          <Property Type="Decimal" Name="Precio" Nullable="true" Precision="19" />
-          <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
           <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
         </ComplexType>
       </Schema>
@@ -128,19 +133,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BARedaccionesModelStoreContainer" CdmEntityContainer="BARedaccionesEntities" >
-          <FunctionImportMapping FunctionImportName="SP_VerConducesPedidos" FunctionName="BARedaccionesModel.Store.SP_VerConducesPedidos">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BARedaccionesModel.SP_VerConducesPedidos_Result">
-                <ScalarProperty Name="Chofer" ColumnName="Chofer" />
-                <ScalarProperty Name="Num_Conduce" ColumnName="Num.Conduce" />
-                <ScalarProperty Name="Producto" ColumnName="Producto" />
-                <ScalarProperty Name="Vehiculo" ColumnName="Vehiculo" />
-                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
-                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
-                <ScalarProperty Name="Viajes" ColumnName="Viajes" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_InsertarRedaccion" FunctionName="BARedaccionesModel.Store.SP_InsertarRedaccion" />
           <FunctionImportMapping FunctionImportName="SP_BuscarClienteRedaccion" FunctionName="BARedaccionesModel.Store.SP_BuscarClienteRedaccion">
             <ResultMapping>
@@ -154,33 +146,51 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_VerRedaccionClienteID" FunctionName="BARedaccionesModel.Store.SP_VerRedaccionClienteID">
+          <FunctionImportMapping FunctionImportName="SP_VerConducesPedidos" FunctionName="BARedaccionesModel.Store.SP_VerConducesPedidos">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BARedaccionesModel.SP_VerRedaccionClienteID_Result">
-                <ScalarProperty Name="Num_Pedido" ColumnName="Num.Pedido" />
-                <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
-                <ScalarProperty Name="Mes" ColumnName="Mes" />
-                <ScalarProperty Name="Sub_Total" ColumnName="Sub-Total" />
-                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
-                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
-                <ScalarProperty Name="TotalPedido" ColumnName="TotalPedido" />
-                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              <ComplexTypeMapping TypeName="BARedaccionesModel.SP_VerConducesPedidos_Result">
+                <ScalarProperty Name="Chofer" ColumnName="Chofer" />
+                <ScalarProperty Name="Num_Conduce" ColumnName="Num.Conduce" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Vehiculo" ColumnName="Vehiculo" />
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+                <ScalarProperty Name="Viajes" ColumnName="Viajes" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_VerDetalleRedaccion" FunctionName="BARedaccionesModel.Store.SP_VerDetalleRedaccion">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BARedaccionesModel.SP_VerDetalleRedaccion_Result">
+                <ScalarProperty Name="id_Pedidos" ColumnName="id_Pedidos" />
                 <ScalarProperty Name="Placa" ColumnName="Placa" />
                 <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
                 <ScalarProperty Name="Servicios" ColumnName="Servicios" />
                 <ScalarProperty Name="Conduce" ColumnName="Conduce" />
+                <ScalarProperty Name="OrometroInicio" ColumnName="OrometroInicio" />
+                <ScalarProperty Name="OrometroFinal" ColumnName="OrometroFinal" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="Medida" ColumnName="Medida" />
                 <ScalarProperty Name="Producto" ColumnName="Producto" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Precio" ColumnName="Precio" />
                 <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="FechaConduce" ColumnName="FechaConduce" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_VerRedaccionClienteID" FunctionName="BARedaccionesModel.Store.SP_VerRedaccionClienteID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BARedaccionesModel.SP_VerRedaccionClienteID_Result">
+                <ScalarProperty Name="Num_Pedido" ColumnName="Num.Pedido" />
+                <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
+                <ScalarProperty Name="FechaConduce" ColumnName="FechaConduce" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Sub_Total" ColumnName="Sub-Total" />
+                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="TotalPedido" ColumnName="TotalPedido" />
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
               </ComplexTypeMapping>
             </ResultMapping>

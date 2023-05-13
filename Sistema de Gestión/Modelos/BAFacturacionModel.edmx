@@ -474,7 +474,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           <Property Type="Int32" Name="NumeroConduce" Nullable="true" />
           <Property Type="String" Name="Vehiculo" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Placa" Nullable="true" MaxLength="18" />
-          <Property Type="Int32" Name="Capacidad" Nullable="true" />
+          <Property Type="Decimal" Name="Capacidad" Nullable="true" Precision="10" Scale="2" />
           <Property Type="String" Name="Productos" Nullable="true" MaxLength="255" />
           <Property Type="Int32" Name="Viajes" Nullable="true" />
           <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="5" Scale="2" />

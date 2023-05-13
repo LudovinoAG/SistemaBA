@@ -23,7 +23,7 @@ namespace Sistema_de_Gestión.Modelos
         public string Medidas { get; set; }
         public Nullable<int> Viajes { get; set; }
         public string Vehiculo { get; set; }
-        public Nullable<int> Capacidad { get; set; }
+        public Nullable<decimal> Capacidad { get; set; }
         public Nullable<decimal> SubTotal { get; set; }
     }
 }
