@@ -94,6 +94,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Parameter Name="Chofer" Type="int" Mode="In" />
           <Parameter Name="Vehiculo" Type="int" Mode="In" />
           <Parameter Name="Viajes" Type="int" Mode="In" />
+          <Parameter Name="Capacidad" Type="decimal" Mode="In" />
         </Function>
         <Function Name="SP_BuscarClienteCodigo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Codigo_Cliente" Type="varchar" Mode="In" />
@@ -361,6 +362,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
             <Parameter Name="Chofer" Mode="In" Type="Int32" />
             <Parameter Name="Vehiculo" Mode="In" Type="Int32" />
             <Parameter Name="Viajes" Mode="In" Type="Int32" />
+            <Parameter Name="Capacidad" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SP_ProformaBuscarConducesPorPedido" ReturnType="Collection(BAPedidosModel.SP_ProformaBuscarConducesPorPedido_Result)">
             <Parameter Name="ID_Cliente" Mode="In" Type="Int32" />

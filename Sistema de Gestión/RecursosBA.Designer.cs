@@ -1313,6 +1313,16 @@ namespace Sistema_de_Gestión {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FondoContenedorPrincipal {
+            get {
+                object obj = ResourceManager.GetObject("FondoContenedorPrincipal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FondoFacturaCredito {
             get {
                 object obj = ResourceManager.GetObject("FondoFacturaCredito", resourceCulture);

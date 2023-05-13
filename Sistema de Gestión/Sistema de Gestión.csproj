@@ -27,7 +27,7 @@
     <MinimumRequiredVersion>1.0.0.1</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>52</ApplicationRevision>
+    <ApplicationRevision>53</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -357,7 +357,7 @@
     <Compile Include="Modelos\RedaccionesModel.cs" />
     <Compile Include="Modelos\ReportesModel.cs" />
     <Compile Include="Modelos\SP_BuscarClienteCodigo_Result.cs">
-      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\SP_BuscarClienteFacturar_Result.cs">
       <DependentUpon>BAFacturacionModel.tt</DependentUpon>
@@ -409,7 +409,7 @@
     </Compile>
     <Compile Include="Modelos\VehiculosModel.cs" />
     <Compile Include="Modelos\VW_EmpleadosFactura.cs">
-      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ListaCategoriaLicencia.cs">
       <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
@@ -454,13 +454,13 @@
       <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ListarMedidas.cs">
-      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ListarMetodos.cs">
       <DependentUpon>BAFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ListarVehiculos.cs">
-      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ListaSeguroMedico.cs">
       <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
@@ -481,7 +481,7 @@
       <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ProductosFactura.cs">
-      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_VerComprobantesFiscales.cs">
       <DependentUpon>BAConprobantesFiscalesModel.tt</DependentUpon>
@@ -1167,6 +1167,7 @@
       <DependentUpon>BAVehiculosModel.edmx</DependentUpon>
       <LastGenOutput>BAVehiculosModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\FondoContenedorPrincipal.jpg" />
     <None Include="Resources\BotonVerConducesOver.jpg" />
     <None Include="Resources\BotonVerConducesClick.jpg" />
     <None Include="Resources\BotonVerConduces.jpg" />

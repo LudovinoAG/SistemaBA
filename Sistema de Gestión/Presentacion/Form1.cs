@@ -28,6 +28,7 @@ namespace Sistema_de_Gestión
         {
             //Mostrar en la barra de estado el usuario y perfil conectado a la aplicación
             BarEstado.Items[0].Text = "Usuario: " + EntrarLogin.UsuarioActual + " | Perfil: " + EntrarLogin.PerfilActual;
+            BarEstado.Items[1].Text = $"Versión: {Application.ProductVersion}";
             if (EntrarLogin.PerfilActual=="Usuario")
             {
                 mnuPrincipalConfiguracion.Visible = false;

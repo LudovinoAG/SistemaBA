@@ -333,6 +333,7 @@ namespace Sistema_de_Gestión.Presentacion
             cboChoferes.SelectedIndex = indexC;
             int indexV = cboVehiculos.FindStringExact(dgvConducesFactura.Rows[e.RowIndex].Cells["Vehiculo"].Value.ToString());
             cboVehiculos.SelectedIndex = indexV;
+            nUpDownCapacidad.Value = (decimal)dgvConducesFactura.Rows[e.RowIndex].Cells["Capacidad"].Value;
             txtDescripcion.Text = dgvConducesFactura.Rows[e.RowIndex].Cells["Descripcion"].Value.ToString();
 
         }
@@ -394,9 +395,10 @@ namespace Sistema_de_Gestión.Presentacion
                 int Chofer = (int)cboChoferes.SelectedValue;
                 int Vehiculo = (int)cboVehiculos.SelectedValue;
                 int Viajes = (int)nUpDownViajes.Value;
+                decimal Capacidad = nUpDownCapacidad.Value;
 
                 if (PM.ActualizarPedidos(Pedido, Cliente, idConduce, idDetallesPedidos, NumConduce, Cantidad, Medida,
-                    Producto, Descripcion, costo, SubTotal, itbis, FechaConduce, Chofer, Vehiculo, Viajes))
+                    Producto, Descripcion, costo, SubTotal, itbis, FechaConduce, Chofer, Vehiculo, Viajes, Capacidad))
                 {
                     MessageBox.Show("Se han actualizado las informaciones del pedido correctamente", "Actualizado",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -365,14 +365,14 @@ namespace Sistema_de_Gestión.Modelos
 
         public bool ActualizarPedidos(int Pedido, int Cliente, int idConduce, int DetallesPedidos, int NumConduce, decimal Cantidad, int Medidas,
             int Producto, string Descripcion, decimal Costo, decimal Subtotal, decimal ITBIS, DateTime FechaConduce, int Chofer, 
-            int Vehiculo, int Viajes)
+            int Vehiculo, int Viajes, decimal Capacidad)
         {
             try
             {
                 using(BAPedidosEntities PE = new BAPedidosEntities())
                 {
                     PE.SP_ActualizarPedidos(Pedido, Cliente, idConduce, DetallesPedidos, NumConduce, Cantidad, Medidas, Producto,
-                        Descripcion, Costo, Subtotal, ITBIS, FechaConduce, Chofer, Vehiculo, Viajes);
+                        Descripcion, Costo, Subtotal, ITBIS, FechaConduce, Chofer, Vehiculo, Viajes, Capacidad);
 
                     return true;
                 }

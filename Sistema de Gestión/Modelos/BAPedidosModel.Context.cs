@@ -358,7 +358,7 @@ namespace Sistema_de_Gestión.Modelos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_DeleteInfoPedidos", idPedidosParameter, idClienteParameter, idConduceParameter, idDetallesPedidoParameter);
         }
     
-        public virtual int SP_ActualizarPedidos(Nullable<int> idPedidos, Nullable<int> idCliente, Nullable<int> idConduce, Nullable<int> idDetallesPedido, Nullable<int> conduce, Nullable<decimal> cantidad, Nullable<int> medidas, Nullable<int> producto, string descripcion, Nullable<decimal> costo, Nullable<decimal> subTotal, Nullable<decimal> iTBIS, Nullable<System.DateTime> fechaConduce, Nullable<int> chofer, Nullable<int> vehiculo, Nullable<int> viajes)
+        public virtual int SP_ActualizarPedidos(Nullable<int> idPedidos, Nullable<int> idCliente, Nullable<int> idConduce, Nullable<int> idDetallesPedido, Nullable<int> conduce, Nullable<decimal> cantidad, Nullable<int> medidas, Nullable<int> producto, string descripcion, Nullable<decimal> costo, Nullable<decimal> subTotal, Nullable<decimal> iTBIS, Nullable<System.DateTime> fechaConduce, Nullable<int> chofer, Nullable<int> vehiculo, Nullable<int> viajes, Nullable<decimal> capacidad)
         {
             var idPedidosParameter = idPedidos.HasValue ?
                 new ObjectParameter("idPedidos", idPedidos) :
@@ -424,7 +424,11 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("Viajes", viajes) :
                 new ObjectParameter("Viajes", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ActualizarPedidos", idPedidosParameter, idClienteParameter, idConduceParameter, idDetallesPedidoParameter, conduceParameter, cantidadParameter, medidasParameter, productoParameter, descripcionParameter, costoParameter, subTotalParameter, iTBISParameter, fechaConduceParameter, choferParameter, vehiculoParameter, viajesParameter);
+            var capacidadParameter = capacidad.HasValue ?
+                new ObjectParameter("Capacidad", capacidad) :
+                new ObjectParameter("Capacidad", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ActualizarPedidos", idPedidosParameter, idClienteParameter, idConduceParameter, idDetallesPedidoParameter, conduceParameter, cantidadParameter, medidasParameter, productoParameter, descripcionParameter, costoParameter, subTotalParameter, iTBISParameter, fechaConduceParameter, choferParameter, vehiculoParameter, viajesParameter, capacidadParameter);
         }
     
         public virtual ObjectResult<SP_ProformaBuscarConducesPorPedido_Result> SP_ProformaBuscarConducesPorPedido(Nullable<int> iD_Cliente, Nullable<int> id_Pedido, string modoReporte, Nullable<int> id_EstatusPedido, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFin)

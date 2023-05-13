@@ -58,6 +58,7 @@ namespace Sistema_de_Gestión
             this.mnuPrincipalAcercaDe = new System.Windows.Forms.ToolStripMenuItem();
             this.BarEstado = new System.Windows.Forms.StatusStrip();
             this.toolUsuario = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolVersion = new System.Windows.Forms.ToolStripStatusLabel();
             this.mnuPrincipal.SuspendLayout();
             this.BarEstado.SuspendLayout();
             this.SuspendLayout();
@@ -162,7 +163,7 @@ namespace Sistema_de_Gestión
             // 
             this.registrarToolStripMenuItem.Image = global::Sistema_de_Gestión.RecursosBA.Cotizacion2;
             this.registrarToolStripMenuItem.Name = "registrarToolStripMenuItem";
-            this.registrarToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
+            this.registrarToolStripMenuItem.Size = new System.Drawing.Size(168, 30);
             this.registrarToolStripMenuItem.Text = "Registrar";
             this.registrarToolStripMenuItem.Click += new System.EventHandler(this.registrarToolStripMenuItem_Click);
             // 
@@ -170,7 +171,7 @@ namespace Sistema_de_Gestión
             // 
             this.mantenimientosToolStripMenuItem.Image = global::Sistema_de_Gestión.RecursosBA.icons8_editar_100;
             this.mantenimientosToolStripMenuItem.Name = "mantenimientosToolStripMenuItem";
-            this.mantenimientosToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
+            this.mantenimientosToolStripMenuItem.Size = new System.Drawing.Size(168, 30);
             this.mantenimientosToolStripMenuItem.Text = "Mantenimientos";
             this.mantenimientosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientosToolStripMenuItem_Click);
             // 
@@ -316,7 +317,8 @@ namespace Sistema_de_Gestión
             // BarEstado
             // 
             this.BarEstado.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolUsuario});
+            this.toolUsuario,
+            this.toolVersion});
             this.BarEstado.Location = new System.Drawing.Point(0, 687);
             this.BarEstado.Name = "BarEstado";
             this.BarEstado.Size = new System.Drawing.Size(1370, 22);
@@ -337,12 +339,19 @@ namespace Sistema_de_Gestión
             this.toolUsuario.ToolTipText = "Cambiar contraseña";
             this.toolUsuario.Click += new System.EventHandler(this.toolUsuario_Click);
             // 
+            // toolVersion
+            // 
+            this.toolVersion.Name = "toolVersion";
+            this.toolVersion.Size = new System.Drawing.Size(84, 17);
+            this.toolVersion.Text = "Version: 0.0.0.0";
+            this.toolVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Sistema_de_Gestión.RecursosBA.FondoContenedorFinal2;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BackgroundImage = global::Sistema_de_Gestión.RecursosBA.FondoContenedorPrincipal;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1370, 709);
             this.Controls.Add(this.BarEstado);
             this.Controls.Add(this.mnuPrincipal);
@@ -394,6 +403,7 @@ namespace Sistema_de_Gestión
         private System.Windows.Forms.ToolStripMenuItem registrosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mantenimientosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel toolVersion;
     }
 }
 
