@@ -150,6 +150,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Parameter Name="descripcion" Type="varchar" Mode="In" />
           <Parameter Name="conduce" Type="int" Mode="In" />
           <Parameter Name="ITBIS" Type="money" Mode="In" />
+          <Parameter Name="Proyecto" Type="varchar" Mode="In" />
         </Function>
         <Function Name="SP_InsertarFacturaProforma" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_Cliente" Type="int" Mode="In" />
@@ -325,6 +326,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
             <Parameter Name="descripcion" Mode="In" Type="String" />
             <Parameter Name="conduce" Mode="In" Type="Int32" />
             <Parameter Name="ITBIS" Mode="In" Type="Decimal" />
+            <Parameter Name="Proyecto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_ViewQueryPreform" ReturnType="Collection(BAPedidosModel.SP_ViewQueryPreform_Result)">
             <Parameter Name="id_Cliente" Mode="In" Type="Int32" />

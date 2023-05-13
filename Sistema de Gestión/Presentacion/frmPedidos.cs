@@ -109,6 +109,7 @@ namespace Sistema_de_Gestión.Presentacion
                     txtTelefonos.Text = Resultado.Telefonos;
                     txtCorreo.Text = Resultado.Correo;
                     txtDirección.Text = Resultado.Dirección;
+                    txtProyecto.Text = Resultado.Proyecto;
                     PM.TipoCliente = Resultado.TipoCliente;
                     PM.IDCliente = Resultado.ID_Cliente;
                 }
@@ -345,7 +346,7 @@ namespace Sistema_de_Gestión.Presentacion
 
                 if (PM.InsertarPedido(PM.IDCliente,PM.IDConduce,PM.EstatusPedido,decimal.Parse(txtSubTotal.Text),
                     decimal.Parse(TxtTotalGeneral.Text),decimal.Parse(txtITBIS.Text), decimal.Parse(txtDesc.Text),
-                    dgvFactura,dgvChoferes,dgvListaChoferes))
+                    dgvFactura,dgvChoferes,dgvListaChoferes,txtProyecto.Text))
                 {
                     MessageBox.Show("Se ha registrado el pedido correctamente", "Registro Pedidos", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
@@ -411,20 +412,56 @@ namespace Sistema_de_Gestión.Presentacion
 
         private void txtCosto_Leave(object sender, EventArgs e)
         {
-            PM.CalcularSubtotal(cboMedida.SelectedIndex, UdCantidad.Value, decimal.Parse(txtCosto.Text));
-            txtNuevoSubTotal.Text = string.Format("{0:N}", PM.SubTotal);
-            txtCosto.Text = string.Format("{0:N}", PM.Costo);
-            txtITBISProducto.Text = string.Format("{0:N}", PM.ITBISPro);
+            
+            if ((int)cboProductos.SelectedValue!=2 && (int)cboProductos.SelectedValue != 3 && (int)cboProductos.SelectedValue != 6 && 
+                (int)cboProductos.SelectedValue != 7 && (int)cboProductos.SelectedValue != 8 && (int)cboProductos.SelectedValue != 10 &&
+                (int)cboProductos.SelectedValue != 13 && (int)cboProductos.SelectedValue != 34 && (int)cboProductos.SelectedValue != 35)
+            {
+                PM.CalcularSubtotal(cboMedida.SelectedIndex, UdCantidad.Value, decimal.Parse(txtCosto.Text));
+                txtNuevoSubTotal.Text = string.Format("{0:N}", PM.SubTotal);
+                txtCosto.Text = string.Format("{0:N}", PM.Costo);
+                txtITBISProducto.Text = string.Format("{0:N}", PM.ITBISPro);
+            }
+            else
+            {
+                decimal SubTotal = PM.CalcularSubtotal(cboMedida.SelectedIndex, UdCantidad.Value, decimal.Parse(txtCosto.Text));
+                txtNuevoSubTotal.Text = string.Format("{0:N}", SubTotal);
+
+                decimal ITBIS = decimal.Parse(txtITBISProducto.Text);
+                txtITBISProducto.Text = string.Format("{0:N}", ITBIS);
+
+                decimal costo = decimal.Parse(txtCosto.Text);
+                txtCosto.Text = string.Format("{0:N}", costo);
+            }
+
         }
 
         private void txtCosto_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
             {
-                PM.CalcularSubtotal(cboMedida.SelectedIndex, UdCantidad.Value, decimal.Parse(txtCosto.Text));
-                txtNuevoSubTotal.Text = string.Format("{0:N}", PM.SubTotal);
-                txtCosto.Text = string.Format("{0:N}", PM.Costo);
-                txtITBISProducto.Text = string.Format("{0:N}", PM.ITBISPro);
+
+                if ((int)cboProductos.SelectedValue != 2 && (int)cboProductos.SelectedValue != 3 && (int)cboProductos.SelectedValue != 6 &&
+                    (int)cboProductos.SelectedValue != 7 && (int)cboProductos.SelectedValue != 8 && (int)cboProductos.SelectedValue != 10 &&
+                    (int)cboProductos.SelectedValue != 13 && (int)cboProductos.SelectedValue != 34 && (int)cboProductos.SelectedValue != 35)
+                {
+                    PM.CalcularSubtotal(cboMedida.SelectedIndex, UdCantidad.Value, decimal.Parse(txtCosto.Text));
+                    txtNuevoSubTotal.Text = string.Format("{0:N}", PM.SubTotal);
+                    txtCosto.Text = string.Format("{0:N}", PM.Costo);
+                    txtITBISProducto.Text = string.Format("{0:N}", PM.ITBISPro);
+                }
+                else
+                {
+                    decimal SubTotal = PM.CalcularSubtotal(cboMedida.SelectedIndex, UdCantidad.Value, decimal.Parse(txtCosto.Text));
+                    txtNuevoSubTotal.Text = string.Format("{0:N}", SubTotal);
+
+                    decimal ITBIS = decimal.Parse(txtITBISProducto.Text);
+                    txtITBISProducto.Text = string.Format("{0:N}", ITBIS);
+
+                    decimal costo = decimal.Parse(txtCosto.Text);
+                    txtCosto.Text = string.Format("{0:N}", costo);
+                }
+
             }
         }
 

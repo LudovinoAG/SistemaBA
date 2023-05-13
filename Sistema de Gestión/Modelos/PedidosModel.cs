@@ -227,7 +227,7 @@ namespace Sistema_de_Gestión.Modelos
 
         public bool InsertarPedido(int IDCliente, int idConduce, int idEstatusPedido,decimal SubTotal, 
             decimal totalPedido, decimal ITBISPedido,decimal DescuentoPedido,
-            DataGridView dgvFactura,DataGridView dgvChoferes, DataGridView dgvListaChoferes)
+            DataGridView dgvFactura,DataGridView dgvChoferes, DataGridView dgvListaChoferes, string Proyecto)
         {
             try
             {
@@ -265,7 +265,7 @@ namespace Sistema_de_Gestión.Modelos
                                     int RegConduces = c + 1;
 
                                     PM.SP_InsertarDetallesPedido(RegPedidos, IDCliente, IDProducto, IDMedida, CantidadProducto,
-                                        PrecioPedido, SubTotalFilas, PedidoDescripcion, RegConduces, ITBISProducto);
+                                        PrecioPedido, SubTotalFilas, PedidoDescripcion, RegConduces, ITBISProducto, Proyecto);
 
                                     int IDEmpleado = (int)dgvChoferes.Rows[c].Cells["Chofer"].Value;
                                     int NumConduce = Convert.ToInt32(dgvListaChoferes.Rows[c].Cells["clConduce"].Value);

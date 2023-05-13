@@ -32,8 +32,8 @@ namespace Sistema_de_Gestión.Presentacion
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPedidos));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPedidos));
             this.txtNumPedido = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtFechaPedido = new System.Windows.Forms.TextBox();
@@ -62,6 +62,17 @@ namespace Sistema_de_Gestión.Presentacion
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.dgvFactura = new System.Windows.Forms.DataGridView();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Medida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripción = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Accion = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ITBISProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -157,17 +168,8 @@ namespace Sistema_de_Gestión.Presentacion
             this.cboChoferAlquiler = new System.Windows.Forms.ComboBox();
             this.txtITBISProducto = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Medida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripción = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Accion = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ITBISProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label36 = new System.Windows.Forms.Label();
+            this.txtProyecto = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.UdCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -276,7 +278,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.txtDirección.Multiline = true;
             this.txtDirección.Name = "txtDirección";
             this.txtDirección.ReadOnly = true;
-            this.txtDirección.Size = new System.Drawing.Size(346, 50);
+            this.txtDirección.Size = new System.Drawing.Size(346, 31);
             this.txtDirección.TabIndex = 4;
             this.txtDirección.Tag = "Direccion";
             // 
@@ -459,6 +461,7 @@ namespace Sistema_de_Gestión.Presentacion
             // cboProductos
             // 
             this.cboProductos.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.cboProductos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProductos.FormattingEnabled = true;
             this.cboProductos.Location = new System.Drawing.Point(407, 278);
             this.cboProductos.Name = "cboProductos";
@@ -482,6 +485,7 @@ namespace Sistema_de_Gestión.Presentacion
             // cboMedida
             // 
             this.cboMedida.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.cboMedida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMedida.FormattingEnabled = true;
             this.cboMedida.Location = new System.Drawing.Point(256, 278);
             this.cboMedida.Name = "cboMedida";
@@ -559,6 +563,116 @@ namespace Sistema_de_Gestión.Presentacion
             this.dgvFactura.Size = new System.Drawing.Size(1288, 213);
             this.dgvFactura.TabIndex = 93;
             this.dgvFactura.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFactura_CellContentClick);
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Cantidad.FillWeight = 31.14229F;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.MaxInputLength = 3;
+            this.Cantidad.MinimumWidth = 35;
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            this.Cantidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Cantidad.Width = 104;
+            // 
+            // Medida
+            // 
+            this.Medida.FillWeight = 10.13162F;
+            this.Medida.HeaderText = "Medida";
+            this.Medida.MinimumWidth = 100;
+            this.Medida.Name = "Medida";
+            this.Medida.ReadOnly = true;
+            this.Medida.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Medida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // IDMedida
+            // 
+            this.IDMedida.HeaderText = "IDMedida";
+            this.IDMedida.Name = "IDMedida";
+            this.IDMedida.ReadOnly = true;
+            this.IDMedida.Visible = false;
+            // 
+            // IDProducto
+            // 
+            this.IDProducto.HeaderText = "IDProducto";
+            this.IDProducto.Name = "IDProducto";
+            this.IDProducto.ReadOnly = true;
+            this.IDProducto.Visible = false;
+            // 
+            // Producto
+            // 
+            this.Producto.FillWeight = 10.13162F;
+            this.Producto.HeaderText = "Producto";
+            this.Producto.MaxInputLength = 200;
+            this.Producto.MinimumWidth = 200;
+            this.Producto.Name = "Producto";
+            this.Producto.ReadOnly = true;
+            this.Producto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Producto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Descripción
+            // 
+            this.Descripción.FillWeight = 73.88532F;
+            this.Descripción.HeaderText = "Descripción";
+            this.Descripción.MaxInputLength = 200;
+            this.Descripción.MinimumWidth = 350;
+            this.Descripción.Name = "Descripción";
+            this.Descripción.ReadOnly = true;
+            // 
+            // Costo
+            // 
+            this.Costo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Costo.FillWeight = 10.13162F;
+            this.Costo.HeaderText = "Costo";
+            this.Costo.MaxInputLength = 20;
+            this.Costo.MinimumWidth = 100;
+            this.Costo.Name = "Costo";
+            this.Costo.ReadOnly = true;
+            this.Costo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // SubTotal
+            // 
+            this.SubTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.SubTotal.FillWeight = 139.6108F;
+            this.SubTotal.HeaderText = "Sub-Total";
+            this.SubTotal.MaxInputLength = 20;
+            this.SubTotal.MinimumWidth = 100;
+            this.SubTotal.Name = "SubTotal";
+            this.SubTotal.ReadOnly = true;
+            this.SubTotal.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.SubTotal.Width = 109;
+            // 
+            // Accion
+            // 
+            this.Accion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.DarkRed;
+            this.Accion.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Accion.HeaderText = "Fila";
+            this.Accion.MinimumWidth = 100;
+            this.Accion.Name = "Accion";
+            this.Accion.ReadOnly = true;
+            this.Accion.Text = "Eliminar";
+            this.Accion.ToolTipText = "Eliminar Registro";
+            this.Accion.UseColumnTextForButtonValue = true;
+            // 
+            // ITBISProducto
+            // 
+            this.ITBISProducto.HeaderText = "ITBISProducto";
+            this.ITBISProducto.MaxInputLength = 50;
+            this.ITBISProducto.Name = "ITBISProducto";
+            this.ITBISProducto.ReadOnly = true;
+            this.ITBISProducto.Visible = false;
+            // 
+            // CNum
+            // 
+            this.CNum.HeaderText = "Num";
+            this.CNum.MaxInputLength = 100;
+            this.CNum.Name = "CNum";
+            this.CNum.ReadOnly = true;
+            this.CNum.Visible = false;
             // 
             // label19
             // 
@@ -1595,121 +1709,33 @@ namespace Sistema_de_Gestión.Presentacion
             this.label35.TabIndex = 131;
             this.label35.Text = "$ITBIS:";
             // 
-            // Cantidad
+            // label36
             // 
-            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Cantidad.FillWeight = 31.14229F;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.MaxInputLength = 3;
-            this.Cantidad.MinimumWidth = 35;
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            this.Cantidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Cantidad.Width = 104;
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label36.Location = new System.Drawing.Point(22, 250);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(52, 13);
+            this.label36.TabIndex = 134;
+            this.label36.Text = "Proyecto:";
             // 
-            // Medida
+            // txtProyecto
             // 
-            this.Medida.FillWeight = 10.13162F;
-            this.Medida.HeaderText = "Medida";
-            this.Medida.MinimumWidth = 100;
-            this.Medida.Name = "Medida";
-            this.Medida.ReadOnly = true;
-            this.Medida.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Medida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // IDMedida
-            // 
-            this.IDMedida.HeaderText = "IDMedida";
-            this.IDMedida.Name = "IDMedida";
-            this.IDMedida.ReadOnly = true;
-            this.IDMedida.Visible = false;
-            // 
-            // IDProducto
-            // 
-            this.IDProducto.HeaderText = "IDProducto";
-            this.IDProducto.Name = "IDProducto";
-            this.IDProducto.ReadOnly = true;
-            this.IDProducto.Visible = false;
-            // 
-            // Producto
-            // 
-            this.Producto.FillWeight = 10.13162F;
-            this.Producto.HeaderText = "Producto";
-            this.Producto.MaxInputLength = 200;
-            this.Producto.MinimumWidth = 200;
-            this.Producto.Name = "Producto";
-            this.Producto.ReadOnly = true;
-            this.Producto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Producto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Descripción
-            // 
-            this.Descripción.FillWeight = 73.88532F;
-            this.Descripción.HeaderText = "Descripción";
-            this.Descripción.MaxInputLength = 200;
-            this.Descripción.MinimumWidth = 350;
-            this.Descripción.Name = "Descripción";
-            this.Descripción.ReadOnly = true;
-            // 
-            // Costo
-            // 
-            this.Costo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Costo.FillWeight = 10.13162F;
-            this.Costo.HeaderText = "Costo";
-            this.Costo.MaxInputLength = 20;
-            this.Costo.MinimumWidth = 100;
-            this.Costo.Name = "Costo";
-            this.Costo.ReadOnly = true;
-            this.Costo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // SubTotal
-            // 
-            this.SubTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.SubTotal.FillWeight = 139.6108F;
-            this.SubTotal.HeaderText = "Sub-Total";
-            this.SubTotal.MaxInputLength = 20;
-            this.SubTotal.MinimumWidth = 100;
-            this.SubTotal.Name = "SubTotal";
-            this.SubTotal.ReadOnly = true;
-            this.SubTotal.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.SubTotal.Width = 109;
-            // 
-            // Accion
-            // 
-            this.Accion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.DarkRed;
-            this.Accion.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Accion.HeaderText = "Fila";
-            this.Accion.MinimumWidth = 100;
-            this.Accion.Name = "Accion";
-            this.Accion.ReadOnly = true;
-            this.Accion.Text = "Eliminar";
-            this.Accion.ToolTipText = "Eliminar Registro";
-            this.Accion.UseColumnTextForButtonValue = true;
-            // 
-            // ITBISProducto
-            // 
-            this.ITBISProducto.HeaderText = "ITBISProducto";
-            this.ITBISProducto.MaxInputLength = 50;
-            this.ITBISProducto.Name = "ITBISProducto";
-            this.ITBISProducto.ReadOnly = true;
-            this.ITBISProducto.Visible = false;
-            // 
-            // CNum
-            // 
-            this.CNum.HeaderText = "Num";
-            this.CNum.MaxInputLength = 100;
-            this.CNum.Name = "CNum";
-            this.CNum.ReadOnly = true;
-            this.CNum.Visible = false;
+            this.txtProyecto.BackColor = System.Drawing.Color.White;
+            this.txtProyecto.Location = new System.Drawing.Point(76, 247);
+            this.txtProyecto.MaxLength = 60;
+            this.txtProyecto.Name = "txtProyecto";
+            this.txtProyecto.Size = new System.Drawing.Size(346, 20);
+            this.txtProyecto.TabIndex = 133;
+            this.txtProyecto.Tag = "Proyecto";
             // 
             // frmPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 691);
+            this.ClientSize = new System.Drawing.Size(1370, 642);
+            this.Controls.Add(this.label36);
+            this.Controls.Add(this.txtProyecto);
             this.Controls.Add(this.txtITBISProducto);
             this.Controls.Add(this.label35);
             this.Controls.Add(this.dgvChoferes);
@@ -1926,5 +1952,7 @@ namespace Sistema_de_Gestión.Presentacion
         private System.Windows.Forms.DataGridViewButtonColumn Accion;
         private System.Windows.Forms.DataGridViewTextBoxColumn ITBISProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn CNum;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox txtProyecto;
     }
 }

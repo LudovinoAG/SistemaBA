@@ -254,7 +254,7 @@ namespace Sistema_de_Gestión.Modelos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_BuscarClienteProforma_Result>("SP_BuscarClienteProforma", codigoClienteParameter);
         }
     
-        public virtual int SP_InsertarDetallesPedido(Nullable<int> detalles, Nullable<int> idCliente, Nullable<int> idProducto, Nullable<int> id_Medida, Nullable<decimal> cantidad, Nullable<decimal> precio, Nullable<decimal> subtotal, string descripcion, Nullable<int> conduce, Nullable<decimal> iTBIS)
+        public virtual int SP_InsertarDetallesPedido(Nullable<int> detalles, Nullable<int> idCliente, Nullable<int> idProducto, Nullable<int> id_Medida, Nullable<decimal> cantidad, Nullable<decimal> precio, Nullable<decimal> subtotal, string descripcion, Nullable<int> conduce, Nullable<decimal> iTBIS, string proyecto)
         {
             var detallesParameter = detalles.HasValue ?
                 new ObjectParameter("detalles", detalles) :
@@ -296,7 +296,11 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("ITBIS", iTBIS) :
                 new ObjectParameter("ITBIS", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarDetallesPedido", detallesParameter, idClienteParameter, idProductoParameter, id_MedidaParameter, cantidadParameter, precioParameter, subtotalParameter, descripcionParameter, conduceParameter, iTBISParameter);
+            var proyectoParameter = proyecto != null ?
+                new ObjectParameter("Proyecto", proyecto) :
+                new ObjectParameter("Proyecto", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarDetallesPedido", detallesParameter, idClienteParameter, idProductoParameter, id_MedidaParameter, cantidadParameter, precioParameter, subtotalParameter, descripcionParameter, conduceParameter, iTBISParameter, proyectoParameter);
         }
     
         public virtual ObjectResult<SP_ViewQueryPreform_Result> SP_ViewQueryPreform(Nullable<int> id_Cliente, Nullable<int> id_Pedido, string modoReporte, Nullable<int> id_EstatusPedido, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFin)
