@@ -124,21 +124,30 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           <Parameter Name="CantidadViajes" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_InsertarConduces" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FechaPedido" Type="date" Mode="In" />
+          <Parameter Name="FechaConduce" Type="date" Mode="In" />
           <Parameter Name="NomEmpleado" Type="varchar" Mode="In" />
-          <Parameter Name="num_Conduce" Type="int" Mode="In" />
+          <Parameter Name="NumConduce" Type="int" Mode="In" />
           <Parameter Name="NomVehiculo" Type="varchar" Mode="In" />
           <Parameter Name="Placa" Type="varchar" Mode="In" />
+          <Parameter Name="Capacidad" Type="decimal" Mode="In" />
+          <Parameter Name="Producto" Type="varchar" Mode="In" />
           <Parameter Name="CantidadViajes" Type="int" Mode="In" />
-          <Parameter Name="FechaConduce" Type="date" Mode="In" />
-          <Parameter Name="Capacidad" Type="int" Mode="In" />
+          <Parameter Name="Cantidad" Type="decimal" Mode="In" />
+          <Parameter Name="NomMedida" Type="varchar" Mode="In" />
+          <Parameter Name="Precio" Type="money" Mode="In" />
+          <Parameter Name="SubTotal" Type="money" Mode="In" />
+          <Parameter Name="ITBIS" Type="money" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Estatus" Type="varchar" Mode="In" />
         </Function>
         <Function Name="SP_InsertarDetallesFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="NombreProducto" Type="varchar" Mode="In" />
-          <Parameter Name="CantidadProductos" Type="decimal" Mode="In" />
-          <Parameter Name="NombreMedida" Type="varchar" Mode="In" />
-          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
-          <Parameter Name="Precio" Type="money" Mode="In" />
           <Parameter Name="SubTotalProducto" Type="money" Mode="In" />
+          <Parameter Name="Descuento" Type="money" Mode="In" />
+          <Parameter Name="ITBIS" Type="money" Mode="In" />
+          <Parameter Name="TotalPedidos" Type="money" Mode="In" />
+          <Parameter Name="Condicion" Type="varchar" Mode="In" />
+          <Parameter Name="Estatus" Type="varchar" Mode="In" />
         </Function>
         <Function Name="SP_InsertarFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idTipoFactura" Type="int" Mode="In" />
@@ -248,15 +257,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
             <Parameter Name="id_Medida" Mode="In" Type="Int32" />
             <Parameter Name="CantidadViajes" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_InsertarConduces">
-            <Parameter Name="NomEmpleado" Mode="In" Type="String" />
-            <Parameter Name="num_Conduce" Mode="In" Type="Int32" />
-            <Parameter Name="NomVehiculo" Mode="In" Type="String" />
-            <Parameter Name="Placa" Mode="In" Type="String" />
-            <Parameter Name="CantidadViajes" Mode="In" Type="Int32" />
-            <Parameter Name="FechaConduce" Mode="In" Type="DateTime" />
-            <Parameter Name="Capacidad" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_VerDetallesConduces" ReturnType="Collection(BAFacturacionModel.SP_VerDetallesConduces_Result)">
           <Parameter Name="NumFacturaConduce" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -302,14 +302,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
             <Parameter Name="idPago" Mode="In" Type="Int32" />
             <Parameter Name="FechaValidoNCF" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="SP_InsertarDetallesFactura">
-            <Parameter Name="NombreProducto" Mode="In" Type="String" />
-            <Parameter Name="CantidadProductos" Mode="In" Type="Decimal" />
-            <Parameter Name="NombreMedida" Mode="In" Type="String" />
-            <Parameter Name="Descripcion" Mode="In" Type="String" />
-            <Parameter Name="Precio" Mode="In" Type="Decimal" />
-            <Parameter Name="SubTotalProducto" Mode="In" Type="Decimal" />
-          </FunctionImport>
           <FunctionImport Name="SP_CambiarEstadoPedido">
             <Parameter Name="IDCliente" Mode="In" Type="Int32" />
             <Parameter Name="IDPedido" Mode="In" Type="Int32" />
@@ -336,6 +328,32 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
             <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
             <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
             <Parameter Name="Conduce" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertarConduces">
+            <Parameter Name="FechaPedido" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaConduce" Mode="In" Type="DateTime" />
+            <Parameter Name="NomEmpleado" Mode="In" Type="String" />
+            <Parameter Name="NumConduce" Mode="In" Type="Int32" />
+            <Parameter Name="NomVehiculo" Mode="In" Type="String" />
+            <Parameter Name="Placa" Mode="In" Type="String" />
+            <Parameter Name="Capacidad" Mode="In" Type="Decimal" />
+            <Parameter Name="Producto" Mode="In" Type="String" />
+            <Parameter Name="CantidadViajes" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad" Mode="In" Type="Decimal" />
+            <Parameter Name="NomMedida" Mode="In" Type="String" />
+            <Parameter Name="Precio" Mode="In" Type="Decimal" />
+            <Parameter Name="SubTotal" Mode="In" Type="Decimal" />
+            <Parameter Name="ITBIS" Mode="In" Type="Decimal" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Estatus" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertarDetallesFactura">
+            <Parameter Name="SubTotalProducto" Mode="In" Type="Decimal" />
+            <Parameter Name="Descuento" Mode="In" Type="Decimal" />
+            <Parameter Name="ITBIS" Mode="In" Type="Decimal" />
+            <Parameter Name="TotalPedidos" Mode="In" Type="Decimal" />
+            <Parameter Name="Condicion" Mode="In" Type="String" />
+            <Parameter Name="Estatus" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="VW_ListarVehiculos">
@@ -522,7 +540,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_InsertarConduce" FunctionName="BAFacturacionModel.Store.SP_InsertarConduce" />
-          <FunctionImportMapping FunctionImportName="SP_InsertarConduces" FunctionName="BAFacturacionModel.Store.SP_InsertarConduces" />
           <FunctionImportMapping FunctionImportName="SP_VerDetallesConduces" FunctionName="BAFacturacionModel.Store.SP_VerDetallesConduces">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BAFacturacionModel.SP_VerDetallesConduces_Result">
@@ -591,7 +608,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_InsertarFactura" FunctionName="BAFacturacionModel.Store.SP_InsertarFactura" />
-          <FunctionImportMapping FunctionImportName="SP_InsertarDetallesFactura" FunctionName="BAFacturacionModel.Store.SP_InsertarDetallesFactura" />
           <FunctionImportMapping FunctionImportName="SP_CambiarEstadoPedido" FunctionName="BAFacturacionModel.Store.SP_CambiarEstadoPedido" />
           <EntitySetMapping Name="VW_EmpleadosFactura">
             <EntityTypeMapping TypeName="BAFacturacionModel.VW_EmpleadosFactura">
@@ -667,6 +683,8 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_InsertarConduces" FunctionName="BAFacturacionModel.Store.SP_InsertarConduces" />
+          <FunctionImportMapping FunctionImportName="SP_InsertarDetallesFactura" FunctionName="BAFacturacionModel.Store.SP_InsertarDetallesFactura" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

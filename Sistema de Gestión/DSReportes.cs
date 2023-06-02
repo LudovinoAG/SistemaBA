@@ -4,6 +4,9 @@
 
     partial class DSReportes
     {
+        partial class SP_VerFacturaProformaDetallesDataTable
+        {
+        }
     }
 }
 

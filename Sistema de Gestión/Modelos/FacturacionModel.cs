@@ -156,29 +156,39 @@ namespace Sistema_de_Gestión.Modelos
                     foreach (DataGridViewRow FilaFactura in dgvPedidoFacturar.Rows)
                     {   
                         int Pedido = (int)FilaFactura.Cells["NumPedido"].Value;
-                        string NombreProducto = FilaFactura.Cells["Producto"].Value.ToString();
-                        decimal CantidadProducto = (decimal)FilaFactura.Cells["Cantidad"].Value;
-                        string NombreMedida = FilaFactura.Cells["Medida"].Value.ToString();
-                        string Descripcion = FilaFactura.Cells["Descripcion"].Value.ToString();
-                        decimal Precio = (decimal)FilaFactura.Cells["Costo"].Value;
                         decimal SubTotalFilas = (decimal)FilaFactura.Cells["SubTotal"].Value;
+                        decimal FilaDescuento = (decimal)FilaFactura.Cells["Descuento"].Value;
+                        decimal FilaITBIS = (decimal)FilaFactura.Cells["ITBIS"].Value;
+                        decimal FilaTotalPedidos = (decimal)FilaFactura.Cells["TotalPedido"].Value;
+                        string FilaCondicion = FilaFactura.Cells["Condicion"].Value.ToString();
+                        string FilaEstatus = FilaFactura.Cells["Estatus"].Value.ToString();                     
 
-                        FM.SP_InsertarDetallesFactura(NombreProducto, CantidadProducto, NombreMedida, Descripcion, Precio,
-                            SubTotalFilas);
+                        FM.SP_InsertarDetallesFactura(SubTotalFilas, FilaDescuento, FilaITBIS, FilaTotalPedidos, 
+                            FilaCondicion,FilaEstatus);
                         FM.SP_CambiarEstadoPedido(IDCliente, Pedido, 2);
                     }
 
                     foreach (DataGridViewRow FilaConduces in dgvConduceFactura.Rows)
                     {
+                        DateTime FechaPedido = (DateTime)FilaConduces.Cells["FechaPedido"].Value;
+                        DateTime FechaConduce = (DateTime)FilaConduces.Cells["FechaConduce"].Value;
                         string NombreEmpleado = FilaConduces.Cells["Chofer"].Value.ToString();
                         int NumConduce = (int)FilaConduces.Cells["NumeroConduce"].Value;
                         string NombreVehiculo = FilaConduces.Cells["Vehiculo"].Value.ToString();
                         string Placa = FilaConduces.Cells["Placa"].Value.ToString();
-                        int Capacidad = (int)FilaConduces.Cells["Capacidad"].Value;
+                        decimal Capacidad = (decimal)FilaConduces.Cells["Capacidad"].Value;
+                        string NombreProducto = FilaConduces.Cells["Productos"].Value.ToString();
                         int CantidadViajes = (int)FilaConduces.Cells["Viajes"].Value;
-                        DateTime FechaConduce = (DateTime)FilaConduces.Cells["FechaConduce"].Value;
+                        decimal Cantidad = (decimal)FilaConduces.Cells["Cantidad"].Value;
+                        string NombreMedida = FilaConduces.Cells["Medidas"].Value.ToString();
+                        decimal Precio = (decimal)FilaConduces.Cells["Precio"].Value;
+                        decimal SubTotal = (decimal)FilaConduces.Cells["SubTotal"].Value;
+                        decimal FilaITBIS = (decimal)FilaConduces.Cells["ITBIS"].Value;
+                        string Descripcion = FilaConduces.Cells["Descripcion"].Value.ToString();
+                        string Estatus = FilaConduces.Cells["Estatus"].Value.ToString();
 
-                        FM.SP_InsertarConduces(NombreEmpleado, NumConduce, NombreVehiculo, Placa, CantidadViajes, FechaConduce, Capacidad);
+                        FM.SP_InsertarConduces(FechaPedido, FechaConduce, NombreEmpleado, NumConduce, NombreVehiculo, Placa, Capacidad,
+                            NombreProducto, CantidadViajes, Cantidad, NombreMedida, Precio, SubTotal, FilaITBIS, Descripcion, Estatus);
 
                     }
 

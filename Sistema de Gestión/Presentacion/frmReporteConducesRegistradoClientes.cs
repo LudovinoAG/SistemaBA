@@ -83,7 +83,6 @@ namespace Sistema_de_Gestión.Presentacion
 
             }
 
-
             LblConducesRegistrados.Text = "Conduces Registrados: 0";
             LblConducesRegistrados.BackColor = Color.Transparent;
             CountRegistroConduces();
