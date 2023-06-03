@@ -30,13 +30,13 @@ namespace Sistema_de_Gestión.Presentacion
             DSReportesTableAdapters.SP_ViewQueryPreformTableAdapter taQueryProform = new
                 DSReportesTableAdapters.SP_ViewQueryPreformTableAdapter();
 
-            DSReportesTableAdapters.SP_VerConducesProformaTableAdapter taConducesProforma = new
-                DSReportesTableAdapters.SP_VerConducesProformaTableAdapter();
+            /*DSReportesTableAdapters.SP_VerConducesProformaTableAdapter taConducesProforma = new
+                DSReportesTableAdapters.SP_VerConducesProformaTableAdapter();*/
 
             taQueryProform.Fill(ds.SP_ViewQueryPreform, idCliente, idPedido, ModoReporte, EstatusPedido,
                 FechaInicio, FechaFin);
-            taConducesProforma.Fill(ds.SP_VerConducesProforma, idCliente, idPedido, ModoReporte, EstatusPedido,
-                FechaInicio, FechaFin);
+            /*taConducesProforma.Fill(ds.SP_VerConducesProforma, idCliente, idPedido, ModoReporte, EstatusPedido,
+                FechaInicio, FechaFin);*/
 
             crvProforma1.SetDataSource(ds);
 

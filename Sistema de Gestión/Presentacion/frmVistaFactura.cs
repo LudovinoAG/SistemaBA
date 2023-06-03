@@ -39,15 +39,15 @@ namespace Sistema_de_Gestión.Presentacion
             DSReportesTableAdapters.SP_VerDetalleFacturaTableAdapter taDetallesFactura = new
                 DSReportesTableAdapters.SP_VerDetalleFacturaTableAdapter();
 
-            DSReportesTableAdapters.SP_VerDetallesConducesTableAdapter taDetallesConduce = new
-                DSReportesTableAdapters.SP_VerDetallesConducesTableAdapter();
+            //DSReportesTableAdapters.SP_VerDetallesConducesTableAdapter taDetallesConduce = new
+                //DSReportesTableAdapters.SP_VerDetallesConducesTableAdapter();
 
             taFactura.Fill(ds.SP_VerFacturaID, FacturacionModel.IDFactura);
             taDetallesFactura.Fill(ds.SP_VerDetalleFactura, FacturacionModel.IDFactura);
-            taDetallesConduce.Fill(ds.SP_VerDetallesConduces, FacturacionModel.IDFactura);
+            //taDetallesConduce.Fill(ds.SP_VerDetallesConduces, FacturacionModel.IDFactura);
     
             crvFactura1.SetDataSource(ds);
-            crvFactura1.SetParameterValue("Pm-SP_VerDetallesConduces;1.id_Factura", FacturacionModel.IDFactura);
+            //crvFactura1.SetParameterValue("Pm-SP_VerDetallesConduces;1.id_Factura", FacturacionModel.IDFactura);
             crystalReportViewer1.ReportSource = crvFactura1;
 
             if (frmReportesFacturas.TipoFacturaReporte == "Consumidor Final")
