@@ -29,9 +29,9 @@ namespace Sistema_de_Gestión.Presentacion
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmdBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
@@ -45,7 +45,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.cboFiltrar = new System.Windows.Forms.ComboBox();
             this.dgvReporteFacturas = new System.Windows.Forms.DataGridView();
             this.cmdVerFacturaReporte = new System.Windows.Forms.Button();
-            this.cmdCerrarReporteFacturas = new System.Windows.Forms.Button();
+            this.CmdModificarFactura = new System.Windows.Forms.Button();
             this.lblSeleccionado = new System.Windows.Forms.Label();
             this.CmdPagarFactura = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -183,29 +183,29 @@ namespace Sistema_de_Gestión.Presentacion
             this.dgvReporteFacturas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvReporteFacturas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvReporteFacturas.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReporteFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvReporteFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvReporteFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvReporteFacturas.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvReporteFacturas.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvReporteFacturas.Location = new System.Drawing.Point(16, 111);
             this.dgvReporteFacturas.MultiSelect = false;
             this.dgvReporteFacturas.Name = "dgvReporteFacturas";
             this.dgvReporteFacturas.ReadOnly = true;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvReporteFacturas.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvReporteFacturas.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvReporteFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvReporteFacturas.Size = new System.Drawing.Size(789, 271);
             this.dgvReporteFacturas.TabIndex = 6;
@@ -235,29 +235,29 @@ namespace Sistema_de_Gestión.Presentacion
             this.cmdVerFacturaReporte.MouseLeave += new System.EventHandler(this.cmdVerFacturaReporte_MouseLeave);
             this.cmdVerFacturaReporte.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cmdVerFacturaReporte_MouseMove);
             // 
-            // cmdCerrarReporteFacturas
+            // CmdModificarFactura
             // 
-            this.cmdCerrarReporteFacturas.BackColor = System.Drawing.SystemColors.Control;
-            this.cmdCerrarReporteFacturas.BackgroundImage = global::Sistema_de_Gestión.RecursosBA.BotonCerrarVentana;
-            this.cmdCerrarReporteFacturas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cmdCerrarReporteFacturas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmdCerrarReporteFacturas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.cmdCerrarReporteFacturas.FlatAppearance.BorderSize = 0;
-            this.cmdCerrarReporteFacturas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.cmdCerrarReporteFacturas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
-            this.cmdCerrarReporteFacturas.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdCerrarReporteFacturas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cmdCerrarReporteFacturas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.cmdCerrarReporteFacturas.Location = new System.Drawing.Point(646, 388);
-            this.cmdCerrarReporteFacturas.Name = "cmdCerrarReporteFacturas";
-            this.cmdCerrarReporteFacturas.Size = new System.Drawing.Size(159, 105);
-            this.cmdCerrarReporteFacturas.TabIndex = 92;
-            this.cmdCerrarReporteFacturas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.cmdCerrarReporteFacturas.UseVisualStyleBackColor = false;
-            this.cmdCerrarReporteFacturas.Click += new System.EventHandler(this.cmdCerrarReporteFacturas_Click);
-            this.cmdCerrarReporteFacturas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmdCerrarReporteFacturas_MouseDown);
-            this.cmdCerrarReporteFacturas.MouseLeave += new System.EventHandler(this.cmdCerrarReporteFacturas_MouseLeave);
-            this.cmdCerrarReporteFacturas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cmdCerrarReporteFacturas_MouseMove);
+            this.CmdModificarFactura.BackColor = System.Drawing.SystemColors.Control;
+            this.CmdModificarFactura.BackgroundImage = global::Sistema_de_Gestión.RecursosBA.BotonModificarFactura;
+            this.CmdModificarFactura.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.CmdModificarFactura.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CmdModificarFactura.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.CmdModificarFactura.FlatAppearance.BorderSize = 0;
+            this.CmdModificarFactura.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.CmdModificarFactura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
+            this.CmdModificarFactura.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmdModificarFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CmdModificarFactura.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.CmdModificarFactura.Location = new System.Drawing.Point(646, 388);
+            this.CmdModificarFactura.Name = "CmdModificarFactura";
+            this.CmdModificarFactura.Size = new System.Drawing.Size(159, 105);
+            this.CmdModificarFactura.TabIndex = 92;
+            this.CmdModificarFactura.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.CmdModificarFactura.UseVisualStyleBackColor = false;
+            this.CmdModificarFactura.Click += new System.EventHandler(this.CmdModificarFactura_Click);
+            this.CmdModificarFactura.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cmdCerrarReporteFacturas_MouseDown);
+            this.CmdModificarFactura.MouseLeave += new System.EventHandler(this.cmdCerrarReporteFacturas_MouseLeave);
+            this.CmdModificarFactura.MouseMove += new System.Windows.Forms.MouseEventHandler(this.cmdCerrarReporteFacturas_MouseMove);
             // 
             // lblSeleccionado
             // 
@@ -303,7 +303,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.ClientSize = new System.Drawing.Size(819, 500);
             this.Controls.Add(this.CmdPagarFactura);
             this.Controls.Add(this.lblSeleccionado);
-            this.Controls.Add(this.cmdCerrarReporteFacturas);
+            this.Controls.Add(this.CmdModificarFactura);
             this.Controls.Add(this.cmdVerFacturaReporte);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvReporteFacturas);
@@ -337,7 +337,7 @@ namespace Sistema_de_Gestión.Presentacion
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Button cmdBuscar;
         private System.Windows.Forms.Button cmdVerFacturaReporte;
-        private System.Windows.Forms.Button cmdCerrarReporteFacturas;
+        private System.Windows.Forms.Button CmdModificarFactura;
         private System.Windows.Forms.Label lblSeleccionado;
         private System.Windows.Forms.Button CmdPagarFactura;
     }

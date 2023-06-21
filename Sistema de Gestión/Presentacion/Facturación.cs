@@ -185,6 +185,12 @@ namespace Sistema_de_Gestión
                         });
 
 
+                        //Limpiar todo el contenido de los datagridviews
+                        dgvPedidosFacturar.DataSource = "";
+                        dgvPedidosFacturar.Columns.Clear();
+                        dgvConducesFactura.DataSource = "";
+                        dgvConducesFactura.Columns.Clear();
+
                         //Llenar el DatagridView con los pedidos según criterio
                         dgvPedidosFacturar.DataSource = FM.PedidosClientesFacturar.ToList();
                         //Llenar el DatagridView con los conduces según criterio

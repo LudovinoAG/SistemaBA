@@ -84,6 +84,11 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           <Property Name="UltimoNumeroFactura" Type="numeric" Precision="38" Scale="0" />
           <Property Name="id_Factura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
+        <Function Name="SP_ActualizarFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumFactura" Type="int" Mode="In" />
+          <Parameter Name="FechaFactura" Type="date" Mode="In" />
+          <Parameter Name="FechaVencimientoFactura" Type="date" Mode="In" />
+        </Function>
         <Function Name="SP_BuscarClienteCodigo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Codigo_Cliente" Type="varchar" Mode="In" />
         </Function>
@@ -354,6 +359,11 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
             <Parameter Name="TotalPedidos" Mode="In" Type="Decimal" />
             <Parameter Name="Condicion" Mode="In" Type="String" />
             <Parameter Name="Estatus" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ActualizarFactura">
+            <Parameter Name="NumFactura" Mode="In" Type="Int32" />
+            <Parameter Name="FechaFactura" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaVencimientoFactura" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="VW_ListarVehiculos">
@@ -685,6 +695,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_InsertarConduces" FunctionName="BAFacturacionModel.Store.SP_InsertarConduces" />
           <FunctionImportMapping FunctionImportName="SP_InsertarDetallesFactura" FunctionName="BAFacturacionModel.Store.SP_InsertarDetallesFactura" />
+          <FunctionImportMapping FunctionImportName="SP_ActualizarFactura" FunctionName="BAFacturacionModel.Store.SP_ActualizarFactura" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

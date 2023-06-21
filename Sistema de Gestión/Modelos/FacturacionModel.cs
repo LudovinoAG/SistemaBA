@@ -154,41 +154,49 @@ namespace Sistema_de_Gestión.Modelos
                         NotaFactura, Usuario, Pago, VencimientoNCF);
 
                     foreach (DataGridViewRow FilaFactura in dgvPedidoFacturar.Rows)
-                    {   
-                        int Pedido = (int)FilaFactura.Cells["NumPedido"].Value;
-                        decimal SubTotalFilas = (decimal)FilaFactura.Cells["SubTotal"].Value;
-                        decimal FilaDescuento = (decimal)FilaFactura.Cells["Descuento"].Value;
-                        decimal FilaITBIS = (decimal)FilaFactura.Cells["ITBIS"].Value;
-                        decimal FilaTotalPedidos = (decimal)FilaFactura.Cells["TotalPedido"].Value;
-                        string FilaCondicion = FilaFactura.Cells["Condicion"].Value.ToString();
-                        string FilaEstatus = FilaFactura.Cells["Estatus"].Value.ToString();                     
+                    {
+                        
+           
+                            int Pedido = (int)FilaFactura.Cells["NumPedido"].Value;
+                            decimal SubTotalFilas = (decimal)FilaFactura.Cells["SubTotal"].Value;
+                            decimal FilaDescuento = (decimal)FilaFactura.Cells["Descuento"].Value;
+                            decimal FilaITBIS = (decimal)FilaFactura.Cells["ITBIS"].Value;
+                            decimal FilaTotalPedidos = (decimal)FilaFactura.Cells["TotalPedido"].Value;
+                            string FilaCondicion = FilaFactura.Cells["Condicion"].Value.ToString();
+                            string FilaEstatus = FilaFactura.Cells["Estatus"].Value.ToString();
 
-                        FM.SP_InsertarDetallesFactura(SubTotalFilas, FilaDescuento, FilaITBIS, FilaTotalPedidos, 
-                            FilaCondicion,FilaEstatus);
-                        FM.SP_CambiarEstadoPedido(IDCliente, Pedido, 2);
+                            FM.SP_InsertarDetallesFactura(SubTotalFilas, FilaDescuento, FilaITBIS, FilaTotalPedidos,
+                                FilaCondicion, FilaEstatus);
+                            FM.SP_CambiarEstadoPedido(IDCliente, Pedido, 2);
+                       
+
+                      
                     }
 
                     foreach (DataGridViewRow FilaConduces in dgvConduceFactura.Rows)
                     {
-                        DateTime FechaPedido = (DateTime)FilaConduces.Cells["FechaPedido"].Value;
-                        DateTime FechaConduce = (DateTime)FilaConduces.Cells["FechaConduce"].Value;
-                        string NombreEmpleado = FilaConduces.Cells["Chofer"].Value.ToString();
-                        int NumConduce = (int)FilaConduces.Cells["NumeroConduce"].Value;
-                        string NombreVehiculo = FilaConduces.Cells["Vehiculo"].Value.ToString();
-                        string Placa = FilaConduces.Cells["Placa"].Value.ToString();
-                        decimal Capacidad = (decimal)FilaConduces.Cells["Capacidad"].Value;
-                        string NombreProducto = FilaConduces.Cells["Productos"].Value.ToString();
-                        int CantidadViajes = (int)FilaConduces.Cells["Viajes"].Value;
-                        decimal Cantidad = (decimal)FilaConduces.Cells["Cantidad"].Value;
-                        string NombreMedida = FilaConduces.Cells["Medidas"].Value.ToString();
-                        decimal Precio = (decimal)FilaConduces.Cells["Precio"].Value;
-                        decimal SubTotal = (decimal)FilaConduces.Cells["SubTotal"].Value;
-                        decimal FilaITBIS = (decimal)FilaConduces.Cells["ITBIS"].Value;
-                        string Descripcion = FilaConduces.Cells["Descripcion"].Value.ToString();
-                        string Estatus = FilaConduces.Cells["Estatus"].Value.ToString();
+               
+                            DateTime FechaPedido = (DateTime)FilaConduces.Cells["FechaPedido"].Value;
+                            DateTime FechaConduce = (DateTime)FilaConduces.Cells["FechaConduce"].Value;
+                            string NombreEmpleado = FilaConduces.Cells["Chofer"].Value.ToString();
+                            int NumConduce = (int)FilaConduces.Cells["NumeroConduce"].Value;
+                            string NombreVehiculo = FilaConduces.Cells["Vehiculo"].Value.ToString();
+                            string Placa = FilaConduces.Cells["Placa"].Value.ToString();
+                            decimal Capacidad = (decimal)FilaConduces.Cells["Capacidad"].Value;
+                            string NombreProducto = FilaConduces.Cells["Productos"].Value.ToString();
+                            int CantidadViajes = (int)FilaConduces.Cells["Viajes"].Value;
+                            decimal Cantidad = (decimal)FilaConduces.Cells["Cantidad"].Value;
+                            string NombreMedida = FilaConduces.Cells["Medidas"].Value.ToString();
+                            decimal Precio = (decimal)FilaConduces.Cells["Precio"].Value;
+                            decimal SubTotal = (decimal)FilaConduces.Cells["SubTotal"].Value;
+                            decimal FilaITBIS = (decimal)FilaConduces.Cells["ITBIS"].Value;
+                            string Descripcion = FilaConduces.Cells["Descripcion"].Value.ToString();
+                            string Estatus = FilaConduces.Cells["Estatus"].Value.ToString();
 
-                        FM.SP_InsertarConduces(FechaPedido, FechaConduce, NombreEmpleado, NumConduce, NombreVehiculo, Placa, Capacidad,
-                            NombreProducto, CantidadViajes, Cantidad, NombreMedida, Precio, SubTotal, FilaITBIS, Descripcion, Estatus);
+                            FM.SP_InsertarConduces(FechaPedido, FechaConduce, NombreEmpleado, NumConduce, NombreVehiculo, Placa, Capacidad,
+                                NombreProducto, CantidadViajes, Cantidad, NombreMedida, Precio, SubTotal, FilaITBIS, Descripcion, Estatus);
+                   
+                      
 
                     }
 
@@ -468,6 +476,24 @@ namespace Sistema_de_Gestión.Modelos
 
 
 
+        }
+
+        public bool ActualizarFactura(int NumFactura, DateTime FechaFactura, DateTime FechaVencimientoFactura)
+        {
+            try
+            {
+                using(BAFacturacionEntities FM = new BAFacturacionEntities())
+                {
+                    FM.SP_ActualizarFactura(NumFactura, FechaFactura, FechaVencimientoFactura);
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No fue posible actualizar la factura con la información provista", "Atención",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
         }
 
 

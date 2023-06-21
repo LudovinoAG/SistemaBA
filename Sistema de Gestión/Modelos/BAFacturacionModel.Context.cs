@@ -411,5 +411,22 @@ namespace Sistema_de_Gestión.Modelos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarDetallesFactura", subTotalProductoParameter, descuentoParameter, iTBISParameter, totalPedidosParameter, condicionParameter, estatusParameter);
         }
+    
+        public virtual int SP_ActualizarFactura(Nullable<int> numFactura, Nullable<System.DateTime> fechaFactura, Nullable<System.DateTime> fechaVencimientoFactura)
+        {
+            var numFacturaParameter = numFactura.HasValue ?
+                new ObjectParameter("NumFactura", numFactura) :
+                new ObjectParameter("NumFactura", typeof(int));
+    
+            var fechaFacturaParameter = fechaFactura.HasValue ?
+                new ObjectParameter("FechaFactura", fechaFactura) :
+                new ObjectParameter("FechaFactura", typeof(System.DateTime));
+    
+            var fechaVencimientoFacturaParameter = fechaVencimientoFactura.HasValue ?
+                new ObjectParameter("FechaVencimientoFactura", fechaVencimientoFactura) :
+                new ObjectParameter("FechaVencimientoFactura", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ActualizarFactura", numFacturaParameter, fechaFacturaParameter, fechaVencimientoFacturaParameter);
+        }
     }
 }

@@ -6721,9 +6721,12 @@ namespace Sistema_de_Gestión {
                 base.Columns.Add(this.columnPrecio);
                 this.columnSubTotal = new global::System.Data.DataColumn("SubTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSubTotal);
+                this.columnCantidad.ReadOnly = true;
                 this.columnMedida.MaxLength = 100;
-                this.columnProductos.MaxLength = 400;
-                this.columnDescripción.MaxLength = 1000;
+                this.columnProductos.MaxLength = 255;
+                this.columnDescripción.ReadOnly = true;
+                this.columnDescripción.MaxLength = 4000;
+                this.columnSubTotal.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

@@ -107,17 +107,17 @@ namespace Sistema_de_Gestión.Presentacion
 
         private void cmdCerrarReporteFacturas_MouseMove(object sender, MouseEventArgs e)
         {
-            DI.BTMouseEvent(cmdCerrarReporteFacturas, 1);
+            DI.BTMouseEvent(CmdModificarFactura, 1);
         }
 
         private void cmdCerrarReporteFacturas_MouseLeave(object sender, EventArgs e)
         {
-            DI.BTMouseEvent(cmdCerrarReporteFacturas, 0);
+            DI.BTMouseEvent(CmdModificarFactura, 0);
         }
 
         private void cmdCerrarReporteFacturas_MouseDown(object sender, MouseEventArgs e)
         {
-            DI.BTMouseEvent(cmdCerrarReporteFacturas, 2);
+            DI.BTMouseEvent(CmdModificarFactura, 2);
         }
 
         private void cmdVerFacturaReporte_MouseMove(object sender, MouseEventArgs e)
@@ -205,11 +205,6 @@ namespace Sistema_de_Gestión.Presentacion
             }
         }
 
-        private void cmdCerrarReporteFacturas_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void frmReportesFacturas_Load(object sender, EventArgs e)
         {
             dgvReporteFacturas.DataSource = RM.LoadTopFacturas().ToList();
@@ -288,6 +283,23 @@ namespace Sistema_de_Gestión.Presentacion
                 ReportesModel.NumFacturaReporte = NumFactura;
 
                 lblSeleccionado.Text = $"Factura seleccionada {NumFactura.ToString().PadLeft(6, '0')}";
+            }
+        }
+
+        private void CmdModificarFactura_Click(object sender, EventArgs e)
+        {
+            if (dgvReporteFacturas.Rows.Count != -1)
+            {
+
+                int NumFactura = int.Parse(dgvReporteFacturas.SelectedRows[0].Cells["NumFactura"].Value.ToString());
+                DateTime FechaFactura = (DateTime)dgvReporteFacturas.SelectedRows[0].Cells["Fecha"].Value;
+                DateTime FechaVencimiento = (DateTime)dgvReporteFacturas.SelectedRows[0].Cells["FechaVencimiento"].Value;
+
+                frmActualizarFactura frmActualizar = new frmActualizarFactura();
+                frmActualizar.NumFactura = NumFactura;
+                frmActualizar.FechaFactura = FechaFactura;
+                frmActualizar.FechaVencimiento = FechaVencimiento;
+                frmActualizar.ShowDialog();
             }
         }
     }

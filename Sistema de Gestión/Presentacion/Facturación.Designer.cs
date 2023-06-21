@@ -659,7 +659,6 @@ namespace Sistema_de_Gestión
             this.dgvConducesFactura.Location = new System.Drawing.Point(282, 352);
             this.dgvConducesFactura.MultiSelect = false;
             this.dgvConducesFactura.Name = "dgvConducesFactura";
-            this.dgvConducesFactura.ReadOnly = true;
             this.dgvConducesFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvConducesFactura.Size = new System.Drawing.Size(703, 149);
             this.dgvConducesFactura.TabIndex = 107;
@@ -691,7 +690,6 @@ namespace Sistema_de_Gestión
             this.dgvPedidosFacturar.Location = new System.Drawing.Point(282, 146);
             this.dgvPedidosFacturar.MultiSelect = false;
             this.dgvPedidosFacturar.Name = "dgvPedidosFacturar";
-            this.dgvPedidosFacturar.ReadOnly = true;
             this.dgvPedidosFacturar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPedidosFacturar.Size = new System.Drawing.Size(703, 183);
             this.dgvPedidosFacturar.TabIndex = 94;

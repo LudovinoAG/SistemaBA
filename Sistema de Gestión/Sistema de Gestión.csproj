@@ -532,6 +532,12 @@
     <Compile Include="Presentacion\frmAcercaDe.Designer.cs">
       <DependentUpon>frmAcercaDe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\frmActualizarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmActualizarFactura.Designer.cs">
+      <DependentUpon>frmActualizarFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\frmBuscarCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -802,6 +808,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmAcercaDe.resx">
       <DependentUpon>frmAcercaDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmActualizarFactura.resx">
+      <DependentUpon>frmActualizarFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmBuscarCotizacion.resx">
       <DependentUpon>frmBuscarCotizacion.cs</DependentUpon>
@@ -1167,6 +1176,9 @@
       <DependentUpon>BAVehiculosModel.edmx</DependentUpon>
       <LastGenOutput>BAVehiculosModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\BotonModificarFacturaOver.jpg" />
+    <None Include="Resources\BotonModificarFacturaClick.jpg" />
+    <None Include="Resources\BotonModificarFactura.jpg" />
     <None Include="Resources\FondoContenedorPrincipal.jpg" />
     <None Include="Resources\BotonVerConducesOver.jpg" />
     <None Include="Resources\BotonVerConducesClick.jpg" />
