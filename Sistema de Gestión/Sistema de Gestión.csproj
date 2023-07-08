@@ -27,7 +27,7 @@
     <MinimumRequiredVersion>1.0.0.1</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>61</ApplicationRevision>
+    <ApplicationRevision>63</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -389,6 +389,9 @@
     <Compile Include="Modelos\SP_VerConducesPedidos_Result.cs">
       <DependentUpon>BARedaccionesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\SP_VerDetalleFactura_Result.cs">
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\SP_VerDetalleRedaccion_Result.cs">
       <DependentUpon>BARedaccionesModel.tt</DependentUpon>
     </Compile>
@@ -428,6 +431,9 @@
     </Compile>
     <Compile Include="Modelos\VW_ListaEstatusEmpleados.cs">
       <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaEstatusFactura.cs">
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ListaEstatusProductos.cs">
       <DependentUpon>BAProductos.tt</DependentUpon>
@@ -476,6 +482,9 @@
     </Compile>
     <Compile Include="Modelos\VW_ListaTipoClientes.cs">
       <DependentUpon>BAClientesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaTipoFactura.cs">
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ListaTipoSangre.cs">
       <DependentUpon>BAEmpleadosModel.tt</DependentUpon>

@@ -34,6 +34,8 @@ namespace Sistema_de_Gestión.Modelos
         public virtual DbSet<VW_ListarBancos> VW_ListarBancos { get; set; }
         public virtual DbSet<VW_ListarMetodos> VW_ListarMetodos { get; set; }
         public virtual DbSet<VW_EmpleadosFactura> VW_EmpleadosFactura { get; set; }
+        public virtual DbSet<VW_ListaTipoFactura> VW_ListaTipoFactura { get; set; }
+        public virtual DbSet<VW_ListaEstatusFactura> VW_ListaEstatusFactura { get; set; }
     
         public virtual int SP_InsertarConduce(Nullable<int> id_Conduce, Nullable<int> id_Factura, Nullable<int> id_Empleado, Nullable<int> num_Conduce, Nullable<int> id_Producto, Nullable<int> id_Vehiculo, Nullable<int> id_Medida, Nullable<int> cantidadViajes)
         {
@@ -427,6 +429,15 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("FechaVencimientoFactura", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ActualizarFactura", numFacturaParameter, fechaFacturaParameter, fechaVencimientoFacturaParameter);
+        }
+    
+        public virtual ObjectResult<SP_VerDetalleFactura_Result> SP_VerDetalleFactura(Nullable<int> numFactura)
+        {
+            var numFacturaParameter = numFactura.HasValue ?
+                new ObjectParameter("NumFactura", numFactura) :
+                new ObjectParameter("NumFactura", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_VerDetalleFactura_Result>("SP_VerDetalleFactura", numFacturaParameter);
         }
     }
 }

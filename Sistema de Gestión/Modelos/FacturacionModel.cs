@@ -261,6 +261,24 @@ namespace Sistema_de_Gestión.Modelos
             }
         }
 
+        public List<SP_VerDetalleFactura_Result> VerDetallesFactura(int NumFactura)
+        {
+            using (BAFacturacionEntities FT = new BAFacturacionEntities())
+            {
+                try
+                {
+                    return FT.SP_VerDetalleFactura(NumFactura).ToList();
+
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show("No fue posible visualizar el detalle de la factura " + ex.Message);
+                    return null;
+                }
+            }
+        }
+
         public List<VW_ListarBancos> ListarBancos()
         {
             using (BAFacturacionEntities FT = new BAFacturacionEntities())
@@ -290,6 +308,38 @@ namespace Sistema_de_Gestión.Modelos
                     MessageBox.Show("No fue posible listar los metodos " + Ex.Message);
                     return null;
                 }
+            }
+        }
+
+        public List<VW_ListaTipoFactura> ListarTipoFactura()
+        {
+            try
+            {
+                using(BAFacturacionEntities FT = new BAFacturacionEntities())
+                {
+                    return FT.VW_ListaTipoFactura.ToList();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No fue posible listar los tipos de factura", "Tipo de Factura", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return null;
+            }
+        }
+
+        public List<VW_ListaEstatusFactura> ListarEstatusFactura()
+        {
+            try
+            {
+                using (BAFacturacionEntities FT = new BAFacturacionEntities())
+                {
+                    return FT.VW_ListaEstatusFactura.ToList();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No fue posible listar los estatus de factura", "Estatus de Factura", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
             }
         }
 

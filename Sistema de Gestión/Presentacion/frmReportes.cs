@@ -292,15 +292,37 @@ namespace Sistema_de_Gestión.Presentacion
             {
 
                 int NumFactura = int.Parse(dgvReporteFacturas.SelectedRows[0].Cells["NumFactura"].Value.ToString());
-                DateTime FechaFactura = (DateTime)dgvReporteFacturas.SelectedRows[0].Cells["Fecha"].Value;
-                DateTime FechaVencimiento = (DateTime)dgvReporteFacturas.SelectedRows[0].Cells["FechaVencimiento"].Value;
+                ObtenerInfoFactura(NumFactura);
 
-                frmActualizarFactura frmActualizar = new frmActualizarFactura();
-                frmActualizar.NumFactura = NumFactura;
-                frmActualizar.FechaFactura = FechaFactura;
-                frmActualizar.FechaVencimiento = FechaVencimiento;
-                frmActualizar.ShowDialog();
             }
+        }
+
+        private void ObtenerInfoFactura(int Num)
+        {
+            frmActualizarFactura frmActualizar = new frmActualizarFactura();
+
+            DateTime FechaFactura = (DateTime)dgvReporteFacturas.SelectedRows[0].Cells["Fecha"].Value;
+            DateTime FechaVencimiento = (DateTime)dgvReporteFacturas.SelectedRows[0].Cells["FechaVencimiento"].Value;
+
+            
+            frmActualizar.NumFactura = Num;
+            frmActualizar.TipoFactura = dgvReporteFacturas.SelectedRows[0].Cells["TipoFactura"].Value.ToString();
+            frmActualizar.NCF = dgvReporteFacturas.SelectedRows[0].Cells["NCF"].Value.ToString();
+            frmActualizar.Cliente = dgvReporteFacturas.SelectedRows[0].Cells["Empresa"].Value.ToString();
+            frmActualizar.EstatusFactura = dgvReporteFacturas.SelectedRows[0].Cells["EstatusFactura"].Value.ToString();
+            frmActualizar.SubTotal = decimal.Parse(dgvReporteFacturas.SelectedRows[0].Cells["SubTotal"].Value.ToString());
+            frmActualizar.Descuento = decimal.Parse(dgvReporteFacturas.SelectedRows[0].Cells["Descuento"].Value.ToString());
+            frmActualizar.ITBIS = decimal.Parse(dgvReporteFacturas.SelectedRows[0].Cells["ITBIS"].Value.ToString());
+            frmActualizar.Total = decimal.Parse(dgvReporteFacturas.SelectedRows[0].Cells["TotalFactura"].Value.ToString());
+            frmActualizar.MontoPendiente = decimal.Parse(dgvReporteFacturas.SelectedRows[0].Cells["MontoPendiente"].Value.ToString());
+            frmActualizar.MontoPagado = decimal.Parse(dgvReporteFacturas.SelectedRows[0].Cells["MontoPagado"].Value.ToString());
+            frmActualizar.NotaFactura = dgvReporteFacturas.SelectedRows[0].Cells["Nota"].Value.ToString();
+            frmActualizar.FechaFactura = FechaFactura;
+            frmActualizar.FechaVencimiento = FechaVencimiento;
+
+
+
+            frmActualizar.ShowDialog();
         }
     }
 }

@@ -17,6 +17,16 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_EmpleadosFactura' no ti
           <Property Name="Celular" Type="varchar" MaxLength="12" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaEstatusFactura' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_ListaEstatusFactura">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Estatus" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estatus" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListarBancos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="VW_ListarBancos">
           <Key>
@@ -57,6 +67,16 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListarVehiculos' no tie
           <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Matricula" Type="varchar" MaxLength="18" Nullable="false" />
           <Property Name="Capacidad" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaTipoFactura' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_ListaTipoFactura">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Tipo" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ProductosFactura' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -184,6 +204,9 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           <Parameter Name="TipoPago" Type="varchar" Mode="In" />
           <Parameter Name="id_Usuario" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_VerDetalleFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumFactura" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_VerDetallesConduces" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NumFacturaConduce" Type="int" Mode="In" />
         </Function>
@@ -200,6 +223,12 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
     [VW_EmpleadosFactura].[Chofer] AS [Chofer], 
     [VW_EmpleadosFactura].[Celular] AS [Celular]
     FROM [dbo].[VW_EmpleadosFactura] AS [VW_EmpleadosFactura]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_ListaEstatusFactura" EntityType="Self.VW_ListaEstatusFactura" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ListaEstatusFactura].[ID] AS [ID], 
+    [VW_ListaEstatusFactura].[Estatus] AS [Estatus]
+    FROM [dbo].[VW_ListaEstatusFactura] AS [VW_ListaEstatusFactura]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="VW_ListarBancos" EntityType="Self.VW_ListarBancos" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -226,6 +255,12 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
     [VW_ListarVehiculos].[Matricula] AS [Matricula], 
     [VW_ListarVehiculos].[Capacidad] AS [Capacidad]
     FROM [dbo].[VW_ListarVehiculos] AS [VW_ListarVehiculos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_ListaTipoFactura" EntityType="Self.VW_ListaTipoFactura" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ListaTipoFactura].[ID] AS [ID], 
+    [VW_ListaTipoFactura].[Tipo] AS [Tipo]
+    FROM [dbo].[VW_ListaTipoFactura] AS [VW_ListaTipoFactura]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="VW_ProductosFactura" EntityType="Self.VW_ProductosFactura" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -364,6 +399,11 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
             <Parameter Name="NumFactura" Mode="In" Type="Int32" />
             <Parameter Name="FechaFactura" Mode="In" Type="DateTime" />
             <Parameter Name="FechaVencimientoFactura" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="VW_ListaTipoFactura" EntityType="BAFacturacionModel.VW_ListaTipoFactura" />
+          <EntitySet Name="VW_ListaEstatusFactura" EntityType="BAFacturacionModel.VW_ListaEstatusFactura" />
+          <FunctionImport Name="SP_VerDetalleFactura" ReturnType="Collection(BAFacturacionModel.SP_VerDetalleFactura_Result)">
+            <Parameter Name="NumFactura" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="VW_ListarVehiculos">
@@ -512,6 +552,30 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           <Property Type="Decimal" Name="ITBIS" Nullable="true" Precision="19" />
           <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="800" />
           <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
+        </ComplexType>
+        <EntityType Name="VW_ListaTipoFactura">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Tipo" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VW_ListaEstatusFactura">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Estatus" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estatus" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="SP_VerDetalleFactura_Result">
+          <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="String" Name="Medida" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Productos" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Descripción" Nullable="true" MaxLength="4000" />
+          <Property Type="Decimal" Name="Precio" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="38" Scale="6" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -696,6 +760,34 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroFactura'
           <FunctionImportMapping FunctionImportName="SP_InsertarConduces" FunctionName="BAFacturacionModel.Store.SP_InsertarConduces" />
           <FunctionImportMapping FunctionImportName="SP_InsertarDetallesFactura" FunctionName="BAFacturacionModel.Store.SP_InsertarDetallesFactura" />
           <FunctionImportMapping FunctionImportName="SP_ActualizarFactura" FunctionName="BAFacturacionModel.Store.SP_ActualizarFactura" />
+          <EntitySetMapping Name="VW_ListaTipoFactura">
+            <EntityTypeMapping TypeName="BAFacturacionModel.VW_ListaTipoFactura">
+              <MappingFragment StoreEntitySet="VW_ListaTipoFactura">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_ListaEstatusFactura">
+            <EntityTypeMapping TypeName="BAFacturacionModel.VW_ListaEstatusFactura">
+              <MappingFragment StoreEntitySet="VW_ListaEstatusFactura">
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_VerDetalleFactura" FunctionName="BAFacturacionModel.Store.SP_VerDetalleFactura">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BAFacturacionModel.SP_VerDetalleFactura_Result">
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Medida" ColumnName="Medida" />
+                <ScalarProperty Name="Productos" ColumnName="Productos" />
+                <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

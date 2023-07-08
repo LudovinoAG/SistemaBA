@@ -12,6 +12,8 @@
         <EntityTypeShape EntityType="BAFacturacionModel.VW_ListarBancos" Width="1.5" PointX="5.125" PointY="2.875" />
         <EntityTypeShape EntityType="BAFacturacionModel.VW_ListarMetodos" Width="1.5" PointX="1" PointY="5.125" />
         <EntityTypeShape EntityType="BAFacturacionModel.VW_EmpleadosFactura" Width="1.5" PointX="3.375" PointY="5.75" />
+        <EntityTypeShape EntityType="BAFacturacionModel.VW_ListaTipoFactura" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="BAFacturacionModel.VW_ListaEstatusFactura" Width="1.5" PointX="5.375" PointY="0.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
