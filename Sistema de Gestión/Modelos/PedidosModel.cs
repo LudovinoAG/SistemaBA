@@ -221,7 +221,7 @@ namespace Sistema_de_Gestión.Modelos
             }
 
             //Marcar el ITBIS por defecto.
-            ITBIS.Checked = true;
+            ITBIS.Checked = false;
 
         }
 

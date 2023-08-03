@@ -206,9 +206,9 @@ namespace Sistema_de_Gestión
 
                         //Llenar los totales
                         txtSubTotal.Text = FacturacionModel.SubTotalFactura.ToString("C");
-                        FacturacionModel.ITBISFactura = (FacturacionModel.SubTotalFactura - FacturacionModel.DescuentoFactura) * 0.18;
+                        //FacturacionModel.ITBISFactura = (FacturacionModel.SubTotalFactura - FacturacionModel.DescuentoFactura) * 0.18;
                         txtDesc.Text = FacturacionModel.DescuentoFactura.ToString("C");
-                        txtITBIS.Text = FacturacionModel.ITBISFactura.ToString("C");
+                       // txtITBIS.Text = FacturacionModel.ITBISFactura.ToString("C");
                         FacturacionModel.TotalFactura = FacturacionModel.ITBISFactura + FacturacionModel.SubTotalFactura;
                         TxtTotalGeneral.Text = FacturacionModel.TotalFactura.ToString("C");
 
@@ -609,5 +609,7 @@ namespace Sistema_de_Gestión
                 //FormatearColumnasDetalles();
             }
         }
+
+ 
     }
 }

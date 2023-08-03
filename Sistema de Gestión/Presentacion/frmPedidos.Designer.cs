@@ -1037,8 +1037,6 @@ namespace Sistema_de_Gestión.Presentacion
             // CKITBIS
             // 
             this.CKITBIS.AutoSize = true;
-            this.CKITBIS.Checked = true;
-            this.CKITBIS.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CKITBIS.Location = new System.Drawing.Point(1180, 584);
             this.CKITBIS.Name = "CKITBIS";
             this.CKITBIS.Size = new System.Drawing.Size(15, 14);

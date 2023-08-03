@@ -461,7 +461,7 @@ namespace Sistema_de_Gestión.Modelos
             }
 
             OpcionesPago.Checked = true;
-            ChkITBIS.Checked = true;
+            ChkITBIS.Checked = false;
             dgvPedidos.DataSource = null;
             dgvConduce.DataSource = null;
 
