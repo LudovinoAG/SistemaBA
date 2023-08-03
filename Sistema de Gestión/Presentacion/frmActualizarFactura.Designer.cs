@@ -60,7 +60,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.dgvDetallesFactura = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvConduceFactura = new System.Windows.Forms.DataGridView();
             this.txtMontoPagado = new System.Windows.Forms.TextBox();
             this.lblPagado = new System.Windows.Forms.Label();
             this.txtMontoPendiente = new System.Windows.Forms.TextBox();
@@ -89,10 +89,16 @@ namespace Sistema_de_Gestión.Presentacion
             this.label27 = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
+            this.UpDoViajes = new System.Windows.Forms.NumericUpDown();
+            this.label29 = new System.Windows.Forms.Label();
+            this.txtClienteID = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.CmdEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallesFactura)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvConduceFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupCapacidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NupCantidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDoViajes)).BeginInit();
             this.SuspendLayout();
             // 
             // dtpFechaFactura
@@ -136,9 +142,9 @@ namespace Sistema_de_Gestión.Presentacion
             // cmdAplicar
             // 
             this.cmdAplicar.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdAplicar.Location = new System.Drawing.Point(695, 555);
+            this.cmdAplicar.Location = new System.Drawing.Point(675, 548);
             this.cmdAplicar.Name = "cmdAplicar";
-            this.cmdAplicar.Size = new System.Drawing.Size(129, 40);
+            this.cmdAplicar.Size = new System.Drawing.Size(129, 47);
             this.cmdAplicar.TabIndex = 7;
             this.cmdAplicar.Text = "GUARDAR";
             this.cmdAplicar.UseVisualStyleBackColor = true;
@@ -202,7 +208,7 @@ namespace Sistema_de_Gestión.Presentacion
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(66, 81);
+            this.label7.Location = new System.Drawing.Point(66, 77);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(31, 13);
             this.label7.TabIndex = 15;
@@ -210,7 +216,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // txtNCF
             // 
-            this.txtNCF.Location = new System.Drawing.Point(98, 78);
+            this.txtNCF.Location = new System.Drawing.Point(98, 74);
             this.txtNCF.Name = "txtNCF";
             this.txtNCF.Size = new System.Drawing.Size(148, 20);
             this.txtNCF.TabIndex = 16;
@@ -218,7 +224,7 @@ namespace Sistema_de_Gestión.Presentacion
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(55, 112);
+            this.label8.Location = new System.Drawing.Point(50, 101);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(42, 13);
             this.label8.TabIndex = 17;
@@ -226,15 +232,16 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // txtCliente
             // 
-            this.txtCliente.Location = new System.Drawing.Point(98, 108);
+            this.txtCliente.Location = new System.Drawing.Point(98, 121);
             this.txtCliente.Name = "txtCliente";
+            this.txtCliente.ReadOnly = true;
             this.txtCliente.Size = new System.Drawing.Size(148, 20);
             this.txtCliente.TabIndex = 18;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(52, 143);
+            this.label9.Location = new System.Drawing.Point(52, 151);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(45, 13);
             this.label9.TabIndex = 19;
@@ -244,7 +251,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             this.cboEstatusFactura.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEstatusFactura.FormattingEnabled = true;
-            this.cboEstatusFactura.Location = new System.Drawing.Point(98, 138);
+            this.cboEstatusFactura.Location = new System.Drawing.Point(98, 146);
             this.cboEstatusFactura.Name = "cboEstatusFactura";
             this.cboEstatusFactura.Size = new System.Drawing.Size(148, 21);
             this.cboEstatusFactura.TabIndex = 20;
@@ -363,15 +370,21 @@ namespace Sistema_de_Gestión.Presentacion
             this.label15.TabIndex = 34;
             this.label15.Text = "Detalles de conduces:";
             // 
-            // dataGridView1
+            // dgvConduceFactura
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 382);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(647, 213);
-            this.dataGridView1.TabIndex = 33;
+            this.dgvConduceFactura.AllowUserToAddRows = false;
+            this.dgvConduceFactura.AllowUserToDeleteRows = false;
+            this.dgvConduceFactura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvConduceFactura.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvConduceFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvConduceFactura.Location = new System.Drawing.Point(16, 382);
+            this.dgvConduceFactura.MultiSelect = false;
+            this.dgvConduceFactura.Name = "dgvConduceFactura";
+            this.dgvConduceFactura.ReadOnly = true;
+            this.dgvConduceFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvConduceFactura.Size = new System.Drawing.Size(647, 213);
+            this.dgvConduceFactura.TabIndex = 33;
+            this.dgvConduceFactura.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConduceFactura_CellClick);
             // 
             // txtMontoPagado
             // 
@@ -408,7 +421,7 @@ namespace Sistema_de_Gestión.Presentacion
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(704, 223);
+            this.label16.Location = new System.Drawing.Point(695, 193);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(41, 13);
             this.label16.TabIndex = 39;
@@ -418,14 +431,15 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             this.cboChoferes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboChoferes.FormattingEnabled = true;
-            this.cboChoferes.Location = new System.Drawing.Point(751, 221);
+            this.cboChoferes.Location = new System.Drawing.Point(742, 189);
             this.cboChoferes.Name = "cboChoferes";
             this.cboChoferes.Size = new System.Drawing.Size(193, 21);
             this.cboChoferes.TabIndex = 40;
             // 
             // txtConduce
             // 
-            this.txtConduce.Location = new System.Drawing.Point(751, 193);
+            this.txtConduce.ForeColor = System.Drawing.Color.DarkRed;
+            this.txtConduce.Location = new System.Drawing.Point(742, 162);
             this.txtConduce.Name = "txtConduce";
             this.txtConduce.Size = new System.Drawing.Size(116, 20);
             this.txtConduce.TabIndex = 42;
@@ -433,16 +447,18 @@ namespace Sistema_de_Gestión.Presentacion
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(692, 195);
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.DarkRed;
+            this.label18.Location = new System.Drawing.Point(676, 165);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(53, 13);
+            this.label18.Size = new System.Drawing.Size(61, 13);
             this.label18.TabIndex = 41;
             this.label18.Text = "Conduce:";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(694, 252);
+            this.label19.Location = new System.Drawing.Point(685, 221);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(51, 13);
             this.label19.TabIndex = 43;
@@ -452,7 +468,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             this.cboVehiculos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboVehiculos.FormattingEnabled = true;
-            this.cboVehiculos.Location = new System.Drawing.Point(751, 250);
+            this.cboVehiculos.Location = new System.Drawing.Point(742, 217);
             this.cboVehiculos.Name = "cboVehiculos";
             this.cboVehiculos.Size = new System.Drawing.Size(193, 21);
             this.cboVehiculos.TabIndex = 44;
@@ -460,7 +476,7 @@ namespace Sistema_de_Gestión.Presentacion
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(708, 281);
+            this.label20.Location = new System.Drawing.Point(699, 248);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(37, 13);
             this.label20.TabIndex = 45;
@@ -468,7 +484,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // txtPlaca
             // 
-            this.txtPlaca.Location = new System.Drawing.Point(751, 278);
+            this.txtPlaca.Location = new System.Drawing.Point(742, 245);
             this.txtPlaca.Name = "txtPlaca";
             this.txtPlaca.Size = new System.Drawing.Size(116, 20);
             this.txtPlaca.TabIndex = 46;
@@ -476,7 +492,7 @@ namespace Sistema_de_Gestión.Presentacion
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(684, 310);
+            this.label21.Location = new System.Drawing.Point(675, 275);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(61, 13);
             this.label21.TabIndex = 47;
@@ -490,7 +506,7 @@ namespace Sistema_de_Gestión.Presentacion
             0,
             0,
             131072});
-            this.nupCapacidad.Location = new System.Drawing.Point(751, 308);
+            this.nupCapacidad.Location = new System.Drawing.Point(742, 272);
             this.nupCapacidad.Name = "nupCapacidad";
             this.nupCapacidad.Size = new System.Drawing.Size(92, 20);
             this.nupCapacidad.TabIndex = 48;
@@ -498,7 +514,7 @@ namespace Sistema_de_Gestión.Presentacion
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(694, 365);
+            this.label22.Location = new System.Drawing.Point(685, 303);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(53, 13);
             this.label22.TabIndex = 49;
@@ -508,7 +524,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             this.cboProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProducto.FormattingEnabled = true;
-            this.cboProducto.Location = new System.Drawing.Point(751, 362);
+            this.cboProducto.Location = new System.Drawing.Point(742, 299);
             this.cboProducto.Name = "cboProducto";
             this.cboProducto.Size = new System.Drawing.Size(193, 21);
             this.cboProducto.TabIndex = 50;
@@ -521,7 +537,7 @@ namespace Sistema_de_Gestión.Presentacion
             0,
             0,
             131072});
-            this.NupCantidad.Location = new System.Drawing.Point(751, 417);
+            this.NupCantidad.Location = new System.Drawing.Point(742, 354);
             this.NupCantidad.Name = "NupCantidad";
             this.NupCantidad.Size = new System.Drawing.Size(92, 20);
             this.NupCantidad.TabIndex = 52;
@@ -529,7 +545,7 @@ namespace Sistema_de_Gestión.Presentacion
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(695, 419);
+            this.label23.Location = new System.Drawing.Point(686, 358);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(52, 13);
             this.label23.TabIndex = 51;
@@ -539,7 +555,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             this.cboMedidas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMedidas.FormattingEnabled = true;
-            this.cboMedidas.Location = new System.Drawing.Point(751, 444);
+            this.cboMedidas.Location = new System.Drawing.Point(742, 381);
             this.cboMedidas.Name = "cboMedidas";
             this.cboMedidas.Size = new System.Drawing.Size(92, 21);
             this.cboMedidas.TabIndex = 54;
@@ -547,7 +563,7 @@ namespace Sistema_de_Gestión.Presentacion
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(697, 447);
+            this.label24.Location = new System.Drawing.Point(688, 385);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(50, 13);
             this.label24.TabIndex = 53;
@@ -555,7 +571,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(751, 471);
+            this.txtPrecio.Location = new System.Drawing.Point(742, 436);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(92, 20);
             this.txtPrecio.TabIndex = 56;
@@ -563,7 +579,7 @@ namespace Sistema_de_Gestión.Presentacion
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(707, 474);
+            this.label25.Location = new System.Drawing.Point(698, 440);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(40, 13);
             this.label25.TabIndex = 55;
@@ -571,7 +587,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // txtSubTotalConduce
             // 
-            this.txtSubTotalConduce.Location = new System.Drawing.Point(751, 497);
+            this.txtSubTotalConduce.Location = new System.Drawing.Point(742, 463);
             this.txtSubTotalConduce.Name = "txtSubTotalConduce";
             this.txtSubTotalConduce.Size = new System.Drawing.Size(92, 20);
             this.txtSubTotalConduce.TabIndex = 58;
@@ -579,7 +595,7 @@ namespace Sistema_de_Gestión.Presentacion
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(694, 500);
+            this.label26.Location = new System.Drawing.Point(685, 466);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(53, 13);
             this.label26.TabIndex = 57;
@@ -587,7 +603,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // txtITBISConduce
             // 
-            this.txtITBISConduce.Location = new System.Drawing.Point(751, 523);
+            this.txtITBISConduce.Location = new System.Drawing.Point(742, 490);
             this.txtITBISConduce.Name = "txtITBISConduce";
             this.txtITBISConduce.Size = new System.Drawing.Size(92, 20);
             this.txtITBISConduce.TabIndex = 60;
@@ -595,7 +611,7 @@ namespace Sistema_de_Gestión.Presentacion
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(710, 526);
+            this.label27.Location = new System.Drawing.Point(701, 494);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(37, 13);
             this.label27.TabIndex = 59;
@@ -603,7 +619,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(751, 390);
+            this.txtDescripcion.Location = new System.Drawing.Point(742, 327);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(193, 20);
             this.txtDescripcion.TabIndex = 62;
@@ -611,17 +627,72 @@ namespace Sistema_de_Gestión.Presentacion
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(681, 393);
+            this.label28.Location = new System.Drawing.Point(672, 331);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(66, 13);
             this.label28.TabIndex = 61;
             this.label28.Text = "Descripción:";
+            // 
+            // UpDoViajes
+            // 
+            this.UpDoViajes.Location = new System.Drawing.Point(742, 409);
+            this.UpDoViajes.Name = "UpDoViajes";
+            this.UpDoViajes.Size = new System.Drawing.Size(92, 20);
+            this.UpDoViajes.TabIndex = 64;
+            this.UpDoViajes.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(698, 413);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(38, 13);
+            this.label29.TabIndex = 63;
+            this.label29.Text = "Viajes:";
+            // 
+            // txtClienteID
+            // 
+            this.txtClienteID.Location = new System.Drawing.Point(98, 98);
+            this.txtClienteID.Name = "txtClienteID";
+            this.txtClienteID.Size = new System.Drawing.Size(51, 20);
+            this.txtClienteID.TabIndex = 65;
+            this.txtClienteID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClienteID_KeyPress);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(152, 98);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(32, 21);
+            this.button1.TabIndex = 66;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // CmdEliminar
+            // 
+            this.CmdEliminar.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmdEliminar.Location = new System.Drawing.Point(815, 548);
+            this.CmdEliminar.Name = "CmdEliminar";
+            this.CmdEliminar.Size = new System.Drawing.Size(129, 47);
+            this.CmdEliminar.TabIndex = 67;
+            this.CmdEliminar.Text = "ELIMINAR";
+            this.CmdEliminar.UseVisualStyleBackColor = true;
+            this.CmdEliminar.Click += new System.EventHandler(this.CmdEliminar_Click);
             // 
             // frmActualizarFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(967, 607);
+            this.Controls.Add(this.CmdEliminar);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtClienteID);
+            this.Controls.Add(this.UpDoViajes);
+            this.Controls.Add(this.label29);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.txtITBISConduce);
@@ -651,7 +722,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.Controls.Add(this.txtMontoPagado);
             this.Controls.Add(this.lblPagado);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvConduceFactura);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvDetallesFactura);
             this.Controls.Add(this.txtNota);
@@ -689,9 +760,10 @@ namespace Sistema_de_Gestión.Presentacion
             this.Text = "Facturas";
             this.Load += new System.EventHandler(this.frmActualizarFactura_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallesFactura)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvConduceFactura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupCapacidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NupCantidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDoViajes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -728,7 +800,7 @@ namespace Sistema_de_Gestión.Presentacion
         private System.Windows.Forms.DataGridView dgvDetallesFactura;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvConduceFactura;
         private System.Windows.Forms.TextBox txtMontoPagado;
         private System.Windows.Forms.Label lblPagado;
         private System.Windows.Forms.TextBox txtMontoPendiente;
@@ -757,5 +829,10 @@ namespace Sistema_de_Gestión.Presentacion
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.NumericUpDown UpDoViajes;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox txtClienteID;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button CmdEliminar;
     }
 }

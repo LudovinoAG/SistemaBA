@@ -166,8 +166,8 @@ namespace Sistema_de_Gestión.Modelos
                             string FilaEstatus = FilaFactura.Cells["Estatus"].Value.ToString();
 
                             FM.SP_InsertarDetallesFactura(SubTotalFilas, FilaDescuento, FilaITBIS, FilaTotalPedidos,
-                                FilaCondicion, FilaEstatus);
-                            FM.SP_CambiarEstadoPedido(IDCliente, Pedido, 2);
+                                FilaCondicion, FilaEstatus, Pedido);
+                            FM.SP_CambiarEstadoPedido(IDCliente, 2, IDFactura);
                        
 
                       
@@ -279,6 +279,24 @@ namespace Sistema_de_Gestión.Modelos
             }
         }
 
+        public List<SP_VerConduceFacturaDetails_Result> VerDetallesConduceFactura (int NumFactura)
+        {
+            try
+            {
+                using(BAFacturacionEntities FT = new BAFacturacionEntities())
+                {
+                    return FT.SP_VerConduceFacturaDetails(NumFactura).ToList();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No fue posible obtener los detalles del conduce de la factura", "Aviso", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return null;
+
+            }
+        }
+
         public List<VW_ListarBancos> ListarBancos()
         {
             using (BAFacturacionEntities FT = new BAFacturacionEntities())
@@ -386,13 +404,13 @@ namespace Sistema_de_Gestión.Modelos
             }
         }
 
-        public void CambiarEstadoPedido(int Cliente, int Pedido, int NuevoEstado)
+        public void CambiarEstadoPedido(int Cliente, int NuevoEstado, int idFactura)
         {
             try
             {
                 using (BAFacturacionEntities FE = new BAFacturacionEntities())
                 {
-                    FE.SP_CambiarEstadoPedido(Cliente, Pedido, NuevoEstado);
+                    FE.SP_CambiarEstadoPedido(Cliente, NuevoEstado, idFactura);
                 }
             }
             catch (Exception)
@@ -450,6 +468,24 @@ namespace Sistema_de_Gestión.Modelos
 
  
 
+        }
+
+        public int BuscarIDCliente(string Empresa)
+        {
+            try
+            {
+                using (BAFacturacionEntities FM = new BAFacturacionEntities())
+                {
+                   return FM.SP_BuscarIDCliente(Empresa).Single().Value;
+                  
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No fue posible buscar el cliente indicado", "Atención",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return 0;
+            }
         }
 
         public void FormatPedidosFacturar(DataGridViewColumnCollection dgvPedidos, 
@@ -528,13 +564,18 @@ namespace Sistema_de_Gestión.Modelos
 
         }
 
-        public bool ActualizarFactura(int NumFactura, DateTime FechaFactura, DateTime FechaVencimientoFactura)
+        public bool ActualizarFactura(int NumFactura, int Tipo, string NCF, int Estatus, int Cliente, decimal SubTotalFactura, decimal Descuento,
+            decimal ITBISFactura, decimal TotalFactura, decimal MontoPagado, DateTime FechaFactura, DateTime FechaVencimientoFactura, 
+            string NotaFactura,int Conduce, string Chofer, string Vehiculo, string Placa, decimal Capacidad, string Producto, string Descripcion, 
+            decimal Cantidad,string Medidas, decimal Precio, decimal SubtotalConduce, decimal ITBISConduce, int Viajes)
         {
             try
             {
                 using(BAFacturacionEntities FM = new BAFacturacionEntities())
                 {
-                    FM.SP_ActualizarFactura(NumFactura, FechaFactura, FechaVencimientoFactura);
+                    FM.SP_ActualizarFactura(NumFactura,Tipo, NCF, Cliente, Estatus,SubTotalFactura,Descuento,ITBISFactura,TotalFactura,MontoPagado,
+                        FechaFactura, FechaVencimientoFactura, NotaFactura, Conduce, Chofer, Vehiculo, Placa, Capacidad, Producto,
+                        Descripcion, Cantidad, Medidas, Precio, SubtotalConduce, ITBISConduce, Viajes);
                     return true;
                 }
             }
@@ -542,6 +583,26 @@ namespace Sistema_de_Gestión.Modelos
             {
                 MessageBox.Show("No fue posible actualizar la factura con la información provista", "Atención",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+        }
+
+
+
+        public bool EliminarFactura(int NumFactura)
+        {
+            try
+            {
+                using(BAFacturacionEntities FM = new BAFacturacionEntities())
+                {
+                    FM.SP_EliminarFactura(NumFactura);
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No fue posible eliminar la factura", "Atención",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
         }

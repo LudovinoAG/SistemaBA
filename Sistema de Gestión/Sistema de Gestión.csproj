@@ -13,9 +13,9 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>\\10.0.0.76\BAServer\</PublishUrl>
+    <PublishUrl>C:\Users\DELL\Desktop\BA\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Unc</InstallFrom>
+    <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -25,9 +25,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\10.0.0.76\BAServer\</UpdateUrl>
     <MinimumRequiredVersion>1.0.0.1</MinimumRequiredVersion>
-    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>63</ApplicationRevision>
+    <ApplicationRevision>65</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -385,6 +384,9 @@
     </Compile>
     <Compile Include="Modelos\SP_ReporteConducesRegistrados_Result.cs">
       <DependentUpon>BAReportesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_VerConduceFacturaDetails_Result.cs">
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\SP_VerConducesPedidos_Result.cs">
       <DependentUpon>BARedaccionesModel.tt</DependentUpon>
@@ -1185,6 +1187,9 @@
       <DependentUpon>BAVehiculosModel.edmx</DependentUpon>
       <LastGenOutput>BAVehiculosModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\BotonEliminarFacturaOver.jpg" />
+    <None Include="Resources\BotonEliminarFacturaClick.jpg" />
+    <None Include="Resources\BotonEliminarFactura.jpg" />
     <None Include="Resources\BotonModificarFacturaOver.jpg" />
     <None Include="Resources\BotonModificarFacturaClick.jpg" />
     <None Include="Resources\BotonModificarFactura.jpg" />

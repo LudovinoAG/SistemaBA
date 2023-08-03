@@ -453,6 +453,36 @@ namespace Sistema_de_Gestión {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BotonEliminarFactura {
+            get {
+                object obj = ResourceManager.GetObject("BotonEliminarFactura", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonEliminarFacturaClick {
+            get {
+                object obj = ResourceManager.GetObject("BotonEliminarFacturaClick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonEliminarFacturaOver {
+            get {
+                object obj = ResourceManager.GetObject("BotonEliminarFacturaOver", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BotonEliminarHover {
             get {
                 object obj = ResourceManager.GetObject("BotonEliminarHover", resourceCulture);

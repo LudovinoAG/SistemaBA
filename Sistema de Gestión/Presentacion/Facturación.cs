@@ -388,7 +388,11 @@ namespace Sistema_de_Gestión
 
                     RevisarParametrosFactura(groupOpt.Controls);
 
-                    
+                    //Almacenar el ID de la factura generada
+                    FacturacionModel.IDFactura = int.Parse(txtNumFactura.Text);
+
+
+
 
                     if (FM.InsertarFactura(FacturacionModel.IDTipoFactura, FacturacionModel.NCF,
                         FacturacionModel.IDCliente, FacturacionModel.EstatusFactura, FacturacionModel.SubTotalFactura,
@@ -401,8 +405,6 @@ namespace Sistema_de_Gestión
                         MessageBox.Show($"Se ha registrado correctamente la factura al cliente [{FacturacionModel.NombreCliente}].",
                             "Facturación", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        //Almacenar el ID de la factura generada
-                        FacturacionModel.IDFactura = int.Parse(txtNumFactura.Text);
 
                         if (FacturacionModel.IDTipoFactura != 1)
                         {

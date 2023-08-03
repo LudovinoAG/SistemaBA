@@ -29,9 +29,9 @@ namespace Sistema_de_Gestión.Presentacion
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmdBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
@@ -183,29 +183,29 @@ namespace Sistema_de_Gestión.Presentacion
             this.dgvReporteFacturas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvReporteFacturas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvReporteFacturas.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReporteFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvReporteFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvReporteFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvReporteFacturas.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvReporteFacturas.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvReporteFacturas.Location = new System.Drawing.Point(16, 111);
             this.dgvReporteFacturas.MultiSelect = false;
             this.dgvReporteFacturas.Name = "dgvReporteFacturas";
             this.dgvReporteFacturas.ReadOnly = true;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvReporteFacturas.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvReporteFacturas.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvReporteFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvReporteFacturas.Size = new System.Drawing.Size(789, 271);
             this.dgvReporteFacturas.TabIndex = 6;
@@ -224,7 +224,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.cmdVerFacturaReporte.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdVerFacturaReporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cmdVerFacturaReporte.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.cmdVerFacturaReporte.Location = new System.Drawing.Point(481, 388);
+            this.cmdVerFacturaReporte.Location = new System.Drawing.Point(475, 386);
             this.cmdVerFacturaReporte.Name = "cmdVerFacturaReporte";
             this.cmdVerFacturaReporte.Size = new System.Drawing.Size(159, 105);
             this.cmdVerFacturaReporte.TabIndex = 91;
@@ -248,7 +248,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.CmdModificarFactura.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmdModificarFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.CmdModificarFactura.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.CmdModificarFactura.Location = new System.Drawing.Point(646, 388);
+            this.CmdModificarFactura.Location = new System.Drawing.Point(646, 386);
             this.CmdModificarFactura.Name = "CmdModificarFactura";
             this.CmdModificarFactura.Size = new System.Drawing.Size(159, 105);
             this.CmdModificarFactura.TabIndex = 92;
@@ -264,9 +264,9 @@ namespace Sistema_de_Gestión.Presentacion
             this.lblSeleccionado.BackColor = System.Drawing.Color.Khaki;
             this.lblSeleccionado.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSeleccionado.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblSeleccionado.Location = new System.Drawing.Point(16, 388);
+            this.lblSeleccionado.Location = new System.Drawing.Point(19, 388);
             this.lblSeleccionado.Name = "lblSeleccionado";
-            this.lblSeleccionado.Size = new System.Drawing.Size(248, 103);
+            this.lblSeleccionado.Size = new System.Drawing.Size(282, 103);
             this.lblSeleccionado.TabIndex = 93;
             this.lblSeleccionado.Text = "No ha seleccionado una factura por el momento.";
             this.lblSeleccionado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -284,7 +284,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.CmdPagarFactura.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmdPagarFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.CmdPagarFactura.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.CmdPagarFactura.Location = new System.Drawing.Point(316, 388);
+            this.CmdPagarFactura.Location = new System.Drawing.Point(307, 388);
             this.CmdPagarFactura.Name = "CmdPagarFactura";
             this.CmdPagarFactura.Size = new System.Drawing.Size(159, 105);
             this.CmdPagarFactura.TabIndex = 94;
@@ -300,7 +300,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Sistema_de_Gestión.RecursosBA.FondoReporteFacturas;
-            this.ClientSize = new System.Drawing.Size(819, 500);
+            this.ClientSize = new System.Drawing.Size(817, 500);
             this.Controls.Add(this.CmdPagarFactura);
             this.Controls.Add(this.lblSeleccionado);
             this.Controls.Add(this.CmdModificarFactura);

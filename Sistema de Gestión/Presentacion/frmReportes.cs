@@ -16,6 +16,7 @@ namespace Sistema_de_Gestión.Presentacion
     {
         ReportesModel RM = new ReportesModel();
         DiseñoInterface DI = new DiseñoInterface();
+        FacturacionModel FM = new FacturacionModel();
         Funciones FC = new Funciones();
         Loading frmCargar;
 
@@ -319,10 +320,15 @@ namespace Sistema_de_Gestión.Presentacion
             frmActualizar.NotaFactura = dgvReporteFacturas.SelectedRows[0].Cells["Nota"].Value.ToString();
             frmActualizar.FechaFactura = FechaFactura;
             frmActualizar.FechaVencimiento = FechaVencimiento;
+            frmActualizar.ID = FM.BuscarIDCliente(frmActualizar.Cliente);
 
 
 
             frmActualizar.ShowDialog();
+            dgvReporteFacturas.DataSource = RM.LoadTopFacturas().ToList();
+            RM.FormatoColumnasFacturas(dgvReporteFacturas.Columns);
+
         }
+
     }
 }

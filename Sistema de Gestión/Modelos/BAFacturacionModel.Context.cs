@@ -224,21 +224,21 @@ namespace Sistema_de_Gestión.Modelos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarFactura", idTipoFacturaParameter, nCFFacturaParameter, iDClienteParameter, idEstatusFacturaParameter, subTotalFacturaParameter, totalFacturaParameter, idModoPagoParameter, descuentoParameter, iTBISFacturaParameter, fechaFacturaParameter, horaFacturaParameter, fechaVencimientoFacturaParameter, notaFacturaParameter, id_UsuarioParameter, idPagoParameter, fechaValidoNCFParameter);
         }
     
-        public virtual int SP_CambiarEstadoPedido(Nullable<int> iDCliente, Nullable<int> iDPedido, Nullable<int> newStatus)
+        public virtual int SP_CambiarEstadoPedido(Nullable<int> iDCliente, Nullable<int> newStatus, Nullable<int> iDFactura)
         {
             var iDClienteParameter = iDCliente.HasValue ?
                 new ObjectParameter("IDCliente", iDCliente) :
                 new ObjectParameter("IDCliente", typeof(int));
     
-            var iDPedidoParameter = iDPedido.HasValue ?
-                new ObjectParameter("IDPedido", iDPedido) :
-                new ObjectParameter("IDPedido", typeof(int));
-    
             var newStatusParameter = newStatus.HasValue ?
                 new ObjectParameter("NewStatus", newStatus) :
                 new ObjectParameter("NewStatus", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_CambiarEstadoPedido", iDClienteParameter, iDPedidoParameter, newStatusParameter);
+            var iDFacturaParameter = iDFactura.HasValue ?
+                new ObjectParameter("IDFactura", iDFactura) :
+                new ObjectParameter("IDFactura", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_CambiarEstadoPedido", iDClienteParameter, newStatusParameter, iDFacturaParameter);
         }
     
         public virtual ObjectResult<SP_VerFacturaID_Result> SP_VerFacturaID(Nullable<int> numFactura)
@@ -385,7 +385,7 @@ namespace Sistema_de_Gestión.Modelos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarConduces", fechaPedidoParameter, fechaConduceParameter, nomEmpleadoParameter, numConduceParameter, nomVehiculoParameter, placaParameter, capacidadParameter, productoParameter, cantidadViajesParameter, cantidadParameter, nomMedidaParameter, precioParameter, subTotalParameter, iTBISParameter, descripcionParameter, estatusParameter);
         }
     
-        public virtual int SP_InsertarDetallesFactura(Nullable<decimal> subTotalProducto, Nullable<decimal> descuento, Nullable<decimal> iTBIS, Nullable<decimal> totalPedidos, string condicion, string estatus)
+        public virtual int SP_InsertarDetallesFactura(Nullable<decimal> subTotalProducto, Nullable<decimal> descuento, Nullable<decimal> iTBIS, Nullable<decimal> totalPedidos, string condicion, string estatus, Nullable<int> idPedidos)
         {
             var subTotalProductoParameter = subTotalProducto.HasValue ?
                 new ObjectParameter("SubTotalProducto", subTotalProducto) :
@@ -411,24 +411,120 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("Estatus", estatus) :
                 new ObjectParameter("Estatus", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarDetallesFactura", subTotalProductoParameter, descuentoParameter, iTBISParameter, totalPedidosParameter, condicionParameter, estatusParameter);
+            var idPedidosParameter = idPedidos.HasValue ?
+                new ObjectParameter("idPedidos", idPedidos) :
+                new ObjectParameter("idPedidos", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarDetallesFactura", subTotalProductoParameter, descuentoParameter, iTBISParameter, totalPedidosParameter, condicionParameter, estatusParameter, idPedidosParameter);
         }
     
-        public virtual int SP_ActualizarFactura(Nullable<int> numFactura, Nullable<System.DateTime> fechaFactura, Nullable<System.DateTime> fechaVencimientoFactura)
+        public virtual int SP_ActualizarFactura(Nullable<int> numFactura, Nullable<int> tipo, string nCF, Nullable<int> cliente, Nullable<int> estatus, Nullable<decimal> subTotalFactura, Nullable<decimal> descuento, Nullable<decimal> iTBIS, Nullable<decimal> totalFactura, Nullable<decimal> montoPagado, Nullable<System.DateTime> fechaFactura, Nullable<System.DateTime> fechaVencimientto, string notaFactura, Nullable<int> conduce, string chofer, string vehiculo, string placa, Nullable<decimal> capacidad, string producto, string descripcion, Nullable<decimal> cantidad, string medidas, Nullable<decimal> precio, Nullable<decimal> subTotalConduce, Nullable<decimal> iTBISConduce, Nullable<int> viajes)
         {
             var numFacturaParameter = numFactura.HasValue ?
                 new ObjectParameter("NumFactura", numFactura) :
                 new ObjectParameter("NumFactura", typeof(int));
     
+            var tipoParameter = tipo.HasValue ?
+                new ObjectParameter("Tipo", tipo) :
+                new ObjectParameter("Tipo", typeof(int));
+    
+            var nCFParameter = nCF != null ?
+                new ObjectParameter("NCF", nCF) :
+                new ObjectParameter("NCF", typeof(string));
+    
+            var clienteParameter = cliente.HasValue ?
+                new ObjectParameter("Cliente", cliente) :
+                new ObjectParameter("Cliente", typeof(int));
+    
+            var estatusParameter = estatus.HasValue ?
+                new ObjectParameter("Estatus", estatus) :
+                new ObjectParameter("Estatus", typeof(int));
+    
+            var subTotalFacturaParameter = subTotalFactura.HasValue ?
+                new ObjectParameter("SubTotalFactura", subTotalFactura) :
+                new ObjectParameter("SubTotalFactura", typeof(decimal));
+    
+            var descuentoParameter = descuento.HasValue ?
+                new ObjectParameter("Descuento", descuento) :
+                new ObjectParameter("Descuento", typeof(decimal));
+    
+            var iTBISParameter = iTBIS.HasValue ?
+                new ObjectParameter("ITBIS", iTBIS) :
+                new ObjectParameter("ITBIS", typeof(decimal));
+    
+            var totalFacturaParameter = totalFactura.HasValue ?
+                new ObjectParameter("TotalFactura", totalFactura) :
+                new ObjectParameter("TotalFactura", typeof(decimal));
+    
+            var montoPagadoParameter = montoPagado.HasValue ?
+                new ObjectParameter("MontoPagado", montoPagado) :
+                new ObjectParameter("MontoPagado", typeof(decimal));
+    
             var fechaFacturaParameter = fechaFactura.HasValue ?
                 new ObjectParameter("FechaFactura", fechaFactura) :
                 new ObjectParameter("FechaFactura", typeof(System.DateTime));
     
-            var fechaVencimientoFacturaParameter = fechaVencimientoFactura.HasValue ?
-                new ObjectParameter("FechaVencimientoFactura", fechaVencimientoFactura) :
-                new ObjectParameter("FechaVencimientoFactura", typeof(System.DateTime));
+            var fechaVencimienttoParameter = fechaVencimientto.HasValue ?
+                new ObjectParameter("FechaVencimientto", fechaVencimientto) :
+                new ObjectParameter("FechaVencimientto", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ActualizarFactura", numFacturaParameter, fechaFacturaParameter, fechaVencimientoFacturaParameter);
+            var notaFacturaParameter = notaFactura != null ?
+                new ObjectParameter("NotaFactura", notaFactura) :
+                new ObjectParameter("NotaFactura", typeof(string));
+    
+            var conduceParameter = conduce.HasValue ?
+                new ObjectParameter("Conduce", conduce) :
+                new ObjectParameter("Conduce", typeof(int));
+    
+            var choferParameter = chofer != null ?
+                new ObjectParameter("Chofer", chofer) :
+                new ObjectParameter("Chofer", typeof(string));
+    
+            var vehiculoParameter = vehiculo != null ?
+                new ObjectParameter("Vehiculo", vehiculo) :
+                new ObjectParameter("Vehiculo", typeof(string));
+    
+            var placaParameter = placa != null ?
+                new ObjectParameter("Placa", placa) :
+                new ObjectParameter("Placa", typeof(string));
+    
+            var capacidadParameter = capacidad.HasValue ?
+                new ObjectParameter("Capacidad", capacidad) :
+                new ObjectParameter("Capacidad", typeof(decimal));
+    
+            var productoParameter = producto != null ?
+                new ObjectParameter("Producto", producto) :
+                new ObjectParameter("Producto", typeof(string));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("Cantidad", cantidad) :
+                new ObjectParameter("Cantidad", typeof(decimal));
+    
+            var medidasParameter = medidas != null ?
+                new ObjectParameter("Medidas", medidas) :
+                new ObjectParameter("Medidas", typeof(string));
+    
+            var precioParameter = precio.HasValue ?
+                new ObjectParameter("Precio", precio) :
+                new ObjectParameter("Precio", typeof(decimal));
+    
+            var subTotalConduceParameter = subTotalConduce.HasValue ?
+                new ObjectParameter("SubTotalConduce", subTotalConduce) :
+                new ObjectParameter("SubTotalConduce", typeof(decimal));
+    
+            var iTBISConduceParameter = iTBISConduce.HasValue ?
+                new ObjectParameter("ITBISConduce", iTBISConduce) :
+                new ObjectParameter("ITBISConduce", typeof(decimal));
+    
+            var viajesParameter = viajes.HasValue ?
+                new ObjectParameter("Viajes", viajes) :
+                new ObjectParameter("Viajes", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ActualizarFactura", numFacturaParameter, tipoParameter, nCFParameter, clienteParameter, estatusParameter, subTotalFacturaParameter, descuentoParameter, iTBISParameter, totalFacturaParameter, montoPagadoParameter, fechaFacturaParameter, fechaVencimienttoParameter, notaFacturaParameter, conduceParameter, choferParameter, vehiculoParameter, placaParameter, capacidadParameter, productoParameter, descripcionParameter, cantidadParameter, medidasParameter, precioParameter, subTotalConduceParameter, iTBISConduceParameter, viajesParameter);
         }
     
         public virtual ObjectResult<SP_VerDetalleFactura_Result> SP_VerDetalleFactura(Nullable<int> numFactura)
@@ -438,6 +534,146 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("NumFactura", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_VerDetalleFactura_Result>("SP_VerDetalleFactura", numFacturaParameter);
+        }
+    
+        public virtual ObjectResult<SP_VerConduceFacturaDetails_Result> SP_VerConduceFacturaDetails(Nullable<int> numFactura)
+        {
+            var numFacturaParameter = numFactura.HasValue ?
+                new ObjectParameter("NumFactura", numFactura) :
+                new ObjectParameter("NumFactura", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_VerConduceFacturaDetails_Result>("SP_VerConduceFacturaDetails", numFacturaParameter);
+        }
+    
+        public virtual int SP_ModificarFactura(Nullable<int> numFactura, Nullable<int> tipo, Nullable<int> nCF, Nullable<int> cliente, Nullable<int> estatus, Nullable<decimal> subTotalFactura, Nullable<decimal> descuento, Nullable<decimal> iTBIS, Nullable<decimal> totalFactura, Nullable<decimal> montoPagado, Nullable<decimal> montoPendiente, Nullable<System.DateTime> fechaFactura, Nullable<System.DateTime> fechaVencimientto, string notaFactura, Nullable<int> conduce, string chofer, string vehiculo, string placa, Nullable<decimal> capacidad, string producto, string descripcion, Nullable<decimal> cantidad, Nullable<int> medidas, Nullable<decimal> precio, Nullable<decimal> subTotalConduce, Nullable<decimal> iTBISConduce, Nullable<int> viajes)
+        {
+            var numFacturaParameter = numFactura.HasValue ?
+                new ObjectParameter("NumFactura", numFactura) :
+                new ObjectParameter("NumFactura", typeof(int));
+    
+            var tipoParameter = tipo.HasValue ?
+                new ObjectParameter("Tipo", tipo) :
+                new ObjectParameter("Tipo", typeof(int));
+    
+            var nCFParameter = nCF.HasValue ?
+                new ObjectParameter("NCF", nCF) :
+                new ObjectParameter("NCF", typeof(int));
+    
+            var clienteParameter = cliente.HasValue ?
+                new ObjectParameter("Cliente", cliente) :
+                new ObjectParameter("Cliente", typeof(int));
+    
+            var estatusParameter = estatus.HasValue ?
+                new ObjectParameter("Estatus", estatus) :
+                new ObjectParameter("Estatus", typeof(int));
+    
+            var subTotalFacturaParameter = subTotalFactura.HasValue ?
+                new ObjectParameter("SubTotalFactura", subTotalFactura) :
+                new ObjectParameter("SubTotalFactura", typeof(decimal));
+    
+            var descuentoParameter = descuento.HasValue ?
+                new ObjectParameter("Descuento", descuento) :
+                new ObjectParameter("Descuento", typeof(decimal));
+    
+            var iTBISParameter = iTBIS.HasValue ?
+                new ObjectParameter("ITBIS", iTBIS) :
+                new ObjectParameter("ITBIS", typeof(decimal));
+    
+            var totalFacturaParameter = totalFactura.HasValue ?
+                new ObjectParameter("TotalFactura", totalFactura) :
+                new ObjectParameter("TotalFactura", typeof(decimal));
+    
+            var montoPagadoParameter = montoPagado.HasValue ?
+                new ObjectParameter("MontoPagado", montoPagado) :
+                new ObjectParameter("MontoPagado", typeof(decimal));
+    
+            var montoPendienteParameter = montoPendiente.HasValue ?
+                new ObjectParameter("MontoPendiente", montoPendiente) :
+                new ObjectParameter("MontoPendiente", typeof(decimal));
+    
+            var fechaFacturaParameter = fechaFactura.HasValue ?
+                new ObjectParameter("FechaFactura", fechaFactura) :
+                new ObjectParameter("FechaFactura", typeof(System.DateTime));
+    
+            var fechaVencimienttoParameter = fechaVencimientto.HasValue ?
+                new ObjectParameter("FechaVencimientto", fechaVencimientto) :
+                new ObjectParameter("FechaVencimientto", typeof(System.DateTime));
+    
+            var notaFacturaParameter = notaFactura != null ?
+                new ObjectParameter("NotaFactura", notaFactura) :
+                new ObjectParameter("NotaFactura", typeof(string));
+    
+            var conduceParameter = conduce.HasValue ?
+                new ObjectParameter("Conduce", conduce) :
+                new ObjectParameter("Conduce", typeof(int));
+    
+            var choferParameter = chofer != null ?
+                new ObjectParameter("Chofer", chofer) :
+                new ObjectParameter("Chofer", typeof(string));
+    
+            var vehiculoParameter = vehiculo != null ?
+                new ObjectParameter("Vehiculo", vehiculo) :
+                new ObjectParameter("Vehiculo", typeof(string));
+    
+            var placaParameter = placa != null ?
+                new ObjectParameter("Placa", placa) :
+                new ObjectParameter("Placa", typeof(string));
+    
+            var capacidadParameter = capacidad.HasValue ?
+                new ObjectParameter("Capacidad", capacidad) :
+                new ObjectParameter("Capacidad", typeof(decimal));
+    
+            var productoParameter = producto != null ?
+                new ObjectParameter("Producto", producto) :
+                new ObjectParameter("Producto", typeof(string));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("Cantidad", cantidad) :
+                new ObjectParameter("Cantidad", typeof(decimal));
+    
+            var medidasParameter = medidas.HasValue ?
+                new ObjectParameter("Medidas", medidas) :
+                new ObjectParameter("Medidas", typeof(int));
+    
+            var precioParameter = precio.HasValue ?
+                new ObjectParameter("Precio", precio) :
+                new ObjectParameter("Precio", typeof(decimal));
+    
+            var subTotalConduceParameter = subTotalConduce.HasValue ?
+                new ObjectParameter("SubTotalConduce", subTotalConduce) :
+                new ObjectParameter("SubTotalConduce", typeof(decimal));
+    
+            var iTBISConduceParameter = iTBISConduce.HasValue ?
+                new ObjectParameter("ITBISConduce", iTBISConduce) :
+                new ObjectParameter("ITBISConduce", typeof(decimal));
+    
+            var viajesParameter = viajes.HasValue ?
+                new ObjectParameter("Viajes", viajes) :
+                new ObjectParameter("Viajes", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ModificarFactura", numFacturaParameter, tipoParameter, nCFParameter, clienteParameter, estatusParameter, subTotalFacturaParameter, descuentoParameter, iTBISParameter, totalFacturaParameter, montoPagadoParameter, montoPendienteParameter, fechaFacturaParameter, fechaVencimienttoParameter, notaFacturaParameter, conduceParameter, choferParameter, vehiculoParameter, placaParameter, capacidadParameter, productoParameter, descripcionParameter, cantidadParameter, medidasParameter, precioParameter, subTotalConduceParameter, iTBISConduceParameter, viajesParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> SP_BuscarIDCliente(string nombreCliente)
+        {
+            var nombreClienteParameter = nombreCliente != null ?
+                new ObjectParameter("NombreCliente", nombreCliente) :
+                new ObjectParameter("NombreCliente", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_BuscarIDCliente", nombreClienteParameter);
+        }
+    
+        public virtual int SP_EliminarFactura(Nullable<int> facturaID)
+        {
+            var facturaIDParameter = facturaID.HasValue ?
+                new ObjectParameter("FacturaID", facturaID) :
+                new ObjectParameter("FacturaID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EliminarFactura", facturaIDParameter);
         }
     }
 }

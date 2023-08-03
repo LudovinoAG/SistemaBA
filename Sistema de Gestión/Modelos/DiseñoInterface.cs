@@ -575,9 +575,40 @@ namespace Sistema_de_Gestión.Modelos
                     }
                     break;
 
+                case "CmdModificarFactura":
+                    if (Evento == 1)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonModificarFacturaOver;
+                    }
+                    else if (Evento == 2)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonModificarFacturaClick;
+                    }
+                    else
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonModificarFactura;
+                    }
+                    break;
+
+                case "cmdEliminarFactura":
+                    if (Evento == 1)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonEliminarFacturaOver;
+                    }
+                    else if (Evento == 2)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonEliminarFacturaClick;
+                    }
+                    else
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonEliminarFactura;
+                    }
+                    break;
 
 
 
+
+                    
 
 
                 default:
