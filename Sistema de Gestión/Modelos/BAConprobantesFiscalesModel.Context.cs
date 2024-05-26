@@ -83,5 +83,42 @@ namespace Sistema_de_Gestión.Modelos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_DesactivarComprobante", iDComprobanteParameter);
         }
+    
+        public virtual int SP_ActualizarInfoComprobanteFiscal(Nullable<int> desde, Nullable<int> hasta, Nullable<int> cantidadNCF, Nullable<System.DateTime> fechaVencimiento, Nullable<int> proximoNCF, string estatus, string serie, string tipo)
+        {
+            var desdeParameter = desde.HasValue ?
+                new ObjectParameter("Desde", desde) :
+                new ObjectParameter("Desde", typeof(int));
+    
+            var hastaParameter = hasta.HasValue ?
+                new ObjectParameter("Hasta", hasta) :
+                new ObjectParameter("Hasta", typeof(int));
+    
+            var cantidadNCFParameter = cantidadNCF.HasValue ?
+                new ObjectParameter("CantidadNCF", cantidadNCF) :
+                new ObjectParameter("CantidadNCF", typeof(int));
+    
+            var fechaVencimientoParameter = fechaVencimiento.HasValue ?
+                new ObjectParameter("FechaVencimiento", fechaVencimiento) :
+                new ObjectParameter("FechaVencimiento", typeof(System.DateTime));
+    
+            var proximoNCFParameter = proximoNCF.HasValue ?
+                new ObjectParameter("ProximoNCF", proximoNCF) :
+                new ObjectParameter("ProximoNCF", typeof(int));
+    
+            var estatusParameter = estatus != null ?
+                new ObjectParameter("Estatus", estatus) :
+                new ObjectParameter("Estatus", typeof(string));
+    
+            var serieParameter = serie != null ?
+                new ObjectParameter("Serie", serie) :
+                new ObjectParameter("Serie", typeof(string));
+    
+            var tipoParameter = tipo != null ?
+                new ObjectParameter("Tipo", tipo) :
+                new ObjectParameter("Tipo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ActualizarInfoComprobanteFiscal", desdeParameter, hastaParameter, cantidadNCFParameter, fechaVencimientoParameter, proximoNCFParameter, estatusParameter, serieParameter, tipoParameter);
+        }
     }
 }

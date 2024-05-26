@@ -19,12 +19,12 @@ namespace Sistema_de_Gestión.Modelos
         public string Empresa { get; set; }
         public string Contacto { get; set; }
         public string RNC { get; set; }
-        public string Cedula { get; set; }
-        public string Telefono { get; set; }
-        public Nullable<decimal> TotalFactura { get; set; }
+        public string Telefonos { get; set; }
+        public Nullable<double> TotalFactura { get; set; }
+        public Nullable<double> MontoPagado { get; set; }
+        public Nullable<double> MontoPendiente { get; set; }
         public Nullable<System.DateTime> FechaFactura { get; set; }
+        public Nullable<System.DateTime> FechaPago { get; set; }
         public Nullable<System.DateTime> FechaVencimientoFactura { get; set; }
-        public Nullable<decimal> MontoPendiente { get; set; }
-        public Nullable<decimal> MontoPagado { get; set; }
     }
 }

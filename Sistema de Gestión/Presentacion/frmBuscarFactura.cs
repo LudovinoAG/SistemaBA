@@ -31,7 +31,7 @@ namespace Sistema_de_Gestión.Presentacion
                 otask.Start();
                 frmVistaFactura VistaFactura = new frmVistaFactura();
                 int NumFactura = (int)txtCodigoFactura.Value;
-                VistaFactura.idFactura = NumFactura;
+                FacturacionModel.IDFactura = NumFactura;
                 VistaFactura.Show();
                 await otask;
                 Cerrar();

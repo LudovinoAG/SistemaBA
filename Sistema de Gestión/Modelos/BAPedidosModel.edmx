@@ -54,6 +54,16 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ProductosFactura' no ti
           <Property Name="Producto" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="Precio" Type="money" Nullable="false" />
+          <Property Name="ITBIS" Type="money" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoID_Detalles_Pedidos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_VerUltimoID_Detalles_Pedidos">
+          <Key>
+            <PropertyRef Name="id_DetallesPedido" />
+          </Key>
+          <Property Name="UltimoID_Detalles" Type="numeric" Precision="38" Scale="0" />
+          <Property Name="id_DetallesPedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -64,32 +74,104 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Property Name="UltimoNumeroPedido" Type="numeric" Precision="38" Scale="0" />
           <Property Name="id_Pedidos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
+        <Function Name="SearchConduce" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CONDUCE" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_ActualizarPedidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPedidos" Type="int" Mode="In" />
+          <Parameter Name="idCliente" Type="int" Mode="In" />
+          <Parameter Name="idConduce" Type="int" Mode="In" />
+          <Parameter Name="idDetallesPedido" Type="int" Mode="In" />
+          <Parameter Name="Conduce" Type="int" Mode="In" />
+          <Parameter Name="Cantidad" Type="decimal" Mode="In" />
+          <Parameter Name="Medidas" Type="int" Mode="In" />
+          <Parameter Name="Producto" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Costo" Type="money" Mode="In" />
+          <Parameter Name="SubTotal" Type="money" Mode="In" />
+          <Parameter Name="ITBIS" Type="money" Mode="In" />
+          <Parameter Name="FechaConduce" Type="date" Mode="In" />
+          <Parameter Name="Chofer" Type="int" Mode="In" />
+          <Parameter Name="Vehiculo" Type="int" Mode="In" />
+          <Parameter Name="Viajes" Type="int" Mode="In" />
+          <Parameter Name="Capacidad" Type="decimal" Mode="In" />
+        </Function>
         <Function Name="SP_BuscarClienteCodigo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Codigo_Cliente" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="SP_BuscarClienteProforma" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodigoCliente" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_DeleteInfoPedidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPedidos" Type="int" Mode="In" />
+          <Parameter Name="idCliente" Type="int" Mode="In" />
+          <Parameter Name="idConduce" Type="int" Mode="In" />
+          <Parameter Name="idDetallesPedido" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_InsertarConduces" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id_Empleado" Type="int" Mode="In" />
-          <Parameter Name="num_Conduce" Type="int" Mode="In" />
-          <Parameter Name="id_producto" Type="int" Mode="In" />
-          <Parameter Name="id_vehiculo" Type="int" Mode="In" />
-          <Parameter Name="id_medida" Type="int" Mode="In" />
+          <Parameter Name="FechaPedido" Type="date" Mode="In" />
+          <Parameter Name="FechaConduce" Type="date" Mode="In" />
+          <Parameter Name="NomEmpleado" Type="varchar" Mode="In" />
+          <Parameter Name="NumConduce" Type="int" Mode="In" />
+          <Parameter Name="NomVehiculo" Type="varchar" Mode="In" />
+          <Parameter Name="Placa" Type="varchar" Mode="In" />
+          <Parameter Name="Capacidad" Type="decimal" Mode="In" />
+          <Parameter Name="Producto" Type="varchar" Mode="In" />
           <Parameter Name="CantidadViajes" Type="int" Mode="In" />
+          <Parameter Name="Cantidad" Type="decimal" Mode="In" />
+          <Parameter Name="NomMedida" Type="varchar" Mode="In" />
+          <Parameter Name="Precio" Type="money" Mode="In" />
+          <Parameter Name="SubTotal" Type="money" Mode="In" />
+          <Parameter Name="ITBIS" Type="money" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Estatus" Type="varchar" Mode="In" />
         </Function>
         <Function Name="SP_InsertarConducesPedidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Cliente" Type="int" Mode="In" />
           <Parameter Name="id_Empleado" Type="int" Mode="In" />
           <Parameter Name="num_Conduce" Type="int" Mode="In" />
           <Parameter Name="id_producto" Type="int" Mode="In" />
           <Parameter Name="id_vehiculo" Type="int" Mode="In" />
           <Parameter Name="id_medida" Type="int" Mode="In" />
           <Parameter Name="CantidadViajes" Type="int" Mode="In" />
+          <Parameter Name="idCount" Type="int" Mode="In" />
+          <Parameter Name="OrometroInicio" Type="decimal" Mode="In" />
+          <Parameter Name="OrometroFinal" Type="decimal" Mode="In" />
+          <Parameter Name="FechaConduce" Type="date" Mode="In" />
+          <Parameter Name="CapacidadConduce" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertarDetalleProforma" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Cliente" Type="int" Mode="In" />
+          <Parameter Name="id_producto" Type="int" Mode="In" />
+          <Parameter Name="id_medida" Type="int" Mode="In" />
+          <Parameter Name="cantidad" Type="float" Mode="In" />
+          <Parameter Name="costo" Type="money" Mode="In" />
+          <Parameter Name="subtotal" Type="money" Mode="In" />
         </Function>
         <Function Name="SP_InsertarDetallesPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="detalles" Type="int" Mode="In" />
+          <Parameter Name="idCliente" Type="int" Mode="In" />
           <Parameter Name="idProducto" Type="int" Mode="In" />
           <Parameter Name="id_Medida" Type="int" Mode="In" />
-          <Parameter Name="cantidad" Type="int" Mode="In" />
+          <Parameter Name="cantidad" Type="decimal" Mode="In" />
           <Parameter Name="precio" Type="money" Mode="In" />
           <Parameter Name="subtotal" Type="money" Mode="In" />
           <Parameter Name="descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="conduce" Type="int" Mode="In" />
+          <Parameter Name="ITBIS" Type="money" Mode="In" />
+          <Parameter Name="Proyecto" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertarFacturaProforma" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Cliente" Type="int" Mode="In" />
+          <Parameter Name="empresa" Type="varchar" Mode="In" />
+          <Parameter Name="rnc" Type="varchar" Mode="In" />
+          <Parameter Name="nombreContacto" Type="varchar" Mode="In" />
+          <Parameter Name="telContacto" Type="varchar" Mode="In" />
+          <Parameter Name="direccion" Type="varchar" Mode="In" />
+          <Parameter Name="correo" Type="varchar" Mode="In" />
+          <Parameter Name="condiciones" Type="varchar" Mode="In" />
+          <Parameter Name="itbis" Type="money" Mode="In" />
+          <Parameter Name="total" Type="money" Mode="In" />
         </Function>
         <Function Name="SP_InsertarPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idCliente" Type="int" Mode="In" />
@@ -98,6 +180,34 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Parameter Name="totalPedido" Type="money" Mode="In" />
           <Parameter Name="ITBISPedido" Type="money" Mode="In" />
           <Parameter Name="DescuentoPedido" Type="money" Mode="In" />
+          <Parameter Name="Condicion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_ProformaBuscarConducesPorPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_Cliente" Type="int" Mode="In" />
+          <Parameter Name="id_Pedido" Type="int" Mode="In" />
+          <Parameter Name="ModoReporte" Type="varchar" Mode="In" />
+          <Parameter Name="id_EstatusPedido" Type="int" Mode="In" />
+          <Parameter Name="FechaInicio" Type="date" Mode="In" />
+          <Parameter Name="FechaFin" Type="date" Mode="In" />
+        </Function>
+        <Function Name="SP_ProformaBuscarPedidosPendientesCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Cliente" Type="int" Mode="In" />
+          <Parameter Name="id_Pedido" Type="int" Mode="In" />
+          <Parameter Name="ModoReporte" Type="varchar" Mode="In" />
+          <Parameter Name="id_EstatusPedido" Type="int" Mode="In" />
+          <Parameter Name="FechaInicio" Type="date" Mode="In" />
+          <Parameter Name="FechaFin" Type="date" Mode="In" />
+        </Function>
+        <Function Name="SP_ViewDetailsPreform" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Cliente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_ViewQueryPreform" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Cliente" Type="int" Mode="In" />
+          <Parameter Name="id_Pedido" Type="int" Mode="In" />
+          <Parameter Name="ModoReporte" Type="varchar" Mode="In" />
+          <Parameter Name="id_EstatusPedido" Type="int" Mode="In" />
+          <Parameter Name="FechaInicio" Type="date" Mode="In" />
+          <Parameter Name="FechaFin" Type="date" Mode="In" />
         </Function>
         <EntityContainer Name="BAPedidosModelStoreContainer">
           <EntitySet Name="VW_EmpleadosFactura" EntityType="Self.VW_EmpleadosFactura" store:Type="Views" store:Schema="dbo">
@@ -127,8 +237,15 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
     [VW_ProductosFactura].[Codigo] AS [Codigo], 
     [VW_ProductosFactura].[Producto] AS [Producto], 
     [VW_ProductosFactura].[Descripcion] AS [Descripcion], 
-    [VW_ProductosFactura].[Precio] AS [Precio]
+    [VW_ProductosFactura].[Precio] AS [Precio], 
+    [VW_ProductosFactura].[ITBIS] AS [ITBIS]
     FROM [dbo].[VW_ProductosFactura] AS [VW_ProductosFactura]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_VerUltimoID_Detalles_Pedidos" EntityType="Self.VW_VerUltimoID_Detalles_Pedidos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_VerUltimoID_Detalles_Pedidos].[UltimoID_Detalles] AS [UltimoID_Detalles], 
+    [VW_VerUltimoID_Detalles_Pedidos].[id_DetallesPedido] AS [id_DetallesPedido]
+    FROM [dbo].[VW_VerUltimoID_Detalles_Pedidos] AS [VW_VerUltimoID_Detalles_Pedidos]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="VW_VerUltimoNumeroPedido" EntityType="Self.VW_VerUltimoNumeroPedido" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -142,13 +259,67 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
     <edmx:ConceptualModels>
       <Schema Namespace="BAPedidosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BAPedidosEntities" annotation:LazyLoadingEnabled="true" >
-          <FunctionImport Name="SP_InsertarDetallesPedido">
-            <Parameter Name="idProducto" Mode="In" Type="Int32" />
-            <Parameter Name="id_Medida" Mode="In" Type="Int32" />
-            <Parameter Name="cantidad" Mode="In" Type="Int32" />
-            <Parameter Name="precio" Mode="In" Type="Decimal" />
+          <FunctionImport Name="SP_BuscarClienteCodigo" ReturnType="Collection(BAPedidosModel.SP_BuscarClienteCodigo_Result)">
+          <Parameter Name="Codigo_Cliente" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="VW_VerUltimoNumeroPedido" EntityType="BAPedidosModel.VW_VerUltimoNumeroPedido" />
+          <EntitySet Name="VW_ListarVehiculos" EntityType="BAPedidosModel.VW_ListarVehiculos" />
+          <EntitySet Name="VW_ListarMedidas" EntityType="BAPedidosModel.VW_ListarMedidas" />
+          <FunctionImport Name="SP_InsertarConduces">
+            <Parameter Name="FechaPedido" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaConduce" Mode="In" Type="DateTime" />
+            <Parameter Name="NomEmpleado" Mode="In" Type="String" />
+            <Parameter Name="NumConduce" Mode="In" Type="Int32" />
+            <Parameter Name="NomVehiculo" Mode="In" Type="String" />
+            <Parameter Name="Placa" Mode="In" Type="String" />
+            <Parameter Name="Capacidad" Mode="In" Type="Decimal" />
+            <Parameter Name="Producto" Mode="In" Type="String" />
+            <Parameter Name="CantidadViajes" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad" Mode="In" Type="Decimal" />
+            <Parameter Name="NomMedida" Mode="In" Type="String" />
+            <Parameter Name="Precio" Mode="In" Type="Decimal" />
+            <Parameter Name="SubTotal" Mode="In" Type="Decimal" />
+            <Parameter Name="ITBIS" Mode="In" Type="Decimal" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Estatus" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertarConducesPedidos">
+            <Parameter Name="id_Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="id_Empleado" Mode="In" Type="Int32" />
+            <Parameter Name="num_Conduce" Mode="In" Type="Int32" />
+            <Parameter Name="id_producto" Mode="In" Type="Int32" />
+            <Parameter Name="id_vehiculo" Mode="In" Type="Int32" />
+            <Parameter Name="id_medida" Mode="In" Type="Int32" />
+            <Parameter Name="CantidadViajes" Mode="In" Type="Int32" />
+            <Parameter Name="idCount" Mode="In" Type="Int32" />
+            <Parameter Name="OrometroInicio" Mode="In" Type="Decimal" />
+            <Parameter Name="OrometroFinal" Mode="In" Type="Decimal" />
+            <Parameter Name="FechaConduce" Mode="In" Type="DateTime" />
+            <Parameter Name="CapacidadConduce" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <EntitySet Name="VW_VerUltimoID_Detalles_Pedidos" EntityType="BAPedidosModel.VW_VerUltimoID_Detalles_Pedidos" />
+          <FunctionImport Name="SP_InsertarDetalleProforma">
+            <Parameter Name="id_Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="id_producto" Mode="In" Type="Int32" />
+            <Parameter Name="id_medida" Mode="In" Type="Int32" />
+            <Parameter Name="cantidad" Mode="In" Type="Double" />
+            <Parameter Name="costo" Mode="In" Type="Decimal" />
             <Parameter Name="subtotal" Mode="In" Type="Decimal" />
-            <Parameter Name="descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertarFacturaProforma">
+            <Parameter Name="id_Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="empresa" Mode="In" Type="String" />
+            <Parameter Name="rnc" Mode="In" Type="String" />
+            <Parameter Name="nombreContacto" Mode="In" Type="String" />
+            <Parameter Name="telContacto" Mode="In" Type="String" />
+            <Parameter Name="direccion" Mode="In" Type="String" />
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="condiciones" Mode="In" Type="String" />
+            <Parameter Name="itbis" Mode="In" Type="Decimal" />
+            <Parameter Name="total" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ViewDetailsPreform" ReturnType="Collection(BAPedidosModel.SP_ViewDetailsPreform_Result)">
+          <Parameter Name="id_Cliente" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_InsertarPedido">
             <Parameter Name="idCliente" Mode="In" Type="Int32" />
@@ -157,30 +328,77 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
             <Parameter Name="totalPedido" Mode="In" Type="Decimal" />
             <Parameter Name="ITBISPedido" Mode="In" Type="Decimal" />
             <Parameter Name="DescuentoPedido" Mode="In" Type="Decimal" />
+            <Parameter Name="Condicion" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SP_BuscarClienteCodigo" ReturnType="Collection(BAPedidosModel.SP_BuscarClienteCodigo_Result)">
-          <Parameter Name="Codigo_Cliente" Mode="In" Type="String" />
+          <FunctionImport Name="SP_BuscarClienteProforma" ReturnType="Collection(BAPedidosModel.SP_BuscarClienteProforma_Result)">
+          <Parameter Name="CodigoCliente" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="VW_VerUltimoNumeroPedido" EntityType="BAPedidosModel.VW_VerUltimoNumeroPedido" />
+          <FunctionImport Name="SP_InsertarDetallesPedido">
+            <Parameter Name="detalles" Mode="In" Type="Int32" />
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
+            <Parameter Name="id_Medida" Mode="In" Type="Int32" />
+            <Parameter Name="cantidad" Mode="In" Type="Decimal" />
+            <Parameter Name="precio" Mode="In" Type="Decimal" />
+            <Parameter Name="subtotal" Mode="In" Type="Decimal" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+            <Parameter Name="conduce" Mode="In" Type="Int32" />
+            <Parameter Name="ITBIS" Mode="In" Type="Decimal" />
+            <Parameter Name="Proyecto" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ViewQueryPreform" ReturnType="Collection(BAPedidosModel.SP_ViewQueryPreform_Result)">
+            <Parameter Name="id_Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="id_Pedido" Mode="In" Type="Int32" />
+            <Parameter Name="ModoReporte" Mode="In" Type="String" />
+            <Parameter Name="id_EstatusPedido" Mode="In" Type="Int32" />
+            <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SearchConduce" ReturnType="Collection(Int32)">
+          <Parameter Name="CONDUCE" Mode="In" Type="Int32" />
+          </FunctionImport>
           <EntitySet Name="VW_EmpleadosFactura" EntityType="BAPedidosModel.VW_EmpleadosFactura" />
-          <EntitySet Name="VW_ListarVehiculos" EntityType="BAPedidosModel.VW_ListarVehiculos" />
-          <EntitySet Name="VW_ListarMedidas" EntityType="BAPedidosModel.VW_ListarMedidas" />
           <EntitySet Name="VW_ProductosFactura" EntityType="BAPedidosModel.VW_ProductosFactura" />
-          <FunctionImport Name="SP_InsertarConduces">
-            <Parameter Name="id_Empleado" Mode="In" Type="Int32" />
-            <Parameter Name="num_Conduce" Mode="In" Type="Int32" />
-            <Parameter Name="id_producto" Mode="In" Type="Int32" />
-            <Parameter Name="id_vehiculo" Mode="In" Type="Int32" />
-            <Parameter Name="id_medida" Mode="In" Type="Int32" />
-            <Parameter Name="CantidadViajes" Mode="In" Type="Int32" />
+          <FunctionImport Name="SP_DeleteInfoPedidos">
+            <Parameter Name="idPedidos" Mode="In" Type="Int32" />
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+            <Parameter Name="idConduce" Mode="In" Type="Int32" />
+            <Parameter Name="idDetallesPedido" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_InsertarConducesPedidos">
-            <Parameter Name="id_Empleado" Mode="In" Type="Int32" />
-            <Parameter Name="num_Conduce" Mode="In" Type="Int32" />
-            <Parameter Name="id_producto" Mode="In" Type="Int32" />
-            <Parameter Name="id_vehiculo" Mode="In" Type="Int32" />
-            <Parameter Name="id_medida" Mode="In" Type="Int32" />
-            <Parameter Name="CantidadViajes" Mode="In" Type="Int32" />
+          <FunctionImport Name="SP_ActualizarPedidos">
+            <Parameter Name="idPedidos" Mode="In" Type="Int32" />
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+            <Parameter Name="idConduce" Mode="In" Type="Int32" />
+            <Parameter Name="idDetallesPedido" Mode="In" Type="Int32" />
+            <Parameter Name="Conduce" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad" Mode="In" Type="Decimal" />
+            <Parameter Name="Medidas" Mode="In" Type="Int32" />
+            <Parameter Name="Producto" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Costo" Mode="In" Type="Decimal" />
+            <Parameter Name="SubTotal" Mode="In" Type="Decimal" />
+            <Parameter Name="ITBIS" Mode="In" Type="Decimal" />
+            <Parameter Name="FechaConduce" Mode="In" Type="DateTime" />
+            <Parameter Name="Chofer" Mode="In" Type="Int32" />
+            <Parameter Name="Vehiculo" Mode="In" Type="Int32" />
+            <Parameter Name="Viajes" Mode="In" Type="Int32" />
+            <Parameter Name="Capacidad" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ProformaBuscarConducesPorPedido" ReturnType="Collection(BAPedidosModel.SP_ProformaBuscarConducesPorPedido_Result)">
+            <Parameter Name="ID_Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="id_Pedido" Mode="In" Type="Int32" />
+            <Parameter Name="ModoReporte" Mode="In" Type="String" />
+            <Parameter Name="id_EstatusPedido" Mode="In" Type="Int32" />
+            <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ProformaBuscarPedidosPendientesCliente" ReturnType="Collection(BAPedidosModel.SP_ProformaBuscarPedidosPendientesCliente_Result)">
+            <Parameter Name="id_Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="id_Pedido" Mode="In" Type="Int32" />
+            <Parameter Name="ModoReporte" Mode="In" Type="String" />
+            <Parameter Name="id_EstatusPedido" Mode="In" Type="Int32" />
+            <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_BuscarClienteCodigo_Result">
@@ -201,15 +419,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Property Name="UltimoNumeroPedido" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="id_Pedidos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
-        <EntityType Name="VW_EmpleadosFactura">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="Chofer" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Chofer" Type="String" Nullable="false" MaxLength="31" FixedLength="false" Unicode="false" />
-          <Property Name="Celular" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="VW_ListarVehiculos">
           <Key>
             <PropertyRef Name="ID" />
@@ -229,6 +438,63 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Medida" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="VW_VerUltimoID_Detalles_Pedidos">
+          <Key>
+            <PropertyRef Name="id_DetallesPedido" />
+          </Key>
+          <Property Name="UltimoID_Detalles" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="id_DetallesPedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <ComplexType Name="SP_ViewDetailsPreform_Result">
+          <Property Type="String" Name="Chofer" Nullable="true" MaxLength="31" />
+          <Property Type="String" Name="Vehiculo" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Placa" Nullable="false" MaxLength="18" />
+          <Property Type="String" Name="Producto" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="60" />
+          <Property Type="Decimal" Name="Precio" Nullable="true" Precision="19" />
+          <Property Type="Double" Name="Cantidad" Nullable="true" />
+          <Property Type="String" Name="Medida" Nullable="false" MaxLength="15" />
+          <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="SP_BuscarClienteProforma_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Empresa" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="RNC" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="NombreContacto" Nullable="false" MaxLength="31" />
+          <Property Type="String" Name="TelefonoContactos" Nullable="false" MaxLength="27" />
+        </ComplexType>
+        <ComplexType Name="SP_ViewQueryPreform_Result">
+          <Property Type="Int32" Name="NumPedido" Nullable="false" />
+          <Property Type="String" Name="COD" Nullable="true" MaxLength="4000" />
+          <Property Type="DateTime" Name="FechaPedido" Nullable="true" />
+          <Property Type="String" Name="Empresa" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="RNC" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="Proyecto" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="NombreContacto" Nullable="true" MaxLength="31" />
+          <Property Type="String" Name="NumeroContactos" Nullable="true" MaxLength="27" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="CorreoElectronico" Nullable="true" MaxLength="60" />
+          <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="String" Name="Medida" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Producto" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="800" />
+          <Property Type="Decimal" Name="Precio" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Descuento" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="ITBIS" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TotalPedido" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Condicion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
+        </ComplexType>
+        <EntityType Name="VW_EmpleadosFactura">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Chofer" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Chofer" Type="String" Nullable="false" MaxLength="31" FixedLength="false" Unicode="false" />
+          <Property Name="Celular" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="VW_ProductosFactura">
           <Key>
             <PropertyRef Name="ID" />
@@ -242,15 +508,42 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
           <Property Name="Producto" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="Precio" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ITBIS" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
+        <ComplexType Name="SP_ProformaBuscarConducesPorPedido_Result">
+          <Property Type="Int32" Name="ID" Nullable="true" />
+          <Property Type="DateTime" Name="FechaPedido" Nullable="true" />
+          <Property Type="DateTime" Name="FechaConduce" Nullable="true" />
+          <Property Type="String" Name="Chofer" Nullable="false" MaxLength="31" />
+          <Property Type="Int32" Name="Conduce" Nullable="true" />
+          <Property Type="String" Name="Vehiculo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Placa" Nullable="true" MaxLength="18" />
+          <Property Type="Decimal" Name="Capacidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="Producto" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Viajes" Nullable="true" />
+          <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="String" Name="Medida" Nullable="false" MaxLength="15" />
+          <Property Type="Decimal" Name="Precio" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="ITBIS" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="800" />
+          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
+        </ComplexType>
+        <ComplexType Name="SP_ProformaBuscarPedidosPendientesCliente_Result">
+          <Property Type="Int32" Name="NumPedido" Nullable="true" />
+          <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Descuento" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="ITBIS" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TotalPedido" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Condicion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BAPedidosModelStoreContainer" CdmEntityContainer="BAPedidosEntities" >
-          <FunctionImportMapping FunctionImportName="SP_InsertarDetallesPedido" FunctionName="BAPedidosModel.Store.SP_InsertarDetallesPedido" />
-          <FunctionImportMapping FunctionImportName="SP_InsertarPedido" FunctionName="BAPedidosModel.Store.SP_InsertarPedido" />
           <FunctionImportMapping FunctionImportName="SP_BuscarClienteCodigo" FunctionName="BAPedidosModel.Store.SP_BuscarClienteCodigo">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BAPedidosModel.SP_BuscarClienteCodigo_Result">
@@ -274,15 +567,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VW_EmpleadosFactura">
-            <EntityTypeMapping TypeName="BAPedidosModel.VW_EmpleadosFactura">
-              <MappingFragment StoreEntitySet="VW_EmpleadosFactura">
-                <ScalarProperty Name="Celular" ColumnName="Celular" />
-                <ScalarProperty Name="Chofer" ColumnName="Chofer" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="VW_ListarVehiculos">
             <EntityTypeMapping TypeName="BAPedidosModel.VW_ListarVehiculos">
               <MappingFragment StoreEntitySet="VW_ListarVehiculos">
@@ -301,9 +585,87 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_InsertarConduces" FunctionName="BAPedidosModel.Store.SP_InsertarConduces" />
+          <FunctionImportMapping FunctionImportName="SP_InsertarConducesPedidos" FunctionName="BAPedidosModel.Store.SP_InsertarConducesPedidos" />
+          <EntitySetMapping Name="VW_VerUltimoID_Detalles_Pedidos">
+            <EntityTypeMapping TypeName="BAPedidosModel.VW_VerUltimoID_Detalles_Pedidos">
+              <MappingFragment StoreEntitySet="VW_VerUltimoID_Detalles_Pedidos">
+                <ScalarProperty Name="id_DetallesPedido" ColumnName="id_DetallesPedido" />
+                <ScalarProperty Name="UltimoID_Detalles" ColumnName="UltimoID_Detalles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_InsertarDetalleProforma" FunctionName="BAPedidosModel.Store.SP_InsertarDetalleProforma" />
+          <FunctionImportMapping FunctionImportName="SP_InsertarFacturaProforma" FunctionName="BAPedidosModel.Store.SP_InsertarFacturaProforma" />
+          <FunctionImportMapping FunctionImportName="SP_ViewDetailsPreform" FunctionName="BAPedidosModel.Store.SP_ViewDetailsPreform">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BAPedidosModel.SP_ViewDetailsPreform_Result">
+                <ScalarProperty Name="Chofer" ColumnName="Chofer" />
+                <ScalarProperty Name="Vehiculo" ColumnName="Vehiculo" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Medida" ColumnName="Medida" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_InsertarPedido" FunctionName="BAPedidosModel.Store.SP_InsertarPedido" />
+          <FunctionImportMapping FunctionImportName="SP_BuscarClienteProforma" FunctionName="BAPedidosModel.Store.SP_BuscarClienteProforma">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BAPedidosModel.SP_BuscarClienteProforma_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="RNC" ColumnName="RNC" />
+                <ScalarProperty Name="NombreContacto" ColumnName="NombreContacto" />
+                <ScalarProperty Name="TelefonoContactos" ColumnName="TelefonoContactos" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_InsertarDetallesPedido" FunctionName="BAPedidosModel.Store.SP_InsertarDetallesPedido" />
+          <FunctionImportMapping FunctionImportName="SP_ViewQueryPreform" FunctionName="BAPedidosModel.Store.SP_ViewQueryPreform">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BAPedidosModel.SP_ViewQueryPreform_Result">
+                <ScalarProperty Name="NumPedido" ColumnName="NumPedido" />
+                <ScalarProperty Name="COD" ColumnName="COD" />
+                <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="RNC" ColumnName="RNC" />
+                <ScalarProperty Name="Proyecto" ColumnName="Proyecto" />
+                <ScalarProperty Name="NombreContacto" ColumnName="NombreContacto" />
+                <ScalarProperty Name="NumeroContactos" ColumnName="NumeroContactos" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Medida" ColumnName="Medida" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
+                <ScalarProperty Name="TotalPedido" ColumnName="TotalPedido" />
+                <ScalarProperty Name="Condicion" ColumnName="Condicion" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SearchConduce" FunctionName="BAPedidosModel.Store.SearchConduce" />
+          <EntitySetMapping Name="VW_EmpleadosFactura">
+            <EntityTypeMapping TypeName="BAPedidosModel.VW_EmpleadosFactura">
+              <MappingFragment StoreEntitySet="VW_EmpleadosFactura">
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Chofer" ColumnName="Chofer" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="VW_ProductosFactura">
             <EntityTypeMapping TypeName="BAPedidosModel.VW_ProductosFactura">
               <MappingFragment StoreEntitySet="VW_ProductosFactura">
+                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
                 <ScalarProperty Name="Precio" ColumnName="Precio" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Producto" ColumnName="Producto" />
@@ -312,8 +674,44 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerUltimoNumeroPedido' 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SP_InsertarConduces" FunctionName="BAPedidosModel.Store.SP_InsertarConduces" />
-          <FunctionImportMapping FunctionImportName="SP_InsertarConducesPedidos" FunctionName="BAPedidosModel.Store.SP_InsertarConducesPedidos" />
+          <FunctionImportMapping FunctionImportName="SP_DeleteInfoPedidos" FunctionName="BAPedidosModel.Store.SP_DeleteInfoPedidos" />
+          <FunctionImportMapping FunctionImportName="SP_ActualizarPedidos" FunctionName="BAPedidosModel.Store.SP_ActualizarPedidos" />
+          <FunctionImportMapping FunctionImportName="SP_ProformaBuscarConducesPorPedido" FunctionName="BAPedidosModel.Store.SP_ProformaBuscarConducesPorPedido">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BAPedidosModel.SP_ProformaBuscarConducesPorPedido_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
+                <ScalarProperty Name="FechaConduce" ColumnName="FechaConduce" />
+                <ScalarProperty Name="Chofer" ColumnName="Chofer" />
+                <ScalarProperty Name="Conduce" ColumnName="Conduce" />
+                <ScalarProperty Name="Vehiculo" ColumnName="Vehiculo" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Viajes" ColumnName="Viajes" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Medida" ColumnName="Medida" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ProformaBuscarPedidosPendientesCliente" FunctionName="BAPedidosModel.Store.SP_ProformaBuscarPedidosPendientesCliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BAPedidosModel.SP_ProformaBuscarPedidosPendientesCliente_Result">
+                <ScalarProperty Name="NumPedido" ColumnName="NumPedido" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
+                <ScalarProperty Name="TotalPedido" ColumnName="TotalPedido" />
+                <ScalarProperty Name="Condicion" ColumnName="Condicion" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -13,15 +13,10 @@ namespace Sistema_de_Gestión.Modelos
     
     public partial class SP_VerRedaccionClienteID_Result
     {
-        public int Num_Pedido { get; set; }
+        public Nullable<int> Num_Pedido { get; set; }
         public string FechaPedido { get; set; }
-        public string MesPedido { get; set; }
-        public string Empresa { get; set; }
-        public string Proyecto { get; set; }
-        public string Direccion { get; set; }
-        public string RNC { get; set; }
-        public string Contacto { get; set; }
-        public string Telefonos { get; set; }
+        public string FechaConduce { get; set; }
+        public string Mes { get; set; }
         public Nullable<decimal> Sub_Total { get; set; }
         public Nullable<decimal> ITBIS { get; set; }
         public Nullable<decimal> Descuento { get; set; }

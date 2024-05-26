@@ -104,29 +104,26 @@ namespace Sistema_de_Gestión.Modelos
 
 
 
-        public void ListarCategorias(ComboBox cboCategorias)
+        public List<VW_ListaCategorias> ListarCategorias()
         {
-            cboCategorias.Items.Add("Elegir...");
 
             using (BACategorias CA = new BACategorias())
             {
                 try
                 {
-                    var lstCategorias = CA.VW_ListaCategorias.ToArray();
-                    foreach (var item in lstCategorias)
-                    {
-                        cboCategorias.Items.Add(item.Nom_Categoria);
-                    }
+                    return CA.VW_ListaCategorias.ToList();
+
                 }
                 catch (Exception ex)
                 {
 
                     MessageBox.Show("No fue posible listar las categorias " + ex.Message, "Sistema de Gestión", 
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    return CA.VW_ListaCategorias.ToList();
                 }
             }
 
-            cboCategorias.SelectedIndex = 0;
         }
 
 

@@ -39,17 +39,27 @@ namespace Sistema_de_Gestión.Presentacion
             DSReportesTableAdapters.SP_VerDetalleFacturaTableAdapter taDetallesFactura = new
                 DSReportesTableAdapters.SP_VerDetalleFacturaTableAdapter();
 
-            DSReportesTableAdapters.SP_VerDetallesConducesTableAdapter taDetallesConduce = new
-                DSReportesTableAdapters.SP_VerDetallesConducesTableAdapter();
+            //DSReportesTableAdapters.SP_VerDetallesConducesTableAdapter taDetallesConduce = new
+                //DSReportesTableAdapters.SP_VerDetallesConducesTableAdapter();
 
-            taFactura.Fill(ds.SP_VerFacturaID,this.idFactura);
-            taDetallesFactura.Fill(ds.SP_VerDetalleFactura, this.idFactura);
-            taDetallesConduce.Fill(ds.SP_VerDetallesConduces, this.idFactura);
-
-            
+            taFactura.Fill(ds.SP_VerFacturaID, FacturacionModel.IDFactura);
+            taDetallesFactura.Fill(ds.SP_VerDetalleFactura, FacturacionModel.IDFactura);
+            //taDetallesConduce.Fill(ds.SP_VerDetallesConduces, FacturacionModel.IDFactura);
+    
             crvFactura1.SetDataSource(ds);
-            crvFactura1.SetParameterValue("Pm-SP_VerDetallesConduces;1.id_Factura", this.idFactura);
+            //crvFactura1.SetParameterValue("Pm-SP_VerDetallesConduces;1.id_Factura", FacturacionModel.IDFactura);
             crystalReportViewer1.ReportSource = crvFactura1;
+
+            if (frmReportesFacturas.TipoFacturaReporte == "Consumidor Final")
+            {
+                crvFactura1.Section1.ReportObjects["Text1"].Top = 960;
+                crvFactura1.Section1.ReportObjects["NumFactura1"].Top = 960;
+            }
+            else
+            {
+                crvFactura1.Section1.ReportObjects["NumFactura1"].Top = 240;
+                crvFactura1.Section1.ReportObjects["Text1"].Top = 240;
+            }
 
         }
     }

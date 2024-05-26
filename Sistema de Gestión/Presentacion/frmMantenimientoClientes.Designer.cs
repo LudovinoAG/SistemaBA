@@ -29,9 +29,9 @@ namespace Sistema_de_Gestión.Presentacion
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label3 = new System.Windows.Forms.Label();
             this.LblID = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -258,29 +258,29 @@ namespace Sistema_de_Gestión.Presentacion
             this.dgvClientes.AllowUserToDeleteRows = false;
             this.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvClientes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvClientes.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvClientes.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvClientes.Location = new System.Drawing.Point(12, 109);
             this.dgvClientes.MultiSelect = false;
             this.dgvClientes.Name = "dgvClientes";
             this.dgvClientes.ReadOnly = true;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvClientes.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvClientes.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvClientes.Size = new System.Drawing.Size(1071, 495);
             this.dgvClientes.TabIndex = 33;
@@ -417,6 +417,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.txtExtension.Size = new System.Drawing.Size(123, 24);
             this.txtExtension.TabIndex = 11;
             this.txtExtension.Tag = "Extensión";
+            this.txtExtension.Text = "0";
             // 
             // label17
             // 
@@ -461,6 +462,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.txtNumero.Size = new System.Drawing.Size(48, 24);
             this.txtNumero.TabIndex = 14;
             this.txtNumero.Tag = "Numero";
+            this.txtNumero.Text = "0";
             // 
             // label19
             // 
@@ -525,9 +527,11 @@ namespace Sistema_de_Gestión.Presentacion
             this.txtZipCode.Location = new System.Drawing.Point(1307, 438);
             this.txtZipCode.MaxLength = 10;
             this.txtZipCode.Name = "txtZipCode";
+            this.txtZipCode.ReadOnly = true;
             this.txtZipCode.Size = new System.Drawing.Size(48, 24);
             this.txtZipCode.TabIndex = 17;
             this.txtZipCode.Tag = "Zip Code";
+            this.txtZipCode.Text = "0";
             // 
             // label7
             // 
@@ -657,7 +661,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.cboViewRecord.FormattingEnabled = true;
             this.cboViewRecord.Location = new System.Drawing.Point(61, 9);
             this.cboViewRecord.Name = "cboViewRecord";
-            this.cboViewRecord.Size = new System.Drawing.Size(44, 21);
+            this.cboViewRecord.Size = new System.Drawing.Size(59, 21);
             this.cboViewRecord.TabIndex = 86;
             this.cboViewRecord.SelectedIndexChanged += new System.EventHandler(this.cboViewRecord_SelectedIndexChanged);
             // 
@@ -688,7 +692,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(106, 13);
+            this.label25.Location = new System.Drawing.Point(126, 13);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(53, 14);
             this.label25.TabIndex = 91;
@@ -702,7 +706,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.panel1.Controls.Add(this.cboViewRecord);
             this.panel1.Location = new System.Drawing.Point(139, 611);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(173, 40);
+            this.panel1.Size = new System.Drawing.Size(191, 40);
             this.panel1.TabIndex = 92;
             // 
             // txtCedula

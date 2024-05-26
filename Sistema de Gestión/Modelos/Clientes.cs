@@ -104,7 +104,7 @@ namespace Sistema_de_Gestión.Modelos
 
                     //Cargar el dataGridView
                     dgvClientes.DataSource = null;
-                    dgvClientes.DataSource = lstNuevoListado;
+                    dgvClientes.DataSource = lstNuevoListado.OrderBy(t=> t.Empresa).ToList();
 
 
 
@@ -135,7 +135,7 @@ namespace Sistema_de_Gestión.Modelos
                         PrimerApellido, SegundoApellido, TipoCliente, TelefonoPrincipal, Extension, TelefonoSecundario,
                         Calle, Numero, PuntoReferencia, Ciudad, CodigoPostal, Correo, Web, Observacion);
 
-                    MessageBox.Show("Se ha insertado el Cliente correctamente", "Nuevo Cliente",
+                    MessageBox.Show($"Se ha insertado el Cliente correctamente [{Empresa}].", "Nuevo Cliente",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -216,7 +216,7 @@ namespace Sistema_de_Gestión.Modelos
         }
         public void CargarCantidadVista(ComboBox cboViews)
         {
-            object[] RegistroMostrar = new object[] { 5, 10, 15, 20, 25, 30, 50, 100 };
+            object[] RegistroMostrar = new object[] { 5, 10, 15, 20, 25, 30, 50, 100,1000,5000,10000 };
             cboViews.Items.AddRange(RegistroMostrar);
             cboViews.SelectedIndex = 0;
         }

@@ -313,6 +313,36 @@ namespace Sistema_de_Gestión {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BotonBuscarPedidosProforma {
+            get {
+                object obj = ResourceManager.GetObject("BotonBuscarPedidosProforma", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonBuscarPedidosProformaClick {
+            get {
+                object obj = ResourceManager.GetObject("BotonBuscarPedidosProformaClick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonBuscarPedidosProformaOver {
+            get {
+                object obj = ResourceManager.GetObject("BotonBuscarPedidosProformaOver", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BotonBuscarReporte {
             get {
                 object obj = ResourceManager.GetObject("BotonBuscarReporte", resourceCulture);
@@ -416,6 +446,36 @@ namespace Sistema_de_Gestión {
         internal static System.Drawing.Bitmap BotonEliminarClick {
             get {
                 object obj = ResourceManager.GetObject("BotonEliminarClick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonEliminarFactura {
+            get {
+                object obj = ResourceManager.GetObject("BotonEliminarFactura", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonEliminarFacturaClick {
+            get {
+                object obj = ResourceManager.GetObject("BotonEliminarFacturaClick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonEliminarFacturaOver {
+            get {
+                object obj = ResourceManager.GetObject("BotonEliminarFacturaOver", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -576,6 +636,36 @@ namespace Sistema_de_Gestión {
         internal static System.Drawing.Bitmap BotonLimpiarOver {
             get {
                 object obj = ResourceManager.GetObject("BotonLimpiarOver", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonModificarFactura {
+            get {
+                object obj = ResourceManager.GetObject("BotonModificarFactura", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonModificarFacturaClick {
+            get {
+                object obj = ResourceManager.GetObject("BotonModificarFacturaClick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonModificarFacturaOver {
+            get {
+                object obj = ResourceManager.GetObject("BotonModificarFacturaOver", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -763,6 +853,36 @@ namespace Sistema_de_Gestión {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BotonResetCriteriosProforma {
+            get {
+                object obj = ResourceManager.GetObject("BotonResetCriteriosProforma", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonResetCriteriosProformaClick {
+            get {
+                object obj = ResourceManager.GetObject("BotonResetCriteriosProformaClick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonResetCriteriosProformaOver {
+            get {
+                object obj = ResourceManager.GetObject("BotonResetCriteriosProformaOver", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BotonSalir {
             get {
                 object obj = ResourceManager.GetObject("BotonSalir", resourceCulture);
@@ -823,6 +943,36 @@ namespace Sistema_de_Gestión {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BotonVerConduces {
+            get {
+                object obj = ResourceManager.GetObject("BotonVerConduces", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonVerConducesClick {
+            get {
+                object obj = ResourceManager.GetObject("BotonVerConducesClick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonVerConducesOver {
+            get {
+                object obj = ResourceManager.GetObject("BotonVerConducesOver", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BotonVerFacturaReporte {
             get {
                 object obj = ResourceManager.GetObject("BotonVerFacturaReporte", resourceCulture);
@@ -846,6 +996,66 @@ namespace Sistema_de_Gestión {
         internal static System.Drawing.Bitmap BotonVerFacturaReporteOver {
             get {
                 object obj = ResourceManager.GetObject("BotonVerFacturaReporteOver", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonVerProforma {
+            get {
+                object obj = ResourceManager.GetObject("BotonVerProforma", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonVerProformaClick {
+            get {
+                object obj = ResourceManager.GetObject("BotonVerProformaClick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonVerProformaOver {
+            get {
+                object obj = ResourceManager.GetObject("BotonVerProformaOver", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonVerRedaccion {
+            get {
+                object obj = ResourceManager.GetObject("BotonVerRedaccion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonVerRedaccionClick {
+            get {
+                object obj = ResourceManager.GetObject("BotonVerRedaccionClick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BotonVerRedaccionOver {
+            get {
+                object obj = ResourceManager.GetObject("BotonVerRedaccionOver", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1163,6 +1373,16 @@ namespace Sistema_de_Gestión {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FondoContenedorPrincipal {
+            get {
+                object obj = ResourceManager.GetObject("FondoContenedorPrincipal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FondoFacturaCredito {
             get {
                 object obj = ResourceManager.GetObject("FondoFacturaCredito", resourceCulture);
@@ -1293,6 +1513,16 @@ namespace Sistema_de_Gestión {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FondoProforma {
+            get {
+                object obj = ResourceManager.GetObject("FondoProforma", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FondoReporteFacturas {
             get {
                 object obj = ResourceManager.GetObject("FondoReporteFacturas", resourceCulture);
@@ -1316,6 +1546,16 @@ namespace Sistema_de_Gestión {
         internal static System.Drawing.Bitmap icons8_contraseña_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8_contraseña_96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_editar_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_editar_100", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

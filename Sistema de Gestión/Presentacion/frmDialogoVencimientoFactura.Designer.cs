@@ -150,7 +150,6 @@ namespace Sistema_de_Gestión.Presentacion
             this.Name = "frmDialogoVencimientoFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Credito";
-            this.Load += new System.EventHandler(this.frmDialogoVencimientoFactura_Load);
             ((System.ComponentModel.ISupportInitialize)(this.UPdiasVencimiento)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

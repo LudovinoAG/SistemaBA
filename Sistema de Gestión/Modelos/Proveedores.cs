@@ -14,28 +14,25 @@ namespace Sistema_de_Gestión.Modelos
         public string Modo { get; set; }
         public int TotalProveedores { get; set; }
 
-        public void CargarProveedores(ComboBox cboProveedores)
+        public List<VW_ListaProveedores> CargarProveedores()
         {
-            cboProveedores.Items.Add("Elegir...");
 
             using (BAProveedoresEntities PD = new BAProveedoresEntities())
             {
                 try
                 {
-                    var lstProveedores = PD.VW_ListaProveedores.ToArray();
-                    foreach (var item in lstProveedores)
-                    {
-                        cboProveedores.Items.Add(item.Nom_Proveedor);
-                    }
+                    return PD.VW_ListaProveedores.ToList();
+
                 }
                 catch (Exception ex)
                 {
 
                     MessageBox.Show("No fue posible listar los proveedores " + ex.Message, "Sistema de Gestión", 
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    return PD.VW_ListaProveedores.ToList();
                 }
 
-                cboProveedores.SelectedIndex = 0;
 
             }
         }

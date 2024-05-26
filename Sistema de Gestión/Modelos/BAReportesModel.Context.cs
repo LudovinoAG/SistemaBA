@@ -12,6 +12,8 @@ namespace Sistema_de_Gestión.Modelos
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class BAReportesEntities : DbContext
     {
@@ -25,7 +27,28 @@ namespace Sistema_de_Gestión.Modelos
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<VW_VerFacturas> VW_VerFacturas { get; set; }
         public virtual DbSet<VW_VerReportesFacturasPendientesCredito> VW_VerReportesFacturasPendientesCredito { get; set; }
+        public virtual DbSet<VW_VerFacturas> VW_VerFacturas { get; set; }
+    
+        public virtual ObjectResult<SP_ReporteConducesRegistrados_Result> SP_ReporteConducesRegistrados(Nullable<int> cliente, string modoReporte, Nullable<System.DateTime> fechaInicioConduce, Nullable<System.DateTime> fechaFinConduce)
+        {
+            var clienteParameter = cliente.HasValue ?
+                new ObjectParameter("Cliente", cliente) :
+                new ObjectParameter("Cliente", typeof(int));
+    
+            var modoReporteParameter = modoReporte != null ?
+                new ObjectParameter("ModoReporte", modoReporte) :
+                new ObjectParameter("ModoReporte", typeof(string));
+    
+            var fechaInicioConduceParameter = fechaInicioConduce.HasValue ?
+                new ObjectParameter("FechaInicioConduce", fechaInicioConduce) :
+                new ObjectParameter("FechaInicioConduce", typeof(System.DateTime));
+    
+            var fechaFinConduceParameter = fechaFinConduce.HasValue ?
+                new ObjectParameter("FechaFinConduce", fechaFinConduce) :
+                new ObjectParameter("FechaFinConduce", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ReporteConducesRegistrados_Result>("SP_ReporteConducesRegistrados", clienteParameter, modoReporteParameter, fechaInicioConduceParameter, fechaFinConduceParameter);
+        }
     }
 }

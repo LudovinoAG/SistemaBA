@@ -15,6 +15,7 @@ namespace Sistema_de_Gestión.Presentacion
     {
         FacturacionModel FT = new FacturacionModel();
         Funciones FC = new Funciones();
+        DiseñoInterface DI = new DiseñoInterface();
         public frmPagarFactura()
         {
             InitializeComponent();
@@ -91,8 +92,8 @@ namespace Sistema_de_Gestión.Presentacion
                 gbEfectivo.Visible = true;
                
             }
-            txtCuentaOrigen.Clear();
-            txtNumCheque.Clear();
+            txtCuentaOrigen.Text = "0";
+            txtNumCheque.Text = "0";
         }
 
         private void frmPagarFactura_Load(object sender, EventArgs e)
@@ -102,47 +103,55 @@ namespace Sistema_de_Gestión.Presentacion
 
         private void cmdAplicarPago_Click(object sender, EventArgs e)
         {
-            decimal numero;
-            decimal TotalPago = 0;
-            int NumFactura = int.Parse(lblNumFactura.Text);
-            int ModoPago = (int)cboMetodos.SelectedValue;
-            decimal TotalFactura;
-            if (decimal.TryParse(txtTotalPagado.Text, out numero))
-            {
-                TotalPago = numero;
-            }
+            DialogResult = MessageBox.Show($"¿Realmente desea aplicar el pago a la factura No. " +
+                $"[{lblNumFactura.Text}]?\npor el monto de {string.Format(txtTotalPagado.Text,"C")}", "Pago de factura", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (FT.VerMontoPendienteFactura(int.Parse(frmReportesFacturas.FacturaNumero_Pagar)) == 0)
+            if(DialogResult == DialogResult.Yes)
             {
-                TotalFactura = frmReportesFacturas.TotalFactura_Pagar;
-            }
-            else
-            {
-                TotalFactura = FT.VerMontoPendienteFactura(int.Parse(frmReportesFacturas.FacturaNumero_Pagar));
-            }
-
-
-            if (this.ComprobarMontos(this.ValidarTipoPago(gbPago.Controls),TotalFactura, TotalPago))
-            {
-                DateTime FechaActual = DateTime.Now.Date;
-                string TipoPago = this.ValidarTipoPago(gbPago.Controls);
-
-                if (ModoPago != 1)
+                double numero;
+                double TotalPago = 0;
+                int NumFactura = int.Parse(lblNumFactura.Text);
+                int ModoPago = (int)cboMetodos.SelectedValue;
+                double TotalFactura;
+                if (double.TryParse(txtTotalPagado.Text, out numero))
                 {
-                    if (FT.PagarFactura(NumFactura, ModoPago, txtConceptoPago.Text, int.Parse(txtNumCheque.Text),
-                        int.Parse(lblBanco.Text), txtCuentaOrigen.Text, TotalPago, FechaActual, TipoPago))
-                    {
-                        this.Close();
-                    }
+                    TotalPago = numero;
+                }
+
+                if (FT.VerMontoPendienteFactura(int.Parse(frmReportesFacturas.FacturaNumero_Pagar)) == 0)
+                {
+                    TotalFactura = (double)frmReportesFacturas.TotalFactura_Pagar;
                 }
                 else
                 {
-                    FT.PagarFactura(NumFactura, ModoPago, txtConceptoPago.Text, 0,
-                        0, "", TotalPago, FechaActual, TipoPago);
+                    TotalFactura = (double)FT.VerMontoPendienteFactura(int.Parse(frmReportesFacturas.FacturaNumero_Pagar));
+                }
 
-                    this.Close();
+
+                if (this.ComprobarMontos(this.ValidarTipoPago(gbPago.Controls), TotalFactura, TotalPago))
+                {
+                    DateTime FechaActual = DateTime.Now.Date;
+                    string TipoPago = this.ValidarTipoPago(gbPago.Controls);
+
+                    if (ModoPago != 1)
+                    {
+                        if (FT.PagarFactura(NumFactura, ModoPago, txtConceptoPago.Text, int.Parse(txtNumCheque.Text),
+                            int.Parse(lblBanco.Text), txtCuentaOrigen.Text, TotalPago, FechaActual, TipoPago, EntrarLogin.IDActual))
+                        {
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
+                        FT.PagarFactura(NumFactura, ModoPago, txtConceptoPago.Text, 0,
+                            0, "", TotalPago, FechaActual, TipoPago, EntrarLogin.IDActual);
+
+                        this.Close();
+                    }
                 }
             }
+            
+           
 
         }
 
@@ -192,7 +201,7 @@ namespace Sistema_de_Gestión.Presentacion
             }
         }
 
-        private bool ComprobarMontos(string Tipo, decimal TotalFactura, decimal TotalPago)
+        private bool ComprobarMontos(string Tipo, double TotalFactura, double TotalPago)
         {
             switch (Tipo)
             {
@@ -234,6 +243,21 @@ namespace Sistema_de_Gestión.Presentacion
         private void txtTotalPagado_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = FC.SoloNumeros(e);
+        }
+
+        private void cmdAplicarPago_MouseMove(object sender, MouseEventArgs e)
+        {
+            DI.BTMouseEvent(cmdAplicarPago,1);
+        }
+
+        private void cmdAplicarPago_MouseLeave(object sender, EventArgs e)
+        {
+            DI.BTMouseEvent(cmdAplicarPago, 0);
+        }
+
+        private void cmdAplicarPago_MouseDown(object sender, MouseEventArgs e)
+        {
+            DI.BTMouseEvent(cmdAplicarPago, 2);
         }
     }
 }

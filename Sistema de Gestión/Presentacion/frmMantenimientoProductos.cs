@@ -25,10 +25,27 @@ namespace Sistema_de_Gestión.Presentacion
             LoadProductos("","");
             BAProductos.ListarEstatusProductos(cboEstatus);
             BAProductos.LoadFiltros(cboFiltrar);
-            BACategorias.ListarCategorias(cboCategoria);
-            BAProveedores.CargarProveedores(cboProveedor);
+            ListarCategoriasProductos();
+            ListarProveedoresProductos();
             BAProductos.Modo = "Insertando";
         }
+
+
+        private void ListarCategoriasProductos()
+        {
+            cboCategoria.DisplayMember = "Nom_Categoria";
+            cboCategoria.ValueMember = "id_CategoriaProducto";
+            cboCategoria.DataSource = BACategorias.ListarCategorias().ToList();
+
+        }
+
+        private void ListarProveedoresProductos()
+        {
+            cboProveedor.DisplayMember = "Nom_Proveedor";
+            cboProveedor.ValueMember = "id_Proveedor";
+            cboProveedor.DataSource = BAProveedores.CargarProveedores().ToList();
+        }
+
 
         private void frmMantenimientoProductos_Load(object sender, EventArgs e)
         {
@@ -113,8 +130,8 @@ namespace Sistema_de_Gestión.Presentacion
                 {
 
                     //Insertar los productos
-                    BAProductos.InsertarProductos(cboCategoria.SelectedIndex, cboProveedor.SelectedIndex,
-                       txtProducto.Text, txtDescripcion.Text, decimal.Parse(txtPrecio.Text), cboEstatus.SelectedIndex);
+                    BAProductos.InsertarProductos((int)cboCategoria.SelectedValue, (int)cboProveedor.SelectedValue,
+                       txtProducto.Text, txtDescripcion.Text, decimal.Parse(txtPrecio.Text), cboEstatus.SelectedIndex, decimal.Parse(txtITBISProducto.Text));
 
                     //Limpiar y resetear los campos de formulario
                     BAProductos.LimpiarCampos(Controls);
@@ -143,10 +160,12 @@ namespace Sistema_de_Gestión.Presentacion
             txtProducto.Text = dgvProductos[0].Cells["Producto"].Value.ToString();
             txtDescripcion.Text = dgvProductos[0].Cells["Descripción"].Value.ToString();
             txtPrecio.Text = dgvProductos[0].Cells["Precio"].Value.ToString();
+            txtITBISProducto.Text = dgvProductos[0].Cells["ITBIS"].Value.ToString();
 
             cboCategoria.SelectedItem = dgvProductos[0].Cells["Categoria"].Value.ToString();
             cboProveedor.SelectedItem = dgvProductos[0].Cells["Proveedor"].Value.ToString();
             cboEstatus.SelectedItem = dgvProductos[0].Cells["Estado"].Value.ToString();
+
 
             LblID.Text = dgvProductos[0].Cells["ID"].Value.ToString();
         }
@@ -165,8 +184,8 @@ namespace Sistema_de_Gestión.Presentacion
                 if (BAProductos.ValidacionCampos(this.Name, Controls))
                 {
                     BAProductos.ActualizarProducto(int.Parse(LblID.Text), txtProducto.Text, txtDescripcion.Text,
-                        decimal.Parse(txtPrecio.Text), cboCategoria.SelectedIndex, cboProveedor.SelectedIndex,
-                        cboEstatus.SelectedIndex);
+                        decimal.Parse(txtPrecio.Text), (int)cboCategoria.SelectedValue, (int)cboProveedor.SelectedValue,
+                        (int)cboEstatus.SelectedIndex, decimal.Parse(txtITBISProducto.Text));
                     LoadProductos(cboFiltrar.Text, txtBuscar.Text);
 
                     BAProductos.LimpiarCampos(Controls);

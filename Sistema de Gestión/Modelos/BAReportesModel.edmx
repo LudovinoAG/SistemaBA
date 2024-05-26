@@ -9,78 +9,91 @@
 advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerFacturas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="VW_VerFacturas">
           <Key>
-            <PropertyRef Name="id_Factura" />
+            <PropertyRef Name="NumFactura" />
             <PropertyRef Name="TipoFactura" />
-            <PropertyRef Name="NCF" />
-            <PropertyRef Name="Nom_Estatus" />
+            <PropertyRef Name="Contacto" />
+            <PropertyRef Name="Telefonos" />
+            <PropertyRef Name="Direccion" />
+            <PropertyRef Name="EstatusFactura" />
+            
             <PropertyRef Name="MetodoPago" />
             <PropertyRef Name="Usuario" />
           </Key>
-          <Property Name="id_Factura" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="NumFactura" Type="int" Nullable="false" />
           <Property Name="TipoFactura" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="NCF" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="NCF" Type="varchar" MaxLength="11" />
           <Property Name="Empresa" Type="varchar" MaxLength="60" />
-          <Property Name="Proyecto" Type="varchar" MaxLength="60" />
-          <Property Name="Nom_Contacto" Type="varchar" MaxLength="60" />
-          <Property Name="Telefonos" Type="varchar" MaxLength="80" />
-          <Property Name="RNC" Type="varchar" MaxLength="15" />
+          <Property Name="RNC" Type="varchar" MaxLength="12" />
+          <Property Name="Contacto" Type="varchar" MaxLength="31" Nullable="false" />
+          <Property Name="Telefonos" Type="varchar" MaxLength="27" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="183" Nullable="false" />
           <Property Name="Correo" Type="varchar" MaxLength="60" />
-          <Property Name="Dirección" Type="varchar" MaxLength="255" />
-          <Property Name="Nom_Estatus" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="SubTotalFactura" Type="money" />
-          <Property Name="TotalFactura" Type="money" />
+          <Property Name="EstatusFactura" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="SubTotal" Type="float" />
+          <Property Name="TotalFactura" Type="float" />
+          <Property Name="MontoPagado" Type="float" Nullable="false" />
+          <Property Name="MontoPendiente" Type="float" />
           <Property Name="MetodoPago" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="Descuento" Type="money" />
-          <Property Name="ITBIS" Type="money" />
-          <Property Name="FechaFactura" Type="date" />
-          <Property Name="HoraFactura" Type="time" Precision="7" />
-          <Property Name="FechaVencimientoFactura" Type="date" />
+          <Property Name="Descuento" Type="float" />
+          <Property Name="ITBIS" Type="float" />
+          <Property Name="HoraFactura" Type="time" Precision="0" />
+          <Property Name="FechaVencimiento" Type="date" />
           <Property Name="Nota" Type="varchar" MaxLength="255" />
           <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VigenciaNCF" Type="date" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerReportesFacturasPendientesCredito' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="VW_VerReportesFacturasPendientesCredito">
           <Key>
-            <PropertyRef Name="NCF" />
+            <PropertyRef Name="Telefonos" />
           </Key>
           <Property Name="NumFactura" Type="nvarchar" MaxLength="4000" />
-          <Property Name="NCF" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="NCF" Type="varchar" MaxLength="11" />
           <Property Name="Empresa" Type="varchar" MaxLength="60" />
           <Property Name="Contacto" Type="varchar" MaxLength="31" />
           <Property Name="RNC" Type="varchar" MaxLength="12" />
-          <Property Name="Cedula" Type="varchar" MaxLength="13" />
-          <Property Name="Telefono" Type="varchar" MaxLength="80" />
-          <Property Name="TotalFactura" Type="money" />
+          <Property Name="Telefonos" Type="varchar" MaxLength="27" Nullable="false" />
+          <Property Name="TotalFactura" Type="float" />
+          <Property Name="MontoPagado" Type="float" />
+          <Property Name="MontoPendiente" Type="float" />
           <Property Name="FechaFactura" Type="date" />
+          <Property Name="FechaPago" Type="datetime" />
           <Property Name="FechaVencimientoFactura" Type="date" />
-          <Property Name="MontoPendiente" Type="money" />
-          <Property Name="MontoPagado" Type="money" />
         </EntityType>
+        <Function Name="SP_ReporteConducesRegistrados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cliente" Type="int" Mode="In" />
+          <Parameter Name="ModoReporte" Type="varchar" Mode="In" />
+          <Parameter Name="FechaInicioConduce" Type="date" Mode="In" />
+          <Parameter Name="FechaFinConduce" Type="date" Mode="In" />
+        </Function>
         <EntityContainer Name="BAReportesModelStoreContainer">
           <EntitySet Name="VW_VerFacturas" EntityType="Self.VW_VerFacturas" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [VW_VerFacturas].[id_Factura] AS [id_Factura], 
+    [VW_VerFacturas].[Fecha] AS [Fecha], 
+    [VW_VerFacturas].[NumFactura] AS [NumFactura], 
     [VW_VerFacturas].[TipoFactura] AS [TipoFactura], 
     [VW_VerFacturas].[NCF] AS [NCF], 
     [VW_VerFacturas].[Empresa] AS [Empresa], 
-    [VW_VerFacturas].[Proyecto] AS [Proyecto], 
-    [VW_VerFacturas].[Nom_Contacto] AS [Nom_Contacto], 
-    [VW_VerFacturas].[Telefonos] AS [Telefonos], 
     [VW_VerFacturas].[RNC] AS [RNC], 
+    [VW_VerFacturas].[Contacto] AS [Contacto], 
+    [VW_VerFacturas].[Telefonos] AS [Telefonos], 
+    [VW_VerFacturas].[Direccion] AS [Direccion], 
     [VW_VerFacturas].[Correo] AS [Correo], 
-    [VW_VerFacturas].[Dirección] AS [Dirección], 
-    [VW_VerFacturas].[Nom_Estatus] AS [Nom_Estatus], 
-    [VW_VerFacturas].[SubTotalFactura] AS [SubTotalFactura], 
+    [VW_VerFacturas].[EstatusFactura] AS [EstatusFactura], 
+    [VW_VerFacturas].[SubTotal] AS [SubTotal], 
     [VW_VerFacturas].[TotalFactura] AS [TotalFactura], 
+    [VW_VerFacturas].[MontoPagado] AS [MontoPagado], 
+    [VW_VerFacturas].[MontoPendiente] AS [MontoPendiente], 
     [VW_VerFacturas].[MetodoPago] AS [MetodoPago], 
     [VW_VerFacturas].[Descuento] AS [Descuento], 
     [VW_VerFacturas].[ITBIS] AS [ITBIS], 
-    [VW_VerFacturas].[FechaFactura] AS [FechaFactura], 
     [VW_VerFacturas].[HoraFactura] AS [HoraFactura], 
-    [VW_VerFacturas].[FechaVencimientoFactura] AS [FechaVencimientoFactura], 
+    [VW_VerFacturas].[FechaVencimiento] AS [FechaVencimiento], 
     [VW_VerFacturas].[Nota] AS [Nota], 
-    [VW_VerFacturas].[Usuario] AS [Usuario]
+    [VW_VerFacturas].[Usuario] AS [Usuario], 
+    [VW_VerFacturas].[VigenciaNCF] AS [VigenciaNCF]
     FROM [dbo].[VW_VerFacturas] AS [VW_VerFacturas]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="VW_VerReportesFacturasPendientesCredito" EntityType="Self.VW_VerReportesFacturasPendientesCredito" store:Type="Views" store:Schema="dbo">
@@ -90,13 +103,13 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerReportesFacturasPend
     [VW_VerReportesFacturasPendientesCredito].[Empresa] AS [Empresa], 
     [VW_VerReportesFacturasPendientesCredito].[Contacto] AS [Contacto], 
     [VW_VerReportesFacturasPendientesCredito].[RNC] AS [RNC], 
-    [VW_VerReportesFacturasPendientesCredito].[Cedula] AS [Cedula], 
-    [VW_VerReportesFacturasPendientesCredito].[Telefono] AS [Telefono], 
+    [VW_VerReportesFacturasPendientesCredito].[Telefonos] AS [Telefonos], 
     [VW_VerReportesFacturasPendientesCredito].[TotalFactura] AS [TotalFactura], 
-    [VW_VerReportesFacturasPendientesCredito].[FechaFactura] AS [FechaFactura], 
-    [VW_VerReportesFacturasPendientesCredito].[FechaVencimientoFactura] AS [FechaVencimientoFactura], 
+    [VW_VerReportesFacturasPendientesCredito].[MontoPagado] AS [MontoPagado], 
     [VW_VerReportesFacturasPendientesCredito].[MontoPendiente] AS [MontoPendiente], 
-    [VW_VerReportesFacturasPendientesCredito].[MontoPagado] AS [MontoPagado]
+    [VW_VerReportesFacturasPendientesCredito].[FechaFactura] AS [FechaFactura], 
+    [VW_VerReportesFacturasPendientesCredito].[FechaPago] AS [FechaPago], 
+    [VW_VerReportesFacturasPendientesCredito].[FechaVencimientoFactura] AS [FechaVencimientoFactura]
     FROM [dbo].[VW_VerReportesFacturasPendientesCredito] AS [VW_VerReportesFacturasPendientesCredito]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
@@ -104,101 +117,98 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerReportesFacturasPend
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BAReportesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="VW_VerFacturas">
-          <Key>
-            <PropertyRef Name="id_Factura" />
-            <PropertyRef Name="TipoFactura" />
-            <PropertyRef Name="NCF" />
-            <PropertyRef Name="Nom_Estatus" />
-            <PropertyRef Name="MetodoPago" />
-            <PropertyRef Name="Usuario" />
-          </Key>
-          <Property Name="id_Factura" Type="Int32" Nullable="false" />
-          <Property Name="TipoFactura" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="NCF" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Empresa" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="Proyecto" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="Nom_Contacto" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="Telefonos" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="RNC" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Correo" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="Dirección" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Nom_Estatus" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SubTotalFactura" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="TotalFactura" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="MetodoPago" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Descuento" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="ITBIS" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="FechaFactura" Type="DateTime" Precision="0" />
-          <Property Name="HoraFactura" Type="Time" Precision="7" />
-          <Property Name="FechaVencimientoFactura" Type="DateTime" Precision="0" />
-          <Property Name="Nota" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityContainer Name="BAReportesEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="VW_VerFacturas" EntityType="Self.VW_VerFacturas" />
           <EntitySet Name="VW_VerReportesFacturasPendientesCredito" EntityType="BAReportesModel.VW_VerReportesFacturasPendientesCredito" />
+          <EntitySet Name="VW_VerFacturas" EntityType="BAReportesModel.VW_VerFacturas" />
+          <FunctionImport Name="SP_ReporteConducesRegistrados" ReturnType="Collection(BAReportesModel.SP_ReporteConducesRegistrados_Result)">
+            <Parameter Name="Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="ModoReporte" Mode="In" Type="String" />
+            <Parameter Name="FechaInicioConduce" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFinConduce" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="VW_VerReportesFacturasPendientesCredito">
           <Key>
-            <PropertyRef Name="NCF" />
+            <PropertyRef Name="Telefonos" />
           </Key>
           <Property Name="NumFactura" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="NCF" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="NCF" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
           <Property Name="Empresa" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="Contacto" Type="String" MaxLength="31" FixedLength="false" Unicode="false" />
           <Property Name="RNC" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-          <Property Name="Cedula" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
-          <Property Name="Telefono" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="TotalFactura" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Telefonos" Type="String" Nullable="false" MaxLength="27" FixedLength="false" Unicode="false" />
+          <Property Name="TotalFactura" Type="Double" />
+          <Property Name="MontoPagado" Type="Double" />
+          <Property Name="MontoPendiente" Type="Double" />
           <Property Name="FechaFactura" Type="DateTime" Precision="0" />
+          <Property Name="FechaPago" Type="DateTime" Precision="3" />
           <Property Name="FechaVencimientoFactura" Type="DateTime" Precision="0" />
-          <Property Name="MontoPendiente" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="MontoPagado" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
+        <EntityType Name="VW_VerFacturas">
+          <Key>
+            <PropertyRef Name="NumFactura" />
+            <PropertyRef Name="TipoFactura" />
+            <PropertyRef Name="Contacto" />
+            <PropertyRef Name="Telefonos" />
+            <PropertyRef Name="Direccion" />
+            <PropertyRef Name="EstatusFactura" />
+            <PropertyRef Name="MetodoPago" />
+            <PropertyRef Name="Usuario" />
+          </Key>
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="NumFactura" Type="Int32" Nullable="false" />
+          <Property Name="TipoFactura" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NCF" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Empresa" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="RNC" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Contacto" Type="String" Nullable="false" MaxLength="31" FixedLength="false" Unicode="false" />
+          <Property Name="Telefonos" Type="String" Nullable="false" MaxLength="27" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="183" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="EstatusFactura" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="SubTotal" Type="Double" />
+          <Property Name="TotalFactura" Type="Double" />
+          <Property Name="MontoPagado" Type="Double" Nullable="false" />
+          <Property Name="MontoPendiente" Type="Double" />
+          <Property Name="MetodoPago" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Descuento" Type="Double" />
+          <Property Name="ITBIS" Type="Double" />
+          <Property Name="HoraFactura" Type="Time" Precision="0" />
+          <Property Name="FechaVencimiento" Type="DateTime" Precision="0" />
+          <Property Name="Nota" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VigenciaNCF" Type="DateTime" Precision="0" />
+        </EntityType>
+        <ComplexType Name="SP_ReporteConducesRegistrados_Result">
+          <Property Type="DateTime" Name="FechaConduce" Nullable="true" />
+          <Property Type="Int32" Name="NumPedido" Nullable="true" />
+          <Property Type="String" Name="Empresa" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="Chofer" Nullable="false" MaxLength="31" />
+          <Property Type="Int32" Name="Conduce" Nullable="true" />
+          <Property Type="String" Name="Producto" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="String" Name="Medidas" Nullable="false" MaxLength="15" />
+          <Property Type="Int32" Name="Viajes" Nullable="true" />
+          <Property Type="String" Name="Vehiculo" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="Capacidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BAReportesModelStoreContainer" CdmEntityContainer="BAReportesEntities">
-          <EntitySetMapping Name="VW_VerFacturas">
-            <EntityTypeMapping TypeName="BAReportesModel.VW_VerFacturas">
-              <MappingFragment StoreEntitySet="VW_VerFacturas">
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-                <ScalarProperty Name="id_Factura" ColumnName="id_Factura" />
-                <ScalarProperty Name="TipoFactura" ColumnName="TipoFactura" />
-                <ScalarProperty Name="NCF" ColumnName="NCF" />
-                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
-                <ScalarProperty Name="Proyecto" ColumnName="Proyecto" />
-                <ScalarProperty Name="Nom_Contacto" ColumnName="Nom_Contacto" />
-                <ScalarProperty Name="Telefonos" ColumnName="Telefonos" />
-                <ScalarProperty Name="RNC" ColumnName="RNC" />
-                <ScalarProperty Name="Correo" ColumnName="Correo" />
-                <ScalarProperty Name="Dirección" ColumnName="Dirección" />
-                <ScalarProperty Name="Nom_Estatus" ColumnName="Nom_Estatus" />
-                <ScalarProperty Name="SubTotalFactura" ColumnName="SubTotalFactura" />
-                <ScalarProperty Name="TotalFactura" ColumnName="TotalFactura" />
-                <ScalarProperty Name="MetodoPago" ColumnName="MetodoPago" />
-                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
-                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
-                <ScalarProperty Name="FechaFactura" ColumnName="FechaFactura" />
-                <ScalarProperty Name="HoraFactura" ColumnName="HoraFactura" />
-                <ScalarProperty Name="FechaVencimientoFactura" ColumnName="FechaVencimientoFactura" />
-                <ScalarProperty Name="Nota" ColumnName="Nota" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="VW_VerReportesFacturasPendientesCredito">
             <EntityTypeMapping TypeName="BAReportesModel.VW_VerReportesFacturasPendientesCredito">
               <MappingFragment StoreEntitySet="VW_VerReportesFacturasPendientesCredito">
-                <ScalarProperty Name="MontoPagado" ColumnName="MontoPagado" />
-                <ScalarProperty Name="MontoPendiente" ColumnName="MontoPendiente" />
                 <ScalarProperty Name="FechaVencimientoFactura" ColumnName="FechaVencimientoFactura" />
+                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
                 <ScalarProperty Name="FechaFactura" ColumnName="FechaFactura" />
+                <ScalarProperty Name="MontoPendiente" ColumnName="MontoPendiente" />
+                <ScalarProperty Name="MontoPagado" ColumnName="MontoPagado" />
                 <ScalarProperty Name="TotalFactura" ColumnName="TotalFactura" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Telefonos" ColumnName="Telefonos" />
                 <ScalarProperty Name="RNC" ColumnName="RNC" />
                 <ScalarProperty Name="Contacto" ColumnName="Contacto" />
                 <ScalarProperty Name="Empresa" ColumnName="Empresa" />
@@ -207,6 +217,53 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_VerReportesFacturasPend
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="VW_VerFacturas">
+            <EntityTypeMapping TypeName="BAReportesModel.VW_VerFacturas">
+              <MappingFragment StoreEntitySet="VW_VerFacturas">
+                <ScalarProperty Name="VigenciaNCF" ColumnName="VigenciaNCF" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="HoraFactura" ColumnName="HoraFactura" />
+                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="MetodoPago" ColumnName="MetodoPago" />
+                <ScalarProperty Name="MontoPendiente" ColumnName="MontoPendiente" />
+                <ScalarProperty Name="MontoPagado" ColumnName="MontoPagado" />
+                <ScalarProperty Name="TotalFactura" ColumnName="TotalFactura" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="EstatusFactura" ColumnName="EstatusFactura" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefonos" ColumnName="Telefonos" />
+                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+                <ScalarProperty Name="RNC" ColumnName="RNC" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="NCF" ColumnName="NCF" />
+                <ScalarProperty Name="TipoFactura" ColumnName="TipoFactura" />
+                <ScalarProperty Name="NumFactura" ColumnName="NumFactura" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_ReporteConducesRegistrados" FunctionName="BAReportesModel.Store.SP_ReporteConducesRegistrados">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BAReportesModel.SP_ReporteConducesRegistrados_Result">
+                <ScalarProperty Name="FechaConduce" ColumnName="FechaConduce" />
+                <ScalarProperty Name="NumPedido" ColumnName="NumPedido" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Chofer" ColumnName="Chofer" />
+                <ScalarProperty Name="Conduce" ColumnName="Conduce" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Medidas" ColumnName="Medidas" />
+                <ScalarProperty Name="Viajes" ColumnName="Viajes" />
+                <ScalarProperty Name="Vehiculo" ColumnName="Vehiculo" />
+                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

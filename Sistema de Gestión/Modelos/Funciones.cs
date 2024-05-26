@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema_de_Gestión.Modelos;
+using Sistema_de_Gestión.Presentacion;
+using System.Threading;
+using System.Drawing;
 
 namespace Sistema_de_Gestión.Modelos
 {
@@ -20,6 +23,9 @@ namespace Sistema_de_Gestión.Modelos
             var PictureBx = control.OfType<PictureBox>().Where(t => t.Name == "pbFotoEmpleado").SingleOrDefault();
             var LBL = control.OfType<Label>().Where(t => t.Name == "LblID").SingleOrDefault();
             var lblCodigo = control.OfType<Label>().Where(t => t.Name == "lblCodigo").SingleOrDefault();
+            var DataGrid = control.OfType<DataGridView>().ToList();
+            var BarraEstado = control.OfType<ToolStrip>().ToList();
+            var LblTotalGeneral = control.OfType<Label>().Where(t => t.Name == "lblTotalGeneral").SingleOrDefault();
 
             //Limpiar todos los TextBox
             foreach (var Camp in CamposTXT)
@@ -49,6 +55,11 @@ namespace Sistema_de_Gestión.Modelos
                 LBL.Text = "";
             }
 
+            if (LblTotalGeneral!=null)
+            {
+                LblTotalGeneral.Text = "$0.00";
+            }
+
             //Reset Codigo Empleado
             if (lblCodigo!=null)
             {
@@ -60,6 +71,39 @@ namespace Sistema_de_Gestión.Modelos
             {
                 PictureBx.Image = RecursosBA.DefaultImage;
                 this.Modo = "Insertando";
+            }
+
+            //DataGridViews del formulario Proforma
+            if (DataGrid.Count!=0)
+            {
+                foreach (var elemento in DataGrid)
+                {
+                    switch (elemento.Name)
+                    {
+                        case "dgvPedidos":
+                        case "dgvConduceProforma":
+                        case "dgvDetallesPedidos":
+                            elemento.DataSource = null;
+                            break;
+
+                    }
+                }
+            }
+
+            //Barra de estados de los formularios
+            if (BarraEstado.Count!=0)
+            {
+                foreach (var elemento in BarraEstado)
+                {
+                    switch (elemento.Name)
+                    {
+                        case "StatusBarProforma":
+                            elemento.Items["toolProformaPedidosRegistrados"].Text = "Pedidos registrados: 0";
+                            elemento.Items["toolProformaConducesRegistrados"].Text = "Conduces: 0";
+                            break;
+
+                    }
+                }
             }
 
         }
@@ -150,23 +194,28 @@ namespace Sistema_de_Gestión.Modelos
 
                         else if (CboClientes.SelectedIndex!=1)
                         {
-
-
-                            if (MaskRNC.MaskFull)
+                            if (item.Name!="txtSegundoNombre" && item.Name!="txtSegundoApellido" && item.Name!="txtWeb" 
+                                && item.Name!="txtZipCode" && item.Name!="txtPuntoReferencia" && item.Name!="txtExtension" &&
+                                item.Name!="txtObservacion")
                             {
-                                if (string.IsNullOrEmpty(item.Text))
+                                if (MaskRNC.MaskFull)
                                 {
-                                    MessageBox.Show("El campo [" + item.Tag + "] no puede estar vacio.", "Sistema de Gestión",
+                                    if (string.IsNullOrEmpty(item.Text))
+                                    {
+                                        MessageBox.Show("El campo [" + item.Tag + "] no puede estar vacio.", "Sistema de Gestión",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                        return false;
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("El campo [" + MaskRNC.Tag + "] debe contener todos los digitos requeridos.", "Sistema de Gestión",
                                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                     return false;
                                 }
                             }
-                            else
-                            {
-                                MessageBox.Show("El campo [" + MaskRNC.Tag + "] debe contener todos los digitos requeridos.", "Sistema de Gestión",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                return false;
-                            }
+
+                          
 
                             foreach (var itemCBO in ListasCBO)
                             {
@@ -181,7 +230,7 @@ namespace Sistema_de_Gestión.Modelos
                        
                         else
                         {
-                            if ((item.Name!="txtEmpresa") && (item.Name!= "txtRNC") && (item.Name!="txtProyecto"))
+                            if ((item.Name!="txtEmpresa") && (item.Name!= "txtRNC") && (item.Name!="txtProyecto") && (item.Name!="txtSegundoNombre"))
                             {
                                 if (MaskCedula.MaskFull)
                                 {
@@ -215,7 +264,8 @@ namespace Sistema_de_Gestión.Modelos
                     foreach (var item in CamposTXT)
                     {
                         if ((item.Name!="txtMotivoEstatus") && (item.Name!= "txtCondicionMedica") && 
-                            (item.Name != "txtObservacion"))
+                            (item.Name!= "txtObservacion") && (item.Name!="txtSegundoNombre") && 
+                            (item.Name!="txtSegundoApellido"))
                         {
                             if (string.IsNullOrEmpty(item.Text))
                             {
@@ -308,12 +358,12 @@ namespace Sistema_de_Gestión.Modelos
 
         public bool ValidarVentanaAbierta(string formName)
         {
-            Form formulario = Application.OpenForms.OfType<Form>().SingleOrDefault(t => t.Name == formName);
+            Form formulario = Application.OpenForms.OfType<Form>().SingleOrDefault(t => t.Text == formName);
             frmPrincipal Principal = new frmPrincipal();
 
               if (formulario != null)
               {
-                MessageBox.Show($"La ventana {formulario.Text} ya esta abierta.", "Aviso", MessageBoxButtons.OK, 
+                MessageBox.Show($"El reporte [{formulario.Text}] ya esta abierto.", "Aviso", MessageBoxButtons.OK, 
                      MessageBoxIcon.Exclamation);
                 formulario.Focus();
                 return true;
@@ -347,6 +397,85 @@ namespace Sistema_de_Gestión.Modelos
                 return Tecla.Handled = true;
             }
         }
+
+
+        public void Cargando()
+        {
+            Thread.Sleep(2000);
+        }
+
+        public void Mostrar(Form Formulario)
+        {
+            Formulario.Show();
+            Formulario.TopMost = true;
+        }
+
+        public void Cerrar(Form Formulario)
+        {
+            if (Formulario != null)
+            {
+                Formulario.Close();
+            }
+        }
+        
+        public async void Ejecutar(Form FormularioVista, Form FormularioLoading, string Cliente)
+        {
+            Mostrar(FormularioLoading);
+            Task otaskProforma = new Task(Cargando);
+            otaskProforma.Start();
+            FormularioVista.Text += " - " + Cliente;
+            FormularioVista.Show();
+            await otaskProforma;
+            Cerrar(FormularioLoading);
+        }
+
+        public async Task<List<SP_BuscarClienteProforma_Result>> EjecutarAccion(ProformaFactura PF, string cliente, 
+            ToolStripLabel msg, Button Boton)
+        {
+            Boton.Enabled = false;
+            msg.Text = "Buscando...";
+            Task otaskProforma = new Task(Cargando);
+            otaskProforma.Start();
+            msg.BackColor = Color.Brown;
+            msg.ForeColor = Color.White;
+            
+            PF.VerClienteProforma(cliente);
+            
+            msg.BackColor = Color.Transparent;
+            msg.ForeColor = Color.Black;
+            Boton.Enabled = true;
+            msg.Text = "Listo";
+            await otaskProforma;
+                
+            return PF.ClienteProforma;
+
+
+        }
+
+        public async Task<List<SP_ProformaBuscarPedidosPendientesCliente_Result>> EjecutarAccion(ProformaFactura PF, 
+           ToolStripLabel msg, Button Boton, int idCliente,int pedido, string modoreporte, int estatus, 
+           DateTime FechaInicio, DateTime FechaFin)
+        {
+            Boton.Enabled = false;
+            msg.Text = "Buscando...";
+            msg.BackColor = Color.Brown;
+            msg.ForeColor = Color.White;
+            Task otaskProforma = new Task(Cargando);
+            otaskProforma.Start();
+
+            PF.VerPedidoProforma(idCliente, pedido, modoreporte, estatus, FechaInicio, FechaFin);
+
+            msg.BackColor = Color.Transparent;
+            msg.ForeColor = Color.Black;
+            Boton.Enabled = true;
+            msg.Text = "Listo";
+            await otaskProforma;
+
+            return PF.PedidoProforma;
+        }
+
+
+    
 
     }
 }

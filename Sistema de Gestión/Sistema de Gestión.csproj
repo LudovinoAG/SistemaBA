@@ -13,9 +13,9 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>\\LG01\Users\DELL\Desktop\BA\</PublishUrl>
+    <PublishUrl>\\10.0.0.76\BAServer\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
+    <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -23,11 +23,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>\\LG01\Users\DELL\Desktop\BA\</UpdateUrl>
+    <UpdateUrl>\\10.0.0.76\BAServer\</UpdateUrl>
     <MinimumRequiredVersion>1.0.0.1</MinimumRequiredVersion>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>14</ApplicationRevision>
+    <ApplicationRevision>68</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -67,6 +67,9 @@
   <PropertyGroup>
     <ApplicationIcon>LogoBoteAgregados-PNG.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Sistema_de_Gestión.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
@@ -96,6 +99,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CRVConducesProforma.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRVConducesProforma.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CRVFactura.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -108,10 +117,34 @@
       <DependentUpon>CRVCotizacion.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CRVListadoClientes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRVListadoClientes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CRVListadoProductos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRVListadoProductos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CRVProforma.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRVProforma.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CRVRedacciones.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CRVRedacciones.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CRVReporteConducesRegistrados.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRVReporteConducesRegistrados.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CRVReporteFacturasCredito.cs">
@@ -319,17 +352,48 @@
     <Compile Include="Modelos\IFormularios.cs" />
     <Compile Include="Modelos\PedidosModel.cs" />
     <Compile Include="Modelos\Productos.cs" />
+    <Compile Include="Modelos\ProformaFactura.cs" />
     <Compile Include="Modelos\Proveedores.cs" />
     <Compile Include="Modelos\RedaccionesModel.cs" />
     <Compile Include="Modelos\ReportesModel.cs" />
     <Compile Include="Modelos\SP_BuscarClienteCodigo_Result.cs">
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_BuscarClienteFacturar_Result.cs">
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_BuscarClienteProforma_Result.cs">
       <DependentUpon>BAPedidosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_BuscarClienteRedaccion_Result.cs">
+      <DependentUpon>BARedaccionesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_BuscarConducesFactura_Result.cs">
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_BuscarPedidosClienteFacturar_Result.cs">
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\SP_ObtenerUsuario_Result.cs">
       <DependentUpon>BALogin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\SP_ProformaBuscarConducesPorPedido_Result.cs">
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_ProformaBuscarPedidosPendientesCliente_Result.cs">
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_ReporteConducesRegistrados_Result.cs">
+      <DependentUpon>BAReportesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_VerConduceFacturaDetails_Result.cs">
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\SP_VerConducesPedidos_Result.cs">
       <DependentUpon>BARedaccionesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_VerDetalleFactura_Result.cs">
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\SP_VerDetalleRedaccion_Result.cs">
       <DependentUpon>BARedaccionesModel.tt</DependentUpon>
@@ -343,9 +407,15 @@
     <Compile Include="Modelos\SP_VerRedaccionClienteID_Result.cs">
       <DependentUpon>BARedaccionesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\SP_ViewDetailsPreform_Result.cs">
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\SP_ViewQueryPreform_Result.cs">
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\VehiculosModel.cs" />
     <Compile Include="Modelos\VW_EmpleadosFactura.cs">
-      <DependentUpon>BAPedidosModel.tt</DependentUpon>
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ListaCategoriaLicencia.cs">
       <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
@@ -364,6 +434,9 @@
     </Compile>
     <Compile Include="Modelos\VW_ListaEstatusEmpleados.cs">
       <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_ListaEstatusFactura.cs">
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ListaEstatusProductos.cs">
       <DependentUpon>BAProductos.tt</DependentUpon>
@@ -390,13 +463,13 @@
       <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ListarMedidas.cs">
-      <DependentUpon>BAPedidosModel.tt</DependentUpon>
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ListarMetodos.cs">
       <DependentUpon>BAFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ListarVehiculos.cs">
-      <DependentUpon>BAPedidosModel.tt</DependentUpon>
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ListaSeguroMedico.cs">
       <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
@@ -413,11 +486,14 @@
     <Compile Include="Modelos\VW_ListaTipoClientes.cs">
       <DependentUpon>BAClientesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\VW_ListaTipoFactura.cs">
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\VW_ListaTipoSangre.cs">
       <DependentUpon>BAEmpleadosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_ProductosFactura.cs">
-      <DependentUpon>BAPedidosModel.tt</DependentUpon>
+      <DependentUpon>BAFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_VerComprobantesFiscales.cs">
       <DependentUpon>BAConprobantesFiscalesModel.tt</DependentUpon>
@@ -433,6 +509,9 @@
     </Compile>
     <Compile Include="Modelos\VW_VerRolesUsuario.cs">
       <DependentUpon>BALogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\VW_VerUltimoID_Detalles_Pedidos.cs">
+      <DependentUpon>BAPedidosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\VW_VerUltimoNumeroCotizacion.cs">
       <DependentUpon>BACotizacionesModel.tt</DependentUpon>
@@ -464,6 +543,12 @@
     </Compile>
     <Compile Include="Presentacion\frmAcercaDe.Designer.cs">
       <DependentUpon>frmAcercaDe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmActualizarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmActualizarFactura.Designer.cs">
+      <DependentUpon>frmActualizarFactura.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\frmBuscarCotizacion.cs">
       <SubType>Form</SubType>
@@ -501,6 +586,18 @@
     <Compile Include="Presentacion\frmDialogoVencimientoFactura.Designer.cs">
       <DependentUpon>frmDialogoVencimientoFactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\frmListadoGeneralClientescs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmListadoGeneralClientescs.Designer.cs">
+      <DependentUpon>frmListadoGeneralClientescs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmListadoProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmListadoProductos.Designer.cs">
+      <DependentUpon>frmListadoProductos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\frmMantenimientoCategorias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -518,6 +615,12 @@
     </Compile>
     <Compile Include="Presentacion\frmMantenimientoEmpleados.Designer.cs">
       <DependentUpon>frmMantenimientoEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmMantenimientoPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmMantenimientoPedidos.Designer.cs">
+      <DependentUpon>frmMantenimientoPedidos.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\frmMantenimientoProductos.cs">
       <SubType>Form</SubType>
@@ -561,6 +664,12 @@
     <Compile Include="Presentacion\frmPedidos.Designer.cs">
       <DependentUpon>frmPedidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\frmReporteConducesRegistradoClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmReporteConducesRegistradoClientes.Designer.cs">
+      <DependentUpon>frmReporteConducesRegistradoClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\frmReporteFacturasPendientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -578,6 +687,12 @@
     </Compile>
     <Compile Include="Presentacion\frmReportes.Designer.cs">
       <DependentUpon>frmReportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmVerProforma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmVerProforma.Designer.cs">
+      <DependentUpon>frmVerProforma.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\frmViajesChofer.cs">
       <SubType>Form</SubType>
@@ -597,11 +712,23 @@
     <Compile Include="Presentacion\frmVistaFactura.Designer.cs">
       <DependentUpon>frmVistaFactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\frmVistaProforma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmVistaProforma.Designer.cs">
+      <DependentUpon>frmVistaProforma.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\frmVistaRedacciones.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentacion\frmVistaRedacciones.Designer.cs">
       <DependentUpon>frmVistaRedacciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmVistaRegistroConduces.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmVistaRegistroConduces.Designer.cs">
+      <DependentUpon>frmVistaRegistroConduces.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Loading.cs">
       <SubType>Form</SubType>
@@ -649,6 +776,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecursosBA.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CRVConducesProforma.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRVConducesProforma.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CRVFactura.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CRVFactura.cs</LastGenOutput>
@@ -657,9 +788,25 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CRVCotizacion.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="CRVListadoClientes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRVListadoClientes.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRVListadoProductos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRVListadoProductos.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRVProforma.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRVProforma.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CRVRedacciones.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CRVRedacciones.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRVReporteConducesRegistrados.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRVReporteConducesRegistrados.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="CRVReporteFacturasCredito.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -673,6 +820,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmAcercaDe.resx">
       <DependentUpon>frmAcercaDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmActualizarFactura.resx">
+      <DependentUpon>frmActualizarFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmBuscarCotizacion.resx">
       <DependentUpon>frmBuscarCotizacion.cs</DependentUpon>
@@ -692,6 +842,12 @@
     <EmbeddedResource Include="Presentacion\frmDialogoVencimientoFactura.resx">
       <DependentUpon>frmDialogoVencimientoFactura.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmListadoGeneralClientescs.resx">
+      <DependentUpon>frmListadoGeneralClientescs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmListadoProductos.resx">
+      <DependentUpon>frmListadoProductos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmMantenimientoCategorias.resx">
       <DependentUpon>frmMantenimientoCategorias.cs</DependentUpon>
     </EmbeddedResource>
@@ -700,6 +856,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmMantenimientoEmpleados.resx">
       <DependentUpon>frmMantenimientoEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmMantenimientoPedidos.resx">
+      <DependentUpon>frmMantenimientoPedidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmMantenimientoProductos.resx">
       <DependentUpon>frmMantenimientoProductos.cs</DependentUpon>
@@ -722,6 +881,9 @@
     <EmbeddedResource Include="Presentacion\frmPedidos.resx">
       <DependentUpon>frmPedidos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmReporteConducesRegistradoClientes.resx">
+      <DependentUpon>frmReporteConducesRegistradoClientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmReporteFacturasPendientes.resx">
       <DependentUpon>frmReporteFacturasPendientes.cs</DependentUpon>
     </EmbeddedResource>
@@ -730,6 +892,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmReportes.resx">
       <DependentUpon>frmReportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmVerProforma.resx">
+      <DependentUpon>frmVerProforma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmViajesChofer.resx">
       <DependentUpon>frmViajesChofer.cs</DependentUpon>
@@ -740,8 +905,14 @@
     <EmbeddedResource Include="Presentacion\frmVistaFactura.resx">
       <DependentUpon>frmVistaFactura.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmVistaProforma.resx">
+      <DependentUpon>frmVistaProforma.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\frmVistaRedacciones.resx">
       <DependentUpon>frmVistaRedacciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmVistaRegistroConduces.resx">
+      <DependentUpon>frmVistaRegistroConduces.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Loading.resx">
       <DependentUpon>Loading.cs</DependentUpon>
@@ -1017,6 +1188,30 @@
       <DependentUpon>BAVehiculosModel.edmx</DependentUpon>
       <LastGenOutput>BAVehiculosModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\BotonEliminarFacturaOver.jpg" />
+    <None Include="Resources\BotonEliminarFacturaClick.jpg" />
+    <None Include="Resources\BotonEliminarFactura.jpg" />
+    <None Include="Resources\BotonModificarFacturaOver.jpg" />
+    <None Include="Resources\BotonModificarFacturaClick.jpg" />
+    <None Include="Resources\BotonModificarFactura.jpg" />
+    <None Include="Resources\FondoContenedorPrincipal.jpg" />
+    <None Include="Resources\BotonVerConducesOver.jpg" />
+    <None Include="Resources\BotonVerConducesClick.jpg" />
+    <None Include="Resources\BotonVerConduces.jpg" />
+    <None Include="Resources\icons8-editar-100.png" />
+    <None Include="Resources\BotonVerRedaccionOver.jpg" />
+    <None Include="Resources\BotonVerRedaccionClick.jpg" />
+    <None Include="Resources\BotonVerRedaccion.jpg" />
+    <None Include="Resources\BotonVerProformaOver.jpg" />
+    <None Include="Resources\BotonVerProformaClick.jpg" />
+    <None Include="Resources\BotonVerProforma.jpg" />
+    <None Include="Resources\BotonResetCriteriosProformaOver.jpg" />
+    <None Include="Resources\BotonResetCriteriosProformaClick.jpg" />
+    <None Include="Resources\BotonResetCriteriosProforma.jpg" />
+    <None Include="Resources\BotonBuscarPedidosProformaOver.jpg" />
+    <None Include="Resources\BotonBuscarPedidosProformaClick.jpg" />
+    <None Include="Resources\BotonBuscarPedidosProforma.jpg" />
+    <None Include="Resources\FondoProforma.jpg" />
     <None Include="Resources\BotonAgregarConduceOver.jpg" />
     <None Include="Resources\BotonAgregarConduceClick.jpg" />
     <None Include="Resources\BotonAgregarConduce.jpg" />

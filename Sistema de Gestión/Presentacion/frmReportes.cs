@@ -16,11 +16,15 @@ namespace Sistema_de_Gestión.Presentacion
     {
         ReportesModel RM = new ReportesModel();
         DiseñoInterface DI = new DiseñoInterface();
+        FacturacionModel FM = new FacturacionModel();
+        Funciones FC = new Funciones();
         Loading frmCargar;
 
         static public string FacturaNumero_Pagar {get;set;}
         static public string Cliente_Pagar { get; set; }
         static public decimal TotalFactura_Pagar { get; set; }
+
+        public static string TipoFacturaReporte { get; set; }
         public frmReportesFacturas()
         {
             InitializeComponent();
@@ -42,7 +46,7 @@ namespace Sistema_de_Gestión.Presentacion
                 grbFechas.Visible = false;
                 txtBuscar.Text = "";
                 txtBuscar.Visible = true;
-                txtBuscar.Enabled = false;
+                txtBuscar.Enabled = true;
                 dgvReporteFacturas.DataSource = null;
                 cmdBuscar.Location = new Point(510, 17);
             }
@@ -59,25 +63,31 @@ namespace Sistema_de_Gestión.Presentacion
 
         private async void cmdBuscar_Click(object sender, EventArgs e)
         {
-            lblSeleccionado.Text = "";
-            MostrarMensaje();
-            Task otask = new Task(Cargando);
-            otask.Start();
-            if (cboFiltrar.Text == "Fecha Factura")
+            if (txtBuscar.Text != "")
             {
-                RM.BuscarFactura(dgvReporteFacturas, cboFiltrar.Text, "", dtpFechaInicio.Value, dptFechaFin.Value);
+                lblSeleccionado.Text = "";
+                MostrarMensaje();
+                Task otask = new Task(Cargando);
+                otask.Start();
+        
+                ReportesModel.NumFacturaReporte = int.Parse(txtBuscar.Text);
+                RM.BuscarFactura(dgvReporteFacturas, ReportesModel.NumFacturaReporte);
+
+                await (otask);
+                CambiarMensaje();
+                if (dgvReporteFacturas.Rows.Count != 0)
+                {
+                    lblSeleccionado.Text = "Factura seleccionada " + dgvReporteFacturas.SelectedRows[0].Cells["NumFactura"].Value.ToString().PadLeft(6, '0');
+
+                }
             }
             else
             {
-                RM.BuscarFactura(dgvReporteFacturas, cboFiltrar.Text, txtBuscar.Text, dtpFechaInicio.Value, dptFechaFin.Value);
+                MessageBox.Show("Debe indicar un numero de factura a buscar", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtBuscar.Focus();
             }
-            await(otask);
-            CambiarMensaje();
-            if (dgvReporteFacturas.Rows.Count!=0)
-            {
-                lblSeleccionado.Text = "Factura seleccionada " + dgvReporteFacturas.SelectedRows[0].Cells["id_Factura"].Value.ToString().PadLeft(6, '0');
-
-            }
+            
 
         }
 
@@ -98,17 +108,17 @@ namespace Sistema_de_Gestión.Presentacion
 
         private void cmdCerrarReporteFacturas_MouseMove(object sender, MouseEventArgs e)
         {
-            DI.BTMouseEvent(cmdCerrarReporteFacturas, 1);
+            DI.BTMouseEvent(CmdModificarFactura, 1);
         }
 
         private void cmdCerrarReporteFacturas_MouseLeave(object sender, EventArgs e)
         {
-            DI.BTMouseEvent(cmdCerrarReporteFacturas, 0);
+            DI.BTMouseEvent(CmdModificarFactura, 0);
         }
 
         private void cmdCerrarReporteFacturas_MouseDown(object sender, MouseEventArgs e)
         {
-            DI.BTMouseEvent(cmdCerrarReporteFacturas, 2);
+            DI.BTMouseEvent(CmdModificarFactura, 2);
         }
 
         private void cmdVerFacturaReporte_MouseMove(object sender, MouseEventArgs e)
@@ -136,8 +146,8 @@ namespace Sistema_de_Gestión.Presentacion
                     Task otask = new Task(Cargando);
                     otask.Start();
                     frmVistaFactura VistaFactura = new frmVistaFactura();
-                    int NumFactura = (int)dgvReporteFacturas.SelectedRows[0].Cells["id_Factura"].Value;
-                    VistaFactura.idFactura = NumFactura;
+                    FacturacionModel.IDFactura = int.Parse(dgvReporteFacturas.SelectedRows[0].Cells["NumFactura"].Value.ToString());
+                    TipoFacturaReporte = dgvReporteFacturas.SelectedRows[0].Cells["TipoFactura"].Value.ToString();
                     VistaFactura.Show();
                     await otask;
                     Cerrar();
@@ -196,45 +206,34 @@ namespace Sistema_de_Gestión.Presentacion
             }
         }
 
-        private void dgvReporteFacturas_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex != -1)
-            {
-                string NumFactura = dgvReporteFacturas.SelectedRows[0].Cells["id_Factura"].Value.ToString();
-                lblSeleccionado.Text = $"Factura seleccionada {NumFactura.PadLeft(6,'0')}";
-            }
-        }
-
-        private void cmdCerrarReporteFacturas_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void frmReportesFacturas_Load(object sender, EventArgs e)
         {
-
+            dgvReporteFacturas.DataSource = RM.LoadTopFacturas().ToList();
+            RM.FormatoColumnasFacturas(dgvReporteFacturas.Columns);
         }
 
         private void CmdPagarFactura_Click(object sender, EventArgs e)
         {
             if (dgvReporteFacturas.Rows.Count!=0)
             {
-                if (dgvReporteFacturas.SelectedRows[0].Cells["Nom_Estatus"].Value.ToString() != "PAGADA")
+                if (dgvReporteFacturas.SelectedRows[0].Cells["EstatusFactura"].Value.ToString() != "PAGADA")
                 {
                     frmPagarFactura frmPagarFactura = new frmPagarFactura();
-                    FacturaNumero_Pagar = dgvReporteFacturas.SelectedRows[0].Cells["id_Factura"].Value.ToString().PadLeft(6, '0');
+                    FacturaNumero_Pagar = dgvReporteFacturas.SelectedRows[0].Cells["NumFactura"].Value.ToString().PadLeft(6, '0');
                     Cliente_Pagar = dgvReporteFacturas.SelectedRows[0].Cells["Empresa"].Value.ToString();
-                    TotalFactura_Pagar = (decimal)dgvReporteFacturas.SelectedRows[0].Cells["TotalFactura"].Value;
+                    TotalFactura_Pagar = decimal.Parse(dgvReporteFacturas.SelectedRows[0].Cells["TotalFactura"].Value.ToString());
 
                     frmPagarFactura.ShowDialog();
 
                     cboFiltrar.SelectedIndex = 0;
+                    dgvReporteFacturas.DataSource = null;
+                    txtBuscar.Clear();
                     lblSeleccionado.Text = "No ha seleccionado factura en el momento";
 
                 }
                 else
                 {
-                    MessageBox.Show("La factura seleccionada no esta pendiente", "Pagar Factura",
+                    MessageBox.Show($"La factura [{FacturaNumero_Pagar}] seleccionada ya esta pagada totalmente.", "Pagar Factura",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
@@ -264,6 +263,72 @@ namespace Sistema_de_Gestión.Presentacion
             {
                 cmdBuscar_Click(sender, e);
             }
+
+            if (cboFiltrar.SelectedIndex == 1)
+            {
+                FC.SoloNumeros(e);
+            }
+
+            else if (cboFiltrar.SelectedIndex == 5)
+            {
+                FC.SoloTexto(e);
+            }
         }
+
+        private void dgvReporteFacturas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+
+                int NumFactura = int.Parse(dgvReporteFacturas.SelectedRows[0].Cells["NumFactura"].Value.ToString());
+                ReportesModel.NumFacturaReporte = NumFactura;
+
+                lblSeleccionado.Text = $"Factura seleccionada {NumFactura.ToString().PadLeft(6, '0')}";
+            }
+        }
+
+        private void CmdModificarFactura_Click(object sender, EventArgs e)
+        {
+            if (dgvReporteFacturas.Rows.Count != -1)
+            {
+
+                int NumFactura = int.Parse(dgvReporteFacturas.SelectedRows[0].Cells["NumFactura"].Value.ToString());
+                ObtenerInfoFactura(NumFactura);
+
+            }
+        }
+
+        private void ObtenerInfoFactura(int Num)
+        {
+            frmActualizarFactura frmActualizar = new frmActualizarFactura();
+
+            DateTime FechaFactura = (DateTime)dgvReporteFacturas.SelectedRows[0].Cells["Fecha"].Value;
+            DateTime FechaVencimiento = (DateTime)dgvReporteFacturas.SelectedRows[0].Cells["FechaVencimiento"].Value;
+
+            
+            frmActualizar.NumFactura = Num;
+            frmActualizar.TipoFactura = dgvReporteFacturas.SelectedRows[0].Cells["TipoFactura"].Value.ToString();
+            frmActualizar.NCF = dgvReporteFacturas.SelectedRows[0].Cells["NCF"].Value.ToString();
+            frmActualizar.Cliente = dgvReporteFacturas.SelectedRows[0].Cells["Empresa"].Value.ToString();
+            frmActualizar.EstatusFactura = dgvReporteFacturas.SelectedRows[0].Cells["EstatusFactura"].Value.ToString();
+            frmActualizar.SubTotal = decimal.Parse(dgvReporteFacturas.SelectedRows[0].Cells["SubTotal"].Value.ToString());
+            frmActualizar.Descuento = decimal.Parse(dgvReporteFacturas.SelectedRows[0].Cells["Descuento"].Value.ToString());
+            frmActualizar.ITBIS = decimal.Parse(dgvReporteFacturas.SelectedRows[0].Cells["ITBIS"].Value.ToString());
+            frmActualizar.Total = decimal.Parse(dgvReporteFacturas.SelectedRows[0].Cells["TotalFactura"].Value.ToString());
+            frmActualizar.MontoPendiente = decimal.Parse(dgvReporteFacturas.SelectedRows[0].Cells["MontoPendiente"].Value.ToString());
+            frmActualizar.MontoPagado = decimal.Parse(dgvReporteFacturas.SelectedRows[0].Cells["MontoPagado"].Value.ToString());
+            frmActualizar.NotaFactura = dgvReporteFacturas.SelectedRows[0].Cells["Nota"].Value.ToString();
+            frmActualizar.FechaFactura = FechaFactura;
+            frmActualizar.FechaVencimiento = FechaVencimiento;
+            frmActualizar.ID = FM.BuscarIDCliente(frmActualizar.Cliente);
+
+
+
+            frmActualizar.ShowDialog();
+            dgvReporteFacturas.DataSource = RM.LoadTopFacturas().ToList();
+            RM.FormatoColumnasFacturas(dgvReporteFacturas.Columns);
+
+        }
+
     }
 }

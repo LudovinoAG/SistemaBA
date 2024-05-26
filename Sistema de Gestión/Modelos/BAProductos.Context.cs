@@ -27,10 +27,10 @@ namespace Sistema_de_Gestión.Modelos
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<VW_ListaGeneralProductos> VW_ListaGeneralProductos { get; set; }
         public virtual DbSet<VW_ListaEstatusProductos> VW_ListaEstatusProductos { get; set; }
+        public virtual DbSet<VW_ListaGeneralProductos> VW_ListaGeneralProductos { get; set; }
     
-        public virtual int SP_ActualizarProducto(Nullable<int> id_Producto, Nullable<int> id_Categoria, Nullable<int> id_Proveedor, string nom_Producto, string des_Producto, Nullable<decimal> precio, Nullable<int> idEst_Producto)
+        public virtual int SP_ActualizarProducto(Nullable<int> id_Producto, Nullable<int> id_Categoria, Nullable<int> id_Proveedor, string nom_Producto, string des_Producto, Nullable<decimal> precio, Nullable<int> idEst_Producto, Nullable<decimal> iTBIS)
         {
             var id_ProductoParameter = id_Producto.HasValue ?
                 new ObjectParameter("id_Producto", id_Producto) :
@@ -60,10 +60,14 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("idEst_Producto", idEst_Producto) :
                 new ObjectParameter("idEst_Producto", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ActualizarProducto", id_ProductoParameter, id_CategoriaParameter, id_ProveedorParameter, nom_ProductoParameter, des_ProductoParameter, precioParameter, idEst_ProductoParameter);
+            var iTBISParameter = iTBIS.HasValue ?
+                new ObjectParameter("ITBIS", iTBIS) :
+                new ObjectParameter("ITBIS", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ActualizarProducto", id_ProductoParameter, id_CategoriaParameter, id_ProveedorParameter, nom_ProductoParameter, des_ProductoParameter, precioParameter, idEst_ProductoParameter, iTBISParameter);
         }
     
-        public virtual int SP_InsertarProductos(Nullable<int> idCategoria, Nullable<int> idProveedor, string nomProducto, string desProducto, Nullable<decimal> precio, Nullable<int> idEstatusProducto)
+        public virtual int SP_InsertarProductos(Nullable<int> idCategoria, Nullable<int> idProveedor, string nomProducto, string desProducto, Nullable<decimal> precio, Nullable<int> idEstatusProducto, Nullable<decimal> iTBIS)
         {
             var idCategoriaParameter = idCategoria.HasValue ?
                 new ObjectParameter("idCategoria", idCategoria) :
@@ -89,7 +93,11 @@ namespace Sistema_de_Gestión.Modelos
                 new ObjectParameter("idEstatusProducto", idEstatusProducto) :
                 new ObjectParameter("idEstatusProducto", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarProductos", idCategoriaParameter, idProveedorParameter, nomProductoParameter, desProductoParameter, precioParameter, idEstatusProductoParameter);
+            var iTBISParameter = iTBIS.HasValue ?
+                new ObjectParameter("ITBIS", iTBIS) :
+                new ObjectParameter("ITBIS", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_InsertarProductos", idCategoriaParameter, idProveedorParameter, nomProductoParameter, desProductoParameter, precioParameter, idEstatusProductoParameter, iTBISParameter);
         }
     
         public virtual int SP_EliminarProducto(Nullable<int> id_Producto)

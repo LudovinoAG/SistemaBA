@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f3875204fe2e4d5a96e80765217c3e09" Name="Diagram1">
-        <EntityTypeShape EntityType="BAReportesModel.VW_VerFacturas" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BAReportesModel.VW_VerReportesFacturasPendientesCredito" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BAReportesModel.VW_VerFacturas" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

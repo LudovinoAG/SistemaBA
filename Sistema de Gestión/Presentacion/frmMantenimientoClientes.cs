@@ -58,6 +58,7 @@ namespace Sistema_de_Gestión.Presentacion
                     {
                         //Limpiar y resetear los campos de formulario
                         FC.LimpiarCampos(Controls);
+                        ResetFields();
 
                         //Actualizar listado de clientes
                         LoadClientes(cboFiltrar.Text, txtBuscar.Text, int.Parse(cboViewRecord.Text));
@@ -262,23 +263,28 @@ namespace Sistema_de_Gestión.Presentacion
 
         private void cboTipoClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtTelefonoPrincipal.Text = "000-000-0000";
-            txtTelefonoSecundario.Text = "000-000-0000";
 
-            if (cboTipoClientes.SelectedIndex == 1)
-            {
-                txtRNC.Text = "0-00-000000-0";
-            }
-            else
-            {
-                txtCedula.Text = "000-0000000-0";
-            }
+
+            ResetFields();
 
         }
 
         private void cboViewRecord_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadClientes(cboFiltrar.Text, txtBuscar.Text, int.Parse(cboViewRecord.Text));
+        }
+
+        private void ResetFields()
+        {
+            txtExtension.Text = "0";
+            txtNumero.Text = "0";
+            txtZipCode.Text = "0";
+            txtTelefonoPrincipal.Text = "000-000-0000";
+            txtTelefonoSecundario.Text = "000-000-0000";
+            txtRNC.Text = "0-00-000000-0";
+            txtCedula.Text = "000-0000000-0";
+            cboCiudades.SelectedItem = "Santo Domingo";
+
         }
     }
 }

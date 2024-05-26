@@ -64,6 +64,8 @@ namespace Sistema_de_Gestión.Presentacion
             this.cmdInsertar = new System.Windows.Forms.Button();
             this.LblID = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtITBISProducto = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.StbMantProducts.SuspendLayout();
@@ -73,7 +75,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             this.dgvProductos.AllowUserToAddRows = false;
             this.dgvProductos.AllowUserToDeleteRows = false;
-            this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -94,7 +96,6 @@ namespace Sistema_de_Gestión.Presentacion
             this.dgvProductos.Size = new System.Drawing.Size(799, 327);
             this.dgvProductos.TabIndex = 0;
             this.dgvProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellClick);
-           
             // 
             // groupBox1
             // 
@@ -245,7 +246,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.White;
             this.label7.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(853, 310);
+            this.label7.Location = new System.Drawing.Point(853, 324);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 14);
             this.label7.TabIndex = 27;
@@ -255,7 +256,7 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             this.txtPrecio.BackColor = System.Drawing.Color.Khaki;
             this.txtPrecio.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecio.Location = new System.Drawing.Point(904, 273);
+            this.txtPrecio.Location = new System.Drawing.Point(904, 262);
             this.txtPrecio.MaxLength = 15;
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(129, 24);
@@ -267,7 +268,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.White;
             this.label5.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(858, 278);
+            this.label5.Location = new System.Drawing.Point(858, 267);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 14);
             this.label5.TabIndex = 23;
@@ -278,7 +279,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(836, 249);
+            this.label4.Location = new System.Drawing.Point(836, 238);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 14);
             this.label4.TabIndex = 22;
@@ -289,7 +290,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(840, 219);
+            this.label8.Location = new System.Drawing.Point(840, 208);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(60, 14);
             this.label8.TabIndex = 21;
@@ -299,8 +300,8 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             this.txtDescripcion.BackColor = System.Drawing.Color.Khaki;
             this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescripcion.Location = new System.Drawing.Point(904, 170);
-            this.txtDescripcion.MaxLength = 255;
+            this.txtDescripcion.Location = new System.Drawing.Point(904, 159);
+            this.txtDescripcion.MaxLength = 500;
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(218, 38);
@@ -312,7 +313,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.White;
             this.label9.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(830, 173);
+            this.label9.Location = new System.Drawing.Point(830, 162);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(70, 14);
             this.label9.TabIndex = 19;
@@ -323,7 +324,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.cboEstatus.BackColor = System.Drawing.Color.Khaki;
             this.cboEstatus.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboEstatus.FormattingEnabled = true;
-            this.cboEstatus.Location = new System.Drawing.Point(904, 304);
+            this.cboEstatus.Location = new System.Drawing.Point(904, 318);
             this.cboEstatus.Name = "cboEstatus";
             this.cboEstatus.Size = new System.Drawing.Size(129, 24);
             this.cboEstatus.TabIndex = 7;
@@ -334,7 +335,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.cboProveedor.BackColor = System.Drawing.Color.Khaki;
             this.cboProveedor.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboProveedor.FormattingEnabled = true;
-            this.cboProveedor.Location = new System.Drawing.Point(904, 243);
+            this.cboProveedor.Location = new System.Drawing.Point(904, 232);
             this.cboProveedor.Name = "cboProveedor";
             this.cboProveedor.Size = new System.Drawing.Size(218, 24);
             this.cboProveedor.TabIndex = 5;
@@ -345,7 +346,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.cboCategoria.BackColor = System.Drawing.Color.Khaki;
             this.cboCategoria.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(904, 213);
+            this.cboCategoria.Location = new System.Drawing.Point(904, 202);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(218, 24);
             this.cboCategoria.TabIndex = 4;
@@ -355,8 +356,8 @@ namespace Sistema_de_Gestión.Presentacion
             // 
             this.txtProducto.BackColor = System.Drawing.Color.Khaki;
             this.txtProducto.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProducto.Location = new System.Drawing.Point(904, 141);
-            this.txtProducto.MaxLength = 60;
+            this.txtProducto.Location = new System.Drawing.Point(904, 130);
+            this.txtProducto.MaxLength = 255;
             this.txtProducto.Name = "txtProducto";
             this.txtProducto.Size = new System.Drawing.Size(218, 24);
             this.txtProducto.TabIndex = 2;
@@ -367,7 +368,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.White;
             this.label10.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(842, 145);
+            this.label10.Location = new System.Drawing.Point(842, 134);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(58, 14);
             this.label10.TabIndex = 14;
@@ -422,7 +423,7 @@ namespace Sistema_de_Gestión.Presentacion
             this.LblID.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.LblID.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblID.ForeColor = System.Drawing.Color.DarkRed;
-            this.LblID.Location = new System.Drawing.Point(1039, 273);
+            this.LblID.Location = new System.Drawing.Point(1039, 272);
             this.LblID.Name = "LblID";
             this.LblID.Size = new System.Drawing.Size(83, 55);
             this.LblID.TabIndex = 31;
@@ -439,6 +440,28 @@ namespace Sistema_de_Gestión.Presentacion
             this.label3.TabIndex = 32;
             this.label3.Text = "ID";
             // 
+            // txtITBISProducto
+            // 
+            this.txtITBISProducto.BackColor = System.Drawing.Color.Khaki;
+            this.txtITBISProducto.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtITBISProducto.Location = new System.Drawing.Point(904, 290);
+            this.txtITBISProducto.MaxLength = 15;
+            this.txtITBISProducto.Name = "txtITBISProducto";
+            this.txtITBISProducto.Size = new System.Drawing.Size(129, 24);
+            this.txtITBISProducto.TabIndex = 34;
+            this.txtITBISProducto.Tag = "Precio";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.White;
+            this.label6.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(863, 295);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 14);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "ITBIS:";
+            // 
             // frmMantenimientoProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -446,6 +469,8 @@ namespace Sistema_de_Gestión.Presentacion
             this.BackgroundImage = global::Sistema_de_Gestión.RecursosBA.FondoMantProducto3;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1138, 474);
+            this.Controls.Add(this.txtITBISProducto);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.LblID);
             this.Controls.Add(this.cmdInsertar);
@@ -517,5 +542,7 @@ namespace Sistema_de_Gestión.Presentacion
         private System.Windows.Forms.ToolStripStatusLabel tsslMantenimiento;
         private System.Windows.Forms.ToolStripStatusLabel tsslDesactivado;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtITBISProducto;
+        private System.Windows.Forms.Label label6;
     }
 }

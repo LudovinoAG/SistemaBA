@@ -484,6 +484,126 @@ namespace Sistema_de_Gestión.Modelos
                     }
                     break;
 
+                case "cmdBuscarPedido":
+                    if (Evento == 1)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonBuscarPedidosProformaOver;
+                    }
+                    else if (Evento == 2)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonBuscarPedidosProformaClick;
+                    }
+                    else
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonBuscarPedidosProforma;
+                    }
+                    break;
+
+                case "cmdResetCriterios":
+                    if (Evento == 1)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonResetCriteriosProformaOver;
+                    }
+                    else if (Evento == 2)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonResetCriteriosProformaClick;
+                    }
+                    else
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonResetCriteriosProforma;
+                    }
+                    break;
+
+                case "cmdVerProforma":
+                    if (Evento == 1)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonVerProformaOver;
+                    }
+                    else if (Evento == 2)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonVerProformaClick;
+                    }
+                    else
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonVerProforma;
+                    }
+                    break;
+
+                case "cmdVerRedaccion":
+                    if (Evento == 1)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonVerRedaccionOver;
+                    }
+                    else if (Evento == 2)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonVerRedaccionClick;
+                    }
+                    else
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonVerRedaccion;
+                    }
+                    break;
+
+                case "cmdAplicarPago":
+                    if (Evento == 1)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonPagarFacturaReporteOver;
+                    }
+                    else if (Evento == 2)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonPagarFacturaReporteClick;
+                    }
+                    else
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonPagarFacturaReporte;
+                    }
+                    break;
+
+
+                case "cmdVerConduces":
+                    if (Evento == 1)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonVerConducesOver;
+                    }
+                    else if (Evento == 2)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonVerConducesClick;
+                    }
+                    else
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonVerConduces;
+                    }
+                    break;
+
+                case "CmdModificarFactura":
+                    if (Evento == 1)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonModificarFacturaOver;
+                    }
+                    else if (Evento == 2)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonModificarFacturaClick;
+                    }
+                    else
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonModificarFactura;
+                    }
+                    break;
+
+                case "cmdEliminarFactura":
+                    if (Evento == 1)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonEliminarFacturaOver;
+                    }
+                    else if (Evento == 2)
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonEliminarFacturaClick;
+                    }
+                    else
+                    {
+                        BT.BackgroundImage = RecursosBA.BotonEliminarFactura;
+                    }
+                    break;
 
 
 

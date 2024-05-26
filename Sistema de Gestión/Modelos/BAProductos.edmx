@@ -30,6 +30,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaGeneralProductos' 
           <Property Name="Producto" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Descripción" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="Precio" Type="money" Nullable="false" />
+          <Property Name="ITBIS" Type="money" />
           <Property Name="Categoria" Type="varchar" MaxLength="45" />
           <Property Name="Proveedor" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="Estado" Type="varchar" MaxLength="45" Nullable="false" />
@@ -42,6 +43,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaGeneralProductos' 
           <Parameter Name="Des_Producto" Type="varchar" Mode="In" />
           <Parameter Name="Precio" Type="money" Mode="In" />
           <Parameter Name="idEst_Producto" Type="int" Mode="In" />
+          <Parameter Name="ITBIS" Type="money" Mode="In" />
         </Function>
         <Function Name="SP_EliminarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_Producto" Type="int" Mode="In" />
@@ -53,6 +55,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaGeneralProductos' 
           <Parameter Name="DesProducto" Type="varchar" Mode="In" />
           <Parameter Name="Precio" Type="money" Mode="In" />
           <Parameter Name="idEstatusProducto" Type="int" Mode="In" />
+          <Parameter Name="ITBIS" Type="money" Mode="In" />
         </Function>
         <EntityContainer Name="BAProductosModelStoreContainer">
           <EntitySet Name="VW_ListaEstatusProductos" EntityType="Self.VW_ListaEstatusProductos" store:Type="Views" store:Schema="dbo">
@@ -67,6 +70,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaGeneralProductos' 
     [VW_ListaGeneralProductos].[Producto] AS [Producto], 
     [VW_ListaGeneralProductos].[Descripción] AS [Descripción], 
     [VW_ListaGeneralProductos].[Precio] AS [Precio], 
+    [VW_ListaGeneralProductos].[ITBIS] AS [ITBIS], 
     [VW_ListaGeneralProductos].[Categoria] AS [Categoria], 
     [VW_ListaGeneralProductos].[Proveedor] AS [Proveedor], 
     [VW_ListaGeneralProductos].[Estado] AS [Estado]
@@ -77,6 +81,38 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaGeneralProductos' 
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BAProductosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BAProductosEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="SP_ActualizarProducto">
+            <Parameter Name="id_Producto" Mode="In" Type="Int32" />
+            <Parameter Name="id_Categoria" Mode="In" Type="Int32" />
+            <Parameter Name="id_Proveedor" Mode="In" Type="Int32" />
+            <Parameter Name="Nom_Producto" Mode="In" Type="String" />
+            <Parameter Name="Des_Producto" Mode="In" Type="String" />
+            <Parameter Name="Precio" Mode="In" Type="Decimal" />
+            <Parameter Name="idEst_Producto" Mode="In" Type="Int32" />
+            <Parameter Name="ITBIS" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertarProductos">
+            <Parameter Name="idCategoria" Mode="In" Type="Int32" />
+            <Parameter Name="idProveedor" Mode="In" Type="Int32" />
+            <Parameter Name="NomProducto" Mode="In" Type="String" />
+            <Parameter Name="DesProducto" Mode="In" Type="String" />
+            <Parameter Name="Precio" Mode="In" Type="Decimal" />
+            <Parameter Name="idEstatusProducto" Mode="In" Type="Int32" />
+            <Parameter Name="ITBIS" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <EntitySet Name="VW_ListaEstatusProductos" EntityType="BAProductosModel.VW_ListaEstatusProductos" />
+          <FunctionImport Name="SP_EliminarProducto">
+          <Parameter Name="id_Producto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="VW_ListaGeneralProductos" EntityType="BAProductosModel.VW_ListaGeneralProductos" />
+        </EntityContainer>
+        <EntityType Name="VW_ListaEstatusProductos">
+          <Key>
+            <PropertyRef Name="Est_Producto" />
+          </Key>
+          <Property Name="Est_Producto" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="VW_ListaGeneralProductos">
           <Key>
             <PropertyRef Name="ID" />
@@ -88,43 +124,14 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaGeneralProductos' 
             <PropertyRef Name="Estado" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Codigo" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Producto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Descripción" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Producto" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Descripción" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="Categoria" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="Proveedor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityContainer Name="BAProductosEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="VW_ListaGeneralProductos" EntityType="Self.VW_ListaGeneralProductos" />
-          <FunctionImport Name="SP_ActualizarProducto">
-            <Parameter Name="id_Producto" Mode="In" Type="Int32" />
-            <Parameter Name="id_Categoria" Mode="In" Type="Int32" />
-            <Parameter Name="id_Proveedor" Mode="In" Type="Int32" />
-            <Parameter Name="Nom_Producto" Mode="In" Type="String" />
-            <Parameter Name="Des_Producto" Mode="In" Type="String" />
-            <Parameter Name="Precio" Mode="In" Type="Decimal" />
-            <Parameter Name="idEst_Producto" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_InsertarProductos">
-            <Parameter Name="idCategoria" Mode="In" Type="Int32" />
-            <Parameter Name="idProveedor" Mode="In" Type="Int32" />
-            <Parameter Name="NomProducto" Mode="In" Type="String" />
-            <Parameter Name="DesProducto" Mode="In" Type="String" />
-            <Parameter Name="Precio" Mode="In" Type="Decimal" />
-            <Parameter Name="idEstatusProducto" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <EntitySet Name="VW_ListaEstatusProductos" EntityType="BAProductosModel.VW_ListaEstatusProductos" />
-          <FunctionImport Name="SP_EliminarProducto">
-            <Parameter Name="id_Producto" Mode="In" Type="Int32" />
-          </FunctionImport>
-        </EntityContainer>
-        <EntityType Name="VW_ListaEstatusProductos">
-          <Key>
-            <PropertyRef Name="Est_Producto" />
-          </Key>
-          <Property Name="Est_Producto" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Proveedor" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ITBIS" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -132,20 +139,6 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaGeneralProductos' 
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BAProductosModelStoreContainer" CdmEntityContainer="BAProductosEntities">
-          <EntitySetMapping Name="VW_ListaGeneralProductos">
-            <EntityTypeMapping TypeName="BAProductosModel.VW_ListaGeneralProductos">
-              <MappingFragment StoreEntitySet="VW_ListaGeneralProductos">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="Producto" ColumnName="Producto" />
-                <ScalarProperty Name="Descripción" ColumnName="Descripción" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
-                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_ActualizarProducto" FunctionName="BAProductosModel.Store.SP_ActualizarProducto" />
           <FunctionImportMapping FunctionImportName="SP_InsertarProductos" FunctionName="BAProductosModel.Store.SP_InsertarProductos" />
           <EntitySetMapping Name="VW_ListaEstatusProductos">
@@ -156,6 +149,21 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaGeneralProductos' 
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_EliminarProducto" FunctionName="BAProductosModel.Store.SP_EliminarProducto" />
+          <EntitySetMapping Name="VW_ListaGeneralProductos">
+            <EntityTypeMapping TypeName="BAProductosModel.VW_ListaGeneralProductos">
+              <MappingFragment StoreEntitySet="VW_ListaGeneralProductos">
+                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

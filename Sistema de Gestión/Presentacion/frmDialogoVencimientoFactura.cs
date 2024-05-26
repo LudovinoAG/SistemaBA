@@ -15,21 +15,11 @@ namespace Sistema_de_Gestión.Presentacion
     {
         FacturacionModel FM = new FacturacionModel();
 
-        public IFormularios NuevaFecha { get; set; }
-
         public frmDialogoVencimientoFactura()
         {
             InitializeComponent();
             ActualizarFechaProgramada();
         }
-
-
-        private void frmDialogoVencimientoFactura_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
 
 
         private void ActualizarFechaProgramada()
@@ -45,8 +35,8 @@ namespace Sistema_de_Gestión.Presentacion
 
         private void cmdInsertar_Click(object sender, EventArgs e)
         {
-            NuevaFecha.NuevaFecha(lblFechaVencimiento.Text);
-            this.Close();
+            FacturacionModel.FechaVencimientoFactura = DateTime.Parse(lblFechaVencimiento.Text);
+            Close();
         }
 
     }

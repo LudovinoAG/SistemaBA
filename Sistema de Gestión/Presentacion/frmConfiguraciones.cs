@@ -95,6 +95,8 @@ namespace Sistema_de_Gestión.Presentacion
 
         private void txtHastaComprobante_Leave(object sender, EventArgs e)
         {
+            lstComprobantes.Items.Clear();
+
             foreach (var item in CF.CalcularCantidadComprobantes(int.Parse(txtComprobanteDesde.Text), 
                 int.Parse(txtHastaComprobante.Text),txtSerie.Text,txtTipo.Text))
             {
@@ -103,35 +105,6 @@ namespace Sistema_de_Gestión.Presentacion
 
             txtCantidad.Text = CF.Cantidad_Comprobantes.ToString();
             txtProximo.Text = txtComprobanteDesde.Text;
-        }
-
-        private void cmdInsertar_Click(object sender, EventArgs e)
-        {
-            if (FC.ValidacionCampos(this.Name, gbRangoComprobantes.Controls))
-            {
-                CF.AgregarComprobantes(int.Parse(txtComprobanteDesde.Text), int.Parse(txtHastaComprobante.Text),
-                    int.Parse(txtCantidad.Text), dtpFechaVencimiento.Text, lblEstatus.Text, txtSerie.Text,
-                    txtTipo.Text);
-
-
-                FC.LimpiarCampos(Controls);
-
-            }
-        }
-
-        private void cmdInsertar_MouseMove(object sender, MouseEventArgs e)
-        {
-            DI.BTMouseEvent(cmdInsertar, 1);
-        }
-
-        private void cmdInsertar_MouseLeave(object sender, EventArgs e)
-        {
-            DI.BTMouseEvent(cmdInsertar, 0);
-        }
-
-        private void cmdInsertar_MouseDown(object sender, MouseEventArgs e)
-        {
-            DI.BTMouseEvent(cmdInsertar, 2);
         }
 
         private void tcConfiguraciones_SelectedIndexChanged(object sender, EventArgs e)
@@ -291,6 +264,37 @@ namespace Sistema_de_Gestión.Presentacion
         private void frmConfiguraciones_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmdActualizar_Click(object sender, EventArgs e)
+        {
+            if (FC.ValidacionCampos(this.Name, gbRangoComprobantes.Controls))
+            {
+                txtHastaComprobante_Leave(sender, e);
+
+                if (CF.ActualizarInfoComprobante(int.Parse(txtComprobanteDesde.Text), int.Parse(txtHastaComprobante.Text), int.Parse(txtCantidad.Text),
+                    dtpFechaVencimiento.Value,int.Parse(txtProximo.Text), lblEstatus.Text, txtSerie.Text, txtTipo.Text))
+                {
+                    MessageBox.Show("Se ha actualizado el comprobante fiscal correctamente", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+        }
+
+        private void cmdActualizar_MouseMove(object sender, MouseEventArgs e)
+        {
+            DI.BTMouseEvent(cmdActualizar, 2);
+        }
+
+        private void cmdActualizar_MouseLeave(object sender, EventArgs e)
+        {
+            DI.BTMouseEvent(cmdActualizar, 1);
+        }
+
+        private void cmdActualizar_MouseDown(object sender, MouseEventArgs e)
+        {
+            DI.BTMouseEvent(cmdActualizar, 0);
         }
     }
 }

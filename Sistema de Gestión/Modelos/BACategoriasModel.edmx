@@ -52,7 +52,7 @@ advertencia 6002: La tabla o vista 'BoteAgregados.dbo.VW_ListaCategorias' no tie
             <Parameter Name="Descripcion" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_EliminarCategorias">
-            <Parameter Name="idCategoria" Mode="In" Type="Int32" />
+          <Parameter Name="idCategoria" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="VW_ListaCategorias">

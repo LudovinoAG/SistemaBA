@@ -32,7 +32,12 @@ namespace Sistema_de_Gestión
             //Application.Run(new frmAcercaDe());
             //Application.Run(new frmPedidos());
             //Application.Run(new frmRedaccionesClientes());
-            //Application.Run(new frmVistaRedacciones());
+            //Application.Run(new frmVerProforma());
+            //Application.Run(new frmCotización());
+            //Application.Run(new frmMantenimientoPedidos());
+            //Application.Run(new frmReporteConducesRegistradoClientes());
+            //Application.Run(new frmActualizarFactura());
+            
 
 
         }

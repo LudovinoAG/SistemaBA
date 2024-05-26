@@ -57,7 +57,7 @@ namespace Sistema_de_Gestión.Modelos
 
                     //Cargar el dataGridView
                     dgvPRODUCTOS.DataSource = null;
-                    dgvPRODUCTOS.DataSource = lstNuevoListado;
+                    dgvPRODUCTOS.DataSource = lstNuevoListado.OrderBy(t=> t.ID).ToList();
                     dgvPRODUCTOS.Columns["Producto"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
                     dgvPRODUCTOS.Columns["Descripción"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
                     dgvPRODUCTOS.Columns["Precio"].DefaultCellStyle.Format = "RD$#,#0.00";
@@ -91,7 +91,7 @@ namespace Sistema_de_Gestión.Modelos
         }
 
         public void InsertarProductos(int idCategoria, int idProveedor, string Nombre, string Descripcion, 
-                    decimal Precio, int idEstatus)
+                    decimal Precio, int idEstatus, decimal ITBISProducto)
         {
 
             using (BAProductosEntities DB = new BAProductosEntities())
@@ -99,7 +99,7 @@ namespace Sistema_de_Gestión.Modelos
                 try
                 {
                     //Llamado al procedimiento almacenado
-                    var Resultado = DB.SP_InsertarProductos(idCategoria, idProveedor, Nombre, Descripcion, Precio, idEstatus);
+                    var Resultado = DB.SP_InsertarProductos(idCategoria, idProveedor, Nombre, Descripcion, Precio, idEstatus, ITBISProducto);
 
                     MessageBox.Show("Se ha insertado el producto correctamente", "Nuevo Producto", 
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -114,14 +114,14 @@ namespace Sistema_de_Gestión.Modelos
         }
 
         public void ActualizarProducto(int ID, string Nombre, string Descripcion, decimal Precio,
-            int Categoria, int Proveedor, int IDEstatus)
+            int Categoria, int Proveedor, int IDEstatus, decimal ITBISProducto)
         {
             using (BAProductosEntities DB = new BAProductosEntities())
             {
                 try
                 {
                     var Resultado = DB.SP_ActualizarProducto(ID, Categoria, Proveedor, Nombre,
-                            Descripcion, Precio, IDEstatus);
+                            Descripcion, Precio, IDEstatus, ITBISProducto);
 
                     MessageBox.Show("El producto [" + Nombre + "] se actualizó correctamente.", "Producto actualizado",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information); ;

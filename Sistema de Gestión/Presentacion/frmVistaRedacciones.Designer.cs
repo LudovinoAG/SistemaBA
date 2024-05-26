@@ -60,7 +60,8 @@ namespace Sistema_de_Gestión.Presentacion
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "frmVistaRedacciones";
-            this.Text = "frmVistaRedacciones";
+            this.Text = "Vista Redaccion";
+            this.Load += new System.EventHandler(this.frmVistaRedacciones_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dsReportes1)).EndInit();
             this.ResumeLayout(false);
 

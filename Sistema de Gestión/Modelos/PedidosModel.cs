@@ -12,7 +12,12 @@ namespace Sistema_de_Gestión.Modelos
 
         public decimal SubTotal { get; set; }
         public decimal Costo { get; set; }
-        public int Cantidad { get; set; }
+
+        public decimal ITBISPro { get; set; }
+        public decimal CapacidadTotal { get; set; }
+
+        public decimal capacidad { get; set; }
+        public decimal Cantidad { get; set; }
         public decimal SumaSubTotales { get; set; }
         public decimal ITBIS { get; set; }
         public decimal DESC { get; set; }
@@ -24,16 +29,33 @@ namespace Sistema_de_Gestión.Modelos
         public int IDFactura { get; set; }
         public int IDConduce { get; set; }
         public int Conduce { get; set; }
+        public static string Placa { get; set; }
         public static int CantidadChofer { get; set; }
+        public decimal OrometroInicio { get; set; }
+        public decimal OrometroFinal { get; set; }
+
         public int MetodoPago { get; set; }
         public int TipoCliente { get; set; }
         public int TipoFactura { get; set; }
         public int IDCliente { get; set; }
         public int EstatusPedido { get; set; }
 
+        public int CountPedidos { get; set; }
 
-        public void AgregarProducto(int cantidad, int IDProducto, string medida, int IDMedida, string producto, string descripcion, decimal costo,
-           decimal subtotal, DataGridView dgvFacturar)
+        public static string Empresa { get; set; }
+        public static string Rnc { get; set; }
+        public static string NombreContacto { get; set; }
+        public static string TelContacto { get; set; }
+        public static string Direccion { get; set; }
+        public static string Correo { get; set; }
+        public static string Condiciones { get; set; }
+
+        public int IDBuscadoMatricula { get; set; }
+
+        public DateTime FechaConduce { get; set; }
+
+        public void AgregarProducto(decimal cantidad, int IDProducto, string medida, int IDMedida, 
+            string producto, string descripcion, decimal costo, decimal subtotal, decimal ITBISProducto, DataGridView dgvFacturar)
         {
             int NuevoRegistro = dgvFacturar.Rows.Add();
             dgvFacturar.Rows[NuevoRegistro].Cells["Cantidad"].Value = cantidad;
@@ -41,7 +63,18 @@ namespace Sistema_de_Gestión.Modelos
             dgvFacturar.Rows[NuevoRegistro].Cells["Medida"].Value = medida;
             dgvFacturar.Rows[NuevoRegistro].Cells["IDMedida"].Value = IDMedida;
             dgvFacturar.Rows[NuevoRegistro].Cells["Producto"].Value = producto;
-            dgvFacturar.Rows[NuevoRegistro].Cells["Descripción"].Value = descripcion;
+            dgvFacturar.Rows[NuevoRegistro].Cells["ITBISProducto"].Value = ITBISProducto;
+            dgvFacturar.Rows[NuevoRegistro].Cells["CNum"].Value = NuevoRegistro;
+
+            if (IDMedida==2)
+            {
+                dgvFacturar.Rows[NuevoRegistro].Cells["Descripción"].Value = ($"Alquiler de {descripcion}");
+            }
+            else if (IDMedida == 1)
+            {
+                dgvFacturar.Rows[NuevoRegistro].Cells["Descripción"].Value = descripcion;
+            }
+            
             dgvFacturar.Rows[NuevoRegistro].Cells["Costo"].Value = string.Format("{0:N}", costo);
             dgvFacturar.Rows[NuevoRegistro].Cells["SubTotal"].Value = string.Format("{0:N}", subtotal);
 
@@ -52,6 +85,7 @@ namespace Sistema_de_Gestión.Modelos
            CheckBox CKITBIS)
         {
             this.SumaSubTotales = 0;
+            this.ITBISPro = 0;
             if (CKITBIS.CheckState == CheckState.Checked)
             {
                 for (var i = 0; i < dgvFactura.Rows.Count; i++)
@@ -59,8 +93,8 @@ namespace Sistema_de_Gestión.Modelos
 
                     //string[] Valor = dgvFactura.Rows[i].Cells["SubTotal"].Value.ToString().Split('$');
                     this.SumaSubTotales += Convert.ToDecimal(dgvFactura.Rows[i].Cells["SubTotal"].Value);
-                    this.ITBIS = (this.SumaSubTotales - this.DESC) * 18 / 100;
-                    this.TotalGeneral = (this.SumaSubTotales - this.DESC) + this.ITBIS;
+                    this.ITBISPro += Convert.ToDecimal(dgvFactura.Rows[i].Cells["ITBISProducto"].Value);
+                    this.TotalGeneral = (this.SumaSubTotales - this.DESC) + this.ITBISPro;
                 }
             }
             else
@@ -70,19 +104,20 @@ namespace Sistema_de_Gestión.Modelos
 
                     //string[] Valor = dgvFactura.Rows[i].Cells["SubTotal"].Value.ToString().Split('$');
                     this.SumaSubTotales += Convert.ToDecimal(dgvFactura.Rows[i].Cells["SubTotal"].Value);
-                    this.ITBIS = 0.00m;
-                    this.TotalGeneral = (this.SumaSubTotales - this.DESC) + this.ITBIS;
+                    this.ITBISPro = 0.00m;
+                    this.TotalGeneral = (this.SumaSubTotales - this.DESC) + this.ITBISPro;
                 }
             }
 
 
             Subtotales.Text = string.Format("{0:N}", this.SumaSubTotales);
             TotalGeneral.Text = string.Format("{0:N}", this.TotalGeneral);
-            ITBIS.Text = string.Format("{0:N}", this.ITBIS);
+            ITBIS.Text = string.Format("{0:N}", this.ITBISPro);
         }
 
         public void AgregarChoferFactura(DataGridView dgvChoferes, int IDFila, int Conduce, int Chofer,
-          int Vehiculo, int Producto, int Medida, int Factura, int CantidadViaje)
+          int Vehiculo, int Producto, int Medida, int Factura, int CantidadViaje, decimal Capacidad, string Placa,
+          decimal OrometroInicio, decimal OrometroFinal, DateTime FechaConduce)
         {
             //Tabla de informacion referencial
             int entradachoferes = dgvChoferes.Rows.Add();
@@ -94,32 +129,61 @@ namespace Sistema_de_Gestión.Modelos
             dgvChoferes.Rows[entradachoferes].Cells["id_Medida"].Value = Medida;
             dgvChoferes.Rows[entradachoferes].Cells["id_Factura"].Value = Factura;
             dgvChoferes.Rows[entradachoferes].Cells["clCantidadChofer"].Value = CantidadViaje;
+            dgvChoferes.Rows[entradachoferes].Cells["clSCapacidad"].Value = Capacidad;
+            dgvChoferes.Rows[entradachoferes].Cells["Placa"].Value = Placa;
+            dgvChoferes.Rows[entradachoferes].Cells["clOrometroInicio"].Value = OrometroInicio;
+            dgvChoferes.Rows[entradachoferes].Cells["clOrometroFinal"].Value = OrometroFinal;
+            dgvChoferes.Rows[entradachoferes].Cells["cFechaConduce"].Value = FechaConduce;
+
 
         }
 
         public void ResetCamposChofer(Control.ControlCollection controles)
         {
-            var CboChofer = controles.OfType<ComboBox>().Where(t => t.Name == "cboChofer");
-            var cboVehiculo = controles.OfType<ComboBox>().Where(t => t.Name == "cboVehiculos");
-            var txtConduce = controles.OfType<TextBox>().Where(t => t.Name == "txtConduce");
+            var CboChofer = controles.OfType<ComboBox>().ToList();
+            var cboVehiculo = controles.OfType<ComboBox>().ToList();
+            var txtConduce = controles.OfType<TextBox>().ToList();
             var UDViajes = controles.OfType<NumericUpDown>().Where(t => t.Name == "UDViajes").SingleOrDefault();
+            var DatePick = controles.OfType<DateTimePicker>().ToList();
 
-            foreach (var item in CboChofer)
+            if (CboChofer!=null)
             {
-                item.SelectedIndex = 0;
+                foreach (var item in CboChofer)
+                {
+                    item.SelectedIndex = 0;
+                }
             }
 
-            foreach (var item in cboVehiculo)
+            if (cboVehiculo!=null)
             {
-                item.SelectedIndex = 0;
+                foreach (var item in cboVehiculo)
+                {
+                    item.SelectedIndex = 0;
+                }
             }
 
-            foreach (var item in txtConduce)
+
+            if (UDViajes!=null)
             {
-                item.Text = "0";
+                UDViajes.Value = 1;
             }
 
-            UDViajes.Value = 1;
+            if (txtConduce != null)
+            {
+                foreach (var item in txtConduce)
+                {
+                    item.Text = "0";
+                }
+            }
+
+            if (DatePick!=null)
+            {
+                foreach (var item in DatePick)
+                {
+                    item.Value = DateTime.Now;
+                }
+            }
+            
 
 
         }
@@ -157,54 +221,99 @@ namespace Sistema_de_Gestión.Modelos
             }
 
             //Marcar el ITBIS por defecto.
-            ITBIS.Checked = true;
+            ITBIS.Checked = false;
 
         }
 
         public bool InsertarPedido(int IDCliente, int idConduce, int idEstatusPedido,decimal SubTotal, 
             decimal totalPedido, decimal ITBISPedido,decimal DescuentoPedido,
-            DataGridView dgvFactura,DataGridView dgvChoferes)
+            DataGridView dgvFactura,DataGridView dgvChoferes, DataGridView dgvListaChoferes, string Proyecto)
         {
             try
             {
                 using (BAPedidosEntities PM = new BAPedidosEntities())
                 {
                     PM.SP_InsertarPedido(IDCliente, idEstatusPedido, SubTotal, totalPedido, 
-                        ITBISPedido,DescuentoPedido);
+                        ITBISPedido,DescuentoPedido,Condiciones);
 
-                    foreach (DataGridViewRow FilaPedidos in dgvFactura.Rows)
-                    {
-                        int IDProducto = (int)FilaPedidos.Cells["IDProducto"].Value;
-                        int CantidadProducto = (int)FilaPedidos.Cells["Cantidad"].Value;
-                        int IDMedida = (int)FilaPedidos.Cells["IDMedida"].Value;
-                        string PedidoDescripcion = FilaPedidos.Cells["Descripción"].Value.ToString();
-                        decimal PrecioPedido = decimal.Parse(FilaPedidos.Cells["Costo"].Value.ToString());
-                        decimal SubTotalFilas = decimal.Parse(FilaPedidos.Cells["SubTotal"].Value.ToString());
+                    //PM.SP_InsertarFacturaProforma(IDCliente, Empresa, Rnc, NombreContacto, TelContacto,
+                    //    Direccion, Correo, Condiciones);
 
-                        PM.SP_InsertarDetallesPedido(IDProducto, IDMedida, CantidadProducto, PrecioPedido, SubTotalFilas,
-                            PedidoDescripcion);
-                    }
+                    //int RegPedidos = FilaPedidos.Index + 1;
+                    int totalPedidos = dgvFactura.Rows.Count;
+                        int totalConduces = dgvChoferes.Rows.Count;
 
-                    foreach (DataGridViewRow FilaChoferes in dgvChoferes.Rows)
-                    {
-                        int IDEmpleado = (int)FilaChoferes.Cells["Chofer"].Value;
-                        int NumConduce = (int)FilaChoferes.Cells["Conduce"].Value;
-                        int IDProducto = (int)FilaChoferes.Cells["id_Producto"].Value;
-                        int IDVehiculo = (int)FilaChoferes.Cells["Vehiculo"].Value;
-                        int IDMedida = (int)FilaChoferes.Cells["id_Medida"].Value;
-                        int CantidadViajesPedido = (int)FilaChoferes.Cells["clCantidadChofer"].Value;
 
-                        PM.SP_InsertarConducesPedidos(IDEmpleado, NumConduce, IDProducto, IDVehiculo, IDMedida, 
-                            CantidadViajesPedido);
+                        for (int i = 0; i < totalPedidos; i++)
+                        {
+                            //int ID_Detalles_Pedido = (int)PM.VW_VerUltimoNumeroPedido.SingleOrDefault().UltimoNumeroPedido;
 
-                    }
+                            int IDProducto = (int)dgvFactura.Rows[i].Cells["IDProducto"].Value;
+                            decimal CantidadProducto = (decimal)dgvFactura.Rows[i].Cells["Cantidad"].Value;
+                            int IDMedida = (int)dgvFactura.Rows[i].Cells["IDMedida"].Value;
+                            string PedidoDescripcion = dgvFactura.Rows[i].Cells["Descripción"].Value.ToString();
+                            decimal PrecioPedido = decimal.Parse(dgvFactura.Rows[i].Cells["Costo"].Value.ToString());
+                            decimal SubTotalFilas = decimal.Parse(dgvFactura.Rows[i].Cells["SubTotal"].Value.ToString());
+                            decimal ITBISProducto = decimal.Parse(dgvFactura.Rows[i].Cells["ITBISProducto"].Value.ToString());
+
+                        for (int c = 0; c < totalConduces; c++)
+                            {
+
+                                if ((dgvFactura.Rows[i].Index)+1 == (int)dgvChoferes.Rows[c].Cells["ID"].Value)
+                                {
+                                    int RegPedidos = i + 1;
+                                    int RegConduces = c + 1;
+
+                                    PM.SP_InsertarDetallesPedido(RegPedidos, IDCliente, IDProducto, IDMedida, CantidadProducto,
+                                        PrecioPedido, SubTotalFilas, PedidoDescripcion, RegConduces, ITBISProducto, Proyecto);
+
+                                    int IDEmpleado = (int)dgvChoferes.Rows[c].Cells["Chofer"].Value;
+                                    int NumConduce = Convert.ToInt32(dgvListaChoferes.Rows[c].Cells["clConduce"].Value);
+                                    IDProducto = (int)dgvChoferes.Rows[c].Cells["id_Producto"].Value;
+                                    int IDVehiculo = (int)dgvChoferes.Rows[c].Cells["Vehiculo"].Value;
+                                    IDMedida = (int)dgvChoferes.Rows[c].Cells["id_Medida"].Value;
+                                    int CantidadViajesPedido = (int)dgvChoferes.Rows[c].Cells["clCantidadChofer"].Value;
+                                    decimal OrometroInicio = (decimal)dgvChoferes.Rows[c].Cells["clOrometroInicio"].Value;
+                                    decimal OrometroFinal = (decimal)dgvChoferes.Rows[c].Cells["clOrometroFinal"].Value;
+                                    DateTime FechaConduce = (DateTime)dgvChoferes.Rows[c].Cells["cFechaConduce"].Value;
+                                    decimal CapacidadConduce = (decimal)dgvChoferes.Rows[c].Cells["clsCapacidad"].Value;
+
+                                
+
+                                PM.SP_InsertarConducesPedidos(IDCliente, IDEmpleado, NumConduce, IDProducto, IDVehiculo, IDMedida,
+                                    CantidadViajesPedido, RegConduces, OrometroInicio, OrometroFinal, FechaConduce, CapacidadConduce);
+
+                                    using(BARedaccionesEntities RM = new BARedaccionesEntities())
+                                    {
+                                        string Placa = dgvChoferes.Rows[c].Cells["Placa"].Value.ToString();
+                                        string NameProducto = dgvListaChoferes.Rows[c].Cells["clProducto"].Value.ToString();
+                                        decimal Capacidad = (decimal)dgvChoferes.Rows[c].Cells["clsCapacidad"].Value;
+                                        string Medida = dgvListaChoferes.Rows[c].Cells["clMedida"].Value.ToString();
+                                        decimal m3Total = Capacidad * CantidadViajesPedido;
+                                        //decimal Total = PrecioPedido * m3Total;
+                                    
+                                        RM.SP_InsertarRedaccion(Placa, NumConduce, NameProducto, 
+                                            CantidadViajesPedido,Capacidad, Medida, m3Total, PrecioPedido,
+                                            totalPedido, IDCliente,1);
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                    this.TotalGeneral = 0;
+                    this.SumaSubTotales = 0;
 
                 }
+
+                
             }
             catch (Exception ex)
             {
 
-                MessageBox.Show("No fue posible registrar el pedido actual. " + ex.Message, "Pedidos", MessageBoxButtons.OK,
+                MessageBox.Show("No fue posible registrar el pedido actual. " + ex.Message + ex.InnerException, "Pedidos", MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
                 return false;
             }
@@ -252,6 +361,49 @@ namespace Sistema_de_Gestión.Modelos
 
             return true;
 
+        }
+
+        public bool ActualizarPedidos(int Pedido, int Cliente, int idConduce, int DetallesPedidos, int NumConduce, decimal Cantidad, int Medidas,
+            int Producto, string Descripcion, decimal Costo, decimal Subtotal, decimal ITBIS, DateTime FechaConduce, int Chofer, 
+            int Vehiculo, int Viajes, decimal Capacidad)
+        {
+            try
+            {
+                using(BAPedidosEntities PE = new BAPedidosEntities())
+                {
+                    PE.SP_ActualizarPedidos(Pedido, Cliente, idConduce, DetallesPedidos, NumConduce, Cantidad, Medidas, Producto,
+                        Descripcion, Costo, Subtotal, ITBIS, FechaConduce, Chofer, Vehiculo, Viajes, Capacidad);
+
+                    return true;
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("No fue posible actualizar el pedido indicado " + Ex.Message, "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                return false;
+            }
+        }
+
+
+        public bool EliminarPedidos(int Pedido, int Cliente, int idConduce, int DetallesPedidos)
+        {
+            try
+            {
+                using(BAPedidosEntities PE = new BAPedidosEntities())
+                {
+                    PE.SP_DeleteInfoPedidos(Pedido, Cliente, idConduce, DetallesPedidos);
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No fue posible eliminar el pedido indicado", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                return false;
+            }
         }
 
         public int CargarNuevoPedido()
@@ -323,6 +475,33 @@ namespace Sistema_de_Gestión.Modelos
             }
         }
 
+        public List<VW_ListarVehiculos> VehiculosFactura(string Matricula)
+        {
+            if (Matricula!="")
+            {
+                using (BAPedidosEntities PM = new BAPedidosEntities())
+                {
+                    try
+                    {
+                        IDBuscadoMatricula = PM.VW_ListarVehiculos.Where(t => t.Matricula == Matricula).SingleOrDefault().ID;
+                        return PM.VW_ListarVehiculos.ToList();
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show($"No fue posible encontrar el vehiculo por la placa [{Matricula}]." + ex.Message);
+                        return null;
+                    }
+                }
+            }
+            else
+            {
+                return null;
+            }
+           
+        }
+
         public List<VW_EmpleadosFactura> EmpleadosFactura()
         {
             using (BAPedidosEntities PM = new BAPedidosEntities())
@@ -375,18 +554,68 @@ namespace Sistema_de_Gestión.Modelos
             }
         }
 
-        public decimal CalcularSubtotal(int cantidad, decimal costo)
+        public int BuscarConduce(int conduce)
+        {
+            try
+            {
+                using(BAPedidosEntities PE = new BAPedidosEntities())
+                {
+                    var resultado = PE.SearchConduce(conduce).ToList();
+                    if (resultado.Count!=0)
+                    {
+                        return 1;
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("No fue posible realizar la búsqueda del conduce. " + Ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return 0;
+        }
+        public decimal CalcularSubtotal(int Medida, decimal cantidad, decimal costo)
         {
 
-            this.Cantidad = cantidad;
-            this.Costo = costo;
-            this.SubTotal = 0;
-            this.SubTotal = this.Costo * this.Cantidad;
+                this.Cantidad = cantidad;
+                this.Costo = costo;
+                this.SubTotal = 0;
+                this.SubTotal = this.Costo * this.Cantidad;
+                this.ITBISPro = this.SubTotal * 0.18m;
 
-            return this.SubTotal;
+                return this.SubTotal;
+
+
         }
 
+        public bool ConduceExiste (int Conduce, DataGridView dgvChoferes)
+        {
+            for(int i = 0;i < dgvChoferes.Rows.Count; i++)
+            {
+                if ((int)dgvChoferes.Rows[i].Cells["Conduce"].Value == Conduce)
+                {
+                    MessageBox.Show($"El conduce [{Conduce}] ya existe en el detalle de este pedido.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
+                    return true;
+                }
+
+            }
+
+            int ResulConduce = BuscarConduce(Conduce);
+
+            if (ResulConduce != 0)
+            {
+                MessageBox.Show($"El conduce [{Conduce}] ya se encuentra asociado a un cliente, \n" +
+                    $"por favor valide o introduzca un nuevo conduce", "Aviso",
+                       MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                return true;
+            }
+
+            return false;
+        }
 
     }
 }

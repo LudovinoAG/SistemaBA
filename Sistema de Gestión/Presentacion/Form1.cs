@@ -17,6 +17,7 @@ namespace Sistema_de_Gestión
     {
         Funciones FC = new Funciones();
         LoadingReportes frmCargarReporte;
+        FacturacionModel FM = new FacturacionModel();
 
         public frmPrincipal()
         {
@@ -27,6 +28,7 @@ namespace Sistema_de_Gestión
         {
             //Mostrar en la barra de estado el usuario y perfil conectado a la aplicación
             BarEstado.Items[0].Text = "Usuario: " + EntrarLogin.UsuarioActual + " | Perfil: " + EntrarLogin.PerfilActual;
+            BarEstado.Items[1].Text = $"Versión: {Application.ProductVersion}";
             if (EntrarLogin.PerfilActual=="Usuario")
             {
                 mnuPrincipalConfiguracion.Visible = false;
@@ -35,6 +37,8 @@ namespace Sistema_de_Gestión
                 mnuPrincipalProveedores.Visible = false;
 
             }
+
+            
 
         }
 
@@ -54,6 +58,8 @@ namespace Sistema_de_Gestión
                 frmMantenimientoProductos frmMantenimiento = new frmMantenimientoProductos();
                 frmMantenimiento.MdiParent = this;
                 frmMantenimiento.Show();
+                frmMantenimiento.WindowState = FormWindowState.Normal;
+
             }
 
         }
@@ -66,6 +72,7 @@ namespace Sistema_de_Gestión
                 frmMantenimientoClientes frmMantenimiento = new frmMantenimientoClientes();
                 frmMantenimiento.MdiParent = this;
                 frmMantenimiento.Show();
+                frmMantenimiento.WindowState = FormWindowState.Normal;
             }
 
         }
@@ -77,6 +84,7 @@ namespace Sistema_de_Gestión
                 Facturación frmFacturacion = new Facturación();
                 frmFacturacion.MdiParent = this;
                 frmFacturacion.Show();
+                frmFacturacion.WindowState = FormWindowState.Normal;
             }
 
         }
@@ -89,6 +97,7 @@ namespace Sistema_de_Gestión
                 frmMantenimientoEmpleados frmEmpleados = new frmMantenimientoEmpleados();
                 frmEmpleados.MdiParent = this;
                 frmEmpleados.Show();
+                frmEmpleados.WindowState = FormWindowState.Normal;
             }
 
         }
@@ -101,6 +110,7 @@ namespace Sistema_de_Gestión
                 frmMantenimientoCategorias frmCategorias = new frmMantenimientoCategorias();
                 frmCategorias.MdiParent = this;
                 frmCategorias.Show();
+                frmCategorias.WindowState = FormWindowState.Normal;
             }
         }
 
@@ -111,6 +121,7 @@ namespace Sistema_de_Gestión
                 frmMantenimientoProveedores frmProveedores = new frmMantenimientoProveedores();
                 frmProveedores.MdiParent = this;
                 frmProveedores.Show();
+                frmProveedores.WindowState = FormWindowState.Normal;
 
             }
 
@@ -136,6 +147,7 @@ namespace Sistema_de_Gestión
                 frmReportesFacturas frmReportes = new frmReportesFacturas();
                 frmReportes.MdiParent = this;
                 frmReportes.Show();
+                frmReportes.WindowState = FormWindowState.Normal;
             }
         }
 
@@ -183,6 +195,7 @@ namespace Sistema_de_Gestión
                 frmCotización frmCotiza = new frmCotización();
                 frmCotiza.MdiParent = this;
                 frmCotiza.Show();
+                frmCotiza.WindowState = FormWindowState.Normal;
             }
         }
 
@@ -199,6 +212,7 @@ namespace Sistema_de_Gestión
                 frmMantenimientoVehiculos frmVehiculos = new frmMantenimientoVehiculos();
                 frmVehiculos.MdiParent = this;
                 frmVehiculos.Show();
+                frmVehiculos.WindowState = FormWindowState.Normal;
             }
 
         }
@@ -213,16 +227,6 @@ namespace Sistema_de_Gestión
             }
         }
 
-        private void mnuPrincipalPedidos_Click(object sender, EventArgs e)
-        {
-            if (!FC.ValidarVentanaAbierta("frmPedidos"))
-            {
-                frmPedidos frmPedidos = new frmPedidos();
-                frmPedidos.MdiParent = this;
-                frmPedidos.Show();
-            }
-        }
-
         private void redaccionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!FC.ValidarVentanaAbierta("frmReportePedidos"))
@@ -230,6 +234,83 @@ namespace Sistema_de_Gestión
                 frmRedaccionesClientes frmPedidosReportes = new frmRedaccionesClientes();
                 frmPedidosReportes.MdiParent = this;
                 frmPedidosReportes.Show();
+                frmPedidosReportes.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void mnuReportesFacturasProforma_Click(object sender, EventArgs e)
+        {
+            if (!FC.ValidarVentanaAbierta("frmVerProforma"))
+            {
+                frmVerProforma frmVerProforma = new frmVerProforma();
+                frmVerProforma.MdiParent = this;
+                frmVerProforma.Show();
+                frmVerProforma.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private async void listadoGeneralToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!FC.ValidarVentanaAbierta("frmListadoGeneralClientes"))
+            {
+                //Abrir formulario de Configuraciones
+                Mostrar();
+                Task otask = new Task(Cargando);
+                otask.Start();
+                frmListadoGeneralClientes frmReportes = new frmListadoGeneralClientes();
+                frmReportes.MdiParent = this;
+                frmReportes.Show();
+                await otask;
+                Cerrar();
+            }
+        }
+
+        private async void listadoGeneralToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (!FC.ValidarVentanaAbierta("frmListadoProductos"))
+            {
+                //Abrir formulario de Configuraciones
+                Mostrar();
+                Task otask = new Task(Cargando);
+                otask.Start();
+                frmListadoProductos frmReportes = new frmListadoProductos();
+                frmReportes.MdiParent = this;
+                frmReportes.Show();
+                await otask;
+                Cerrar();
+            }
+        }
+
+        private void registrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!FC.ValidarVentanaAbierta("frmReporteConducesRegistradoClientes"))
+            {
+                frmReporteConducesRegistradoClientes frmVerConduces = new frmReporteConducesRegistradoClientes();
+                frmVerConduces.MdiParent = this;
+                frmVerConduces.Show();
+                frmVerConduces.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void mantenimientosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!FC.ValidarVentanaAbierta("frmMantenimientoPedidos"))
+            {
+                frmMantenimientoPedidos frmMantenimiento = new frmMantenimientoPedidos();
+                frmMantenimiento.MdiParent = this;
+                frmMantenimiento.Show();
+                frmMantenimiento.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void registrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!FC.ValidarVentanaAbierta("frmPedidos"))
+            {
+                frmPedidos frmPedidos = new frmPedidos();
+                frmPedidos.MdiParent = this;
+                frmPedidos.Show();
+                frmPedidos.WindowState = FormWindowState.Normal;
             }
         }
     }
